@@ -13,7 +13,7 @@ public class Locker : MonoBehaviour
     public AudioSource lockerOpening;
     public AudioSource lockerClose;
 
-    private bool isOpen;
+    private bool isOpen = false;
         //"Detecting" when the locker is closed for the first time
     private bool closedFirst;
 
@@ -23,31 +23,24 @@ public class Locker : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        anim.SetTrigger("LockerActivate");
-        
 
-        switch (playerCamera.activeSelf)
+        if (playerCamera.activeSelf)
         {
             //Opening
-            case true:
-                playerCamera.SetActive(false);
-                LockerCamera.SetActive(true);
-                lockerOpening.Play();
-                break;
-            //Closing
-            case false:
-                playerCamera.SetActive(true);
-                LockerCamera.SetActive(false);
-                if (!closedFirst)
-                {
-                    //Send some function to make the tiles fill in 
-                    //Might need to do more changes because there are different parts that need to get filled in
-                }
-                closedFirst = true;
-                lockerClose.Play();
-                break;
+            anim.SetTrigger("LockerActivate");
+            playerCamera.SetActive(false);
+            LockerCamera.SetActive(true);
+            lockerOpening.Play();
+            isOpen = true;
         }
-
-        isOpen = !isOpen;
+        else if (!playerCamera.activeSelf && isOpen)
+        {
+            //Closing
+            anim.SetTrigger("LockerActivate");
+            playerCamera.SetActive(true);
+            LockerCamera.SetActive(false);
+            lockerClose.Play();
+            isOpen = false;
+        }
     }
 }
