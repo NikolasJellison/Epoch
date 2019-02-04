@@ -10,7 +10,7 @@ public class LockerInspection : MonoBehaviour
     [Header("CHECK THIS IF THIS IS THE LAPTOP THANKS!")]
     public bool isLaptop;
     public bool isClue;
-    [Header("This is the lock script")]
+    [Header("This is the locker script")]
     public Locker locker;
 
     public float speed = 2;

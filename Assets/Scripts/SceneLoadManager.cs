@@ -9,6 +9,7 @@ public class SceneLoadManager : MonoBehaviour
      * [0] Title
      * [1] LivingRoom
      * [2] Hallway
+     * [3] End Screen
      */
 
     public void LoadMenu()
@@ -24,6 +25,11 @@ public class SceneLoadManager : MonoBehaviour
     public void LoadHallWay()
     {
         SceneManager.LoadScene(2);
+    }
+    
+    public void loadEndScreen()
+    {
+        SceneManager.LoadScene(3);
     }
 
 
