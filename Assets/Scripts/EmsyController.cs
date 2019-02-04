@@ -17,7 +17,7 @@ public class EmsyController : MonoBehaviour
     void Start()
     {
         myTransform = this.transform;
-        m_RigidBody = GetComponent<Rigidbody>();
+        //m_RigidBody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         anim.SetBool("OnGround", true);
     }
@@ -25,9 +25,9 @@ public class EmsyController : MonoBehaviour
     void Update()
     {
         // get inputs
-        if (Input.GetButtonDown("Space")){
-            m_RigidBody.AddForce(new Vector3(0, 1, 0));
-        }
+        //if (Input.GetButtonDown("Space")){
+        //    m_RigidBody.AddForce(new Vector3(0, 1, 0));
+        //}
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
         //float jumped = Input.GetAxis("Jumped");
