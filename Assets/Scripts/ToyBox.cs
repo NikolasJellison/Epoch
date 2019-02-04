@@ -16,6 +16,8 @@ public class ToyBox : MonoBehaviour
     public GameObject[] sentenceBlocks;
     public Transform[] sentenceBlockLocations;
     private bool cutScenePlaying;
+    public GameObject DOOR;
+    private bool stopCallingMyCoroutine;
 
 
     private void Update()
@@ -33,25 +35,29 @@ public class ToyBox : MonoBehaviour
                 sentenceBlocks[i].transform.position = Vector3.MoveTowards(sentenceBlocks[i].transform.position, sentenceBlockLocations[i].position, step);
             }
         }
-        if (sentenceBlocks[14].transform.position == sentenceBlockLocations[14].position && cutScenePlaying)
+        if (sentenceBlocks[14].transform.position == sentenceBlockLocations[14].position && !stopCallingMyCoroutine)
         {
+            stopCallingMyCoroutine = true;
             StartCoroutine(waitForRead());
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //If player has all blocks
-        cutScene();
+        if (other.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
+        {
+            cutScene();
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //Get blockcount from player
-            //If block count != 5
-            notificationText.text = "Missing some Blocks";
+            if (other.GetComponent<PlayerRoomOneDetection>().blocksFound < 5)
+            {
+                notificationText.text = "Missing some Blocks";
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -60,7 +66,11 @@ public class ToyBox : MonoBehaviour
         {
             //Get blockcount from player
             //If block count != 5
-            notificationMessage = "";
+            if (other.GetComponent<PlayerRoomOneDetection>().blocksFound < 5)
+            {
+                notificationMessage = "";
+            }
+            
         }
     }
 
@@ -83,6 +93,9 @@ public class ToyBox : MonoBehaviour
     private IEnumerator waitForRead()
     {
         yield return new WaitForSeconds(3);
+        DOOR.GetComponent<Animator>().SetTrigger("OpenIn");
+        DOOR.GetComponent<AudioSource>().Play();
         cutScene();
+        yield return null;
     }
 }
