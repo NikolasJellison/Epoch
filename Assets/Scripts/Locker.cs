@@ -15,11 +15,10 @@ public class Locker : MonoBehaviour
 
     private bool isOpen = false;
         //"Detecting" when the locker is closed for the first time
-    public bool closedFirst;
+    private bool closedFirst;
 
     private void Start()
     {
-        closedFirst = false;
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
     private void OnMouseDown()
@@ -42,7 +41,6 @@ public class Locker : MonoBehaviour
             LockerCamera.SetActive(false);
             lockerClose.Play();
             isOpen = false;
-            closedFirst = true;
         }
     }
 }
