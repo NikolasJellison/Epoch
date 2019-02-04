@@ -16,6 +16,8 @@ public class ToyBox : MonoBehaviour
     public GameObject[] sentenceBlocks;
     public Transform[] sentenceBlockLocations;
     private bool cutScenePlaying;
+    public GameObject DOOR;
+    private bool stopCallingMyCoroutine;
 
 
     private void Update()
@@ -33,8 +35,9 @@ public class ToyBox : MonoBehaviour
                 sentenceBlocks[i].transform.position = Vector3.MoveTowards(sentenceBlocks[i].transform.position, sentenceBlockLocations[i].position, step);
             }
         }
-        if (sentenceBlocks[14].transform.position == sentenceBlockLocations[14].position && cutScenePlaying)
+        if (sentenceBlocks[14].transform.position == sentenceBlockLocations[14].position && !stopCallingMyCoroutine)
         {
+            stopCallingMyCoroutine = true;
             StartCoroutine(waitForRead());
         }
     }
@@ -43,7 +46,6 @@ public class ToyBox : MonoBehaviour
     {
         if (other.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
         {
-            notificationText.text = "Missing some Blocks";
             cutScene();
         }
     }
@@ -91,6 +93,9 @@ public class ToyBox : MonoBehaviour
     private IEnumerator waitForRead()
     {
         yield return new WaitForSeconds(3);
+        DOOR.GetComponent<Animator>().SetTrigger("OpenIn");
+        DOOR.GetComponent<AudioSource>().Play();
         cutScene();
+        yield return null;
     }
 }
