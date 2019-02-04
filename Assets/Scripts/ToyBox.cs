@@ -41,17 +41,21 @@ public class ToyBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //If player has all blocks
-        cutScene();
+        if (other.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
+        {
+            notificationText.text = "Missing some Blocks";
+            cutScene();
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //Get blockcount from player
-            //If block count != 5
-            notificationText.text = "Missing some Blocks";
+            if (other.GetComponent<PlayerRoomOneDetection>().blocksFound < 5)
+            {
+                notificationText.text = "Missing some Blocks";
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -60,7 +64,11 @@ public class ToyBox : MonoBehaviour
         {
             //Get blockcount from player
             //If block count != 5
-            notificationMessage = "";
+            if (other.GetComponent<PlayerRoomOneDetection>().blocksFound < 5)
+            {
+                notificationMessage = "";
+            }
+            
         }
     }
 
