@@ -33,22 +33,30 @@ public class EnemyPathing : MonoBehaviour
         Bounds sightBounds = sightCone.GetComponent<MeshCollider>().bounds;
         Bounds playerBounds = player.GetComponent<CapsuleCollider>().bounds;
 
-        if(sightBounds.Intersects(playerBounds))
+        
+
+        if (sightBounds.Intersects(playerBounds))
         {
             if(alertLevel < 100)
             {
                 alertLevel += 2;
             }
-                
-            
-            if(alertLevel >= 100)
-            {
-                print("oh no");
-            }
         }
         else if(alertLevel > 0)
         {
             alertLevel -= 1;
+        }
+
+        Bounds enemyBounds = gameObject.transform.GetComponent<BoxCollider>().bounds;
+        if (enemyBounds.Intersects(playerBounds))
+        {
+            print("OOF");
+            alertLevel = 100;
+        }
+
+        if (alertLevel >= 100)
+        {
+            print("oh no");
         }
         print(alertLevel);
     }
