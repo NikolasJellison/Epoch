@@ -13,7 +13,8 @@ public class Locker : MonoBehaviour
     public AudioSource lockerOpening;
     public AudioSource lockerClose;
 
-    private bool isOpen = false;
+    [HideInInspector]public bool isOpen = false;
+    [HideInInspector]public bool currentInspectingObject;
         //"Detecting" when the locker is closed for the first time
     public bool closedFirst;
 

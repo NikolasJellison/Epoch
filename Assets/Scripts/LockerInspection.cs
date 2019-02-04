@@ -7,11 +7,16 @@ public class LockerInspection : MonoBehaviour
     public Transform inspectionLocation;
     private Vector3 originalLocation;
     private Vector3 destination;
+    [Header("CHECK THIS IF THIS IS THE LAPTOP THANKS!")]
+    public bool isLaptop;
+    public bool isClue;
+    [Header("This is the lock script")]
+    public Locker locker;
 
     public float speed = 2;
     private float step;
     //Conditional on player script to make sure the player isn't inspecting something else
-    //Ggoes Here
+    //Goes Here
     private bool isMoving;
     private bool isInspected;
 
@@ -28,21 +33,32 @@ public class LockerInspection : MonoBehaviour
     {
         step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, destination, step);
+        if (!locker.isOpen)
+        {
+            destination = originalLocation;
+        }
     }
 
     private void OnMouseDown()
     {
-        switch (isInspected)
-        {
-            case true:
-                //Return
-                destination = originalLocation;
-                break;
 
-            case false:
-                //Inspect
-                destination = inspectionLocation.position;
-                break;
+        if (isInspected)
+        {
+            //Return
+            destination = originalLocation;
+            locker.currentInspectingObject = false;
+        }
+        else if (locker.currentInspectingObject == false)
+        {
+            //Inspect
+            destination = inspectionLocation.position;
+            if (isLaptop)
+            {
+                Destroy(gameObject);
+                //Send to gamemanager letting it know that the laptop has been found
+                //Let gamemanager deal with the notification text 
+            }
+            locker.currentInspectingObject = true;
         }
 
         isInspected = !isInspected;
