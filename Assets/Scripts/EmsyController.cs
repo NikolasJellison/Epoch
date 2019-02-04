@@ -9,6 +9,7 @@ public class EmsyController : MonoBehaviour
     public float movementSpeed;
     public float jump_power;
     private Transform myTransform;
+
     private float jumped;
     Animator anim;
     Rigidbody m_RigidBody;
@@ -33,7 +34,7 @@ public class EmsyController : MonoBehaviour
         //float jumped = Input.GetAxis("Jumped");
 
         // get current position, then do calculations
-        Vector3 moveVectorX = theCamera.forward * inputY;
+        Vector3 moveVectorX = theCamera.forward * inputY  ;
         Vector3 moveVectorY = theCamera.right * inputX;
         //Vector3 moveVectorZ = theCamera.up * jumped;
         Vector3 moveVector = (moveVectorX + moveVectorY ).normalized * movementSpeed * Time.deltaTime;
