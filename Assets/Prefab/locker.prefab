@@ -549,7 +549,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 518cdc229a1557349840162c69983f0a, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -645,7 +645,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dc2c4e41686cf684daac7d0a6dc1c745, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -761,6 +761,9 @@ MonoBehaviour:
   LockerCamera: {fileID: 4181549159306555083}
   lockerOpening: {fileID: 5655482828586091862}
   lockerClose: {fileID: 249267750868790353}
+  isOpen: 0
+  currentInspectingObject: 0
+  closedFirst: 0
 --- !u!1 &7014411021499836515
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,11 +994,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5815293629639263677}
     m_Modifications:
-    - target: {fileID: 4577193028185689670, guid: 7862f14cd242a7846b997c3840b0caa9,
-        type: 3}
-      propertyPath: m_Name
-      value: Lock
-      objectReference: {fileID: 0}
     - target: {fileID: 6282301856455802873, guid: 7862f14cd242a7846b997c3840b0caa9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1070,6 +1068,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MeshColliderHERE
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577193028185689670, guid: 7862f14cd242a7846b997c3840b0caa9,
+        type: 3}
+      propertyPath: m_Name
+      value: Lock
       objectReference: {fileID: 0}
     - target: {fileID: 4432228454018750297, guid: 7862f14cd242a7846b997c3840b0caa9,
         type: 3}
