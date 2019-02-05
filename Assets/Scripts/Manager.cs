@@ -13,7 +13,7 @@ public class Manager : MonoBehaviour
     public GameObject door;
     public bool doorOpen;
     public Transform player;
-    public Collider exit;
+    public GameObject enemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +51,9 @@ public class Manager : MonoBehaviour
         // Player goes below a certain Y value, set to spawn
         Vector3 player_pos = player.position;
         bool fell_off = player_pos[1] < -30;
-        if (fell_off)
+        bool detected = enemy.GetComponent<EnemyPathing>().alertLevel >= 100;
+
+        if (detected || fell_off)
         {
 
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;   
