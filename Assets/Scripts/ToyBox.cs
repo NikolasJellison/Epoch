@@ -22,10 +22,13 @@ public class ToyBox : MonoBehaviour
 
     private void Update()
     {
+        //Debug cutscene
+        /*
         if (Input.GetKeyDown(KeyCode.A))
         {
             cutScene();
         }
+        */
         step = speed * Time.deltaTime;
         if (cutScenePlaying)
         {

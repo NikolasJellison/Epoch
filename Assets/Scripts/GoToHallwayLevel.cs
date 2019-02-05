@@ -10,6 +10,7 @@ public class GoToHallwayLevel : MonoBehaviour
     {
         if (other.CompareTag("Player")){
             sceneLoadManager.LoadHallWay();
+            Debug.Log("Sending player to level 2");
         }
     }
 }
