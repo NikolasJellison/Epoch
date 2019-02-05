@@ -34,17 +34,13 @@ public class Manager : MonoBehaviour
             if (locker.closedFirst)
             {
                 ++currentSpawn;
-                if (currentSpawn != 3)
-                {
-                    checkPointTiles[currentSpawn].gameObject.SetActive(true);
-                }
+                checkPointTiles[currentSpawn].gameObject.SetActive(true);
             }
         }
 
         if(laptop == null && !doorOpen)
         {
             doorOpen = true;
-            checkPointTiles[3].gameObject.SetActive(true);
             door.GetComponent<Animator>().SetTrigger("OpenOut");
         }
         // If we fall off the stage or are detected, move an object to that place.
