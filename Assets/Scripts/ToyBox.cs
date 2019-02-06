@@ -90,6 +90,9 @@ public class ToyBox : MonoBehaviour
             cutScenePlaying = true;
             playerCamera.SetActive(false);
             cutSceneCamera.SetActive(true);
+            //This is a last minute fix, sometimes you could touch the box during the cutscene and it would change back
+            //to the cut scene camera, and we dont want that
+            GetComponent<BoxCollider>().enabled = false;
         }
     }
 

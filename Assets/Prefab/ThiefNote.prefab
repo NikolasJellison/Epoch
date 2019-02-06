@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 6277387927388750032}
   - component: {fileID: 6238219944768946987}
   - component: {fileID: 5154759318317017576}
+  - component: {fileID: 103496266}
+  - component: {fileID: 103496262}
   m_Layer: 0
   m_Name: pCube1
   m_TagString: Untagged
@@ -145,13 +147,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3066019538595290584}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.01038444, z: 0}
+  m_LocalRotation: {x: -0.7010544, y: -0.092296176, z: -0.0922959, w: 0.70106035}
+  m_LocalPosition: {x: -0, y: 0.208, z: 0.158}
   m_LocalScale: {x: 10.131078, y: -0.01552973, z: 15.363082}
   m_Children: []
   m_Father: {fileID: 8035284965677189091}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -15.000001}
 --- !u!33 &6238219944768946987
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -197,6 +199,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &103496266
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066019538595290584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 9ffdc8f6dc705fa4b84f952a2153ba8a, type: 3}
+--- !u!114 &103496262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066019538595290584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7e2c598fdc00248ba7fc62ffd890f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspectionLocation: {fileID: 0}
+  isLaptop: 0
+  isClue: 0
+  locker: {fileID: 0}
+  speed: 2
 --- !u!1 &3290202233394435978
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +795,7 @@ Transform:
   m_GameObject: {fileID: 8348310979978583888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.3889, y: 4.3889, z: 4.3889}
+  m_LocalScale: {x: 0.953023, y: 0.95302325, z: 0.953023}
   m_Children:
   - {fileID: 6277387927388750032}
   - {fileID: 7534255537563655534}

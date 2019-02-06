@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Manager : MonoBehaviour
     public bool doorOpen;
     public Transform player;
     public GameObject enemy;
+    //Clue stuff
+    [Header("Put in the text objects (in order), not the panel")]
+    public GameObject[] clueTexts;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,5 +62,11 @@ public class Manager : MonoBehaviour
         // Array of enemies
             // If any reach an alert level of 100, set to spawn
 
+    }
+
+    //Clues numbers are 1,2,3,4
+    public void writeClue(int clueNumber)
+    {
+        clueTexts[clueNumber - 1].SetActive(true);
     }
 }

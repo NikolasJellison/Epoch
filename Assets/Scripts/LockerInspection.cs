@@ -12,6 +12,10 @@ public class LockerInspection : MonoBehaviour
     public bool isClue;
     [Header("This is the locker script")]
     public Locker locker;
+    //Clue stuff
+    public Manager gameManager;
+    [Header("1 is first ... 4 is last")]
+    public int whichClue;
 
     public float speed = 2;
     private float step;
@@ -57,6 +61,10 @@ public class LockerInspection : MonoBehaviour
                 Destroy(gameObject);
                 //Send to gamemanager letting it know that the laptop has been found
                 //Let gamemanager deal with the notification text 
+            }
+            else if (isClue)
+            {
+                gameManager.writeClue(whichClue);
             }
             locker.currentInspectingObject = true;
         }
