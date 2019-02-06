@@ -45,6 +45,7 @@ public class Manager : MonoBehaviour
         if(laptop == null && !doorOpen)
         {
             doorOpen = true;
+            door.GetComponent<AudioSource>().Play();
             door.GetComponent<Animator>().SetTrigger("OpenOut");
         }
         // If we fall off the stage or are detected, move an object to that place.
