@@ -8,6 +8,7 @@ public class Watch_Vision : MonoBehaviour
     public GameObject vision_objects;
     public UnityEngine.UI.Text timer_label;
     public float time_left;
+    public float original_time;
 
     // Start is called before the first frame update
     void Start()

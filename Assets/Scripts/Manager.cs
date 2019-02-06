@@ -15,6 +15,7 @@ public class Manager : MonoBehaviour
     public bool doorOpen;
     public Transform player;
     public GameObject enemy;
+    public GameObject watchTimer;
     //Clue stuff
     [Header("Put in the text objects (in order), not the panel")]
     public GameObject[] clueTexts;
@@ -57,8 +58,13 @@ public class Manager : MonoBehaviour
         if (detected || fell_off)
         {
 
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;   
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player.GetComponent<AudioSource>().Play();
             player.position = spawns[currentSpawn].position;
+            float originalTime = watchTimer.GetComponent<Watch_Vision>().original_time;
+            watchTimer.GetComponent<Watch_Vision>().time_left = originalTime;
+
+
         }
         // Array of enemies
             // If any reach an alert level of 100, set to spawn
