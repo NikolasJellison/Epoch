@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TreeEditor;
+//using TreeEditor;
 
 public class CameraShake : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class CameraShake : MonoBehaviour
     {
         if (positionShakeSpeed > 0)
         {
-            transform.localPosition = position + Vector3.Scale(SmoothRandom.GetVector3(positionShakeSpeed), positionShakeRange);
+           // transform.localPosition = position + Vector3.Scale(SmoothRandom.GetVector3(positionShakeSpeed), positionShakeRange);
         }
     }
 }
