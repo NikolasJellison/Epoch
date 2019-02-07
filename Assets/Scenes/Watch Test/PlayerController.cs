@@ -9,14 +9,15 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     public LayerMask groundLayers;
-    public float Jump_Force = 7;
+    public float Jump_Force = 3;
     private CapsuleCollider col;
-
+    private Animator anim;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
+        anim = GetComponent<Animator>();
 
 
 
@@ -25,11 +26,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        if (IsGrounded())
+        {
+            anim.SetBool("Jumping", false);
+        }
 
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
+            anim.SetBool("Jumping", true);
             rb.AddForce(Vector3.up * Jump_Force, ForceMode.Impulse);
-
         }
 
     }
@@ -38,6 +43,12 @@ public class PlayerController : MonoBehaviour
     {
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
+        if (ver > 0f)
+        {
+            anim.SetBool("Walking", true);
+        }
+        else
+            anim.SetBool("Walking", false);
         Vector3 playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
         transform.Translate(playermovement, Space.Self);
     }
