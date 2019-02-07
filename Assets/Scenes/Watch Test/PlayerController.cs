@@ -41,6 +41,16 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement()
     {
+        if(Input.GetKeyUp(KeyCode.LeftShift) && anim.GetBool("Running"))
+        {
+            speed = speed / 2;
+            anim.SetBool("Running", false);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            anim.SetBool("Running", true);
+            speed = speed * 2;
+        }
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
         if (ver > 0f)
@@ -49,6 +59,7 @@ public class PlayerController : MonoBehaviour
         }
         else
             anim.SetBool("Walking", false);
+
         Vector3 playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
         transform.Translate(playermovement, Space.Self);
     }

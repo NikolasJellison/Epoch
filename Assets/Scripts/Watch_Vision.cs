@@ -20,13 +20,13 @@ public class Watch_Vision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && time_left > 0.0)
+        if (Input.GetKey(KeyCode.Mouse1) && time_left > 0.0)
         {
             time_left -= Time.deltaTime;
             vision_objects.SetActive(true);
 
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift) || time_left <= 0.0)
+        if (Input.GetKeyUp(KeyCode.Mouse1) || time_left <= 0.0)
         {
             vision_objects.SetActive(false);   
         }
