@@ -3,20 +3,21 @@
     Properties
     {
         _MainTex ("MainTexture", 2D) = "white" {}
-    }
-    SubShader
-    {
-        // No culling or depth
-        Cull Off ZWrite Off ZTest Always
+	}
+		SubShader
+	{
+		// No culling or depth
+		Cull Off ZWrite Off ZTest Always
 
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+		Pass
+		{
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
 			// we have a vertex shater vert and fragment shader frag
-            #include "UnityCG.cginc"
-
+			#include "UnityCG.cginc"
+			static const half PI = 3.1415926535897931;
+			half3 hue_rotation(half3 color_rgb, half hue);
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -39,11 +40,11 @@
 
             sampler2D _MainTex;
 			// frag: called once/pixel
-            fixed4 frag (v2f i) : SV_Target
+            half4 frag (v2f i) : SV_Target
             {
 				// color from texture at coordinate
-                fixed4 original = tex2D(_MainTex, i.uv); // uv coordinate of pixel
-				fixed4 alter = original;
+				half4 original = tex2D(_MainTex, i.uv); // uv coordinate of pixel
+				half4 alter = original;
 				// red, green, blue, alpha (transparency)
 				alter.rgb = original.rgb; // fixed3(0.0, 0.49, 0.49);
 				alter.a = original.a;
@@ -52,10 +53,10 @@
 				
 				
 				
-				fixed max_val = max(max(alter.r, alter.g), alter.b);
-				fixed min_val = min(min(alter.r, alter.g), alter.b);
-				fixed hue;
-				fixed delta = max_val - min_val;
+				half max_val = max(max(alter.r, alter.g), alter.b);
+				half min_val = min(min(alter.r, alter.g), alter.b);
+				half hue;
+				half delta = max_val - min_val;
 				// if delta isn't big enough, simply ignore this color: it is close enough to black/grey/white
 				// change "!= 0.0" to ">= X", where X depends on whatever is best from experimentation
 				if (delta != 0.0) {
@@ -70,8 +71,10 @@
 					}
 					hue = 60.0 * hue;
 					if (hue < 0) hue += 360;
-						
+					
+					// change ranges
 					if (hue < 60 || hue > 300) {
+						alter.rgb = hue_rotation(alter.rgb, -30);
 						// alter.rgb = 1 - alter.rgb;
 					}
 					if (hue > 60 && hue < 180) {
@@ -80,6 +83,7 @@
 					if (hue > 180 && hue < 300) {
 						// alter.rgb = 1 - alter.rgb;
 					}
+					half test = cos(0);
 				}
 				
 
@@ -87,6 +91,23 @@
 				//    what color that should be? We'll figure that out later. Right now, we need to make the tech work
 				return alter;
             }
+			
+			half3 hue_rotation(half3 color_rgb, half hue) {
+				half U = cos(hue*PI / 180);
+				half W = sin(hue*PI / 180);
+
+				half3 color_shifted;
+				color_shifted.r = (.299 + .701*U + .168*W)*color_rgb.r
+					+ (.587 - .587*U + .330*W)*color_rgb.g
+					+ (.114 - .114*U - .497*W)*color_rgb.b;
+				color_shifted.g = (.299 - .299*U - .328*W)*color_rgb.r
+					+ (.587 + .413*U + .035*W)*color_rgb.g
+					+ (.114 - .114*U + .292*W)*color_rgb.b;
+				color_shifted.b = (.299 - .3*U + 1.25*W)*color_rgb.r
+					+ (.587 - .588*U - 1.05*W)*color_rgb.g
+					+ (.114 + .886*U - .203*W)*color_rgb.b;
+				return color_shifted;
+			}
             ENDCG
         }
     }
