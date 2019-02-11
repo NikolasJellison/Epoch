@@ -53,13 +53,14 @@ public class PlayerController : MonoBehaviour
         }
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
-        if (ver > 0f)
+        if (ver == 0f && hor == 0f)
         {
-            anim.SetBool("Walking", true);
+            anim.SetBool("Moving", false);
         }
         else
-            anim.SetBool("Walking", false);
+            anim.SetBool("Moving", true);
 
+        anim.SetFloat("Direction", ver);
         Vector3 playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
         transform.Translate(playermovement, Space.Self);
     }
