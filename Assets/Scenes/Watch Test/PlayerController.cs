@@ -26,14 +26,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
-        if (IsGrounded())
-        {
-            anim.SetBool("Jumping", false);
-        }
 
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
-            anim.SetBool("Jumping", true);
+            anim.SetTrigger("Jump");
             rb.AddForce(Vector3.up * Jump_Force, ForceMode.Impulse);
         }
 
@@ -41,27 +37,23 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement()
     {
-        if(Input.GetKeyUp(KeyCode.LeftShift) && anim.GetBool("Running"))
-        {
-            speed = speed / 2;
-            anim.SetBool("Running", false);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            anim.SetBool("Running", true);
-            speed = speed * 2;
-        }
+        //if(Input.GetKeyUp(KeyCode.LeftShift) && anim.GetBool("Running"))
+        //{
+        //    speed = speed / 2;
+        //    anim.SetBool("Running", false);
+        //}
+
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
-        if (ver == 0f && hor == 0f)
-        {
-            anim.SetBool("Moving", false);
-        }
-        else
-            anim.SetBool("Moving", true);
 
-        anim.SetFloat("Direction", ver);
-        Vector3 playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
+        anim.SetFloat("Velocity_X", hor);
+        anim.SetFloat("Velocity_Y", ver);
+        Vector3 playermovement;
+        if (ver < 0f)
+            playermovement = new Vector3(hor, 0f, ver) * speed/2 * Time.deltaTime;
+        else
+            playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
+
         transform.Translate(playermovement, Space.Self);
     }
 
