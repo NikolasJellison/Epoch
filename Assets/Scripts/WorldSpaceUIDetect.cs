@@ -8,6 +8,10 @@ using UnityEditor;
 
 public class WorldSpaceUIDetect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [Header("Detection Range")]
+    public float range = 8;
+    private bool inRange;
+    private Canvas canvas;
     [Header("Text names")]
     public string defaultName;
     public string hoverName;
@@ -34,11 +38,22 @@ public class WorldSpaceUIDetect : MonoBehaviour, IPointerEnterHandler, IPointerE
         player = GameObject.FindGameObjectWithTag("MainCamera").transform;
         selfText = GetComponentInChildren<TextMeshProUGUI>();
         hoverImage.enabled = false;
+        canvas = GetComponent<Canvas>();
     }
 
     private void Update()
     {
         transform.rotation = Quaternion.LookRotation(transform.position - player.transform.position);
+        if(Vector3.Distance(transform.position, player.position) < range)
+        {
+            inRange = true;
+            canvas.enabled = true;
+        }
+        else
+        {
+            inRange = false;
+            canvas.enabled = false;
+        }
     }
     private void RayCastWorld()
     {

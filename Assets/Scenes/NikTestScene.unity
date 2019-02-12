@@ -1231,7 +1231,7 @@ PrefabInstance:
     - target: {fileID: 7604762058193670690, guid: c4fe78d9829804dfaa064050f4a4a51e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7604762058194095618, guid: c4fe78d9829804dfaa064050f4a4a51e,
         type: 3}
@@ -1479,6 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db0b4112c30ac04cbd503edbccf0618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 8
   defaultName: Locker
   hoverName: Open Locker
   twoStates: 1
@@ -1797,7 +1798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1549132243
 AudioListener:
   m_ObjectHideFlags: 0
