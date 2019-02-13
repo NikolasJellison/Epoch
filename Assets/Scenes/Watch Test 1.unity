@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -698,7 +698,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8cb4d6fee77fd4ee6895f08b240d625f, type: 2}
+  - {fileID: 2100000, guid: 750ef1b5b96b21d41baf236374c1b3d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -826,16 +826,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7604762058193670691, guid: c4fe78d9829804dfaa064050f4a4a51e,
-        type: 3}
-      propertyPath: speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7604762058193670691, guid: c4fe78d9829804dfaa064050f4a4a51e,
-        type: 3}
-      propertyPath: Jump_Force
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7604762058203193824, guid: c4fe78d9829804dfaa064050f4a4a51e,
         type: 3}
       propertyPath: m_Controller
@@ -845,6 +835,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604762058193670691, guid: c4fe78d9829804dfaa064050f4a4a51e,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604762058193670691, guid: c4fe78d9829804dfaa064050f4a4a51e,
+        type: 3}
+      propertyPath: Jump_Force
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4fe78d9829804dfaa064050f4a4a51e, type: 3}
