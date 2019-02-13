@@ -78,7 +78,7 @@
 						// alter.rgb = 1 - alter.rgb;
 					}
 					if (hue > 60 && hue < 180) {
-						alter.rgb = hue_rotation(alter.rgb, -30);
+						//alter.rgb = hue_rotation(alter.rgb, -30);
 						// alter.rgb = 1 - alter.rgb;
 					}
 					if (hue > 180 && hue < 300) {
