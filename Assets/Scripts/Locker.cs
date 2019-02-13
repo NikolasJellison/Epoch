@@ -23,9 +23,35 @@ public class Locker : MonoBehaviour
         closedFirst = false;
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
+    //This gets commented out for the current time for our sprint build
+    /*
     private void OnMouseDown()
     {
 
+        if (playerCamera.activeSelf)
+        {
+            //Opening
+            anim.SetTrigger("LockerActivate");
+            playerCamera.SetActive(false);
+            LockerCamera.SetActive(true);
+            lockerOpening.Play();
+            isOpen = true;
+        }
+        else if (!playerCamera.activeSelf && isOpen)
+        {
+            //Closing
+            anim.SetTrigger("LockerActivate");
+            playerCamera.SetActive(true);
+            LockerCamera.SetActive(false);
+            lockerClose.Play();
+            isOpen = false;
+            closedFirst = true;
+        }
+    }
+    */
+    //Temp thing to avoid the mouse input thing we dont have
+    public void OpenLocker()
+    {
         if (playerCamera.activeSelf)
         {
             //Opening

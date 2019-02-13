@@ -71,4 +71,33 @@ public class LockerInspection : MonoBehaviour
 
         isInspected = !isInspected;
     }
+
+    //because we nolonger use mouse
+    public void OpenLocker()
+    {
+        if (isInspected)
+        {
+            //Return
+            destination = originalLocation;
+            locker.currentInspectingObject = false;
+        }
+        else if (locker.currentInspectingObject == false)
+        {
+            //Inspect
+            destination = inspectionLocation.position;
+            if (isLaptop)
+            {
+                Destroy(gameObject);
+                //Send to gamemanager letting it know that the laptop has been found
+                //Let gamemanager deal with the notification text 
+            }
+            else if (isClue)
+            {
+                gameManager.writeClue(whichClue);
+            }
+            locker.currentInspectingObject = true;
+        }
+
+        isInspected = !isInspected;
+    }
 }
