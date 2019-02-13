@@ -45,10 +45,6 @@
 				// color from texture at coordinate
 				half4 original = tex2D(_MainTex, i.uv); // uv coordinate of pixel
 				half4 alter = original;
-				// red, green, blue, alpha (transparency)
-				alter.rgb = original.rgb; // [0,1]
-				alter.a = original.a;
-				// col.rgb = 1 - col.rgb; // just invert the colors
 
 				half max_val = max(max(alter.r, alter.g), alter.b);
 				half min_val = min(min(alter.r, alter.g), alter.b);
@@ -56,42 +52,61 @@
 				half saturation;
 				half lightness;
 				half delta = max_val - min_val;
-				// if delta isn't big enough, simply ignore this color: it is close enough to black/grey/white
-				if (delta >= 0.2) {
-					if (alter.r == max_val) {
-						hue = (alter.g - alter.b) / delta;
-					}
-					else if (alter.g == max_val) {
-						hue = 2.0 + (alter.b - alter.r) / delta;
-					}
-					else {
-						hue = 4.0 + (alter.r - alter.g) / delta;
-					}
-					hue = 60.0 * hue;
-					if (hue < 0) hue += 360;
 
-					saturation = (max_val - min_val) / (1 - abs(max_val + min_val - 1));
-					lightness = (max_val + min_val) / 2.0;
-					
-					// change ranges
-					if (hue < 14 || hue > 346) {
-						hue = (hue + 60.0) % 360.0;
-						lightness = 0.65;
-						//lightness = (2.0 * lightness) % 1.0;
-						//alter.rgb = hue_rotation(alter.rgb, -60);
-						//alter.rgb = 1 - alter.rgb;
-					}
-					if (hue > 81 && hue < 160) {
-						hue = (hue + 100.0) % 360.0;
-						// alter.rgb = 1 - alter.rgb;
-					}
-					if (hue > 180 && hue < 300) {
-						// alter.rgb = 1 - alter.rgb;
-					}
-
-					alter.rgb = hsl_rgb_convert(hue, saturation, lightness);
+				if (max_val == min_val) {
+					hue = 0.0;
+				} else if (alter.r == max_val) {
+					hue = (alter.g - alter.b) / delta;
 				}
+				else if (alter.g == max_val) {
+					hue = 2.0 + (alter.b - alter.r) / delta;
+				}
+				else {
+					hue = 4.0 + (alter.r - alter.g) / delta;
+				}
+				hue = 60.0 * hue;
+				if (hue < 0.0) hue += 360.0;
+
+				if (min_val == max_val) {
+					saturation = 0;
+				}
+				else {
+					saturation = (max_val - min_val) / (1 - abs(max_val + min_val - 1));
+				}
+				lightness = (max_val + min_val) / 2.0;
+					
+				// change ranges
+				if (hue < 14 || hue > 346) {
+					//hue = (hue + 60.0) % 360.0;
+					//lightness = 0.65;
+					alter.rgb = hue_rotation(alter.rgb, -60);
+				}
+				if (hue > 81 && hue < 160) {
+					alter.rgb = hue_rotation(alter.rgb, -80);
+					//hue = (hue + 100.0) % 360.0;
+				}
+				if (hue > 180 && hue < 300) {
+				}
+
+				// alter.rgb = hsl_rgb_convert(hue, saturation, lightness);
 				return alter;
+			}
+
+			half3 hue_rotation(half3 color_rgb, half hue) {
+				half U = cos(hue*PI / 180);
+				half W = sin(hue*PI / 180);
+
+				half3 color_shifted;
+				color_shifted.r = (.299 + .701*U + .168*W)*color_rgb.r
+					+ (.587 - .587*U + .330*W)*color_rgb.g
+					+ (.114 - .114*U - .497*W)*color_rgb.b;
+				color_shifted.g = (.299 - .299*U - .328*W)*color_rgb.r
+					+ (.587 + .413*U + .035*W)*color_rgb.g
+					+ (.114 - .114*U + .292*W)*color_rgb.b;
+				color_shifted.b = (.299 - .3*U + 1.25*W)*color_rgb.r
+					+ (.587 - .588*U - 1.05*W)*color_rgb.g
+					+ (.114 + .886*U - .203*W)*color_rgb.b;
+				return color_shifted;
 			}
 
 			// hue: [0,360]
@@ -99,7 +114,7 @@
 			half3 hsl_rgb_convert(half hue, half saturation, half lightness) {
 				half chroma = (1.0 - abs(2.0 * lightness - 1.0)) * saturation;
 				half relative_hue = hue / 60.0;
-				half intermediate = chroma * (1.0 - abs(relative_hue % 2.0- 1.0));
+				half intermediate = chroma * (1.0 - abs((relative_hue % 2.0) - 1.0));
 				half3 return_rgb;
 				return_rgb.r = 0.0;
 				return_rgb.g = 0.0;
@@ -125,29 +140,14 @@
 					return_rgb.b = intermediate;
 				}
 
-				half lightness_match = lightness - chroma / 2;
+				half lightness_match = lightness - (chroma / 2.0);
 				return_rgb.r += lightness_match;
 				return_rgb.g += lightness_match;
 				return_rgb.b += lightness_match;
 				return return_rgb.rgb;
 			}
 
-			half3 hue_rotation(half3 color_rgb, half hue) {
-				half U = cos(hue*PI / 180);
-				half W = sin(hue*PI / 180);
-
-				half3 color_shifted;
-				color_shifted.r = (.299 + .701*U + .168*W)*color_rgb.r
-					+ (.587 - .587*U + .330*W)*color_rgb.g
-					+ (.114 - .114*U - .497*W)*color_rgb.b;
-				color_shifted.g = (.299 - .299*U - .328*W)*color_rgb.r
-					+ (.587 + .413*U + .035*W)*color_rgb.g
-					+ (.114 - .114*U + .292*W)*color_rgb.b;
-				color_shifted.b = (.299 - .3*U + 1.25*W)*color_rgb.r
-					+ (.587 - .588*U - 1.05*W)*color_rgb.g
-					+ (.114 + .886*U - .203*W)*color_rgb.b;
-				return color_shifted;
-			}
+			
 
 			ENDCG
 		}
