@@ -6,25 +6,17 @@ using UnityEngine;
 public class ColorblindScript : MonoBehaviour
 {
     public Material[] mat;
+    public int mode;
     public Material current_mat;
 
     void Start()
     {
-        current_mat = mat[0];
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Alpha2))
-        {
-            current_mat = mat[1];
-        } else if (Input.GetKeyUp(KeyCode.Alpha3))
-        {
-            current_mat = mat[2];
-        } else if (Input.GetKeyUp(KeyCode.Alpha1))
-        {
-            current_mat = mat[0];
-        }
+        current_mat = mat[mode];
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
