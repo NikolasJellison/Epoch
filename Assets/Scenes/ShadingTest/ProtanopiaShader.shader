@@ -81,7 +81,7 @@
 					//lightness = 0.65;
 					alter.rgb = hue_rotation(alter.rgb, -60);
 				}
-				if (hue > 81 && hue < 160) {
+				if (hue > 81 && hue < 180) {
 					alter.rgb = hue_rotation(alter.rgb, -80);
 					//hue = (hue + 100.0) % 360.0;
 				}

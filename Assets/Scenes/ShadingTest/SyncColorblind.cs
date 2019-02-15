@@ -24,6 +24,10 @@ public class SyncColorblind : MonoBehaviour
         {
             mode = 2;
         }
+        else if(Input.GetKeyUp(KeyCode.Alpha4))
+        {
+            mode = 3;
+        }
         else if (Input.GetKeyUp(KeyCode.Alpha1))
         {
             mode = 0;
