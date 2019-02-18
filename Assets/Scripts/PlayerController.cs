@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayers;
     public float Jump_Force = 3;
     private CapsuleCollider col;
+    private bool lock_movement = false;
     private Animator anim;
 
     private void Start()
@@ -25,15 +26,37 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMovement();
-
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (!lock_movement)
         {
-            anim.SetTrigger("Jump");
-            rb.AddForce(Vector3.up * Jump_Force, ForceMode.Impulse);
+            print("Not Locked");
+            PlayerMovement();
+
+        }
+        else
+        {
+            print("Locked");
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                lock_movement = false;
+            }
+        }
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Hold_Onto"))
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                lock_movement = true;
+                transform.parent = other.GetComponent<Transform>().transform.parent.transform;
+            }
+
         }
 
     }
+
 
     void PlayerMovement()
     {
@@ -42,6 +65,11 @@ public class PlayerController : MonoBehaviour
         //    speed = speed / 2;
         //    anim.SetBool("Running", false);
         //}
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetTrigger("Jump");
+            rb.AddForce(Vector3.up * Jump_Force, ForceMode.Impulse);
+        }
 
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
