@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             print("Locked");
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 lock_movement = false;
             }
@@ -72,7 +72,11 @@ public class PlayerController : MonoBehaviour
         }
 
         float hor = Input.GetAxis("Horizontal");
-        float ver = Input.GetAxis("Vertical");
+        float ver = Input.GetAxis("Vertical")/2;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            ver = ver * 2;
+        }
 
         anim.SetFloat("Velocity_X", hor);
         anim.SetFloat("Velocity_Y", ver);
