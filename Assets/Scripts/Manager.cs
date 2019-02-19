@@ -53,7 +53,7 @@ public class Manager : MonoBehaviour
         // Player goes below a certain Y value, set to spawn
         Vector3 player_pos = player.position;
         bool fell_off = player_pos[1] < -30;
-        bool detected = enemy.GetComponent<EnemyPathing>().alertLevel >= 100;
+        bool detected = enemy.GetComponent<EnemyBehavior>().alertLevel >= 100;
 
         if (detected || fell_off)
         {
