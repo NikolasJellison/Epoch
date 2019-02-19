@@ -24,5 +24,12 @@ public class WallToggle : MonoBehaviour
                 wall.SetActive(true);
             }
         }
+        if(Input.GetMouseButtonUp(0))
+        {
+            foreach (GameObject wall in walls)
+            {
+                wall.SetActive(false);
+            }
+        }
     }
 }
