@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckpointManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CheckpointManager : MonoBehaviour
     public Transform player;
     public GameObject[] enemies;
     public Transform currentCheckpoint;
+    public GameObject watch;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class CheckpointManager : MonoBehaviour
             }
         }
 
-        if(closestDist <= 6.0f)
+        if(closestDist <= 15.0f)
         {
             currentCheckpoint = bestPoint;
         }
@@ -45,13 +47,18 @@ public class CheckpointManager : MonoBehaviour
             int currentAlert = enemies[i].GetComponent<EnemyBehavior>().alertLevel;
             if (highestAlert < currentAlert)
             {
-                currentAlert = highestAlert;
+                highestAlert = currentAlert;
             }
         }
 
         if(player.position[1] < -100.0f || highestAlert >= 100)
         {
             player.position = currentCheckpoint.position;
+        }
+
+        if(watch.GetComponent<Watch_Vision>().time_left <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
