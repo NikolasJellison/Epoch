@@ -33,30 +33,19 @@ public class EnemyBehavior : MonoBehaviour
         Bounds sightBounds = sightCone.GetComponent<MeshCollider>().bounds;
         Bounds playerBounds = player.GetComponent<CapsuleCollider>().bounds;
 
-        if (sightBounds.Intersects(playerBounds))
+        if (sightBounds.Intersects(playerBounds) && hasLineofSight())
         {
-            RaycastHit contact;
-            // The cone must be in Ignore Raycast layer
-            int layerMask = 1 << 2;
-            layerMask = ~layerMask;
-            if (Physics.Raycast(gameObject.transform.position, player.position - gameObject.transform.position, out contact, Mathf.Infinity, layerMask))
+            if (alertLevel < 100)
             {
-                if(contact.transform.tag == "Player")
-                {
-                    if (alertLevel < 100)
-                    {
-                        alertLevel += 2;
-                    }
-                }
+                alertLevel += 2;
             }
-            
         }
         else if(alertLevel > 0)
         {
             alertLevel -= 1;
         }
 
-        /*Bounds enemyBounds = gameObject.transform.GetComponent<BoxCollider>().bounds;
+        Bounds enemyBounds = gameObject.transform.GetComponent<BoxCollider>().bounds;
         if (enemyBounds.Intersects(playerBounds))
         {
             print("OOF");
@@ -71,6 +60,21 @@ public class EnemyBehavior : MonoBehaviour
         //print(alertLevel);
     }
 
+    private bool hasLineofSight()
+    {
+        RaycastHit contact;
+        // The cone must be in Ignore Raycast layer
+        int layerMask = 1 << 2;
+        layerMask = ~layerMask;
+        if (Physics.Raycast(gameObject.transform.position, player.position - gameObject.transform.position, out contact, Mathf.Infinity, layerMask))
+        {
+            if (contact.transform.tag == "Player")
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
