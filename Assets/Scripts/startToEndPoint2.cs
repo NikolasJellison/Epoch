@@ -54,7 +54,7 @@ public class startToEndPoint2 : MonoBehaviour
             //Move to destination
             transform.position = Vector3.MoveTowards(transform.position, endPoint.position, moveSpeed * Time.deltaTime);
         }
-        else if(!moveToDestination && transform.position != startPosition)
+        else if (!moveToDestination && transform.position != startPosition)
         {
             //move home
             transform.position = Vector3.MoveTowards(transform.position, startPosition, moveSpeed * Time.deltaTime);
@@ -93,13 +93,19 @@ public class startToEndPoint2 : MonoBehaviour
         Debug.DrawRay(transform.position, endPoint.position - transform.position, Color.red);
 
         RaycastHit hit;
+        //current problem with just raycast is that the blocker needs to be in the middle of the pullable thing
+        /*
         if (!moveToDestination)
         {
-            if (Physics.Raycast(transform.position, startPosition - transform.position, out hit, detectionRange))
+            if(Physics.BoxCast(transform.position,new Vector3(GetComponent<MeshFilter>().mesh.bounds.extents.x / 2,0, GetComponent<MeshFilter>().mesh.bounds.extents.z /2 ), startPosition - transform.position, out hit))
             {
                 //Moving to Home
-                Debug.Log(transform.name + " is stopping because I hit an object with name:" + hit.transform.name + " while trying to move to my home at:" + startPosition);
-                moveSpeed = 0;
+                if (hit.transform.tag == "Move_Able")
+                {
+                    Debug.Log(name + "hits object" + hit.transform.name);
+                    Debug.Log(transform.name + " is stopping because I hit an object with name:" + hit.transform.name + " while trying to move to my home at:" + startPosition);
+                    moveSpeed = 0;
+                }
                 //Might need to add some kind of check to make sure the object is only stopping when blocked by the correct things
                 //So maybe a compareTag here or something
             }
@@ -110,11 +116,49 @@ public class startToEndPoint2 : MonoBehaviour
         }
         else if (moveToDestination)
         {
+            if (Physics.BoxCast(transform.position, new Vector3(GetComponent<MeshFilter>().mesh.bounds.extents.x / 2, 0, GetComponent<MeshFilter>().mesh.bounds.extents.z / 2), startPosition - transform.position, out hit))
+            {
+                //Moving to Destination
+                if (hit.transform.tag == "Move_Able")
+                {
+                    Debug.Log(name + "hits object" + hit.transform.name);
+                    Debug.Log(transform.name + " is stopping because I hit an object with name:" + hit.transform.name + " while trying to move to my destination, named:" + endPoint.name + ". Which is located at:" + endPoint.position);
+                    moveSpeed = 0;
+                }
+            }
+            else
+            {
+                moveSpeed = originalMoveSpeed;
+            }
+        }
+        */
+        if (Physics.Raycast(transform.position, startPosition - transform.position, out hit, detectionRange))
+        {
+            //Moving to Home
+            if (hit.transform.tag == "Move_Able")
+            {
+                Debug.Log(name + "hits object" + hit.transform.name);
+                Debug.Log(transform.name + " is stopping because I hit an object with name:" + hit.transform.name + " while trying to move to my home at:" + startPosition);
+                moveSpeed = 0;
+            }
+            //Might need to add some kind of check to make sure the object is only stopping when blocked by the correct things
+            //So maybe a compareTag here or something
+            else
+            {
+                moveSpeed = originalMoveSpeed;
+            }
+        }
+        else if (moveToDestination)
+        {
             if (Physics.Raycast(transform.position, endPoint.position - transform.position, out hit, detectionRange))
             {
                 //Moving to Destination
-                Debug.Log(transform.name + " is stopping because I hit an object with name:" + hit.transform.name + " while trying to move to my destination, named:" + endPoint.name + ". Which is located at:" + endPoint.position);
-                moveSpeed = 0;
+                if (hit.transform.tag == "Move_Able")
+                {
+                    Debug.Log(name + "hits object" + hit.transform.name);
+                    Debug.Log(transform.name + " is stopping because I hit an object with name:" + hit.transform.name + " while trying to move to my destination, named:" + endPoint.name + ". Which is located at:" + endPoint.position);
+                    moveSpeed = 0;
+                }
             }
             else
             {
@@ -122,4 +166,5 @@ public class startToEndPoint2 : MonoBehaviour
             }
         }
     }
+    
 }
