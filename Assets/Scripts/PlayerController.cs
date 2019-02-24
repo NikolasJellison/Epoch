@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayers;
     public float Jump_Force = 3;
     private CapsuleCollider col;
-    private bool lock_movement = false;
+    private bool lock_movement;
     private Animator anim;
-    private bool manipulating = false;
+    private bool manipulating;
 
     private void Start()
     {
@@ -57,6 +57,32 @@ public class PlayerController : MonoBehaviour
 
         }
         else if (other.CompareTag("Move_Able") && !manipulating)
+        {
+            print("Movable Object is close");
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                other.transform.parent = transform;
+                anim.SetBool("Manipulating", true);
+                speed = manip_speed;
+                manipulating = true;
+            }
+        }
+        else if (other.CompareTag("Move_Able") && manipulating)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                other.transform.parent = null;
+                anim.SetBool("Manipulating", false);
+                speed = input_speed;
+                manipulating = false;
+            }
+
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Move_Able") && !manipulating)
         {
             print("Movable Object is close");
             if (Input.GetKeyDown(KeyCode.E))
