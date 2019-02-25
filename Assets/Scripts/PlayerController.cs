@@ -15,15 +15,18 @@ public class PlayerController : MonoBehaviour
     private bool lock_movement;
     private Animator anim;
     private bool manipulating;
+    private bool crouched;
+    private Transform my_Camera;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         anim = GetComponent<Animator>();
-
+        my_Camera = transform.GetChild(13).GetChild(0);
 
         speed = input_speed;
+        crouched = false;
     }
     // Update is called once per frame
     void Update()
@@ -109,12 +112,23 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement()
     {
-        //if(Input.GetKeyUp(KeyCode.LeftShift) && anim.GetBool("Running"))
-        //{
-        //    speed = speed / 2;
-        //    anim.SetBool("Running", false);
-        //}
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if(crouched && Input.GetKeyDown(KeyCode.C))
+        {
+            crouched = false;
+            anim.SetBool("Crouched",false);
+            speed = input_speed;
+        }else if (IsGrounded() && Input.GetKeyDown(KeyCode.C))
+        {
+            print("Crouched");
+            anim.SetBool("Crouched", true);
+            //my_Camera.position = Vector3.MoveTowards(my_Camera.position, )
+            //iTween.MoveTo(transform.GetChild(13).GetChild(0).gameObject, transform.GetChild(13).GetChild(1).position, 5f);  
+            speed = manip_speed;
+            crouched = true;
+
+        }
+
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !crouched)
         {
             anim.SetTrigger("Jump");
             rb.AddForce(Vector3.up * Jump_Force, ForceMode.Impulse);
@@ -129,7 +143,8 @@ public class PlayerController : MonoBehaviour
 
 
         Vector3 playermovement;
-        if (ver < 0f)
+
+        if (ver < 0f && !crouched)
             playermovement = new Vector3(hor, 0f, ver) * speed / 2 * Time.deltaTime;
         else
         {
@@ -146,5 +161,10 @@ public class PlayerController : MonoBehaviour
     {
         return Physics.CheckCapsule(col.bounds.center,
                 new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), col.radius * .8f, groundLayers);
+    }
+
+    public bool isCrouched()
+    {
+        return crouched;
     }
 }
