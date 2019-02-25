@@ -23,16 +23,16 @@ public class Vision : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 PerspectiveScript pScript = hit.transform.gameObject.GetComponent<PerspectiveScript>();
-                if (pScript.enabled && pScript.active && hit.distance > 2.2f)
+                if (pScript.enabled && pScript.active)
                 {
                     activeUI = true;
-                    // print("OOH YEAH");
                     
                     // on down: set current target
                     // on held: add power
                     // on release: reset current target, reset power
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButtonDown(1))
                     {
+                        // check for the same target
                         // Change colliders to be interactable
                         if (hit.collider.GetType() == typeof(MeshCollider))
                         {
@@ -52,21 +52,36 @@ public class Vision : MonoBehaviour
                         hit.transform.gameObject.GetComponent<PerspectiveScript>().enabled = false;
                         // Activate any components necessary for special effects
                     }
+                    /*
+                    else if (Input.GetMouseButton(1))
+                    {
+                        // check for the same target
+                        if(power >= 100) {
+                            
+                        }
+                    } 
+                    else
+                    {   
+                        // Check for the same target
+                        power = -= 2;
+                    }
+                    //*/
                 }
-            } else
+            }
+            else
             {
-                //decreasePower = true;
-               // print("Oh.");
                 // power = 0;
             }
+
             if(activeUI)
             {
                 //hit.transform.gameObject.GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
-            } else
+            }
+            else
             {
                 //hit.transform.gameObject.GetComponent<MeshRenderer>().material.DisableKeyword("_EMISSION");
             }
-            mouseUI.SetActive(activeUI);
         }
+        mouseUI.SetActive(activeUI);
     }
 }
