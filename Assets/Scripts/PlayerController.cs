@@ -16,14 +16,14 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private bool manipulating;
     private bool crouched;
-    private Transform my_Camera;
+    //private Transform my_Camera;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         anim = GetComponent<Animator>();
-        my_Camera = transform.GetChild(13).GetChild(0);
+        //my_Camera = transform.GetChild(13).GetChild(0);
 
         speed = input_speed;
         crouched = false;
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
                 new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), col.radius * .8f, groundLayers);
     }
 
-    public bool isCrouched()
+    public bool IsCrouched()
     {
         return crouched;
     }
