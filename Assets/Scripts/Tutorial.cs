@@ -43,7 +43,7 @@ public class Tutorial : MonoBehaviour
         }
         else if (!sprinted)
         {
-            tutorialText.text = "Press \"LEFT SHIFT\" to sprint";
+            tutorialText.text = "Hold \"LEFT SHIFT\" to sprint";
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 sprinted = true;
@@ -67,7 +67,7 @@ public class Tutorial : MonoBehaviour
         }
         else if (!crawledFast)
         {
-            tutorialText.text = "Press \"LEFT SHIFT\" while crouching to crawl faster";
+            tutorialText.text = "Hold \"LEFT SHIFT\" while crouching to crawl faster";
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 crawledFast = true;

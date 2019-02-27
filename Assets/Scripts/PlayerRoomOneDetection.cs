@@ -7,6 +7,9 @@ public class PlayerRoomOneDetection : MonoBehaviour
 {
     public int blocksFound;
     public Text notifcationText;
+    public Image blockUI;
+    [Header("0 blocks first, then go up to 5/5")]
+    public Sprite[] blockImages;
 
     //Animation stuff i guess
     private Animator anim;
@@ -16,7 +19,7 @@ public class PlayerRoomOneDetection : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-
+        blockUI.sprite = blockImages[0];
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,6 +30,7 @@ public class PlayerRoomOneDetection : MonoBehaviour
             blocksFound++;
             //This wont stay on screen and won't disapear until you go to the box but sure
             notifcationText.text = "You have found Block Number: " + blocksFound;
+            blockUI.sprite = blockImages[blocksFound];
         }
     }
 
