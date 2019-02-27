@@ -22,7 +22,7 @@ public class Vision : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, mask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             if (hit.transform.CompareTag("Vision"))
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
@@ -46,6 +46,7 @@ public class Vision : MonoBehaviour
                         hit.transform.gameObject.GetComponent<PerspectiveScript>().enabled = false;
                         // Activate any components necessary for special effects
                         //*/
+                        AkSoundEngine.PostEvent("RevealStinger", gameObject);
                         pScript.enabled = false;
                     }
                     /*
@@ -78,6 +79,6 @@ public class Vision : MonoBehaviour
                 //hit.transform.gameObject.GetComponent<MeshRenderer>().material.DisableKeyword("_EMISSION");
             }
         }
-        //mouseUI.SetActive(activeUI);
+        mouseUI.SetActive(activeUI);
     }
 }

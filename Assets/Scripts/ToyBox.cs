@@ -49,6 +49,8 @@ public class ToyBox : MonoBehaviour
     {
         if (other.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
         {
+            AkSoundEngine.PostEvent("StopChildhoodMusic", gameObject);
+            AkSoundEngine.PostEvent("GrowthStinger", gameObject);
             cutScene();
         }
     }

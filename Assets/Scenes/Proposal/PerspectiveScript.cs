@@ -17,6 +17,8 @@ public class PerspectiveScript : MonoBehaviour
     public Material visionMat;
     public Material[] realMats;
     public GameObject marker;
+    public GameObject[] activateObjs;
+    public GameObject[] deactivateObjs;
     public bool moveable;
     
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class PerspectiveScript : MonoBehaviour
         Transform objT = gameObject.transform;
         realMats = new Material[objT.childCount];
         print(objT.childCount);
+
         for(int i = 0; i < objT.childCount; ++i)
         {
             Transform child = objT.GetChild(i);
@@ -40,6 +43,12 @@ public class PerspectiveScript : MonoBehaviour
             if (meshCol != null)
             {
                 meshCol.isTrigger = true;
+            }
+
+            BoxCollider boxCol = childObj.GetComponent<BoxCollider>();
+            if (boxCol != null)
+            {
+                boxCol.isTrigger = true;
             }
 
         }
@@ -105,13 +114,30 @@ public class PerspectiveScript : MonoBehaviour
             {
                 meshCol.isTrigger = false;
             }
+
+            BoxCollider boxCol = childObj.GetComponent<BoxCollider>();
+            if (boxCol != null)
+            {
+                boxCol.isTrigger = false;
+            }
+
         }
 
         if(moveable)
         {
             gameObject.tag = "Move_Able";
         }
-        // marker.SetActive(false);
+
+        foreach(GameObject obj in activateObjs)
+        {
+            obj.SetActive(true);
+        }
+
+        foreach (GameObject obj in deactivateObjs)
+        {
+            obj.SetActive(false);
+        }
+        marker.SetActive(false);
         // activate all (setObjs)
         // deactivate all (unsetObjs)
         // if pushable, change tags

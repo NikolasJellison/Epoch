@@ -187,7 +187,7 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 6d1f08e500ed1645b4557d1aa8a80940
-    m_lastTime: -8586503986150828329
+    m_lastTime: -8586503143498727555
     List:
     - name: GameState
       guid: 1c060cf0cef1304f8a300305ebfd46db
@@ -229,7 +229,7 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 76a1c25e29b22f418f7194834ba17ffe
-    m_lastTime: -8586503986161171363
+    m_lastTime: -8586503143529255916
     List:
     - name: GrowthStinger
       guid: ee920edbe84da5409e52d1075e9b1c7c
@@ -288,6 +288,18 @@ MonoBehaviour:
       - ElementName: PlayChildhoodMusic
         ObjectType: 3
       Path: Default Work Unit\PlayChildhoodMusic
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: RevealStinger
+      guid: cf95a3716f9995409e95e163cadd3d7a
+      id: 278292344
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: RevealStinger
+        ObjectType: 3
+      Path: Default Work Unit\RevealStinger
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -461,7 +473,5 @@ MonoBehaviour:
   - /Wwise_Epoch
   - /Wwise_Epoch/Events
   - /Wwise_Epoch/Events/Default Work Unit
-  - /Wwise_Epoch/SoundBanks
-  - /Wwise_Epoch/SoundBanks/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
