@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayers;
     public float Jump_Force = 3;
     private CapsuleCollider col;
+    private BoxCollider box_col;
     private bool lock_movement;
     private Animator anim;
     private bool manipulating;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         anim = GetComponent<Animator>();
+        box_col = GetComponent<BoxCollider>();
         //my_Camera = transform.GetChild(13).GetChild(0);
 
         speed = input_speed;
@@ -116,6 +118,8 @@ public class PlayerController : MonoBehaviour
         {
             crouched = false;
             anim.SetBool("Crouched",false);
+            col.enabled = true;
+            box_col.enabled = false;
             speed = input_speed;
         }else if (IsGrounded() && Input.GetKeyDown(KeyCode.C))
         {
@@ -124,6 +128,8 @@ public class PlayerController : MonoBehaviour
             //my_Camera.position = Vector3.MoveTowards(my_Camera.position, )
             //iTween.MoveTo(transform.GetChild(13).GetChild(0).gameObject, transform.GetChild(13).GetChild(1).position, 5f);  
             speed = manip_speed;
+            col.enabled = false;
+            box_col.enabled = true;
             crouched = true;
 
         }
