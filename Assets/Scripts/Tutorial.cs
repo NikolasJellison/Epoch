@@ -74,7 +74,7 @@ public class Tutorial : MonoBehaviour
             }
         }
         //Getting rid of the jorunal until we add it into the player controller
-        /*
+        
         else if (!openedJournal)
         {
             tutorialText.text = "Press <sprite=\"TabOREscape01\" index=\"0\"> to open journal";
@@ -83,11 +83,11 @@ public class Tutorial : MonoBehaviour
                 openedJournal = true;
             }
         }
-        */
+        
         else
         {
             tutorialText.text = "You've completed this tutorial";
-            Destroy(gameObject, 3);
+            Destroy(gameObject, 6);
         }
     }
 }

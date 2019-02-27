@@ -13,10 +13,17 @@ public class PlayerController : MonoBehaviour
     public float Jump_Force = 3;
     private CapsuleCollider col;
     private BoxCollider box_col;
-    private bool lock_movement;
+    //private bool lock_movement;
     private Animator anim;
-    private bool manipulating;
+    //private bool manipulating;
     private bool crouched;
+    //Quick Journal Stuff
+    //need to make this public to for Worlsd space text (temp fix)
+    public bool lock_movement;
+    public bool manipulating;
+    public GameObject journalUI;
+    public GameObject optionsPanel;
+    public GameObject[] cursorImages;
     //private Transform my_Camera;
 
     private void Start()
@@ -33,6 +40,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Quick journal implementation
+        if(Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            JournalInteract();
+        }
         if (!lock_movement)
         {
             //print("Not Locked");
@@ -172,5 +185,31 @@ public class PlayerController : MonoBehaviour
     public bool IsCrouched()
     {
         return crouched;
+    }
+
+    public void JournalInteract()
+    {
+        if(optionsPanel.activeSelf == false)
+        {
+            lock_movement = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            foreach(GameObject img in cursorImages)
+            {
+                img.SetActive(false);
+            }
+        }
+        else
+        {
+            lock_movement = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            foreach (GameObject img in cursorImages)
+            {
+                img.SetActive(true);
+            }
+        }
+        optionsPanel.SetActive(!optionsPanel.activeSelf);
+        journalUI.SetActive(!journalUI.activeSelf);
     }
 }
