@@ -101,6 +101,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="RevealStinger" ID="{71A395CF-996F-4095-9E95-E163CADD3D7A}">
+					<ChildrenList>
+						<Action Name="" ID="{7727BA05-0692-431A-9E06-FC1F20E6231B}" ShortID="233682753">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Reveal" ID="{D33F8E9C-9FC1-434E-9E64-2C3473148602}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
