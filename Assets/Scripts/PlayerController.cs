@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!lock_movement)
         {
-            print("Not Locked");
+            //print("Not Locked");
             PlayerMovement();
 
         }

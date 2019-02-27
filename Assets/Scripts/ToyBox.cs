@@ -23,12 +23,12 @@ public class ToyBox : MonoBehaviour
     private void Update()
     {
         //Debug cutscene
-        /*
-        if (Input.GetKeyDown(KeyCode.A))
+        
+        if (Input.GetKeyDown(KeyCode.Semicolon))
         {
             cutScene();
         }
-        */
+        
         step = speed * Time.deltaTime;
         if (cutScenePlaying)
         {
