@@ -48,5 +48,7 @@ public class PerspectiveScript : MonoBehaviour
     private void OnDisable()
     {
         marker.SetActive(false);
+        // if pushable
+        // if 
     }
 }
