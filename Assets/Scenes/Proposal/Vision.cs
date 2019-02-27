@@ -17,12 +17,16 @@ public class Vision : MonoBehaviour
         bool activeUI = false;
         //bool decreasePower = false;
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        int mask = 1 << 2;
+        mask = ~mask;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, mask))
         {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             if (hit.transform.CompareTag("Vision"))
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                PerspectiveScript pScript = hit.transform.gameObject.GetComponent<PerspectiveScript>();
+                PerspectiveScript pScript = hit.transform.GetComponentInParent<PerspectiveScript>();
                 if (pScript.enabled && pScript.active)
                 {
                     activeUI = true;
@@ -34,23 +38,15 @@ public class Vision : MonoBehaviour
                     {
                         // check for the same target
                         // Change colliders to be interactable
-                        if (hit.collider.GetType() == typeof(MeshCollider))
-                        {
-                            MeshCollider mCollider = (MeshCollider)hit.collider;
-                            mCollider.isTrigger = false;
-                            mCollider.convex = false;
-                        }
-                        else
-                        {
-                            hit.collider.isTrigger = false;
-                        }
-
+                        /*
                         // Alter materials as necessary
                         Material realMat = pScript.realMat;
                         hit.transform.gameObject.GetComponent<MeshRenderer>().material = realMat;
                         // Disable the PerspectiveScript component
                         hit.transform.gameObject.GetComponent<PerspectiveScript>().enabled = false;
                         // Activate any components necessary for special effects
+                        //*/
+                        pScript.enabled = false;
                     }
                     /*
                     else if (Input.GetMouseButton(1))
@@ -82,6 +78,6 @@ public class Vision : MonoBehaviour
                 //hit.transform.gameObject.GetComponent<MeshRenderer>().material.DisableKeyword("_EMISSION");
             }
         }
-        mouseUI.SetActive(activeUI);
+        //mouseUI.SetActive(activeUI);
     }
 }

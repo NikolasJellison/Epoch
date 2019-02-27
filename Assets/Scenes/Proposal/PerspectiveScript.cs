@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PerspectiveScript : MonoBehaviour
 { 
+    public Transform objBase;
     public Transform player;
     public Vector3 ray;
     public Vector3 targetRay;
@@ -14,25 +15,66 @@ public class PerspectiveScript : MonoBehaviour
     public float targetDist;
     public float distLeeway;
     public Material visionMat;
-    public Material realMat;
+    public Material[] realMats;
     public GameObject marker;
+    public bool moveable;
     
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<MeshRenderer>().material = visionMat;
+        Transform objT = gameObject.transform;
+        realMats = new Material[objT.childCount];
+        print(objT.childCount);
+        for(int i = 0; i < objT.childCount; ++i)
+        {
+            Transform child = objT.GetChild(i);
+            GameObject childObj = child.gameObject;
+            MeshRenderer mesh = childObj.GetComponent<MeshRenderer>();
+            if (mesh != null)
+            {
+                realMats[i] = Instantiate(mesh.material);
+                print(realMats[i]);
+                mesh.material = visionMat;
+            }
+            MeshCollider meshCol = childObj.GetComponent<MeshCollider>();
+            if (meshCol != null)
+            {
+                meshCol.isTrigger = true;
+            }
+
+        }
+
+        if (objBase == null)
+        {
+            objBase = transform;
+        }
+        //gameObject.GetComponent<MeshRenderer>().material = visionMat;
         active = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        ray = Vector3.Normalize(transform.position - player.position);
-        distance = Vector3.Distance(transform.position, player.position);
+        ray = Vector3.Normalize(objBase.position - player.position);
+        distance = Vector3.Distance(objBase.position, player.position);
         diff = Vector3.Angle(ray, targetRay);
-        Color color = gameObject.GetComponent<MeshRenderer>().material.color;
+
+        Color color = visionMat.color;
         color.a = Mathf.Max(0.1f, 0.85f * ((180.0f - diff) / 180.0f));
-        gameObject.GetComponent<MeshRenderer>().material.color = color;
+
+        Transform objT = gameObject.transform;
+        for (int i = 0; i < objT.childCount; ++i)
+        {
+            Transform child = objT.GetChild(i);
+            GameObject childObj = child.gameObject;
+            MeshRenderer mesh = childObj.GetComponent<MeshRenderer>();
+            if (mesh != null)
+            {
+                mesh.material.color = color;
+            }
+        }
+
+        //gameObject.GetComponent<MeshRenderer>().material.color = color;
         
         if (diff < leeway && Mathf.Abs(distance - targetDist) < distLeeway)
         {
@@ -47,8 +89,31 @@ public class PerspectiveScript : MonoBehaviour
 
     private void OnDisable()
     {
-        marker.SetActive(false);
-        // if pushable
-        // if 
+        Transform objT = gameObject.transform;
+        for (int i = 0; i < objT.childCount; ++i)
+        {
+            Transform child = objT.GetChild(i);
+            GameObject childObj = child.gameObject;
+            MeshRenderer mesh = childObj.GetComponent<MeshRenderer>();
+            if (mesh != null)
+            {
+                mesh.material = realMats[i];
+
+            }
+            MeshCollider meshCol = childObj.GetComponent<MeshCollider>();
+            if (meshCol != null)
+            {
+                meshCol.isTrigger = false;
+            }
+        }
+
+        if(moveable)
+        {
+            gameObject.tag = "Move_Able";
+        }
+        // marker.SetActive(false);
+        // activate all (setObjs)
+        // deactivate all (unsetObjs)
+        // if pushable, change tags
     }
 }

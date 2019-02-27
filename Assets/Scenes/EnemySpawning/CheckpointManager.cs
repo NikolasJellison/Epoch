@@ -9,32 +9,39 @@ public class CheckpointManager : MonoBehaviour
     public Transform player;
     public GameObject[] enemies;
     public Transform currentCheckpoint;
-    public GameObject watch;
+    
     // Start is called before the first frame update
     void Start()
     {
-        currentCheckpoint = checkpoints[0];
+        if(checkpoints.Length > 0)
+        {
+            currentCheckpoint = checkpoints[0];
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        float closestDist = Vector3.Distance(player.position, checkpoints[0].position);
-        Transform bestPoint = checkpoints[0];
-
-        for(int i = 1; i < checkpoints.Length; ++i)
+        if (checkpoints.Length > 0)
         {
-            float currentDist = Vector3.Distance(player.position, checkpoints[i].position);
-            if(currentDist <= closestDist)
+            float closestDist = Vector3.Distance(player.position, checkpoints[0].position);
+            Transform bestPoint = checkpoints[0];
+
+            for (int i = 1; i < checkpoints.Length; ++i)
             {
-                closestDist = currentDist;
-                bestPoint = checkpoints[i];
+                float currentDist = Vector3.Distance(player.position, checkpoints[i].position);
+                if (currentDist <= closestDist)
+                {
+                    closestDist = currentDist;
+                    bestPoint = checkpoints[i];
+                }
             }
-        }
 
-        if(closestDist <= 15.0f)
-        {
-            currentCheckpoint = bestPoint;
+
+            if (closestDist <= 15.0f)
+            {
+                currentCheckpoint = bestPoint;
+            }
         }
 
         int highestAlert = enemies[0].GetComponent<EnemyBehavior>().alertLevel;
@@ -51,14 +58,16 @@ public class CheckpointManager : MonoBehaviour
             }
         }
 
-        if(player.position[1] < -100.0f || highestAlert >= 100)
+        if(player.position[1] < -50.0f || highestAlert >= 100)
         {
-            player.position = currentCheckpoint.position;
-        }
-
-        if(watch.GetComponent<Watch_Vision>().time_left <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if (checkpoints.Length > 0)
+            {
+                player.position = currentCheckpoint.position;
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
     }
 }
