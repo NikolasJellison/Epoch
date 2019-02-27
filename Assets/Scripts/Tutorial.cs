@@ -10,9 +10,11 @@ public class Tutorial : MonoBehaviour
     public TextMeshProUGUI tutorialText;
     //Tracking steps in tutorial?
     private bool walked;
-    private bool sprinted;
     private bool jumped;
+    private bool sprinted;
     private bool crouched;
+    private bool crawled;
+    private bool crawledFast;
     private bool openedJournal;
     // Start is called before the first frame update
     void Start()
@@ -39,14 +41,40 @@ public class Tutorial : MonoBehaviour
             }
 
         }
+        else if (!sprinted)
+        {
+            tutorialText.text = "Press \"LEFT SHIFT\" to sprint";
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                sprinted = true;
+            }
+        }
         else if (!crouched)
         {
-            tutorialText.text = "Press <sprite=\"EKey01\" index=\"0\"> to crouch?";
-            if (Input.GetKeyDown(KeyCode.E))
+            tutorialText.text = "Press \"C\" to Crouch";
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 crouched = true;
             }
         }
+        else if (!crawled)
+        {
+            tutorialText.text = "Press <sprite=\"WASD01\" index=\"0\"> while crouching to crawl";
+            if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0)
+            {
+                crawled = true;
+            }
+        }
+        else if (!crawledFast)
+        {
+            tutorialText.text = "Press \"LEFT SHIFT\" while crouching to crawl faster";
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                crawledFast = true;
+            }
+        }
+        //Getting rid of the jorunal until we add it into the player controller
+        /*
         else if (!openedJournal)
         {
             tutorialText.text = "Press <sprite=\"TabOREscape01\" index=\"0\"> to open journal";
@@ -55,6 +83,7 @@ public class Tutorial : MonoBehaviour
                 openedJournal = true;
             }
         }
+        */
         else
         {
             tutorialText.text = "You've completed this tutorial";
