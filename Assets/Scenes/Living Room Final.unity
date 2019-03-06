@@ -487,6 +487,7 @@ MonoBehaviour:
   - {fileID: 614471389}
   - {fileID: 1747806362}
   playerCam: 0
+  journalUI: {fileID: 0}
 --- !u!1 &126108319
 GameObject:
   m_ObjectHideFlags: 0
@@ -3698,7 +3699,7 @@ PrefabInstance:
     - target: {fileID: 4025062416461240029, guid: d7a7f08c5a2cc4dc3a6ee0baecb11d11,
         type: 3}
       propertyPath: cursorImages.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4025062416461240029, guid: d7a7f08c5a2cc4dc3a6ee0baecb11d11,
         type: 3}
@@ -3714,12 +3715,12 @@ PrefabInstance:
         type: 3}
       propertyPath: cursorImages.Array.data[0]
       value: 
-      objectReference: {fileID: 844589233}
+      objectReference: {fileID: 919685683}
     - target: {fileID: 4025062416461240029, guid: d7a7f08c5a2cc4dc3a6ee0baecb11d11,
         type: 3}
       propertyPath: cursorImages.Array.data[1]
       value: 
-      objectReference: {fileID: 919685683}
+      objectReference: {fileID: 6781394904580636077}
     - target: {fileID: 4025062416461240029, guid: d7a7f08c5a2cc4dc3a6ee0baecb11d11,
         type: 3}
       propertyPath: cursorImages.Array.data[2]
@@ -5435,12 +5436,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8844486183401633804, guid: 2b1ad55e893d9a1429c1ffb4150a9cc3,
     type: 3}
   m_PrefabInstance: {fileID: 829017971}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &844589233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 844589233, guid: 8a764935044a82a42b29f97d7f80a7ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 1561377218}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &849739681 stripped
 GameObject:
@@ -16292,6 +16287,7 @@ MonoBehaviour:
   - {fileID: 614471389}
   - {fileID: 1747806362}
   playerCam: 1
+  journalUI: {fileID: 849739681}
 --- !u!114 &2142921578
 MonoBehaviour:
   m_ObjectHideFlags: 0

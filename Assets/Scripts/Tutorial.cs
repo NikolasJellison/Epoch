@@ -95,7 +95,10 @@ public class Tutorial : MonoBehaviour
             {
                 playerCamera.SetActive(false);
                 cutSceneCamera.SetActive(true);
-                originalPlayer = visionObject.GetComponent<PerspectiveScript>().player;
+                if (originalPlayer == null)
+                {
+                    originalPlayer = visionObject.GetComponent<PerspectiveScript>().player;
+                }
                 visionObject.GetComponent<PerspectiveScript>().player = cutSceneCamera.transform;
                 
                 cutSceneCamera.transform.forward = center.position - cutSceneCamera.transform.position;
