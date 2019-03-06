@@ -78,6 +78,17 @@
 						<Action Name="" ID="{FFFBEE18-B1D9-4840-9B42-6C90B99123C5}" ShortID="401504127">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{B8F1B240-33B9-44A2-ABD0-F1C1DDE026A0}">
+												<PropertyList>
+													<Property Name="Min" Type="Real64" Value="-12"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -110,6 +121,20 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Reveal" ID="{D33F8E9C-9FC1-434E-9E64-2C3473148602}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Footsteps" ID="{DA64BC5D-D2DC-4698-A54E-D8B311AAB55D}">
+					<ChildrenList>
+						<Action Name="" ID="{43274A1E-E231-4A35-BF1B-8E707D2A8855}" ShortID="824278970">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Footsteps" ID="{42BDBA83-E2E1-45CA-9D1B-F6794B015EC0}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
