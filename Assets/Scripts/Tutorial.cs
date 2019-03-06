@@ -16,9 +16,18 @@ public class Tutorial : MonoBehaviour
     private bool crawled;
     private bool crawledFast;
     private bool openedJournal;
+
+    private bool activatedObject;
+    public GameObject cutSceneCamera;
+    public GameObject playerCamera;
+    public GameObject visionObject;
+    private float cutsceneTime;
+    public Transform center;
+
     // Start is called before the first frame update
     void Start()
     {
+        cutsceneTime = 0.0f;
         tutorialText.text = "Hello, please press <sprite=\"W\" index=\"0\"> <sprite=\"A\" index=\"0\"> <sprite=\"S\" index=\"0\"> <sprite=\"D\" index=\"0\"> to move!";
     }
 
@@ -32,6 +41,7 @@ public class Tutorial : MonoBehaviour
                 walked = true;
             }
         }
+        
         else if (!jumped)
         {
             tutorialText.text = "Press <sprite=\"Space01\" index=\"0\"> to jump";
@@ -65,6 +75,7 @@ public class Tutorial : MonoBehaviour
                 crawled = true;
             }
         }
+
         else if (!crawledFast)
         {
             tutorialText.text = "Hold \"LEFT SHIFT\" while crouching to crawl faster";
@@ -73,17 +84,41 @@ public class Tutorial : MonoBehaviour
                 crawledFast = true;
             }
         }
+        //*/
+        else if(!activatedObject)
+        {
+            tutorialText.text = "Some objects are intangible. To activate them, align your crosshair with the corresponding symbol";
+
+            // cutscene showing a camera moving around the chair
+            if(cutsceneTime < 3.76f)
+            {
+                playerCamera.SetActive(false);
+                cutSceneCamera.SetActive(true);
+                cutSceneCamera.transform.forward = center.position - cutSceneCamera.transform.position;
+                cutSceneCamera.transform.RotateAround(visionObject.transform.position, Vector3.up, 50 * Time.deltaTime);
+                cutsceneTime += Time.deltaTime;
+            }
+            else
+            {
+                tutorialText.text = "Some objects are intangible. To activate them, align your crosshair with the corresponding symbol (Press Press <sprite=\"Space01\" index=\"0\"> to continue)";
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    playerCamera.SetActive(true);
+                    cutSceneCamera.SetActive(false);
+                    activatedObject = true;
+                }
+            }
+            // make player invisible(ish) & disable the player controller
+        }
         //Getting rid of the jorunal until we add it into the player controller
-        
         else if (!openedJournal)
         {
             tutorialText.text = "Press <sprite=\"Tab\" index=\"0\"> to open journal";
-            if(Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
                 openedJournal = true;
             }
         }
-        
         else
         {
             tutorialText.text = "You've completed this tutorial";
