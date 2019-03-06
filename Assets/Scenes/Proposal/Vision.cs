@@ -6,6 +6,7 @@ public class Vision : MonoBehaviour
 {
     public GameObject mouseUI;
     public GameObject[] crosshairs;
+    public bool playerCam;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +43,7 @@ public class Vision : MonoBehaviour
                     print(index);
                     crosshairs[index].SetActive(true);
 
-                    if (pScript.active)
+                    if (pScript.active && playerCam)
                     {
 
                         activeUI = true;

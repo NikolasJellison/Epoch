@@ -23,6 +23,7 @@ public class Tutorial : MonoBehaviour
     public GameObject visionObject;
     private float cutsceneTime;
     public Transform center;
+    private Transform originalPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -94,8 +95,11 @@ public class Tutorial : MonoBehaviour
             {
                 playerCamera.SetActive(false);
                 cutSceneCamera.SetActive(true);
+                originalPlayer = visionObject.GetComponent<PerspectiveScript>().player;
+                visionObject.GetComponent<PerspectiveScript>().player = cutSceneCamera.transform;
+                
                 cutSceneCamera.transform.forward = center.position - cutSceneCamera.transform.position;
-                cutSceneCamera.transform.RotateAround(visionObject.transform.position, Vector3.up, 50 * Time.deltaTime);
+                cutSceneCamera.transform.RotateAround(center.position, Vector3.up, 50 * Time.deltaTime);
                 cutsceneTime += Time.deltaTime;
             }
             else
@@ -103,6 +107,7 @@ public class Tutorial : MonoBehaviour
                 tutorialText.text = "Some objects are intangible. To activate them, align your crosshair with the corresponding symbol (Press Press <sprite=\"Space01\" index=\"0\"> to continue)";
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    visionObject.GetComponent<PerspectiveScript>().player = originalPlayer;
                     playerCamera.SetActive(true);
                     cutSceneCamera.SetActive(false);
                     activatedObject = true;
