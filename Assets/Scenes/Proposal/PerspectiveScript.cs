@@ -20,37 +20,40 @@ public class PerspectiveScript : MonoBehaviour
     public GameObject[] activateObjs;
     public GameObject[] deactivateObjs;
     public bool moveable;
+    public bool remove;
     
     // Start is called before the first frame update
     void Start()
     {
-        Transform objT = gameObject.transform;
-        realMats = new Material[objT.childCount];
-        print(objT.childCount);
-
-        for(int i = 0; i < objT.childCount; ++i)
+        if (!remove)
         {
-            Transform child = objT.GetChild(i);
-            GameObject childObj = child.gameObject;
-            MeshRenderer mesh = childObj.GetComponent<MeshRenderer>();
-            if (mesh != null)
-            {
-                realMats[i] = Instantiate(mesh.material);
-                print(realMats[i]);
-                mesh.material = visionMat;
-            }
-            MeshCollider meshCol = childObj.GetComponent<MeshCollider>();
-            if (meshCol != null)
-            {
-                meshCol.isTrigger = true;
-            }
+            Transform objT = gameObject.transform;
+            realMats = new Material[objT.childCount];
+            print(objT.childCount);
 
-            BoxCollider boxCol = childObj.GetComponent<BoxCollider>();
-            if (boxCol != null)
+            for (int i = 0; i < objT.childCount; ++i)
             {
-                boxCol.isTrigger = true;
-            }
+                Transform child = objT.GetChild(i);
+                GameObject childObj = child.gameObject;
+                MeshRenderer mesh = childObj.GetComponent<MeshRenderer>();
+                if (mesh != null)
+                {
+                    realMats[i] = Instantiate(mesh.material);
+                    print(realMats[i]);
+                    mesh.material = visionMat;
+                }
+                MeshCollider meshCol = childObj.GetComponent<MeshCollider>();
+                if (meshCol != null)
+                {
+                    meshCol.isTrigger = true;
+                }
 
+                BoxCollider boxCol = childObj.GetComponent<BoxCollider>();
+                if (boxCol != null)
+                {
+                    boxCol.isTrigger = true;
+                }
+            }
         }
 
         if (objBase == null)
@@ -98,30 +101,7 @@ public class PerspectiveScript : MonoBehaviour
 
     private void OnDisable()
     {
-        Transform objT = gameObject.transform;
-        for (int i = 0; i < objT.childCount; ++i)
-        {
-            Transform child = objT.GetChild(i);
-            GameObject childObj = child.gameObject;
-            MeshRenderer mesh = childObj.GetComponent<MeshRenderer>();
-            if (mesh != null)
-            {
-                mesh.material = realMats[i];
-
-            }
-            MeshCollider meshCol = childObj.GetComponent<MeshCollider>();
-            if (meshCol != null)
-            {
-                meshCol.isTrigger = false;
-            }
-
-            BoxCollider boxCol = childObj.GetComponent<BoxCollider>();
-            if (boxCol != null)
-            {
-                boxCol.isTrigger = false;
-            }
-
-        }
+        
 
         if(moveable)
         {
@@ -138,8 +118,36 @@ public class PerspectiveScript : MonoBehaviour
             obj.SetActive(false);
         }
         marker.SetActive(false);
-        // activate all (setObjs)
-        // deactivate all (unsetObjs)
-        // if pushable, change tags
+
+        if (!remove)
+        {
+            Transform objT = gameObject.transform;
+            for (int i = 0; i < objT.childCount; ++i)
+            {
+                Transform child = objT.GetChild(i);
+                GameObject childObj = child.gameObject;
+                MeshRenderer mesh = childObj.GetComponent<MeshRenderer>();
+                if (mesh != null)
+                {
+                    mesh.material = realMats[i];
+
+                }
+                MeshCollider meshCol = childObj.GetComponent<MeshCollider>();
+                if (meshCol != null)
+                {
+                    meshCol.isTrigger = false;
+                }
+
+                BoxCollider boxCol = childObj.GetComponent<BoxCollider>();
+                if (boxCol != null)
+                {
+                    boxCol.isTrigger = false;
+                }
+            }
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
