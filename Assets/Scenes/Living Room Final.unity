@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -348,6 +348,7 @@ MonoBehaviour:
   deactivateObjs:
   - {fileID: 650245464}
   moveable: 0
+  remove: 0
 --- !u!1 &138888870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3214584085382800137, guid: 673a30cfe38956d4fb9edcb6edbbdb2a,
@@ -1162,7 +1163,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1386248
+  m_Name: pb_Mesh178878
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3042,11 +3043,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.06
       objectReference: {fileID: 0}
-    - target: {fileID: 6291107059885481991, guid: d7a7f08c5a2cc4dc3a6ee0baecb11d11,
-        type: 3}
-      propertyPath: m_ForceIntoRT
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4025062416461240029, guid: d7a7f08c5a2cc4dc3a6ee0baecb11d11,
         type: 3}
       propertyPath: cursorImages.Array.size
@@ -3077,6 +3073,11 @@ PrefabInstance:
       propertyPath: cursorImages.Array.data[2]
       value: 
       objectReference: {fileID: 6781394904580636077}
+    - target: {fileID: 6291107059885481991, guid: d7a7f08c5a2cc4dc3a6ee0baecb11d11,
+        type: 3}
+      propertyPath: m_ForceIntoRT
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7a7f08c5a2cc4dc3a6ee0baecb11d11, type: 3}
 --- !u!114 &692491545 stripped
@@ -4950,6 +4951,7 @@ MonoBehaviour:
   activateObjs: []
   deactivateObjs: []
   moveable: 0
+  remove: 0
 --- !u!1 &896504989
 GameObject:
   m_ObjectHideFlags: 0
@@ -6002,6 +6004,7 @@ MonoBehaviour:
   - {fileID: 1342980993}
   deactivateObjs: []
   moveable: 0
+  remove: 0
 --- !u!4 &1233160185
 Transform:
   m_ObjectHideFlags: 0
@@ -6137,7 +6140,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 6e9f6346ea35b484b94e08f045e0bc00, type: 3}
 --- !u!1001 &1252999932
@@ -8521,7 +8524,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh115194
+  m_Name: pb_Mesh178686
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -9269,7 +9272,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh115642
+  m_Name: pb_Mesh179164
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10009,6 +10012,7 @@ MonoBehaviour:
   activateObjs: []
   deactivateObjs: []
   moveable: 1
+  remove: 0
 --- !u!114 &1579637617
 MonoBehaviour:
   m_ObjectHideFlags: 0

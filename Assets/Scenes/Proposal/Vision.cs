@@ -27,7 +27,7 @@ public class Vision : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 PerspectiveScript pScript = hit.transform.GetComponentInParent<PerspectiveScript>();
-                if (pScript.enabled && pScript.active)
+                if (pScript != null && pScript.enabled && pScript.active)
                 {
                     activeUI = true;
                     

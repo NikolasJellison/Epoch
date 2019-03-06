@@ -39,13 +39,20 @@ public class PerspectiveScript : MonoBehaviour
                 if (mesh != null)
                 {
                     realMats[i] = Instantiate(mesh.material);
-                    print(realMats[i]);
+                    //print(realMats[i]);
                     mesh.material = visionMat;
                 }
                 MeshCollider meshCol = childObj.GetComponent<MeshCollider>();
                 if (meshCol != null)
                 {
-                    meshCol.isTrigger = true;
+                    if(meshCol.convex)
+                    {
+                        meshCol.isTrigger = true;
+                    }
+                    else
+                    {
+                        meshCol.enabled = false;
+                    }
                 }
 
                 BoxCollider boxCol = childObj.GetComponent<BoxCollider>();
@@ -101,24 +108,6 @@ public class PerspectiveScript : MonoBehaviour
 
     private void OnDisable()
     {
-        
-
-        if(moveable)
-        {
-            gameObject.tag = "Move_Able";
-        }
-
-        foreach(GameObject obj in activateObjs)
-        {
-            obj.SetActive(true);
-        }
-
-        foreach (GameObject obj in deactivateObjs)
-        {
-            obj.SetActive(false);
-        }
-        marker.SetActive(false);
-
         if (!remove)
         {
             Transform objT = gameObject.transform;
@@ -135,7 +124,14 @@ public class PerspectiveScript : MonoBehaviour
                 MeshCollider meshCol = childObj.GetComponent<MeshCollider>();
                 if (meshCol != null)
                 {
-                    meshCol.isTrigger = false;
+                    if (meshCol.convex)
+                    {
+                        meshCol.isTrigger = false;
+                    }
+                    else
+                    {
+                        meshCol.enabled = true;
+                    }
                 }
 
                 BoxCollider boxCol = childObj.GetComponent<BoxCollider>();
@@ -148,6 +144,31 @@ public class PerspectiveScript : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+        }
+
+        if (moveable)
+        {
+            gameObject.tag = "Move_Able";
+        }
+
+        foreach(GameObject obj in activateObjs)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(true);
+            }
+        }
+
+        foreach (GameObject obj in deactivateObjs)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(false);
+            }
+        }
+        if (marker != null)
+        {
+            marker.SetActive(false);
         }
     }
 }
