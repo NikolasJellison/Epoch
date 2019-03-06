@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     {
 
         //Quick journal implementation
-        if(Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
             JournalInteract();
         }

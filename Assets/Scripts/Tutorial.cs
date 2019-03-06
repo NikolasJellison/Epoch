@@ -19,7 +19,7 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tutorialText.text = "Hello, please press <sprite=\"WASD01\" index=\"0\"> to move!";
+        tutorialText.text = "Hello, please press <sprite=\"W\" index=\"0\"> <sprite=\"A\" index=\"0\"> <sprite=\"S\" index=\"0\"> <sprite=\"D\" index=\"0\"> to move!";
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class Tutorial : MonoBehaviour
         }
         else if (!crawled)
         {
-            tutorialText.text = "Press <sprite=\"WASD01\" index=\"0\"> while crouching to crawl";
+            tutorialText.text = "Press <sprite=\"W\" index=\"0\"> <sprite=\"A\" index=\"0\"> <sprite=\"S\" index=\"0\"> <sprite=\"D\" index=\"0\"> while crouching to crawl";
             if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0)
             {
                 crawled = true;
@@ -77,8 +77,8 @@ public class Tutorial : MonoBehaviour
         
         else if (!openedJournal)
         {
-            tutorialText.text = "Press <sprite=\"TabOREscape01\" index=\"0\"> to open journal";
-            if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
+            tutorialText.text = "Press <sprite=\"Tab\" index=\"0\"> to open journal";
+            if(Input.GetKeyDown(KeyCode.Tab))
             {
                 openedJournal = true;
             }

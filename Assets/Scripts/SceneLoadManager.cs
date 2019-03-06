@@ -2,15 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class SceneLoadManager : MonoBehaviour
 {
+    public UnityEvent goNextLevel;
+
     /*This is assuming the build order for the scenes is 
      * [0] Title
      * [1] LivingRoom
      * [2] Hallway
-     * [3] End Screen
+     * [3] Apartment
+     * [4] End Screen
      */
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(goNextLevel != null && other.tag == "Player")
+        {
+            goNextLevel.Invoke();
+        }
+    }
 
     public void LoadMenu()
     {
@@ -27,9 +39,13 @@ public class SceneLoadManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
     
-    public void loadEndScreen()
+    public void LoadApartment()
     {
         SceneManager.LoadScene(3);
+    }
+    public void loadEndScreen()
+    {
+        SceneManager.LoadScene(4);
     }
 
 
