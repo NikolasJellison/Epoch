@@ -107,7 +107,7 @@ public class Tutorial : MonoBehaviour
             }
             else
             {
-                tutorialText.text = "Some objects are intangible. To activate them, align your crosshair with the corresponding symbol (Press Press <sprite=\"Space01\" index=\"0\"> to continue)";
+                tutorialText.text = "Some objects are intangible. To activate them, align your crosshair with the corresponding symbol (Press <sprite=\"Space01\" index=\"0\"> to continue)";
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     visionObject.GetComponent<PerspectiveScript>().player = originalPlayer;
