@@ -5,6 +5,7 @@ using UnityEngine;
 public class Vision : MonoBehaviour
 {
     public GameObject mouseUI;
+    public GameObject[] crosshairs;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,11 @@ public class Vision : MonoBehaviour
         RaycastHit hit;
         int mask = 1 << 2;
         mask = ~mask;
+        foreach(GameObject crosshair in crosshairs)
+        {
+            crosshair.SetActive(false);
+        }
+        crosshairs[crosshairs.Length - 1].SetActive(true);
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, mask))
         {
@@ -27,42 +33,53 @@ public class Vision : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 PerspectiveScript pScript = hit.transform.GetComponentInParent<PerspectiveScript>();
-                if (pScript != null && pScript.enabled && pScript.active)
+                if (pScript != null && pScript.enabled)
                 {
-                    activeUI = true;
-                    
-                    // on down: set current target
-                    // on held: add power
-                    // on release: reset current target, reset power
-                    if (Input.GetMouseButtonDown(1))
+                    crosshairs[crosshairs.Length - 1].SetActive(false);
+                    int index =  Mathf.RoundToInt(pScript.diff / 9.0f);
+                    if (index < 0) index = 0;
+                    else if (index > 19) index = 19;
+                    print(index);
+                    crosshairs[index].SetActive(true);
+
+                    if (pScript.active)
                     {
-                        // check for the same target
-                        // Change colliders to be interactable
-                        /*
-                        // Alter materials as necessary
-                        Material realMat = pScript.realMat;
-                        hit.transform.gameObject.GetComponent<MeshRenderer>().material = realMat;
-                        // Disable the PerspectiveScript component
-                        hit.transform.gameObject.GetComponent<PerspectiveScript>().enabled = false;
-                        // Activate any components necessary for special effects
-                        //*/
-                        AkSoundEngine.PostEvent("RevealStinger", gameObject);
-                        pScript.enabled = false;
-                    }
-                    /*
-                    else if (Input.GetMouseButton(1))
-                    {
-                        // check for the same target
-                        if(power >= 100) {
-                            
+
+                        activeUI = true;
+
+                        // on down: set current target
+                        // on held: add power
+                        // on release: reset current target, reset power
+                        if (Input.GetMouseButtonDown(1))
+                        {
+                            // check for the same target
+                            // Change colliders to be interactable
+                            /*
+                            // Alter materials as necessary
+                            Material realMat = pScript.realMat;
+                            hit.transform.gameObject.GetComponent<MeshRenderer>().material = realMat;
+                            // Disable the PerspectiveScript component
+                            hit.transform.gameObject.GetComponent<PerspectiveScript>().enabled = false;
+                            // Activate any components necessary for special effects
+                            //*/
+                            AkSoundEngine.PostEvent("RevealStinger", gameObject);
+                            pScript.enabled = false;
                         }
-                    } 
-                    else
-                    {   
-                        // Check for the same target
-                        power = -= 2;
+                        /*
+                        else if (Input.GetMouseButton(1))
+                        {
+                            // check for the same target
+                            if(power >= 100) {
+
+                            }
+                        } 
+                        else
+                        {   
+                            // Check for the same target
+                            power = -= 2;
+                        }
+                        //*/
                     }
-                    //*/
                 }
             }
             else
