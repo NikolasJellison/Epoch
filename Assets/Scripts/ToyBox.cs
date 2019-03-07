@@ -15,7 +15,7 @@ public class ToyBox : MonoBehaviour
     [Header("Sentence Order (ITS NOT YOUR FAULT")]
     public GameObject[] sentenceBlocks;
     public Transform[] sentenceBlockLocations;
-    private bool cutScenePlaying;
+    public bool cutScenePlaying;
     public GameObject DOOR;
     private bool stopCallingMyCoroutine;
 

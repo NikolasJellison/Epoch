@@ -488,6 +488,8 @@ MonoBehaviour:
   - {fileID: 1747806362}
   playerCam: 0
   journalUI: {fileID: 849739681}
+  cutsceneTriggers: []
+  toybox: {fileID: 0}
 --- !u!1 &126108319
 GameObject:
   m_ObjectHideFlags: 0
@@ -9335,6 +9337,7 @@ GameObject:
   - component: {fileID: 1285377988}
   - component: {fileID: 1285377992}
   - component: {fileID: 1285377991}
+  - component: {fileID: 1285377993}
   m_Layer: 0
   m_Name: Camera-CutScene
   m_TagString: Untagged
@@ -9442,6 +9445,44 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
+--- !u!114 &1285377993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285377987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d4bc81128229c42b320123cfcffcce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseUI: {fileID: 919685683}
+  crosshairs:
+  - {fileID: 764628530}
+  - {fileID: 292598740}
+  - {fileID: 1192013902}
+  - {fileID: 875155603}
+  - {fileID: 1214399777}
+  - {fileID: 1379645408}
+  - {fileID: 1109281993}
+  - {fileID: 1604641178}
+  - {fileID: 142628109}
+  - {fileID: 1344432492}
+  - {fileID: 321359313}
+  - {fileID: 1059078148}
+  - {fileID: 2101148617}
+  - {fileID: 1368287250}
+  - {fileID: 230202283}
+  - {fileID: 1041016985}
+  - {fileID: 1357824815}
+  - {fileID: 100631645}
+  - {fileID: 614471389}
+  - {fileID: 1747806362}
+  playerCam: 1
+  journalUI: {fileID: 849739681}
+  cutsceneTriggers: []
+  toybox: {fileID: 544908815258196177}
 --- !u!1 &1299314544
 GameObject:
   m_ObjectHideFlags: 0
@@ -10903,14 +10944,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 844589233, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 849739681, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3721022428117636414, guid: 8a764935044a82a42b29f97d7f80a7ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11014,6 +11047,14 @@ PrefabInstance:
     - target: {fileID: 3721022428117636414, guid: 8a764935044a82a42b29f97d7f80a7ad,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 849739681, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 844589233, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1149677111, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
@@ -16325,6 +16366,8 @@ MonoBehaviour:
   - {fileID: 1747806362}
   playerCam: 1
   journalUI: {fileID: 849739681}
+  cutsceneTriggers: []
+  toybox: {fileID: 0}
 --- !u!114 &2142921578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16532,6 +16575,7 @@ MonoBehaviour:
   - {fileID: 1880398176}
   - {fileID: 1572879831}
   - {fileID: 1662235421}
+  cutScenePlaying: 0
   DOOR: {fileID: 2135664766}
 --- !u!1001 &1270174880781419758
 PrefabInstance:

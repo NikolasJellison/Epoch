@@ -8,6 +8,8 @@ public class Vision : MonoBehaviour
     public GameObject[] crosshairs;
     public bool playerCam;
     public GameObject journalUI;
+    public GameObject[] cutsceneTriggers;
+    public GameObject toybox;
     // Start is called before the first frame update
     void Start()
     {
@@ -99,7 +101,12 @@ public class Vision : MonoBehaviour
             }
         }
         mouseUI.SetActive(activeUI);
-        if (journalUI.activeSelf)
+        bool cutscenePlaying = false;
+        if(toybox != null && toybox.GetComponent<ToyBox>().cutScenePlaying)
+        {
+            cutscenePlaying = true;
+        }
+        if (journalUI.activeSelf || cutscenePlaying)
         {
             foreach (GameObject crosshair in crosshairs)
             {
