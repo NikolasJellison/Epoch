@@ -28,15 +28,6 @@ public class Sprint3TempObjectWorldSpaceText : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if (isChair)
-            {
-                if (GetComponent<PerspectiveScript>().active == false)
-                {
-                    return;
-                }
-                    
-                
-            }
             if(other.GetComponent<PlayerController>().manipulating == false)
             {
                 textWS.text = "<sprite=\"EKey01\" index=\"0\"> to move. (Maybe Spam)";
