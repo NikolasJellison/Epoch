@@ -25,7 +25,7 @@ public class CutScene1 : MonoBehaviour
         //Debug
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
-            enterDesktop();
+            EnterDesktop();
         }
 
         //There is a better way but idk how to make the fill continuous
@@ -52,13 +52,13 @@ public class CutScene1 : MonoBehaviour
         }
     }
 
-    public void enterDesktop()
+    public void EnterDesktop()
     {
         playerCam.enabled = false;
         cutSceneCam.enabled = true;
     }
 
-    public void exitDesktop()
+    public void ExitDesktop()
     {
         playerCam.enabled = true;
         cutSceneCam.enabled = false;
