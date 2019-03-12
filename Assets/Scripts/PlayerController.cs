@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public float input_speed;
-    private float manip_speed = 2;
+    private float manip_speed = 1;
     private float speed;
     private Rigidbody rb;
     public LayerMask groundLayers;
-    public float Jump_Force = 3;
+    public float Jump_Force;
     private CapsuleCollider col;
     private BoxCollider box_col;
     //private bool lock_movement;
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         {
             JournalInteract();
         }
+
         if (!lock_movement)
         {
             //print("Not Locked");
@@ -155,21 +156,26 @@ public class PlayerController : MonoBehaviour
 
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (manipulating)
         {
-            ver = ver * 2;
+            hor = 0f;
         }
+        //if (Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    ver = ver * 2;
+        //}
 
 
         Vector3 playermovement;
+        playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
 
-        if (ver < 0f && !crouched)
-            playermovement = new Vector3(hor, 0f, ver) * speed / 2 * Time.deltaTime;
-        else
-        {
-            ver = ver / 2;
-            playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
-        }
+        //if (ver < 0f && !crouched)
+        //    playermovement = new Vector3(hor, 0f, ver) * speed / 2 * Time.deltaTime;
+        //else
+        //{
+        //    ver = ver / 2;
+        //    playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
+        //}
         anim.SetFloat("Velocity_X", hor);
         anim.SetFloat("Velocity_Y", ver);
 
@@ -185,6 +191,11 @@ public class PlayerController : MonoBehaviour
     public bool IsCrouched()
     {
         return crouched;
+    }
+
+    public bool IsManip()
+    {
+        return manipulating;
     }
 
     public void JournalInteract()
