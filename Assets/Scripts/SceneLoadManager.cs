@@ -14,6 +14,7 @@ public class SceneLoadManager : MonoBehaviour
      * [2] Hallway
      * [3] Apartment
      * [4] End Screen
+     * [5] Cutscene 1
      */
 
     private void OnTriggerEnter(Collider other)
@@ -27,6 +28,11 @@ public class SceneLoadManager : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void LoadCutScene1()
+    {
+        SceneManager.LoadScene("Cutscene 1");
     }
 
     public void LoadLivingRoom()
