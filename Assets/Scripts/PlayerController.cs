@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public float input_speed;
-    private float manip_speed = 1;
+    [Header("This is the speed for crawling and manipulating objects")]
+    public float alternate_speed;
     private float speed;
     private Rigidbody rb;
     public LayerMask groundLayers;
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
             {
                 other.transform.parent = transform;
                 anim.SetBool("Manipulating", true);
-                speed = manip_speed;
+                speed = alternate_speed;
                 manipulating = true;
             }
         }
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour
             {
                 other.transform.parent = transform;
                 anim.SetBool("Manipulating", true);
-                speed = manip_speed;
+                speed = alternate_speed;
                 manipulating = true;
             }
         }
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Crouched", true);
             //my_Camera.position = Vector3.MoveTowards(my_Camera.position, )
             //iTween.MoveTo(transform.GetChild(13).GetChild(0).gameObject, transform.GetChild(13).GetChild(1).position, 5f);  
-            speed = manip_speed;
+            speed = alternate_speed;
             col.enabled = false;
             box_col.enabled = true;
             crouched = true;
