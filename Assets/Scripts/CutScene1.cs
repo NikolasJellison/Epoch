@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CutScene1 : MonoBehaviour
 {
+    public GameObject player;
     public Camera playerCam;
     public Camera cutSceneCam;
     [Header("Anything that needs to get deleted once the room has dissolved")]
@@ -52,14 +53,24 @@ public class CutScene1 : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        EnterDesktop();
+    }
+
     public void EnterDesktop()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        player.GetComponent<PlayerController>().enabled = false;
         playerCam.enabled = false;
         cutSceneCam.enabled = true;
     }
 
     public void ExitDesktop()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         playerCam.enabled = true;
         cutSceneCam.enabled = false;
         dissolve = true;
