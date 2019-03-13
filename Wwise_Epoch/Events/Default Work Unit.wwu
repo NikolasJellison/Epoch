@@ -140,6 +140,34 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayTeenageMusic" ID="{586C00C8-87EC-4858-9C28-AA5E1419FA3B}">
+					<ChildrenList>
+						<Action Name="" ID="{590D1FD7-E8C3-4971-8B45-87F388263F8C}" ShortID="260032178">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EmsyHSHallways" ID="{3678DA2C-6D63-403C-8F63-BCCA8453B7F1}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StopTeenageMusic" ID="{CA318289-BBCF-482A-BDB8-84A3B20D2096}">
+					<ChildrenList>
+						<Action Name="" ID="{8AE474DF-41B9-48ED-86F5-90DBCF7F7735}" ShortID="489472215">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EmsyHSHallways" ID="{3678DA2C-6D63-403C-8F63-BCCA8453B7F1}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

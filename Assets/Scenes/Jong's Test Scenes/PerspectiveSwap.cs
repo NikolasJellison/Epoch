@@ -9,6 +9,7 @@ public class PerspectiveSwap : MonoBehaviour
     public GameObject playerCam;
     public GameObject[] vantagePoints;
     public int currentPoint;
+    public GameObject toybox;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +26,15 @@ public class PerspectiveSwap : MonoBehaviour
         {
             playerActive = !playerActive;
         }
-        
-        if (playerActive)
+
+        if (toybox.GetComponent<ToyBox>().cutScenePlaying)
         {
-             setPlayerState(true);
-             disableVantagePoints();
+            disableVantagePoints();
+        }
+        else if (playerActive)
+        {
+            setPlayerState(true);
+            disableVantagePoints();
         }
         else
         {
@@ -38,16 +43,16 @@ public class PerspectiveSwap : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     --currentPoint;
-                    if(currentPoint < 0)
+                    if (currentPoint < 0)
                     {
                         currentPoint += vantagePoints.Length;
                     }
-                    print(currentPoint);
+                    //print(currentPoint);
                 }
                 else if (Input.GetKeyDown(KeyCode.A))
                 {
                     currentPoint = (currentPoint + 1) % vantagePoints.Length;
-                    print(currentPoint);
+                    //print(currentPoint);
                 }
 
                 setPlayerState(false);
@@ -56,7 +61,7 @@ public class PerspectiveSwap : MonoBehaviour
                     disableVantagePoints();
                     vantagePoints[currentPoint].SetActive(true);
                 }
-                
+
             }
             else
             {
