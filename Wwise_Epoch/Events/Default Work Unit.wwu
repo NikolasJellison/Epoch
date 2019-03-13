@@ -168,6 +168,34 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PlayAdultMusic" ID="{DB525D78-2518-4D73-BFB5-8D48318ED6B5}">
+					<ChildrenList>
+						<Action Name="" ID="{33A94E50-B0BA-4C2E-A383-6A2209DF7D26}" ShortID="894860939">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EmsyAdult" ID="{A4B9E1A9-5FE6-44E8-BF4C-A08D6EC530A4}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StopAdultMusic" ID="{52F36571-F2C9-4FCF-9563-D3A7FBD2810F}">
+					<ChildrenList>
+						<Action Name="" ID="{E7E3F32E-71AC-4F72-A5E7-5EC4A1DF4743}" ShortID="854212077">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EmsyAdult" ID="{A4B9E1A9-5FE6-44E8-BF4C-A08D6EC530A4}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
