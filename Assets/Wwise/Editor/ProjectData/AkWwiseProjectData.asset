@@ -187,7 +187,7 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 6d1f08e500ed1645b4557d1aa8a80940
-    m_lastTime: -8586503143498727555
+    m_lastTime: -8586491078722794892
     List:
     - name: GameState
       guid: 1c060cf0cef1304f8a300305ebfd46db
@@ -207,6 +207,15 @@ MonoBehaviour:
       - ElementName: Interactions
         ObjectType: 7
       Path: Default Work Unit\Interactions
+    - name: MainCharacter
+      guid: fccf3c6c297bf742a95a01677309ddb5
+      id: 1518239843
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: MainCharacter
+        ObjectType: 7
+      Path: Default Work Unit\MainCharacter
     - name: Test_Soundbank
       guid: 79d527f3c3a52b42afd523feaa1e497f
       id: 4154996803
@@ -229,8 +238,20 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 76a1c25e29b22f418f7194834ba17ffe
-    m_lastTime: -8586503143529255916
+    m_lastTime: -8586491078789055453
     List:
+    - name: Footsteps
+      guid: 5dbc64dadcd29846a54ed8b311aab55d
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Footsteps
+        ObjectType: 3
+      Path: Default Work Unit\Footsteps
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: GrowthStinger
       guid: ee920edbe84da5409e52d1075e9b1c7c
       id: 523205102
@@ -291,6 +312,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: PlayTeenageMusic
+      guid: c8006c58ec8758489c28aa5e1419fa3b
+      id: 3069700057
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: PlayTeenageMusic
+        ObjectType: 3
+      Path: Default Work Unit\PlayTeenageMusic
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: RevealStinger
       guid: cf95a3716f9995409e95e163cadd3d7a
       id: 278292344
@@ -324,6 +357,18 @@ MonoBehaviour:
       - ElementName: StopChildhoodMusic
         ObjectType: 3
       Path: Default Work Unit\StopChildhoodMusic
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: StopTeenageMusic
+      guid: 898231cacfbb2a48bdb884a3b20d2096
+      id: 411508615
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: StopTeenageMusic
+        ObjectType: 3
+      Path: Default Work Unit\StopTeenageMusic
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -461,8 +506,36 @@ MonoBehaviour:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: a85f932a5066c1479a4306339544f6f8
-    m_lastTime: -8586507188128060366
-    List: []
+    m_lastTime: -8586497591456361492
+    List:
+    - name: Footsteps
+      guid: cabe416d7e3f464d98afceb0c6f7fec6
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Footsteps
+        ObjectType: 11
+      Path: Default Work Unit\Footsteps
+      values:
+      - name: Carpet
+        guid: 4f1135a7ac6ffa489ed29ac574213bdc
+        id: 2412606308
+        PathAndIcons:
+        - ElementName: Carpet
+          ObjectType: 10
+      - name: Tile
+        guid: 929b9cc9679dcf4cac635cae7c342b0d
+        id: 2637588553
+        PathAndIcons:
+        - ElementName: Tile
+          ObjectType: 10
+      - name: Wood
+        guid: 2dd2ce4e677c4046b3942c54d217b028
+        id: 2058049674
+        PathAndIcons:
+        - ElementName: Wood
+          ObjectType: 10
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -473,5 +546,7 @@ MonoBehaviour:
   - /Wwise_Epoch
   - /Wwise_Epoch/Events
   - /Wwise_Epoch/Events/Default Work Unit
+  - /Wwise_Epoch/SoundBanks
+  - /Wwise_Epoch/SoundBanks/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

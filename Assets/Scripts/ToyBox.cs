@@ -17,6 +17,7 @@ public class ToyBox : MonoBehaviour
     public Transform[] sentenceBlockLocations;
     public bool cutScenePlaying;
     public GameObject DOOR;
+    public GameObject floor;
     private bool stopCallingMyCoroutine;
 
 
@@ -49,8 +50,8 @@ public class ToyBox : MonoBehaviour
     {
         if (other.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
         {
-            AkSoundEngine.PostEvent("StopChildhoodMusic", gameObject);
-            AkSoundEngine.PostEvent("GrowthStinger", gameObject);
+            AkSoundEngine.PostEvent("StopChildhoodMusic", floor);
+            AkSoundEngine.PostEvent("GrowthStinger", floor);
             cutScene();
         }
     }
