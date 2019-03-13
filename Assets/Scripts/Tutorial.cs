@@ -11,24 +11,19 @@ public class Tutorial : MonoBehaviour
     //Tracking steps in tutorial?
     private bool walked;
     private bool jumped;
-    private bool sprinted;
     private bool crouched;
     private bool crawled;
-    private bool crawledFast;
+    private bool standUp;
+    private bool newView;
+    private bool activateObject;
+    public GameObject chair;
+    private bool changedView;
+    private bool returnToEmsy;
     private bool openedJournal;
-
-    private bool activatedObject;
-    public GameObject cutSceneCamera;
-    public GameObject playerCamera;
-    public GameObject visionObject;
-    private float cutsceneTime;
-    public Transform center;
-    private Transform originalPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        cutsceneTime = 0.0f;
         tutorialText.text = "Hello, please press <sprite=\"W\" index=\"0\"> <sprite=\"A\" index=\"0\"> <sprite=\"S\" index=\"0\"> <sprite=\"D\" index=\"0\"> to move!";
     }
 
@@ -42,7 +37,7 @@ public class Tutorial : MonoBehaviour
                 walked = true;
             }
         }
-        
+
         else if (!jumped)
         {
             tutorialText.text = "Press <sprite=\"Space01\" index=\"0\"> to jump";
@@ -51,14 +46,6 @@ public class Tutorial : MonoBehaviour
                 jumped = true;
             }
 
-        }
-        else if (!sprinted)
-        {
-            tutorialText.text = "Hold \"LEFT SHIFT\" to sprint";
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                sprinted = true;
-            }
         }
         else if (!crouched)
         {
@@ -76,16 +63,45 @@ public class Tutorial : MonoBehaviour
                 crawled = true;
             }
         }
-
-        else if (!crawledFast)
+        else if (!standUp)
         {
-            tutorialText.text = "Hold \"LEFT SHIFT\" while crouching to crawl faster";
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            tutorialText.text = "Press \"C\" to Stand";
+            if (Input.GetKeyDown(KeyCode.C))
             {
-                crawledFast = true;
+                standUp = true;
             }
         }
+        else if (!newView)
+        {
+            tutorialText.text = "Press LeftAlt to get a new perspective";
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
+            {
+                newView = true;
+            }
+        }
+        else if (chair.GetComponent<VisionObjectScript>().enabled)
+        {
+            tutorialText.text = "Click on the bright green object to activate it for little Emsy";
+        }
+        else if (!changedView)
+        {
+            tutorialText.text = "Press  <sprite=\"A\" index=\"0\"> and <sprite=\"D\" index=\"0\"> to swap between views of the room";
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            {
+                changedView = true;
+            }
+        }
+        else if(!returnToEmsy)
+        {
+            tutorialText.text = "Press LeftAlt to return to the level";
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
+            {
+                returnToEmsy = true;
+            }
+        }
+
         //*/
+        /*
         else if(!activatedObject)
         {
             tutorialText.text = "Some objects are intangible. To activate them, align your crosshair with the corresponding symbol";
@@ -118,6 +134,7 @@ public class Tutorial : MonoBehaviour
             }
             // make player invisible(ish) & disable the player controller
         }
+        //*/
         //Getting rid of the jorunal until we add it into the player controller
         else if (!openedJournal)
         {

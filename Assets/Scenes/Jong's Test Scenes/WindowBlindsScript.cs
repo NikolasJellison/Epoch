@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class WindowBlindsScript : MonoBehaviour
 {
+    public TextMeshProUGUI textWS;
+    public Text textWS2;
     public bool start;
     public Transform cord;
     public Transform[] slats;
@@ -12,6 +16,8 @@ public class WindowBlindsScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textWS.text = "";
+        textWS2.text = "";
         start = false;
     }
 
@@ -61,10 +67,21 @@ public class WindowBlindsScript : MonoBehaviour
         // print(other.tag);
         if (other.CompareTag("Player"))
         {
+            textWS.text = "<sprite=\"EKey01\" index=\"0\"> to open.";
+            textWS2.text = "'E' to open.";
+
             if (Input.GetKeyDown(KeyCode.E))
             {
                 start = true;
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            textWS2.text = "";
         }
     }
 }

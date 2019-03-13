@@ -9,7 +9,6 @@ public class Sprint3TempObjectWorldSpaceText : MonoBehaviour
     public TextMeshProUGUI textWS;
     public Text textWS2;
     private GameObject player;
-    public bool isChair;
 
     // Start is called before the first frame update
     void Start()
@@ -21,27 +20,30 @@ public class Sprint3TempObjectWorldSpaceText : MonoBehaviour
     private void Update()
     {
         //textWS.gameObject.transform.LookAt(transform.position - player.transform.position);
-        textWS2.gameObject.transform.parent.LookAt(textWS2.gameObject.transform.parent.position - player.transform.position);
+        Vector3 direction = (textWS2.gameObject.transform.parent.position - player.transform.position);
+       
+        direction[1] = 0.0f;
+        textWS2.gameObject.transform.parent.forward = direction;
     }
 
     private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Player")
         {
-            // if this is a vision object, don't show this message
+            // if this is an unactivated vision object, don't show this message
             if(GetComponent<VisionObjectScript>() != null && GetComponent<VisionObjectScript>().enabled)
             {
                 return;
             }
             if(other.GetComponent<PlayerController>().manipulating == false)
             {
-                textWS.text = "<sprite=\"EKey01\" index=\"0\"> to move. (Maybe Spam)";
+                textWS.text = "<sprite=\"EKey01\" index=\"0\"> to move.";
                 textWS2.text = "'E' to move.";
                 //Debug.Log("manny false");
             }
             else
             {
-                textWS.text = "<sprite=\"EKey01\" index=\"0\"> to let go. (Maybe Spam)";
+                textWS.text = "<sprite=\"EKey01\" index=\"0\"> to let go.";
                 textWS2.text = "'E' to let go.";
                 //Debug.Log("manny true");
             }
