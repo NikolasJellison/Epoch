@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("Move_Able") && !manipulating)
         {
-            print("Movable Object is close");
+            //print("Movable Object is close");
             if (Input.GetKeyDown(KeyCode.E))
             {
                 other.transform.parent = transform;
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Move_Able") && !manipulating)
         {
-            print("Movable Object is close");
+            //print("Movable Object is close");
             if (Input.GetKeyDown(KeyCode.E))
             {
                 other.transform.parent = transform;

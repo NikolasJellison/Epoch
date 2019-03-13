@@ -28,17 +28,22 @@ public class Sprint3TempObjectWorldSpaceText : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            // if this is a vision object, don't show this message
+            if(GetComponent<VisionObjectScript>() != null && GetComponent<VisionObjectScript>().enabled)
+            {
+                return;
+            }
             if(other.GetComponent<PlayerController>().manipulating == false)
             {
                 textWS.text = "<sprite=\"EKey01\" index=\"0\"> to move. (Maybe Spam)";
-                textWS2.text = "'E' to move. (Maybe Spam)";
-                Debug.Log("manny false");
+                textWS2.text = "'E' to move.";
+                //Debug.Log("manny false");
             }
             else
             {
                 textWS.text = "<sprite=\"EKey01\" index=\"0\"> to let go. (Maybe Spam)";
-                textWS2.text = "'E' to let go. (Maybe Spam)";
-                Debug.Log("manny true");
+                textWS2.text = "'E' to let go.";
+                //Debug.Log("manny true");
             }
             
         }

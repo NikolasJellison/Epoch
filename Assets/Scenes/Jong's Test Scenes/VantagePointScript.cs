@@ -19,18 +19,19 @@ public class VantagePointScript : MonoBehaviour
         int mask = 1 << 2;
         mask = mask | (1 << 5);
         mask = ~mask;
-        print("doot?");
+        //print("doot?");
         //set cursor to default
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
         {
             Debug.DrawRay(ray.origin, ray.direction*hit.distance, Color.yellow);
-            //print(hit.ToString());
-            if (hit.transform.CompareTag("Vision"))
+            Transform parent = hit.collider.transform.parent;
+            
+            if (parent != null && parent.CompareTag("Vision"))
             {
-                VisionObjectScript vOScript = hit.transform.GetComponentInParent<VisionObjectScript>();
+                VisionObjectScript vOScript = parent.GetComponent<VisionObjectScript>();
                 if (vOScript != null && vOScript.enabled)
                 {
-                    print("OH BOY");
+                    //print("OH BOY");
                     // Change Cursor
 
                     if (Input.GetMouseButtonDown(0))
