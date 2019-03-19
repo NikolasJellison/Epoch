@@ -7,10 +7,16 @@ using UnityEditor;
 
 public class PadLock : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
+    /*Initial idea was to use degrees of rotation to calculate the location for the combination
+     * In hindsight, i think that this was still possible but went with a more complicated method
+     * since I saw that the rotation on the rect transform went from -180 to 180 instead of 0 to 360
+     * but at some point i was able to reference the actual rotation in terms of 0 to 360, oh well
+     */
+
     #region Public
-    [Header("Objects")]
-    [Tooltip("Image that will rotate for the combination")]
-    public Image dial;
+    //[Header("Objects")]
+    //[Tooltip("Image that will rotate for the combination")]
+    //public Image dial;
     [Header("Combination")]
     [Range(0, 39)]
     public int firstNumber = 15;
@@ -66,13 +72,14 @@ public class PadLock : MonoBehaviour, IDragHandler, IPointerDownHandler
         rectTransform = GetComponent<RectTransform>();
         Debug.Log("Screen Width : " + Screen.width);
         Debug.Log("Screen Height : " + Screen.height);
+
+        Debug.Log(rectTransform.rotation);
+        Debug.Log(previousNum);
+        Debug.Log(trackerGoal);
+        Debug.Log(ang);
+        Debug.Log(CurrentNumber(ang));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private int Remap(int value)
     {
         /*PieceWise
@@ -144,7 +151,6 @@ public class PadLock : MonoBehaviour, IDragHandler, IPointerDownHandler
         pos = Input.mousePosition - transform.position;
         //Debug.Log(pos);
         ang = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg - baseAngle;
-        //ang -= (ang % (360.0f / snapdegrees));
          rectTransform.rotation =Quaternion.Euler(0.0f,0.0f,ang);
         //Debug.Log("Ang: " + ang);
         //Debug.Log("Percent" + (ang % 9));
@@ -196,7 +202,7 @@ public class PadLock : MonoBehaviour, IDragHandler, IPointerDownHandler
                 trackerGoal = Mathf.Abs(40 + (secondNumber - firstNumber) -1);
             }
             Debug.Log("TreackerGoal: " + trackerGoal);
-            Debug.Log("Threshold for first pass: " +  (40 - firstNumber));
+            //Debug.Log("Threshold for first pass: " +  (40 - firstNumber));
             Debug.Log("Counter: " + trackerCounter);
             //We need to rotate fully around so check this first
             if(trackerCounter == 0 && previousNum == currentNum)
@@ -245,7 +251,7 @@ public class PadLock : MonoBehaviour, IDragHandler, IPointerDownHandler
                 trackerGoal = Mathf.Abs(40 - (thirdNumber - secondNumber) - 1);
             }
             Debug.Log("TreackerGoal3: " + trackerGoal);
-            Debug.Log("Threshold for first pass3: " + secondNumber);
+            //Debug.Log("Threshold for first pass3: " + secondNumber);
             Debug.Log("Counter3: " + trackerCounter);
 
             if (trackerCounter == 0 && previousNum == currentNum)
@@ -298,8 +304,14 @@ public class PadLock : MonoBehaviour, IDragHandler, IPointerDownHandler
         secondNumReached = false;
         thirdNumReached = false;
         ang = 0;
+        CurrentNumber(ang);
         Tracker(0);
         debugNum.text = "Num: " + CurrentNumber(ang);
+    }
+
+    private void FailLock()
+    {
+        debugOrder.text = "Failed";
     }
 
 }
