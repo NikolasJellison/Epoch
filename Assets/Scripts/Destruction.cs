@@ -22,6 +22,7 @@ public class Destruction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
             foreach(Rigidbody rb in rb)
@@ -48,10 +49,19 @@ public class Destruction : MonoBehaviour
             }
             foreach(Rigidbody rb in rb)
             {
-                Debug.Log("Dissolving");
+                //Debug.Log("Dissolving");
                 rb.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_DissolveAmount", dissolveCounter);
             }
         }
+    }
+    public void enableDestruction()
+    {
+        foreach (Rigidbody rb in rb)
+        {
+            rb.AddForce(Vector3.Normalize(forceVector) * force);
+            //Destroy(rb.gameObject, 4);
+        }
+        StartCoroutine(WaitTime());
     }
 
     private IEnumerator WaitTime()

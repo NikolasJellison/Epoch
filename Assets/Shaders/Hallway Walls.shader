@@ -161,8 +161,8 @@ Shader "Shader Forge/Hallway Walls" {
                 float LdotH = saturate(dot(lightDirection, halfDirection));
                 float3 specularColor = _Metallic;
                 float specularMonochrome;
-                float4 node_4135 = _Time;
-                float2 node_8053 = (i.uv0+node_4135.g*float2(-0.2,0));
+                float4 node_131 = _Time;
+                float2 node_8053 = (i.uv0+node_131.g*float2(-0.2,0));
                 float4 _RollingText_var = tex2D(_RollingText,TRANSFORM_TEX(node_8053, _RollingText));
                 float3 diffuseColor = lerp(_HallwayColor.rgb,_SentenceColor.rgb,_RollingText_var.rgb); // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
@@ -306,8 +306,8 @@ Shader "Shader Forge/Hallway Walls" {
                 float LdotH = saturate(dot(lightDirection, halfDirection));
                 float3 specularColor = _Metallic;
                 float specularMonochrome;
-                float4 node_4658 = _Time;
-                float2 node_8053 = (i.uv0+node_4658.g*float2(-0.2,0));
+                float4 node_8331 = _Time;
+                float2 node_8053 = (i.uv0+node_8331.g*float2(-0.2,0));
                 float4 _RollingText_var = tex2D(_RollingText,TRANSFORM_TEX(node_8053, _RollingText));
                 float3 diffuseColor = lerp(_HallwayColor.rgb,_SentenceColor.rgb,_RollingText_var.rgb); // Need this for specular when using metallic
                 diffuseColor = DiffuseAndSpecularFromMetallic( diffuseColor, specularColor, specularColor, specularMonochrome );
@@ -402,8 +402,8 @@ Shader "Shader Forge/Hallway Walls" {
                 UnityMetaInput o;
                 UNITY_INITIALIZE_OUTPUT( UnityMetaInput, o );
                 
-                float4 node_5947 = _Time;
-                float2 node_8053 = (i.uv0+node_5947.g*float2(-0.2,0));
+                float4 node_2243 = _Time;
+                float2 node_8053 = (i.uv0+node_2243.g*float2(-0.2,0));
                 float4 _RollingText_var = tex2D(_RollingText,TRANSFORM_TEX(node_8053, _RollingText));
                 float4 node_6950 = _Time;
                 o.Emission = (_RollingText_var.rgb*((sin((i.posWorld.r+i.posWorld.b+node_6950.a))-sin(node_6950.g))*0.25+0.5)*_EmissionColor.rgb);
