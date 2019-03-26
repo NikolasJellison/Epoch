@@ -25,12 +25,13 @@ public class Destruction : MonoBehaviour
         //Debug
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
-            foreach(Rigidbody rb in rb)
-            {
-                rb.AddForce(Vector3.Normalize(forceVector) * force);
-                //Destroy(rb.gameObject, 4);
-            }
-            StartCoroutine(WaitTime());
+            EnableDestruction();
+            //foreach(Rigidbody rb in rb)
+            //{
+            //    rb.AddForce(Vector3.Normalize(forceVector) * force);
+            //    //Destroy(rb.gameObject, 4);
+            //}
+            //StartCoroutine(WaitTime());
         }
 
         if (dissolve)
@@ -54,10 +55,11 @@ public class Destruction : MonoBehaviour
             }
         }
     }
-    public void enableDestruction()
+    public void EnableDestruction()
     {
         foreach (Rigidbody rb in rb)
         {
+            rb.isKinematic = false;
             rb.AddForce(Vector3.Normalize(forceVector) * force);
             //Destroy(rb.gameObject, 4);
         }
