@@ -2381,9 +2381,8 @@ GameObject:
   - component: {fileID: 6688209269519325375}
   - component: {fileID: 6688209269519325372}
   - component: {fileID: 6688209269519325374}
-  - component: {fileID: 6688209270599264737}
   m_Layer: 8
-  m_Name: EmsyAdultEsp03
+  m_Name: Adult_Controller
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2455,10 +2454,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.26000214
+  m_Radius: 0.38299704
   m_Height: 2.2634602
   m_Direction: 1
-  m_Center: {x: 0, y: 1.0833974, z: 0.0025262833}
+  m_Center: {x: 0.0040628314, y: 1.0833974, z: 0.008189678}
 --- !u!114 &6688209269519325374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2471,8 +2470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7fbebe6ce6243089845683f96015ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input_speed: 3
-  alternate_speed: 1
+  input_speed: 5
   groundLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -2482,19 +2480,6 @@ MonoBehaviour:
   journalUI: {fileID: 0}
   optionsPanel: {fileID: 0}
   cursorImages: []
---- !u!65 &6688209270599264737
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688209270599264736}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.74535275, y: 0.8232603, z: 1.806881}
-  m_Center: {x: 0.015915394, y: 0.44773436, z: 0.40344048}
 --- !u!1 &6688209270599264738
 GameObject:
   m_ObjectHideFlags: 0

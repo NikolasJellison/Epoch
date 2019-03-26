@@ -54,11 +54,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            print("Locked");
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                lock_movement = false;
-            }
+            lock_movement &= !Input.GetKeyDown(KeyCode.E);
         }
     }
 
@@ -99,33 +95,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-
-            //if (objPos.position.x > transform.position.x && objPos.position.z > transform.position.z)
-            //{
-            //    inFront |= (transform.forward.x >= 0 && transform.forward.z >= 0);
-            //}
-            //else if (objPos.position.x < transform.position.x && objPos.position.z > transform.position.z)
-            //{
-            //    inFront |= (transform.forward.x <= 0 && transform.forward.z >= 0);
-            //}
-            //else if (objPos.position.x < transform.position.x && objPos.position.z < transform.position.z)
-            //{
-            //    inFront |= (transform.forward.x <= 0 && transform.forward.z <= 0 );
-            //}
-            //else if (objPos.position.x > transform.position.x && objPos.position.z < transform.position.z)
-            //{
-            //    inFront |= (transform.forward.x >= 0 && transform.forward.z <= 0 );
-            //}
-
-            print("Infront = " + inFront);
-
             //print("Movable Object is close");
             if (Input.GetKeyDown(KeyCode.E) && inFront)
             {
                 other.transform.parent = transform;
-                anim.SetBool("Manipulating", true);
                 speed = manip_speed;
                 manipulating = true;
+                anim.SetBool("Manipulating", true);
             }
         }
         else if (other.CompareTag("Move_Able") && manipulating)
@@ -133,39 +109,16 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 other.transform.parent = null;
-                anim.SetBool("Manipulating", false);
                 speed = input_speed;
                 manipulating = false;
+                anim.SetBool("Manipulating", false);
+
             }
 
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Move_Able") && !manipulating)
-    //    {
-    //        print("Movable Object is close");
-    //        if (Input.GetKeyDown(KeyCode.E))
-    //        {
-    //            other.transform.parent = transform;
-    //            anim.SetBool("Manipulating", true);
-    //            speed = manip_speed;
-    //            manipulating = true;
-    //        }
-    //    }
-    //    else if (other.CompareTag("Move_Able") && manipulating)
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.E))
-    //        {
-    //            other.transform.parent = null;
-    //            anim.SetBool("Manipulating", false);
-    //            speed = input_speed;
-    //            manipulating = false;
-    //        }
 
-    //    }
-    //}
 
 
     void PlayerMovement()
@@ -180,10 +133,7 @@ public class PlayerController : MonoBehaviour
             speed = input_speed;
         }else if (IsGrounded() && Input.GetKeyDown(KeyCode.C))
         {
-            print("Crouched");
             anim.SetBool("Crouched", true);
-            //my_Camera.position = Vector3.MoveTowards(my_Camera.position, )
-            //iTween.MoveTo(transform.GetChild(13).GetChild(0).gameObject, transform.GetChild(13).GetChild(1).position, 5f);  
             speed = manip_speed;
             col.enabled = false;
             box_col.enabled = true;
