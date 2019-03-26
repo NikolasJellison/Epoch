@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public float input_speed;
-    private float manip_speed = 2;
+	
+    public float manip_speed;
     private float speed;
     private Rigidbody rb;
     public LayerMask groundLayers;
