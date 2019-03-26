@@ -69,9 +69,58 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Move_Able") && !manipulating)
         {
-            print("Forward " + transform.forward);
-           //print("Movable Object is close");
-            if (Input.GetKeyDown(KeyCode.E))
+            bool inFront = false;
+            //print("Forward " + transform.forward.ToString());
+            //print("Object Position : "+ other.transform.position);
+            //print("My positiion : " + transform.position);
+            Transform objPos = other.transform;
+            Vector3 diff = objPos.position - transform.position;
+
+            if (Mathf.Abs(diff.x) > Mathf.Abs(diff.z))
+            {
+                if (objPos.position.x > transform.position.x)
+                {
+                    inFront |= (transform.forward.x > 0 );
+                }
+                else
+                    inFront |= (transform.forward.x < 0 );
+            }
+            else
+            {
+                if (objPos.position.z > transform.position.z)
+                {
+                    //print("In front");
+                    inFront |= (transform.forward.z > 0 );
+                }
+                else
+                {
+                    //print("Behind");
+                    inFront |= (transform.forward.z < 0 );
+                }
+            }
+
+
+            //if (objPos.position.x > transform.position.x && objPos.position.z > transform.position.z)
+            //{
+            //    inFront |= (transform.forward.x >= 0 && transform.forward.z >= 0);
+            //}
+            //else if (objPos.position.x < transform.position.x && objPos.position.z > transform.position.z)
+            //{
+            //    inFront |= (transform.forward.x <= 0 && transform.forward.z >= 0);
+            //}
+            //else if (objPos.position.x < transform.position.x && objPos.position.z < transform.position.z)
+            //{
+            //    inFront |= (transform.forward.x <= 0 && transform.forward.z <= 0 );
+            //}
+            //else if (objPos.position.x > transform.position.x && objPos.position.z < transform.position.z)
+            //{
+            //    inFront |= (transform.forward.x >= 0 && transform.forward.z <= 0 );
+            //}
+
+            print("Infront = " + inFront);
+
+            //print("Movable Object is close");
+            if (Input.GetKeyDown(KeyCode.E) && inFront)
             {
                 other.transform.parent = transform;
                 anim.SetBool("Manipulating", true);
