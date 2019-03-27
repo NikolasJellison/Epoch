@@ -8,6 +8,8 @@ public class TriggerJigsaw : MonoBehaviour
     public Text textWS2;
     private GameObject player;
     public bool inPuzzle;
+    GameObject puzzle;
+    public GameObject door;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,13 @@ public class TriggerJigsaw : MonoBehaviour
 
         direction[1] = 0.0f;
         textWS2.gameObject.transform.parent.forward = direction;
+        GameObject puzzle = GameObject.Find("Canvas-Jigsaw(Clone)");
+        if(inPuzzle && puzzle == null)
+        {
+            inPuzzle = false;
+            if (door != null)
+                door.GetComponent<Animator>().SetTrigger("DoorOpenIn");
+        }
     }
 
     private void OnTriggerStay(Collider other)
