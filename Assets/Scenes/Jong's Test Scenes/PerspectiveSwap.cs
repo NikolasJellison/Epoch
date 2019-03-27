@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PerspectiveSwap : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class PerspectiveSwap : MonoBehaviour
     public GameObject journal;
     public GameObject options;
     public GameObject puzzleLocker;
+    public Text RoomUI;
+    public Text ViewUI;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +40,14 @@ public class PerspectiveSwap : MonoBehaviour
                 bestRoom = selector.rooms[i];
             }
         }
+        // set Room UI
+        RoomUI.text = bestRoom.GetComponent<RoomScript>().roomName;
 
         if (toybox != null && toybox.GetComponent<ToyBox>().cutScenePlaying)
         {
             // player is active
+            RoomUI.text = "";
+            ViewUI.text = "";
             disableVantagePoints();
         }
         else if((journal != null && journal.activeSelf) || (options != null && options.activeSelf))
@@ -50,12 +58,16 @@ public class PerspectiveSwap : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             //*/
+            RoomUI.text = "";
+            ViewUI.text = "";
         }
         else if (puzzleLocker != null && puzzleLocker.GetComponent<TriggerJigsaw>().inPuzzle)
         {
             player.GetComponent<PlayerController>().lock_movement = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            RoomUI.text = "";
+            ViewUI.text = "";
         }
         else if (playerActive)
         {
@@ -64,6 +76,8 @@ public class PerspectiveSwap : MonoBehaviour
             Cursor.visible = false;
             // player is active
             disableVantagePoints();
+            // deactivate View UI
+            ViewUI.text = "";
         }
         else
         {
@@ -96,12 +110,18 @@ public class PerspectiveSwap : MonoBehaviour
                     disableVantagePoints();
                     vantagePoints[currentPoint].SetActive(true);
                 }
+                // activate view UI
+                ViewUI.text = (currentPoint+1) + "/" + vantagePoints.Length;
             }
             else
             {
                 print("NO VANTAGE POINTS");
+                ViewUI.text = "";
             }
         }
+
+
+
     }
 
 
