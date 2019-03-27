@@ -17,7 +17,7 @@ public class VisionObjectScript : MonoBehaviour
         {
             Transform objT = gameObject.transform;
             realMats = new Material[objT.childCount];
-            print(objT.childCount);
+            //print(objT.childCount);
 
             for (int i = 0; i < objT.childCount; ++i)
             {

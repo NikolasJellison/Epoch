@@ -7,39 +7,68 @@ public class PerspectiveSwap : MonoBehaviour
     public bool playerActive;
     public GameObject player;
     public GameObject playerCam;
-    public GameObject[] vantagePoints;
-    public int currentPoint;
     public GameObject toybox;
+    public GameObject journal;
+    public GameObject options;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentPoint = 0;
         disableVantagePoints();
-        setPlayerState(playerActive);
+        // setPlayerState(playerActive);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftAlt))
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             playerActive = !playerActive;
         }
 
+        RoomSelectorScript selector = player.GetComponent<RoomSelectorScript>();
+        GameObject bestRoom = selector.rooms[0];
+        for (int i = 1; i < selector.rooms.Count; ++i)
+        {
+            if (bestRoom.GetComponent<RoomScript>().roomId < selector.rooms[i].GetComponent<RoomScript>().roomId)
+            {
+                bestRoom = selector.rooms[i];
+            }
+        }
+
         if (toybox.GetComponent<ToyBox>().cutScenePlaying)
         {
+            // player is active
             disableVantagePoints();
+        }
+        else if(journal.activeSelf || journal.activeSelf)
+        {
+            // Essentially, allow the playerController script to handle setting the movement and cursor
+            /*
+            player.GetComponent<PlayerController>().lock_movement = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            //*/
         }
         else if (playerActive)
         {
-            setPlayerState(true);
+            player.GetComponent<PlayerController>().lock_movement = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            // player is active
             disableVantagePoints();
         }
         else
         {
+            GameObject[] vantagePoints = bestRoom.GetComponent<RoomScript>().vantagePoints;
+
             if (vantagePoints.Length > 0)
             {
+                player.GetComponent<PlayerController>().lock_movement = true;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
+                int currentPoint = bestRoom.GetComponent<RoomScript>().currentView;
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     --currentPoint;
@@ -54,14 +83,12 @@ public class PerspectiveSwap : MonoBehaviour
                     currentPoint = (currentPoint + 1) % vantagePoints.Length;
                     //print(currentPoint);
                 }
-
-                setPlayerState(false);
+                bestRoom.GetComponent<RoomScript>().currentView = currentPoint;
                 if (!vantagePoints[currentPoint].activeSelf)
                 {
                     disableVantagePoints();
                     vantagePoints[currentPoint].SetActive(true);
                 }
-
             }
             else
             {
@@ -70,14 +97,25 @@ public class PerspectiveSwap : MonoBehaviour
         }
     }
 
+
     void disableVantagePoints()
     {
-        foreach(GameObject vantagePoint in vantagePoints)
+        RoomSelectorScript selector = player.GetComponent<RoomSelectorScript>();
+        GameObject bestRoom = selector.rooms[0];
+        for (int i = 1; i < selector.rooms.Count; ++i)
+        {
+            if (bestRoom.GetComponent<RoomScript>().roomId < selector.rooms[i].GetComponent<RoomScript>().roomId)
+            {
+                bestRoom = selector.rooms[i];
+            }
+        }
+        GameObject[] vantagePoints = bestRoom.GetComponent<RoomScript>().vantagePoints;
+        foreach (GameObject vantagePoint in vantagePoints)
         {
             vantagePoint.SetActive(false);
         }
     }
-
+    /*
     void setPlayerState(bool state)
     {
         if (player.GetComponent<PlayerController>().enabled != state)
@@ -98,4 +136,5 @@ public class PerspectiveSwap : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
     }
+    //*/
 }

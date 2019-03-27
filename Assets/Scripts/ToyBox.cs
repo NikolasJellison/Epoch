@@ -19,16 +19,24 @@ public class ToyBox : MonoBehaviour
     public GameObject DOOR;
     public GameObject floor;
     private bool stopCallingMyCoroutine;
+    public GameObject materialObject;
+    public GameObject player;
 
 
     private void Update()
     {
-        //Debug cutscene
         
+        if(materialObject.GetComponent<MeshRenderer>().material.GetFloat("_ToyBoxGlow") == 0 && player.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
+        {
+            materialObject.GetComponent<MeshRenderer>().material.SetFloat("_ToyBoxGlow", 1);
+        }
+        //Debug cutscene
+        /*
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
             cutScene();
         }
+        //*/
         
         step = speed * Time.deltaTime;
         if (cutScenePlaying)
