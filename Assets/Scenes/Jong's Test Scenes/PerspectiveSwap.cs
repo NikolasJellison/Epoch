@@ -10,6 +10,7 @@ public class PerspectiveSwap : MonoBehaviour
     public GameObject toybox;
     public GameObject journal;
     public GameObject options;
+    public GameObject puzzleLocker;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +37,12 @@ public class PerspectiveSwap : MonoBehaviour
             }
         }
 
-        if (toybox.GetComponent<ToyBox>().cutScenePlaying)
+        if (toybox != null && toybox.GetComponent<ToyBox>().cutScenePlaying)
         {
             // player is active
             disableVantagePoints();
         }
-        else if(journal.activeSelf || journal.activeSelf)
+        else if((journal != null && journal.activeSelf) || (options != null && options.activeSelf))
         {
             // Essentially, allow the playerController script to handle setting the movement and cursor
             /*
@@ -49,6 +50,12 @@ public class PerspectiveSwap : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             //*/
+        }
+        else if (puzzleLocker != null && puzzleLocker.GetComponent<TriggerJigsaw>().inPuzzle)
+        {
+            player.GetComponent<PlayerController>().lock_movement = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else if (playerActive)
         {

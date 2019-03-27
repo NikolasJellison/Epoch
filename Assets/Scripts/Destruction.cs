@@ -6,7 +6,7 @@ public class Destruction : MonoBehaviour
 {
     Rigidbody[] rb;
     public float force = 3;
-    private bool dissolve;
+    public bool dissolve;
     private float dissolveCounter;
     public float dissolveWaitTime = 4;
     [Header("Empty game object where you want to destruction to go to")]
