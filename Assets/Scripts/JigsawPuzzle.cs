@@ -8,6 +8,7 @@ public class JigsawPuzzle : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Vector3 originalPosition;
     private bool locked;
     private bool moving;
+    public JigSawManager jigSawManager;
 
     private void Start()
     {
@@ -49,6 +50,10 @@ public class JigsawPuzzle : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         if (collision.gameObject.name == gameObject.name + " Location" && !moving)
         {
             transform.position = collision.transform.position;
+            if (!locked)
+            {
+                jigSawManager.CorrectPlacement();
+            }
             locked = true;
         }
     }
