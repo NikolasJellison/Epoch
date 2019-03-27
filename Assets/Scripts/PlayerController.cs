@@ -158,13 +158,9 @@ public class PlayerController : MonoBehaviour
 
         Vector3 playermovement;
 
-        if (ver < 0f && !crouched)
-            playermovement = new Vector3(hor, 0f, ver) * speed / 2 * Time.deltaTime;
-        else
-        {
-            ver = ver / 2;
-            playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
-        }
+     
+        playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
+        
         anim.SetFloat("Velocity_X", hor);
         anim.SetFloat("Velocity_Y", ver);
 
