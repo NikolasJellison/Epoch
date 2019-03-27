@@ -196,6 +196,34 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="MenuClickStart" ID="{85D2EF66-9735-47D9-8B25-61660F5FA297}">
+					<ChildrenList>
+						<Action Name="" ID="{DCEF9BD6-1135-41AE-88AF-A9E0CF8BFB01}" ShortID="837180682">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu_Click_Start" ID="{58C3D55E-E496-47E7-8645-5D042DD5EE14}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Acquisition" ID="{79DCD82A-8FDF-4A26-A18E-46ACD36EF311}">
+					<ChildrenList>
+						<Action Name="" ID="{23681C6D-BA61-4DB7-8578-8EEA2F23F024}" ShortID="1042424200">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Acquisition" ID="{1AEA3F14-D3B8-4643-B1EE-D9B7016C1AC5}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

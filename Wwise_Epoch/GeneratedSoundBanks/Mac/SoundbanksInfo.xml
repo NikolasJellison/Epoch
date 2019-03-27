@@ -16,11 +16,16 @@
 			<ShortName>Interactions</ShortName>
 			<Path>Interactions.bnk</Path>
 			<IncludedEvents>
+				<Event Id="4057895974" Name="Acquisition" ObjectPath="\Events\Default Work Unit\Acquisition"/>
 				<Event Id="3987853926" Name="JournalClose" ObjectPath="\Events\Default Work Unit\JournalClose"/>
 				<Event Id="1738215602" Name="JournalOpen" ObjectPath="\Events\Default Work Unit\JournalOpen"/>
 				<Event Id="278292344" Name="RevealStinger" ObjectPath="\Events\Default Work Unit\RevealStinger"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="418073651" Language="SFX">
+					<ShortName>EmsySFXStationAcquisition.wav</ShortName>
+					<Path>SFX/EmsySFXStationAcquisition_56D34C19.wem</Path>
+				</File>
 				<File Id="597848059" Language="SFX">
 					<ShortName>Page_Turn_Crisp_02.wav</ShortName>
 					<Path>SFX/Page_Turn_Crisp_02_56D34C19.wem</Path>
@@ -68,8 +73,13 @@
 			<Path>UI.bnk</Path>
 			<IncludedEvents>
 				<Event Id="3711598968" Name="MenuClick" ObjectPath="\Events\Default Work Unit\MenuClick"/>
+				<Event Id="3997688540" Name="MenuClickStart" ObjectPath="\Events\Default Work Unit\MenuClickStart"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="586505924" Language="SFX">
+					<ShortName>EmsySFXStationMenuClickStart.wav</ShortName>
+					<Path>SFX/EmsySFXStationMenuClickStart_56D34C19.wem</Path>
+				</File>
 				<File Id="847111835" Language="SFX">
 					<ShortName>Menu_Click_Base_1.wav</ShortName>
 					<Path>SFX/Menu_Click_Base_1_56D34C19.wem</Path>
