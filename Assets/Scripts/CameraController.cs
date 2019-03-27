@@ -51,16 +51,20 @@ public class CameraController : MonoBehaviour
         //{
         //    crouching = false;
         //}
-        mouseX += Input.GetAxis("Mouse X") * rotation_speed;
-        mouseY -= Input.GetAxis("Mouse Y") * rotation_speed;
-        mouseY = Mathf.Clamp(mouseY, -35, 60);
+        if(!player_controller.lock_movement){
+            
+            mouseX += Input.GetAxis("Mouse X") * rotation_speed;
+            mouseY -= Input.GetAxis("Mouse Y") * rotation_speed;
+            mouseY = Mathf.Clamp(mouseY, -35, 60);
 
-        transform.LookAt(target);
+            transform.LookAt(target);
 
-        target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-        if (!player_controller.IsManip())
-        {
-            player.transform.rotation = Quaternion.Euler(0, mouseX, 0);
+            target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+            if (!player_controller.IsManip())
+            {
+                player.transform.rotation = Quaternion.Euler(0, mouseX, 0);
+            }
         }
+        
     }
 }
