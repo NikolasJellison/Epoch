@@ -111,7 +111,7 @@ public class PerspectiveSwap : MonoBehaviour
                     vantagePoints[currentPoint].SetActive(true);
                 }
                 // activate view UI
-                ViewUI.text = (currentPoint+1) + "/" + vantagePoints.Length;
+                ViewUI.text = "Window " + (currentPoint+1) + "/" + vantagePoints.Length;
             }
             else
             {
