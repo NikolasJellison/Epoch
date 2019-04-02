@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	
     public float manip_speed;
     private float speed;
+    private Vector3 destination;
     private Rigidbody rb;
     public LayerMask groundLayers;
     public float Jump_Force = 3;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         col = GetComponent<CapsuleCollider>();
         anim = GetComponent<Animator>();
         box_col = GetComponent<BoxCollider>();
+        destination = new Vector3(0, 0, 0);
         //my_Camera = transform.GetChild(13).GetChild(0);
 
         speed = input_speed;
@@ -47,10 +49,12 @@ public class PlayerController : MonoBehaviour
         {
             JournalInteract();
         }
+
         if (!lock_movement)
         {
             //print("Not Locked");
-            PlayerMovement();
+
+                PlayerMovement();
 
         }
         else
@@ -63,40 +67,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if(other.CompareTag("Crawler") && IsGrounded())
+        {
+            print("Inside crawler");
+            if (Input.GetKeyDown(KeyCode.E) && !manipulating)
+            {
+                transform.position = other.transform.position;
+                transform.rotation = other.transform.rotation;
+                destination = other.transform.GetChild(0).transform.position;
+                col.enabled = false;
+                box_col.enabled = true;
+                crouched = true;
+                anim.SetBool("Crouched", true);
+            }
+        }
 
         if (other.CompareTag("Move_Able") && !manipulating)
         {
-            // bool inFront = false;
-            // //print("Forward " + transform.forward.ToString());
-            // //print("Object Position : "+ other.transform.position);
-            // //print("My positiion : " + transform.position);
-            // Transform objPos = other.transform;
-            // Vector3 diff = objPos.position - transform.position;
 
-            // if (Mathf.Abs(diff.x) > Mathf.Abs(diff.z))
-            // {
-            //     if (objPos.position.x > transform.position.x)
-            //     {
-            //         inFront |= (transform.forward.x > 0 );
-            //     }
-            //     else
-            //         inFront |= (transform.forward.x < 0 );
-            // }
-            // else
-            // {
-            //     if (objPos.position.z > transform.position.z)
-            //     {
-            //         //print("In front");
-            //         inFront |= (transform.forward.z > 0 );
-            //     }
-            //     else
-            //     {
-            //         //print("Behind");
-            //         inFront |= (transform.forward.z < 0 );
-            //     }
-            // }
-
-            //print("Movable Object is close");
             if (Input.GetKeyDown(KeyCode.E))
             {
                 other.transform.parent = transform;
@@ -125,21 +113,32 @@ public class PlayerController : MonoBehaviour
     void PlayerMovement()
     {
 
-        if (crouched && Input.GetKeyDown(KeyCode.C))
-        {
-            crouched = false;
-            anim.SetBool("Crouched",false);
-            col.enabled = true;
-            box_col.enabled = false;
-            speed = input_speed;
-        }else if (IsGrounded() && Input.GetKeyDown(KeyCode.C))
-        {
-            anim.SetBool("Crouched", true);
-            speed = manip_speed;
-            col.enabled = false;
-            box_col.enabled = true;
-            crouched = true;
+        //if (crouched && Input.GetKeyDown(KeyCode.C))
+        //{
+        //    crouched = false;
+        //    anim.SetBool("Crouched",false);
+        //    col.enabled = true;
+        //    box_col.enabled = false;
+        //    speed = input_speed;
+        //}else if (IsGrounded() && Input.GetKeyDown(KeyCode.C))
+        //{
+        //    anim.SetBool("Crouched", true);
+        //    speed = manip_speed;
+        //    col.enabled = false;
+        //    box_col.enabled = true;
+        //    crouched = true;
 
+        //}
+        if (crouched)
+        {
+            if(Mathf.Abs(transform.position.x - destination.x) < 1f && Mathf.Abs(transform.position.z - destination.z) < 1f)
+            {
+                crouched = false;
+                anim.SetBool("Crouched", false);
+                col.enabled = true;
+                box_col.enabled = false;
+                speed = input_speed;
+            }
         }
 
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !crouched)
@@ -158,7 +157,12 @@ public class PlayerController : MonoBehaviour
 
         Vector3 playermovement;
 
-     
+        if (crouched)
+        {
+            hor = 0f;
+            ver = .5f;
+        }
+
         playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
         
         anim.SetFloat("Velocity_X", hor);
