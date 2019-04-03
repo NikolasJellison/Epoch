@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    //public float sensitivity = 1f;
+    //private CinemachineComposer composer;
     public float rotation_speed;
     public float slide_speed;
     public GameObject player;
@@ -22,7 +25,15 @@ public class CameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         player_controller = player.GetComponent<PlayerController>();
         start_postion = transform.position;
+        //composer = GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>();
     }
+
+    //private void Update()
+    //{
+    //    float vertical = Input.GetAxis("Mouse Y") * sensitivity;
+    //    composer.m_TrackedObjectOffset.y += vertical;
+    //    composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y, 0, 4);
+    //}
 
     // Update is called once per frame
     void LateUpdate()
