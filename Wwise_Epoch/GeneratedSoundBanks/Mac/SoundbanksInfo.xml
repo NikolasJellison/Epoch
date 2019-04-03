@@ -19,9 +19,16 @@
 				<Event Id="4057895974" Name="Acquisition" ObjectPath="\Events\Default Work Unit\Acquisition"/>
 				<Event Id="3987853926" Name="JournalClose" ObjectPath="\Events\Default Work Unit\JournalClose"/>
 				<Event Id="1738215602" Name="JournalOpen" ObjectPath="\Events\Default Work Unit\JournalOpen"/>
+				<Event Id="3708841159" Name="PlayHeavyMove" ObjectPath="\Events\Default Work Unit\PlayHeavyMove"/>
 				<Event Id="278292344" Name="RevealStinger" ObjectPath="\Events\Default Work Unit\RevealStinger"/>
+				<Event Id="1054490029" Name="StopHeavyMove" ObjectPath="\Events\Default Work Unit\StopHeavyMove"/>
+				<Event Id="4282012141" Name="Unlock" ObjectPath="\Events\Default Work Unit\Unlock"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="313436035" Language="SFX">
+					<ShortName>Unlock.wav</ShortName>
+					<Path>SFX/Unlock_56D34C19.wem</Path>
+				</File>
 				<File Id="418073651" Language="SFX">
 					<ShortName>EmsySFXStationAcquisition.wav</ShortName>
 					<Path>SFX/EmsySFXStationAcquisition_56D34C19.wem</Path>
@@ -37,6 +44,10 @@
 				<File Id="1043051086" Language="SFX">
 					<ShortName>Reveal.wav</ShortName>
 					<Path>SFX/Reveal_56D34C19.wem</Path>
+				</File>
+				<File Id="1043849593" Language="SFX">
+					<ShortName>HeavyMove.wav</ShortName>
+					<Path>SFX/HeavyMove_8956FC97.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
