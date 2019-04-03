@@ -391,32 +391,6 @@
 						<ActiveSource Name="EmsyAdult" ID="{C3F3F7E7-0A38-445C-8C17-67F1BF627318}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="Acquisition" ID="{1AEA3F14-D3B8-4643-B1EE-D9B7016C1AC5}" ShortID="125011349">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-9</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C065EE1A-FDDD-4A50-9911-2B61A68BD8B4}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{309EC2C3-C549-49A1-83B4-C7F0F7B92B12}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="EmsySFXStationAcquisition" ID="{7FF80B4A-6850-48B1-971B-7665C8F5994F}" ShortID="418073651">
-							<Language>SFX</Language>
-							<AudioFile>EmsySFXStationAcquisition.wav</AudioFile>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="EmsySFXStationAcquisition" ID="{7FF80B4A-6850-48B1-971B-7665C8F5994F}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
 				<Sound Name="Menu_Click_Start" ID="{58C3D55E-E496-47E7-8645-5D042DD5EE14}" ShortID="768732123">
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
@@ -522,6 +496,25 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="Unlock" ID="{E1CB07B1-400F-41F6-A57C-0C1CDB9CB8AE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Acquisitionv2" ID="{26B548DC-7D20-4093-9AEE-3DCF333A1AF8}" ShortID="299057585">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C065EE1A-FDDD-4A50-9911-2B61A68BD8B4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{309EC2C3-C549-49A1-83B4-C7F0F7B92B12}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Acquisitionv2" ID="{B0CCDD7F-9274-4E0F-933D-728B5D59AC39}" ShortID="793434276">
+							<Language>SFX</Language>
+							<AudioFile>Acquisitionv2.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Acquisitionv2" ID="{B0CCDD7F-9274-4E0F-933D-728B5D59AC39}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>
