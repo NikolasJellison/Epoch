@@ -113,33 +113,33 @@ public class PlayerController : MonoBehaviour
     void PlayerMovement()
     {
 
-        //if (crouched && Input.GetKeyDown(KeyCode.C))
-        //{
-        //    crouched = false;
-        //    anim.SetBool("Crouched",false);
-        //    col.enabled = true;
-        //    box_col.enabled = false;
-        //    speed = input_speed;
-        //}else if (IsGrounded() && Input.GetKeyDown(KeyCode.C))
-        //{
-        //    anim.SetBool("Crouched", true);
-        //    speed = manip_speed;
-        //    col.enabled = false;
-        //    box_col.enabled = true;
-        //    crouched = true;
-
-        //}
-        if (crouched)
+        if (crouched && Input.GetKeyDown(KeyCode.C))
         {
-            if(Mathf.Abs(transform.position.x - destination.x) < 1f && Mathf.Abs(transform.position.z - destination.z) < 1f)
-            {
-                crouched = false;
-                anim.SetBool("Crouched", false);
-                col.enabled = true;
-                box_col.enabled = false;
-                speed = input_speed;
-            }
+            crouched = false;
+            anim.SetBool("Crouched",false);
+            col.enabled = true;
+            box_col.enabled = false;
+            speed = input_speed;
+        }else if (IsGrounded() && Input.GetKeyDown(KeyCode.C))
+        {
+            anim.SetBool("Crouched", true);
+            speed = manip_speed;
+            col.enabled = false;
+            box_col.enabled = true;
+            crouched = true;
+
         }
+        //if (crouched)
+        //{
+        //    if(Mathf.Abs(transform.position.x - destination.x) < 1f && Mathf.Abs(transform.position.z - destination.z) < 1f)
+        //    {
+        //        crouched = false;
+        //        anim.SetBool("Crouched", false);
+        //        col.enabled = true;
+        //        box_col.enabled = false;
+        //        speed = input_speed;
+        //    }
+        //}
 
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !crouched)
         {
@@ -157,11 +157,11 @@ public class PlayerController : MonoBehaviour
 
         Vector3 playermovement;
 
-        if (crouched)
-        {
-            hor = 0f;
-            ver = .5f;
-        }
+        //if (crouched)
+        //{
+        //    hor = 0f;
+        //    ver = .5f;
+        //}
 
         playermovement = new Vector3(hor, 0f, ver) * speed * Time.deltaTime;
         
