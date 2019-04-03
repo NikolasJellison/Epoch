@@ -218,7 +218,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Acquisition" ID="{1AEA3F14-D3B8-4643-B1EE-D9B7016C1AC5}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+									<ObjectRef Name="Acquisitionv2" ID="{26B548DC-7D20-4093-9AEE-3DCF333A1AF8}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -233,6 +233,48 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="MenuMusic" ID="{8661290A-730E-4F46-BEDA-8A55C64D1F33}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayHeavyMove" ID="{90A04449-48F6-40D6-9741-568C6BC0DA6F}">
+					<ChildrenList>
+						<Action Name="" ID="{772DCCC4-1FC7-476C-AC3D-62AC429E1015}" ShortID="610856164">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="HeavyMove" ID="{FACC66F6-BAE9-4A8D-B05B-BD3888B8E166}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StopHeavyMove" ID="{300088C4-D2E6-4D6D-9995-C34ABBAE5610}">
+					<ChildrenList>
+						<Action Name="" ID="{639C53CB-4A07-43B1-A05E-EB9EB625BBCD}" ShortID="23527455">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="HeavyMove" ID="{FACC66F6-BAE9-4A8D-B05B-BD3888B8E166}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Unlock" ID="{B7AE51BB-00A6-484F-B8B0-22811D38B02F}">
+					<ChildrenList>
+						<Action Name="" ID="{C572370D-51DA-479D-BCD9-CA447C975E00}" ShortID="774052038">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Unlock" ID="{54571FFA-822E-41D3-B83A-678C6AEACBA8}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
