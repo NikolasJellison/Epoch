@@ -9,6 +9,7 @@ public class TriggerJigsaw : MonoBehaviour
     private GameObject player;
     public bool inPuzzle;
     GameObject puzzle;
+    private bool puzzleTriggeredOnce;
     public GameObject door;
     // Start is called before the first frame update
     void Start()
@@ -37,9 +38,17 @@ public class TriggerJigsaw : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (puzzleTriggeredOnce)
+            {
+                textWS2.text = "";
+                return;
+            }
+                
             textWS2.text = "'E' to Open.";
             if (Input.GetKeyDown(KeyCode.E) && !inPuzzle)
             {
+                player.GetComponent<Level2Script>().subPage();
+                puzzleTriggeredOnce = true;
                 inPuzzle = true;
                 Instantiate(Resources.Load("Canvas-Jigsaw"));
             }

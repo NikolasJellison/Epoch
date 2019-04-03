@@ -6,42 +6,46 @@ using UnityEngine.UI;
 
 public class DestroyPromptScript : MonoBehaviour
 {
-    public Text textWS2;
-    private GameObject player;
+    public Text promptUI;
     public GameObject sentinel;
+    public PerspectiveSwap vantageMgr;
+    public GameObject hammer;
 
     // Start is called before the first frame update
     void Start()
     {
-        textWS2.text = "";
-        player = GameObject.FindGameObjectWithTag("Player");
+        promptUI.text = "";
     }
     private void Update()
     {
-
-
-        //textWS.gameObject.transform.LookAt(transform.position - player.transform.position);
-        Vector3 direction = (textWS2.gameObject.transform.parent.position - player.transform.position);
-
-        direction[1] = 0.0f;
-        textWS2.gameObject.transform.parent.forward = direction;
+        // if the hammer is inactive OR the UI is on OR you're in a vantage point turn off the hammer icon
+        // otherwise, set the hammer ui
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
-            if (sentinel == null)
+            if (sentinel == null || !vantageMgr.playerActive)
             {
-                textWS2.text =      "";
+                promptUI.text =      "";
                 return;
             }
-            textWS2.text = "'E' to destroy.";
-            //Debug.Log("manny false");
-            if (Input.GetKeyDown(KeyCode.E))
+            if(hammer != null && !hammer.activeSelf)
             {
-                GetComponent<Destruction>().EnableDestruction();
+                // if the hammer is active, set the text to say that you need something to break it
+                // otherwise, E to destroy and accept E as an input
+                promptUI.text = "'E' to destroy.";
+                //Debug.Log("manny false");
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    GetComponent<Destruction>().EnableDestruction();
+                }
+            } else
+            {
+                promptUI.text = "You need something to break this.";
             }
+            
         }
     }
 
@@ -49,7 +53,8 @@ public class DestroyPromptScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            textWS2.text = "";
+           
+            promptUI.text = "";
         }
     }
 }

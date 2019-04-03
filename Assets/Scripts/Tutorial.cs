@@ -9,6 +9,7 @@ public class Tutorial : MonoBehaviour
     //public Text tutorialText;
     public TextMeshProUGUI tutorialText;
     //Tracking steps in tutorial?
+    public GameObject vantageManager;
     private bool walked;
     private bool jumped;
     private bool crouched;
@@ -73,6 +74,7 @@ public class Tutorial : MonoBehaviour
         }
         else if (!newView)
         {
+            vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
             tutorialText.text = "Press LeftAlt to get a new perspective";
             if (Input.GetKeyDown(KeyCode.LeftAlt))
             {
@@ -81,10 +83,12 @@ public class Tutorial : MonoBehaviour
         }
         else if (chair.GetComponent<VisionObjectScript>().enabled)
         {
+            vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = false;
             tutorialText.text = "Click on the bright green object to activate it for little Emsy";
         }
         else if (!changedView)
         {
+            vantageManager.GetComponent<PerspectiveSwap>().newViewEnabled = true;
             tutorialText.text = "Press  <sprite=\"A\" index=\"0\"> and <sprite=\"D\" index=\"0\"> to swap between views of the room";
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
@@ -93,6 +97,7 @@ public class Tutorial : MonoBehaviour
         }
         else if(!returnToEmsy)
         {
+            vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
             tutorialText.text = "Press LeftAlt to return to the level";
             if (Input.GetKeyDown(KeyCode.LeftAlt))
             {

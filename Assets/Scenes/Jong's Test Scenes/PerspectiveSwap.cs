@@ -10,6 +10,8 @@ public class PerspectiveSwap : MonoBehaviour
     public GameObject playerCam;
     public GameObject toybox;
     public GameObject journal;
+    public bool swapEnabled;
+    public bool newViewEnabled;
     public GameObject options;
     public GameObject puzzleLocker;
     public Text RoomUI;
@@ -26,7 +28,7 @@ public class PerspectiveSwap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        if (swapEnabled && Input.GetKeyDown(KeyCode.LeftAlt))
         {
             playerActive = !playerActive;
         }
@@ -90,7 +92,7 @@ public class PerspectiveSwap : MonoBehaviour
                 Cursor.visible = true;
 
                 int currentPoint = bestRoom.GetComponent<RoomScript>().currentView;
-                if (Input.GetKeyDown(KeyCode.D))
+                if (newViewEnabled && Input.GetKeyDown(KeyCode.D))
                 {
                     --currentPoint;
                     if (currentPoint < 0)
@@ -99,7 +101,7 @@ public class PerspectiveSwap : MonoBehaviour
                     }
                     //print(currentPoint);
                 }
-                else if (Input.GetKeyDown(KeyCode.A))
+                else if (newViewEnabled && Input.GetKeyDown(KeyCode.A))
                 {
                     currentPoint = (currentPoint + 1) % vantagePoints.Length;
                     //print(currentPoint);
