@@ -5,26 +5,23 @@ using UnityEngine.UI;
 
 public class TriggerJigsaw : MonoBehaviour
 {
-    public Text textWS2;
+    public Text openUI;
     private GameObject player;
     public bool inPuzzle;
-    GameObject puzzle;
-    private bool puzzleTriggeredOnce;
+    public PerspectiveSwap vantageMgr;
+    private GameObject puzzle;
+    public bool puzzleTriggeredOnce;
     public GameObject door;
     // Start is called before the first frame update
     void Start()
     {
-        textWS2.text = "";
+        openUI.text = "";
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = (textWS2.gameObject.transform.parent.position - player.transform.position);
-
-        direction[1] = 0.0f;
-        textWS2.gameObject.transform.parent.forward = direction;
         GameObject puzzle = GameObject.Find("Canvas-Jigsaw(Clone)");
         if(inPuzzle && puzzle == null)
         {
@@ -40,17 +37,25 @@ public class TriggerJigsaw : MonoBehaviour
         {
             if (puzzleTriggeredOnce)
             {
-                textWS2.text = "";
+                openUI.text = "";
                 return;
             }
-                
-            textWS2.text = "'E' to Open.";
-            if (Input.GetKeyDown(KeyCode.E) && !inPuzzle)
+
+            if (vantageMgr.playerActive)
             {
-                player.GetComponent<Level2Script>().subPage();
-                puzzleTriggeredOnce = true;
-                inPuzzle = true;
-                Instantiate(Resources.Load("Canvas-Jigsaw"));
+                openUI.text = "'E' to Open.";
+                if (Input.GetKeyDown(KeyCode.E) && !inPuzzle)
+                {
+
+                    player.GetComponent<Level2Script>().subPage();
+                    puzzleTriggeredOnce = true;
+                    inPuzzle = true;
+                    Instantiate(Resources.Load("Canvas-Jigsaw"));
+                }
+            }
+            else
+            {
+                openUI.text = "";
             }
         }
     }
@@ -59,7 +64,7 @@ public class TriggerJigsaw : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            textWS2.text = "";
+            openUI.text = "";
         }
     }
 }

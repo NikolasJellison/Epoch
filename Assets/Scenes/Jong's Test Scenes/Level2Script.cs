@@ -30,6 +30,7 @@ public class Level2Script : MonoBehaviour
         if (other.CompareTag("Pages"))
         {
             subPage();
+            AkSoundEngine.PostEvent("Acquisition", gameObject);
             pageUI.sprite = pageImages[pagesFound];
             print(pageImages[pagesFound].name);
             other.gameObject.SetActive(false);

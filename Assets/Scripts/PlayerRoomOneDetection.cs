@@ -27,6 +27,7 @@ public class PlayerRoomOneDetection : MonoBehaviour
         if (other.CompareTag("Block"))
         {
             Destroy(other.gameObject);
+            AkSoundEngine.PostEvent("Acquisition", gameObject);
             blocksFound++;
             //This wont stay on screen and won't disapear until you go to the box but sure
             notifcationText.text = "You have found Block Number: " + blocksFound;
