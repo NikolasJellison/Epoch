@@ -5,8 +5,10 @@ using UnityEngine;
 public class CutScene1 : MonoBehaviour
 {
     public GameObject player;
+    private CutsceneCameraController cameraController;
     public Camera playerCam;
     public Camera cutSceneCam;
+    public GameObject computerScreenCanvas;
     [Header("Anything that needs to get deleted once the room has dissolved")]
     public GameObject[] delete;
     [Header("These need to have the disolve shader on them")]
@@ -18,6 +20,7 @@ public class CutScene1 : MonoBehaviour
     {
         playerCam.enabled = true;
         cutSceneCam.enabled = false;
+        cameraController = player.GetComponentInChildren<CutsceneCameraController>();
     }
     // Update is called once per frame
     void Update()
@@ -43,6 +46,10 @@ public class CutScene1 : MonoBehaviour
                 {
                     Destroy(obj);
                 }
+
+                //Start Fall
+                cameraController.canMove = false;
+                cameraController.StartFall();
             }
 
             foreach (MeshRenderer obj in objectsToDisolve)
@@ -53,10 +60,10 @@ public class CutScene1 : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        EnterDesktop();
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    EnterDesktop();
+    //}
 
     public void EnterDesktop()
     {
@@ -74,5 +81,6 @@ public class CutScene1 : MonoBehaviour
         playerCam.enabled = true;
         cutSceneCam.enabled = false;
         dissolve = true;
+        computerScreenCanvas.SetActive(false);
     }
 }
