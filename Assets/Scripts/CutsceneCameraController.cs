@@ -48,8 +48,10 @@ public class CutsceneCameraController : MonoBehaviour
                 //I feel like 2 nested If statements is bad...
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //canMove bool gets disabled in this function
+                    //canMove gets disabled in Cutscene1.cs after the dissolve takes place
                     cutscene.EnterDesktop();
+                    //This is a mess because i didn't want to put another public variable for some reason
+                    notificationText.gameObject.transform.parent.gameObject.SetActive(false);
                 }
             }
             else
@@ -113,6 +115,9 @@ public class CutsceneCameraController : MonoBehaviour
     {
         isFalling = false;
         anim.SetTrigger("StartLook");
+        //Need to reenable the canvas so we can fade
+        notificationText.text = "";
+        notificationText.gameObject.transform.parent.gameObject.SetActive(true);
     }
 
     public void StartWalk()

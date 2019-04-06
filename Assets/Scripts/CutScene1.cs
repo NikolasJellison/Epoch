@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutScene1 : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class CutScene1 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
             EnterDesktop();
+            //So if you bypass the beginning animation with the 'debug' key, you will still be able to click on the exit button on the computer screen
+            cameraController.notificationText.gameObject.transform.parent.gameObject.SetActive(false);
         }
 
         //There is a better way but idk how to make the fill continuous
