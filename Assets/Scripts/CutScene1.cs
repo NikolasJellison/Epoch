@@ -17,6 +17,7 @@ public class CutScene1 : MonoBehaviour
     private bool dissolve;
     private bool falling;
     private bool isWalking;
+    private GameObject camera1A;
 
     public Transform landing;
     public Transform windowLook;
@@ -27,6 +28,8 @@ public class CutScene1 : MonoBehaviour
         playerCam.enabled = true;
         cutSceneCam.enabled = false;
         cameraController = player.GetComponentInChildren<CutsceneCameraController>();
+        camera1A = GameObject.Find("Camera-Cutscene1A");
+        camera1A.GetComponent<Camera>().enabled = false;
     }
     // Update is called once per frame
     void Update()
@@ -73,6 +76,11 @@ public class CutScene1 : MonoBehaviour
                 falling = false;
                 cameraController.StartWalk();
                 isWalking = true;
+                //Change active cameras
+                playerCam.enabled = false;
+                //Activate the camera anim
+                camera1A.GetComponent<Animator>().SetTrigger("StartMove");
+                camera1A.GetComponent<Camera>().enabled = true;
             }
         }
 

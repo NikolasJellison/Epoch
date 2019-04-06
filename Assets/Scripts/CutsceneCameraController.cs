@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CutsceneCameraController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class CutsceneCameraController : MonoBehaviour
     private float tempMouseX;
     [HideInInspector]public bool canMove;
     public bool isFalling;
+    public TextMeshProUGUI notificationText;
+    private CutScene1 cutscene;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class CutsceneCameraController : MonoBehaviour
         parentTarget = transform.parent;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        cutscene = GameObject.Find("CutScene Manager").GetComponent<CutScene1>();
     }
 
     // Update is called once per frame
@@ -30,6 +34,7 @@ public class CutsceneCameraController : MonoBehaviour
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
 
+        //This bool - 'canMove' gets triggered from an event on the "crying" animation
         if (canMove)
         {
             mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
@@ -37,6 +42,20 @@ public class CutsceneCameraController : MonoBehaviour
             mouseX = Mathf.Clamp(mouseX, -90, 90);
             mouseY = Mathf.Clamp(mouseY, -35, 60);
             parentTarget.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+            if(Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15)
+            {
+                notificationText.text = "Press <sprite=\"EKey02\" index=\"0\"> to inspect";
+                //I feel like 2 nested If statements is bad...
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //canMove bool gets disabled in this function
+                    cutscene.EnterDesktop();
+                }
+            }
+            else
+            {
+                notificationText.text = "";
+            }
         }
         else if (isFalling)
         {
