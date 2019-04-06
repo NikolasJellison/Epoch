@@ -89,4 +89,15 @@ public class CutsceneCameraController : MonoBehaviour
         isFalling = true;
         anim.SetTrigger("StartFall");
     }
+
+    public void StartLook()
+    {
+        isFalling = false;
+        anim.SetTrigger("StartLook");
+    }
+
+    public void StartWalk()
+    {
+        anim.SetTrigger("StartWalk");
+    }
 }

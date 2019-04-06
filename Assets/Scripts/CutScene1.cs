@@ -15,6 +15,12 @@ public class CutScene1 : MonoBehaviour
     public MeshRenderer[] objectsToDisolve;
     private float dissolveCounter;
     private bool dissolve;
+    private bool falling;
+    private bool isWalking;
+
+    public Transform landing;
+    public Transform windowLook;
+    public float fallSpeed = 3;
 
     private void Start()
     {
@@ -50,12 +56,33 @@ public class CutScene1 : MonoBehaviour
                 //Start Fall
                 cameraController.canMove = false;
                 cameraController.StartFall();
+                falling = true;
             }
 
             foreach (MeshRenderer obj in objectsToDisolve)
             {
                 obj.material.SetFloat("_DissolveValue", dissolveCounter);
                 //Debug.Log("Dissovlecounter: " + dissolveCounter);
+            }
+        }
+
+        if(falling){
+            player.transform.position = Vector3.MoveTowards(player.transform.position, landing.position, fallSpeed * Time.deltaTime);
+            if (Vector3.Distance(player.transform.position, landing.position) < .01)
+            {
+                falling = false;
+                cameraController.StartWalk();
+                isWalking = true;
+            }
+        }
+
+        if (isWalking)
+        {
+            player.transform.position = Vector3.MoveTowards(player.transform.position, windowLook.position, fallSpeed * Time.deltaTime);
+            if (Vector3.Distance(player.transform.position, windowLook.position) < .01)
+            {
+                isWalking = false;
+                cameraController.StartLook(); 
             }
         }
     }
