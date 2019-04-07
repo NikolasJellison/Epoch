@@ -75,8 +75,8 @@ public class Tutorial : MonoBehaviour
         else if (!newView)
         {
             vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
-            tutorialText.text = "Press LeftAlt to get a new perspective";
-            if (Input.GetKeyDown(KeyCode.LeftAlt))
+            tutorialText.text = "Press Shift to get a new perspective on the environment";
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
                 newView = true;
             }
@@ -98,7 +98,7 @@ public class Tutorial : MonoBehaviour
         else if(!returnToEmsy)
         {
             vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
-            tutorialText.text = "Press LeftAlt to return to the level";
+            tutorialText.text = "Press Shift to return to the level";
             if (Input.GetKeyDown(KeyCode.LeftAlt))
             {
                 returnToEmsy = true;
