@@ -77,17 +77,20 @@ public class PerspectiveSwap : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             // player is active
+            playerCam.SetActive(true);
             disableVantagePoints();
             // deactivate View UI
             ViewUI.text = "";
         }
         else
         {
+
             GameObject[] vantagePoints = bestRoom.GetComponent<RoomScript>().vantagePoints;
 
             if (vantagePoints.Length > 0)
             {
                 player.GetComponent<PlayerController>().lock_movement = true;
+                playerCam.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
 

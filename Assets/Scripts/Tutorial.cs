@@ -99,7 +99,7 @@ public class Tutorial : MonoBehaviour
         {
             vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
             tutorialText.text = "Press Shift to return to the level";
-            if (Input.GetKeyDown(KeyCode.LeftAlt))
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
                 returnToEmsy = true;
             }
