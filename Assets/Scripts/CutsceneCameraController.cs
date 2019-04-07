@@ -14,6 +14,7 @@ public class CutsceneCameraController : MonoBehaviour
     public Transform spine;
     private Animator anim;
     private float tempMouseX;
+    [HideInInspector]public bool screenOn;
     [HideInInspector]public bool canMove;
     public bool isFalling;
     public TextMeshProUGUI notificationText;
@@ -42,7 +43,7 @@ public class CutsceneCameraController : MonoBehaviour
             mouseX = Mathf.Clamp(mouseX, -90, 90);
             mouseY = Mathf.Clamp(mouseY, -35, 60);
             parentTarget.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-            if(Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15)
+            if(Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15 && screenOn)
             {
                 notificationText.text = "Press <sprite=\"EKey02\" index=\"0\"> to inspect";
                 //I feel like 2 nested If statements is bad...
