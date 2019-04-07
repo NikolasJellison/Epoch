@@ -31,12 +31,12 @@ public class ToyBox : MonoBehaviour
             materialObject.GetComponent<MeshRenderer>().material.SetFloat("_ToyBoxGlow", 1);
         }
         //Debug cutscene
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
             cutScene();
         }
-        //*/
+        
         
         step = speed * Time.deltaTime;
         if (cutScenePlaying)
