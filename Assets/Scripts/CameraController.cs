@@ -62,8 +62,8 @@ public class CameraController : MonoBehaviour
         //{
         //    crouching = false;
         //}
-        //if (!player_controller.IsCrouched())
-        //{
+        if (!player_controller.IsCrouched())
+        {
             if (!player_controller.lock_movement)
             {
 
@@ -79,7 +79,8 @@ public class CameraController : MonoBehaviour
                     player.transform.rotation = Quaternion.Euler(0, mouseX, 0);
                 }
             }
-        //}
-        
+        }
+
+
     }
 }
