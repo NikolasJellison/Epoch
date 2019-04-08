@@ -16,6 +16,7 @@ public class PerspectiveSwap : MonoBehaviour
     public GameObject puzzleLocker;
     public Text RoomUI;
     public Text ViewUI;
+    public bool cutSceneActive;
 
 
     // Start is called before the first frame update
@@ -74,10 +75,15 @@ public class PerspectiveSwap : MonoBehaviour
         else if (playerActive)
         {
             player.GetComponent<PlayerController>().lock_movement = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            
             // player is active
-            playerCam.SetActive(true);
+            //Check if the cutscene is going on
+            if (!cutSceneActive)
+            {
+                playerCam.SetActive(true);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
             disableVantagePoints();
             // deactivate View UI
             ViewUI.text = "";

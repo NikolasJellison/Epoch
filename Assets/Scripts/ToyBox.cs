@@ -31,6 +31,7 @@ public class ToyBox : MonoBehaviour
     public BlockCutscene[] MGBlocksScript;
     public ParticleSystem MGFinish;
     public GameObject playerUI;
+    public PerspectiveSwap perspectiveSwap;
 
     private void Start()
     {
@@ -132,6 +133,10 @@ public class ToyBox : MonoBehaviour
             //Start of cutscene
             MiniGame();
             cutScenePlaying = true;
+            if(perspectiveSwap != null)
+            {
+                perspectiveSwap.cutSceneActive = true;
+            }
             playerCamera.SetActive(false);
             cutSceneCamera.SetActive(true);
             //This is a last minute fix, sometimes you could touch the box during the cutscene and it would change back
@@ -164,6 +169,11 @@ public class ToyBox : MonoBehaviour
         //Particles
         MGFinish.Play();
         yield return new WaitForSeconds(3);
+        //Perspective swap stuff
+        if (perspectiveSwap != null)
+        {
+            perspectiveSwap.cutSceneActive = false;
+        }
         cutScenePlaying = false;
         playerCamera.SetActive(true);
         cutSceneCamera.SetActive(false);
