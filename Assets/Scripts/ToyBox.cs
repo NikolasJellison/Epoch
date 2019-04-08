@@ -21,7 +21,21 @@ public class ToyBox : MonoBehaviour
     private bool stopCallingMyCoroutine;
     public GameObject materialObject;
     public GameObject player;
+    //All extra stuff for cutscene
+    [Header("Extra Cutscene Stuff")]
+    public GameObject BlockMiniGameCanvas;
+    private bool raiseBlocks;
+    private int correctLetters;
+    //MinigameBlocks
+    [Header("Minigame Blocks (all 3)")]
+    public BlockCutscene[] MGBlocksScript;
+    public ParticleSystem MGFinish;
+    public GameObject playerUI;
 
+    private void Start()
+    {
+        BlockMiniGameCanvas.SetActive(false);
+    }
 
     private void Update()
     {
@@ -42,9 +56,27 @@ public class ToyBox : MonoBehaviour
         if (cutScenePlaying)
         {
             cutSceneCamera.transform.LookAt(sentenceBlocks[7].transform.position);
-            for(int i = 0; i < sentenceBlocks.Length; i++)
+            for (int i = 0; i < sentenceBlocks.Length; i++)
             {
                 sentenceBlocks[i].transform.position = Vector3.MoveTowards(sentenceBlocks[i].transform.position, sentenceBlockLocations[i].position, step);
+            }
+
+            int counter = 0;
+            foreach(BlockCutscene b in MGBlocksScript)
+            {
+                if (b.inGoal)
+                {
+                    counter++;
+                }
+            }
+            if (counter == 3)
+            {
+                foreach (BlockCutscene b in MGBlocksScript)
+                {
+                    b.enabled = false;
+                }
+                //End cutscene
+                StartCoroutine(EndCutMiniGame());
             }
         }
         if (sentenceBlocks[14].transform.position == sentenceBlockLocations[14].position && !stopCallingMyCoroutine)
@@ -52,6 +84,7 @@ public class ToyBox : MonoBehaviour
             stopCallingMyCoroutine = true;
             StartCoroutine(waitForRead());
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -92,18 +125,20 @@ public class ToyBox : MonoBehaviour
     {
         if (cutScenePlaying)
         {
-            cutScenePlaying = false;
-            playerCamera.SetActive(true);
-            cutSceneCamera.SetActive(false);
+            StartCoroutine(EndCutMiniGame());
         }
         else
         {
+            //Start of cutscene
+            MiniGame();
             cutScenePlaying = true;
             playerCamera.SetActive(false);
             cutSceneCamera.SetActive(true);
             //This is a last minute fix, sometimes you could touch the box during the cutscene and it would change back
             //to the cut scene camera, and we dont want that
             GetComponent<BoxCollider>().enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -112,7 +147,28 @@ public class ToyBox : MonoBehaviour
         yield return new WaitForSeconds(3);
         DOOR.GetComponent<Animator>().SetTrigger("OpenIn");
         DOOR.GetComponent<AudioSource>().Play();
-        cutScene();
+        //cutScene();
         yield return null;
     }
+
+    private void MiniGame()
+    {
+        BlockMiniGameCanvas.SetActive(true);
+        playerUI.SetActive(false);
+    }
+
+    private IEnumerator EndCutMiniGame()
+    {
+        //Get rid of Minigame Canvas
+        BlockMiniGameCanvas.SetActive(false);
+        //Particles
+        MGFinish.Play();
+        yield return new WaitForSeconds(3);
+        cutScenePlaying = false;
+        playerCamera.SetActive(true);
+        cutSceneCamera.SetActive(false);
+        yield return null;
+    }
+
+    
 }
