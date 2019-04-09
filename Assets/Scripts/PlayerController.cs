@@ -141,11 +141,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !crouched)
-        {
-            anim.SetTrigger("Jump");
-            rb.AddForce(Vector3.up * Jump_Force, ForceMode.Impulse);
-        }
+        //COMMENTING OUT JUMP -nik (sorry)
+        //if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !crouched)
+        //{
+        //    anim.SetTrigger("Jump");
+        //    rb.AddForce(Vector3.up * Jump_Force, ForceMode.Impulse);
+        //}
 
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
