@@ -46,7 +46,7 @@ public class PerspectiveSwap : MonoBehaviour
         // set Room UI
         RoomUI.text = bestRoom.GetComponent<RoomScript>().roomName;
 
-        if (toybox != null && toybox.GetComponent<ToyBox>().cutScenePlaying)
+        if ((toybox != null && toybox.GetComponent<ToyBox>().cutScenePlaying) || cutSceneActive)
         {
             // player is active
             RoomUI.text = "";
@@ -75,15 +75,12 @@ public class PerspectiveSwap : MonoBehaviour
         else if (playerActive)
         {
             player.GetComponent<PlayerController>().lock_movement = false;
-            
+            playerCam.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             // player is active
             //Check if the cutscene is going on
-            if (!cutSceneActive)
-            {
-                playerCam.SetActive(true);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+
             disableVantagePoints();
             // deactivate View UI
             ViewUI.text = "";
