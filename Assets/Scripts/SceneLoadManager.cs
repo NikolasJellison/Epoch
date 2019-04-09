@@ -15,6 +15,8 @@ public class SceneLoadManager : MonoBehaviour
      * [3] Apartment
      * [4] End Screen
      * [5] Cutscene 1
+     * 
+     * at some point after this, "Cutscene Last" needs to be in here
      */
 
     private void OnTriggerEnter(Collider other)

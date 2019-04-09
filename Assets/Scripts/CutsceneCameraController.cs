@@ -5,6 +5,8 @@ using TMPro;
 
 public class CutsceneCameraController : MonoBehaviour
 {
+    public enum CutsceneType {One, Last }
+    public CutsceneType cutsceneType;
     public float rotationSpeed = 3;
     private Transform parentTarget;
     private float mouseX;
@@ -18,7 +20,9 @@ public class CutsceneCameraController : MonoBehaviour
     [HideInInspector]public bool canMove;
     public bool isFalling;
     public TextMeshProUGUI notificationText;
-    private CutScene1 cutscene;
+    private CutScene1 cutsceneOne;
+    private CutSceneLast cutSceneLast;
+   // public CutsceneType orientation;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +30,15 @@ public class CutsceneCameraController : MonoBehaviour
         parentTarget = transform.parent;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        cutscene = GameObject.Find("CutScene Manager").GetComponent<CutScene1>();
+        if(cutsceneType == CutsceneType.One)
+        {
+            cutsceneOne = GameObject.Find("CutScene Manager").GetComponent<CutScene1>();
+        }
+        else if((cutsceneType == CutsceneType.Last))
+        {
+            cutSceneLast = GameObject.Find("CutScene Manager").GetComponent<CutSceneLast>();
+        }
+        
     }
 
     // Update is called once per frame
@@ -50,7 +62,15 @@ public class CutsceneCameraController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     //canMove gets disabled in Cutscene1.cs after the dissolve takes place
-                    cutscene.EnterDesktop();
+                    
+                    if (cutsceneType == CutsceneType.One)
+                    {
+                        cutsceneOne.EnterDesktop();
+                    }
+                    else if ((cutsceneType == CutsceneType.Last))
+                    {
+                        cutSceneLast.EnterDesktop();
+                    }
                     //This is a mess because i didn't want to put another public variable for some reason
                     notificationText.gameObject.transform.parent.gameObject.SetActive(false);
                 }
