@@ -17,14 +17,22 @@
 			<Path>Interactions.bnk</Path>
 			<IncludedEvents>
 				<Event Id="4057895974" Name="Acquisition" ObjectPath="\Events\Default Work Unit\Acquisition"/>
+				<Event Id="227958399" Name="DoorCreak" ObjectPath="\Events\Default Work Unit\DoorCreak"/>
+				<Event Id="3084114566" Name="DrainTub" ObjectPath="\Events\Default Work Unit\DrainTub"/>
+				<Event Id="1183803264" Name="Fan" ObjectPath="\Events\Default Work Unit\Fan"/>
 				<Event Id="3987853926" Name="JournalClose" ObjectPath="\Events\Default Work Unit\JournalClose"/>
 				<Event Id="1738215602" Name="JournalOpen" ObjectPath="\Events\Default Work Unit\JournalOpen"/>
 				<Event Id="3708841159" Name="PlayHeavyMove" ObjectPath="\Events\Default Work Unit\PlayHeavyMove"/>
 				<Event Id="278292344" Name="RevealStinger" ObjectPath="\Events\Default Work Unit\RevealStinger"/>
+				<Event Id="805220752" Name="Sink" ObjectPath="\Events\Default Work Unit\Sink"/>
 				<Event Id="1054490029" Name="StopHeavyMove" ObjectPath="\Events\Default Work Unit\StopHeavyMove"/>
 				<Event Id="4282012141" Name="Unlock" ObjectPath="\Events\Default Work Unit\Unlock"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="275134135" Language="SFX">
+					<ShortName>DoorCreak.wav</ShortName>
+					<Path>SFX/DoorCreak_56D34C19.wem</Path>
+				</File>
 				<File Id="313436035" Language="SFX">
 					<ShortName>Unlock.wav</ShortName>
 					<Path>SFX/Unlock_56D34C19.wem</Path>
@@ -33,9 +41,21 @@
 					<ShortName>Page_Turn_Crisp_02.wav</ShortName>
 					<Path>SFX/Page_Turn_Crisp_02_56D34C19.wem</Path>
 				</File>
+				<File Id="726352501" Language="SFX">
+					<ShortName>FanShort.wav</ShortName>
+					<Path>SFX/FanShort_56D34C19.wem</Path>
+				</File>
 				<File Id="793434276" Language="SFX">
 					<ShortName>Acquisitionv2.wav</ShortName>
 					<Path>SFX/Acquisitionv2_56D34C19.wem</Path>
+				</File>
+				<File Id="804513836" Language="SFX">
+					<ShortName>SinkOn&amp;RunShort.wav</ShortName>
+					<Path>SFX/SinkOn&amp;RunShort_56D34C19.wem</Path>
+				</File>
+				<File Id="942913867" Language="SFX">
+					<ShortName>DrainTub.wav</ShortName>
+					<Path>SFX/DrainTub_56D34C19.wem</Path>
 				</File>
 				<File Id="952449162" Language="SFX">
 					<ShortName>Page_Turn_Crisp_01.wav</ShortName>
@@ -138,15 +158,6 @@
 			<ObjectPath>\SoundBanks\Default Work Unit\Test_Soundbank</ObjectPath>
 			<ShortName>Test_Soundbank</ShortName>
 			<Path>Test_Soundbank.bnk</Path>
-			<IncludedEvents>
-				<Event Id="3127272639" Name="SmashTest" ObjectPath="\Events\Default Work Unit\SmashTest"/>
-			</IncludedEvents>
-			<IncludedMemoryFiles>
-				<File Id="171674237" Language="SFX">
-					<ShortName>DemonBreath.wav</ShortName>
-					<Path>SFX/DemonBreath_56D34C19.wem</Path>
-				</File>
-			</IncludedMemoryFiles>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>
