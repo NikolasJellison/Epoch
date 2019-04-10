@@ -10,29 +10,40 @@ public class PlayerRoomOneDetection : MonoBehaviour
     public Image blockUI;
     [Header("0 blocks first, then go up to 5/5")]
     public Sprite[] blockImages;
-
+    public Text collectUI;
     //Animation stuff i guess
     private Animator anim;
     private Rigidbody rb;
 
     private void Start()
     {
+        collectUI.text = "";
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         blockUI.sprite = blockImages[0];
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Block"))
         {
-            Destroy(other.gameObject);
-            AkSoundEngine.PostEvent("Acquisition", gameObject);
-            blocksFound++;
-            //This wont stay on screen and won't disapear until you go to the box but sure
-            notifcationText.text = "You have found Block Number: " + blocksFound;
-            blockUI.sprite = blockImages[blocksFound];
+            collectUI.text = "Left click to collect";
+            if (Input.GetMouseButtonDown(0))
+            {
+                Destroy(other.gameObject);
+                AkSoundEngine.PostEvent("Acquisition", gameObject);
+                blocksFound++;
+                //This wont stay on screen and won't disapear until you go to the box but sure
+                notifcationText.text = "You have found Block Number: " + blocksFound;
+                blockUI.sprite = blockImages[blocksFound];
+                collectUI.text = "";
+            }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        collectUI.text = "";
     }
 
 }

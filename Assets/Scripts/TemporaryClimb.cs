@@ -24,7 +24,7 @@ public class TemporaryClimb : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.tag != "Not-ClimbAble" )
+        if(!collision.gameObject.tag.Contains("Not-ClimbAble"))
         {
             //If You want to put any indicator that you can climb put it in here (then remove the text in OnCollisionExit
             tempPosition = transform.position;

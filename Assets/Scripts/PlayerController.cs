@@ -82,7 +82,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Move_Able") && !manipulating)
+        //Changed COmpare tag to tag Contains for temp Climb script
+        if (other.tag.Contains("Move_Able") && !manipulating)
         {
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Manipulating", true);
             }
         }
-        else if (other.CompareTag("Move_Able") && manipulating)
+        else if (other.tag.Contains("Move_Able") && manipulating)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {

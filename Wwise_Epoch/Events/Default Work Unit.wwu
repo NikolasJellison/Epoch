@@ -3,20 +3,6 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{5EC2A176-B229-412F-8F71-94834BA17FFE}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="SmashTest" ID="{C294986B-580F-4C81-883F-27CC0F86CAAD}">
-					<ChildrenList>
-						<Action Name="" ID="{56AF0AAB-8CD9-4376-B5D9-F303A2E2DB17}" ShortID="804680020">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="DemonBreath" ID="{43D639F7-0076-4F33-80EC-8F6D59FF24A3}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="MenuClick" ID="{BD03A4D5-D65E-4175-84AA-6210877D9F9C}">
 					<ChildrenList>
 						<Action Name="" ID="{CAE8D9DC-73D5-43A1-B9C8-8619089DDDA7}" ShortID="55463755">
@@ -275,6 +261,62 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Unlock" ID="{54571FFA-822E-41D3-B83A-678C6AEACBA8}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DrainTub" ID="{CCC89B08-80E5-492B-BEC0-FC8A4CB8E425}">
+					<ChildrenList>
+						<Action Name="" ID="{744E80B1-D9D9-4457-A557-24FFD05B845C}" ShortID="112288259">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DrainTub" ID="{A89E101F-8D45-46A5-A233-7631CE34631A}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Fan" ID="{0D20D464-8AF4-4934-9D65-0A7DDF8D8EF0}">
+					<ChildrenList>
+						<Action Name="" ID="{4E17318E-01A2-4270-9757-651CED1B7F2A}" ShortID="801617390">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FanShort" ID="{9FF96518-4C5B-431D-A875-AC21318472E9}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Sink" ID="{FD100BEE-4338-495F-AE8B-6F3BE8F1A877}">
+					<ChildrenList>
+						<Action Name="" ID="{CEECF150-135D-46E0-BDC0-AE90993E1B20}" ShortID="1011894232">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SinkOn&amp;RunShort" ID="{9E084C2E-CA72-4BCE-98D3-DCBEEEB05665}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DoorCreak" ID="{B3174C63-25A5-48DA-AFE0-476325885CEF}">
+					<ChildrenList>
+						<Action Name="" ID="{33805F45-622D-47F5-BDAA-829D424F8D49}" ShortID="420942404">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DoorCreak" ID="{FDD6725D-8B2F-482B-8D12-264EEB7195FC}" WorkUnitID="{20C63067-89F0-4CD6-BC93-545A88F37F40}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

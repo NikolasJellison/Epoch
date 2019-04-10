@@ -3,25 +3,6 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{20C63067-89F0-4CD6-BC93-545A88F37F40}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="DemonBreath" ID="{43D639F7-0076-4F33-80EC-8F6D59FF24A3}" ShortID="928396472">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C065EE1A-FDDD-4A50-9911-2B61A68BD8B4}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{309EC2C3-C549-49A1-83B4-C7F0F7B92B12}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="DemonBreath" ID="{56DE7E10-7D0E-4214-8387-CE85A812B45B}" ShortID="171674237">
-							<Language>SFX</Language>
-							<AudioFile>DemonBreath.wav</AudioFile>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="DemonBreath" ID="{56DE7E10-7D0E-4214-8387-CE85A812B45B}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
 				<Sound Name="Page_Turn_Crisp_02" ID="{E44E20BA-D71A-4CA1-83FC-8ABB84B98F06}" ShortID="580837881">
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -515,6 +496,82 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="Acquisitionv2" ID="{B0CCDD7F-9274-4E0F-933D-728B5D59AC39}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="DrainTub" ID="{A89E101F-8D45-46A5-A233-7631CE34631A}" ShortID="90018893">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C065EE1A-FDDD-4A50-9911-2B61A68BD8B4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{309EC2C3-C549-49A1-83B4-C7F0F7B92B12}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DrainTub" ID="{4C882633-6257-4AFE-8F91-76EDED27F4A6}" ShortID="942913867">
+							<Language>SFX</Language>
+							<AudioFile>DrainTub.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="DrainTub" ID="{4C882633-6257-4AFE-8F91-76EDED27F4A6}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SinkOn&amp;RunShort" ID="{9E084C2E-CA72-4BCE-98D3-DCBEEEB05665}" ShortID="790494384">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C065EE1A-FDDD-4A50-9911-2B61A68BD8B4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{309EC2C3-C549-49A1-83B4-C7F0F7B92B12}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SinkOn&amp;RunShort" ID="{71743C7E-FC1B-48ED-89F1-96039760F7D3}" ShortID="804513836">
+							<Language>SFX</Language>
+							<AudioFile>SinkOn&amp;RunShort.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SinkOn&amp;RunShort" ID="{71743C7E-FC1B-48ED-89F1-96039760F7D3}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="DoorCreak" ID="{FDD6725D-8B2F-482B-8D12-264EEB7195FC}" ShortID="705075857">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C065EE1A-FDDD-4A50-9911-2B61A68BD8B4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{309EC2C3-C549-49A1-83B4-C7F0F7B92B12}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DoorCreak" ID="{2720A884-DFC5-4456-863E-77114619DDF4}" ShortID="275134135">
+							<Language>SFX</Language>
+							<AudioFile>DoorCreak.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="DoorCreak" ID="{2720A884-DFC5-4456-863E-77114619DDF4}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="FanShort" ID="{9FF96518-4C5B-431D-A875-AC21318472E9}" ShortID="1026039061">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C065EE1A-FDDD-4A50-9911-2B61A68BD8B4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{309EC2C3-C549-49A1-83B4-C7F0F7B92B12}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="FanShort" ID="{1E8D52C6-456D-401C-BF5D-E3B884E5805E}" ShortID="726352501">
+							<Language>SFX</Language>
+							<AudioFile>FanShort.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="FanShort" ID="{1E8D52C6-456D-401C-BF5D-E3B884E5805E}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

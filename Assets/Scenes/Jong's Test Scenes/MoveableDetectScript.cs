@@ -16,12 +16,13 @@ public class MoveableDetectScript : MonoBehaviour
     {
         
     }
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (GetComponent<VisionObjectScript>() != null && GetComponent<VisionObjectScript>().enabled)
+            if (GetComponent<VisionObjectScript>() != null && GetComponent<VisionObjectScript>().enabled ||
+                other.gameObject.GetComponent<PlayerController>() != null && other.gameObject.GetComponent<PlayerController>().manipulating)
             {
                 inContact = false;
             }
@@ -31,6 +32,7 @@ public class MoveableDetectScript : MonoBehaviour
             }
         }
     }
+    //*/
     
     private void OnTriggerStay(Collider other)
     {
