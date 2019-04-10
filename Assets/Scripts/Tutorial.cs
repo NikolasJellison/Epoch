@@ -25,7 +25,7 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tutorialText.text = "Hello, please press <sprite=\"W\" index=\"0\"> <sprite=\"A\" index=\"0\"> <sprite=\"S\" index=\"0\"> <sprite=\"D\" index=\"0\"> to move!";
+        tutorialText.text = "Hello, please press <sprite=\"W 1\" index=\"0\"> <sprite=\"A 1\" index=\"0\"> <sprite=\"S 1\" index=\"0\"> <sprite=\"D 1\" index=\"0\"> to move!";
     }
 
     // Update is called once per frame
@@ -55,7 +55,7 @@ public class Tutorial : MonoBehaviour
         else if (!changedView)
         {
             vantageManager.GetComponent<PerspectiveSwap>().newViewEnabled = true;
-            tutorialText.text = "Press  <sprite=\"A\" index=\"0\"> and <sprite=\"D\" index=\"0\"> to swap between views of the room";
+            tutorialText.text = "Press  <sprite=\"A 1\" index=\"0\"> and <sprite=\"D 1\" index=\"0\"> to swap between views of the room";
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
                 changedView = true;
@@ -109,7 +109,7 @@ public class Tutorial : MonoBehaviour
         //Getting rid of the jorunal until we add it into the player controller
         else if (!openedJournal)
         {
-            tutorialText.text = "Press <sprite=\"Tab\" index=\"0\"> to open journal";
+            tutorialText.text = "Press <sprite=\"Tab 1\" index=\"0\"> to open journal";
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 openedJournal = true;
