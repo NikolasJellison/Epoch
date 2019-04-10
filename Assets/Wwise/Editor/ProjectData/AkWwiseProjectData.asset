@@ -16,12 +16,12 @@ MonoBehaviour:
   - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: a26b3f77f17ab34ea4cfa206e5889797
-    m_lastTime: -8586507188128020471
+    m_lastTime: -8586469041229582728
     List: []
   - PhysicalPath: Virtual Acoustics\Factory Reflect Acoustic Textures.wwu
     ParentPhysicalPath: 
     guid: 6b663d46a83ca54f8b4a5fef12b883f6
-    m_lastTime: -8586507188128000537
+    m_lastTime: -8586469041229274351
     List:
     - name: Acoustic_Banner
       guid: f2532d2fccda8e408b8898b1b52a26d6
@@ -181,13 +181,13 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: c3c29e3049c5a14983b4c7f0f7b92b12
-    m_lastTime: -8586507188131411412
+    m_lastTime: -8586469041420997842
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 6d1f08e500ed1645b4557d1aa8a80940
-    m_lastTime: -8586491078722794892
+    m_lastTime: -8586467369141792236
     List:
     - name: GameState
       guid: 1c060cf0cef1304f8a300305ebfd46db
@@ -238,8 +238,56 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 76a1c25e29b22f418f7194834ba17ffe
-    m_lastTime: -8586491078789055453
+    m_lastTime: -8586467369167444115
     List:
+    - name: Acquisition
+      guid: 2ad8dc79df8f264aa18e46acd36ef311
+      id: 4057895974
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Acquisition
+        ObjectType: 3
+      Path: Default Work Unit\Acquisition
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: DoorCreak
+      guid: 634c17b3a525da48afe0476325885cef
+      id: 227958399
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: DoorCreak
+        ObjectType: 3
+      Path: Default Work Unit\DoorCreak
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: DrainTub
+      guid: 089bc8cce5802b49bec0fc8a4cb8e425
+      id: 3084114566
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: DrainTub
+        ObjectType: 3
+      Path: Default Work Unit\DrainTub
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Fan
+      guid: 64d4200df48a34499d650a7ddf8d8ef0
+      id: 1183803264
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Fan
+        ObjectType: 3
+      Path: Default Work Unit\Fan
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Footsteps
       guid: 5dbc64dadcd29846a54ed8b311aab55d
       id: 2385628198
@@ -300,6 +348,42 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: MenuClickStart
+      guid: 66efd2853597d9478b2561660f5fa297
+      id: 3997688540
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: MenuClickStart
+        ObjectType: 3
+      Path: Default Work Unit\MenuClickStart
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MenuMusic
+      guid: 9675400d72fd4a499f56b2ba53c68a0e
+      id: 679636833
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: MenuMusic
+        ObjectType: 3
+      Path: Default Work Unit\MenuMusic
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: PlayAdultMusic
+      guid: 785d52db1825734dbfb58d48318ed6b5
+      id: 631444078
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: PlayAdultMusic
+        ObjectType: 3
+      Path: Default Work Unit\PlayAdultMusic
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: PlayChildhoodMusic
       guid: ab8c874baca6e740a3d8fafb3d0672b7
       id: 513838202
@@ -309,6 +393,18 @@ MonoBehaviour:
       - ElementName: PlayChildhoodMusic
         ObjectType: 3
       Path: Default Work Unit\PlayChildhoodMusic
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: PlayHeavyMove
+      guid: 4944a090f648d6409741568c6bc0da6f
+      id: 3708841159
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: PlayHeavyMove
+        ObjectType: 3
+      Path: Default Work Unit\PlayHeavyMove
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -336,15 +432,27 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - name: SmashTest
-      guid: 6b9894c20f58814c883f27cc0f86caad
-      id: 3127272639
+    - name: Sink
+      guid: ee0b10fd38435f49ae8b6f3be8f1a877
+      id: 805220752
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: SmashTest
+      - ElementName: Sink
         ObjectType: 3
-      Path: Default Work Unit\SmashTest
+      Path: Default Work Unit\Sink
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: StopAdultMusic
+      guid: 7165f352c9f2cf4f9563d3a7fbd2810f
+      id: 28038900
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: StopAdultMusic
+        ObjectType: 3
+      Path: Default Work Unit\StopAdultMusic
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -360,6 +468,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: StopHeavyMove
+      guid: c4880030e6d26d4d9995c34abbae5610
+      id: 1054490029
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: StopHeavyMove
+        ObjectType: 3
+      Path: Default Work Unit\StopHeavyMove
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: StopTeenageMusic
       guid: 898231cacfbb2a48bdb884a3b20d2096
       id: 411508615
@@ -372,16 +492,28 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: Unlock
+      guid: bb51aeb7a6004f48b8b022811d38b02f
+      id: 4282012141
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Unlock
+        ObjectType: 3
+      Path: Default Work Unit\Unlock
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: a37dbea0f670c54cb2f49d27465e353a
-    m_lastTime: -8586507188132179354
+    m_lastTime: -8586469041605907913
     List: []
   - PhysicalPath: Game Parameters\Factory Motion.wwu
     ParentPhysicalPath: 
     guid: 225213d7dbd1d042adc0930743567776
-    m_lastTime: -8586507188132159402
+    m_lastTime: -8586469041605767857
     List:
     - name: Playback_Rate
       guid: e37e38283ac11643b9c3db5c521624af
@@ -404,7 +536,7 @@ MonoBehaviour:
   - PhysicalPath: Game Parameters\Factory SoundSeed Air Game Syncs.wwu
     ParentPhysicalPath: 
     guid: 5577163b42fb8b4598bf96f557afb3b9
-    m_lastTime: -8586507188131880159
+    m_lastTime: -8586469041604518899
     List:
     - name: SS_Air_Fear
       guid: 59062ef746431c4ea1b1dab46a05101e
@@ -500,13 +632,13 @@ MonoBehaviour:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 2a5b9053404afe44a4ed3f19fc827d76
-    m_lastTime: -8586507188128080305
+    m_lastTime: -8586469041230897130
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: a85f932a5066c1479a4306339544f6f8
-    m_lastTime: -8586497591456361492
+    m_lastTime: -8586469041230606420
     List:
     - name: Footsteps
       guid: cabe416d7e3f464d98afceb0c6f7fec6
@@ -540,13 +672,14 @@ MonoBehaviour:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 0b51a73f50a7f643a3097f21a1963bb3
-    m_lastTime: -8586507188128040160
+    m_lastTime: -8586469041230123985
     List: []
   ExpandedItems:
   - /Wwise_Epoch
   - /Wwise_Epoch/Events
   - /Wwise_Epoch/Events/Default Work Unit
   - /Wwise_Epoch/SoundBanks
-  - /Wwise_Epoch/SoundBanks/Default Work Unit
+  - /Wwise_Epoch/Switches
+  - /Wwise_Epoch/Virtual Acoustics
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
