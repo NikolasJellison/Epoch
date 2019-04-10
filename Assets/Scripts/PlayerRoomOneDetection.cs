@@ -27,7 +27,7 @@ public class PlayerRoomOneDetection : MonoBehaviour
     {
         if (other.CompareTag("Block"))
         {
-            collectUI.text = "Right click to collect";
+            collectUI.text = "Left click to collect";
             if (Input.GetMouseButtonDown(0))
             {
                 Destroy(other.gameObject);

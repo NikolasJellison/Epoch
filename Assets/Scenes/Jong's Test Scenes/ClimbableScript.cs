@@ -33,7 +33,8 @@ public class ClimbableScript : MonoBehaviour
             if ((transform.parent != null && 
                 transform.GetComponentInParent<VisionObjectScript>() != null && 
                 transform.GetComponentInParent<VisionObjectScript>().enabled) ||
-                other.gameObject.GetComponent<PlayerController>() != null && other.gameObject.GetComponent<PlayerController>().manipulating)
+                (other.gameObject.GetComponent<PlayerController>() != null && other.gameObject.GetComponent<PlayerController>().manipulating) ||
+                transform.position.y < other.gameObject.transform.position.y)
             {
                 inContact = false;
             }

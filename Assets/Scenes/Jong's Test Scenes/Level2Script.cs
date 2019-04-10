@@ -30,7 +30,7 @@ public class Level2Script : MonoBehaviour
     {
         if (other.CompareTag("Pages"))
         {
-            collectUI.text = "Right click to collect";
+            collectUI.text = "Left click to collect";
             if (Input.GetMouseButtonDown(0))
             {
                 subPage();
