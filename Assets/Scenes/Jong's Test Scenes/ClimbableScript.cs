@@ -48,6 +48,9 @@ public class ClimbableScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        inContact = false;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            inContact = false;
+        }
     }
 }

@@ -11,7 +11,9 @@ public class WaterScript : MonoBehaviour
     public float albedoLimit;
     public bool startClear;
     public GameObject waterFlow;
+    public BoxCollider key;
     public GameObject stopper;
+    bool keyActivated;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,11 @@ public class WaterScript : MonoBehaviour
             pos.y -= Time.deltaTime * tSpeed;
             transform.position = pos;
             translation += Time.deltaTime * tSpeed; 
+        }
+        if(translation > .5 && !keyActivated)
+        {
+            key.enabled = true;
+            keyActivated = true;
         }
     }
 

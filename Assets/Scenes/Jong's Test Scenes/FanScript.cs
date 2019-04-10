@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FaucetScript : MonoBehaviour
+public class FanScript : MonoBehaviour
 {
-    public WaterScript water;
-    public Text faucetText;
-
+    public NoteScriptL3 note;
+    public Text activateUI;
     // Start is called before the first frame update
     void Start()
     {
-        faucetText.text = "";   
+        activateUI.text = "";
     }
 
     // Update is called once per frame
@@ -24,31 +23,25 @@ public class FaucetScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!water.startClear)
+            if (!note.enabled && !GetComponent<VisionObjectScript>().enabled)
             {
-                // UI
-                faucetText.text = "'E' to turn on the water";
-                if (Input.GetKey(KeyCode.E))
+                activateUI.text = "'E' to activate the fan";
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    water.startClear = true;
-                    water.waterFlow.SetActive(true);
+                    note.enabled = true;
                 }
-            }
-            else
+            } else
             {
-                // UI
-                faucetText.text = "";
+                activateUI.text = "";
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // UI
         if (other.gameObject.CompareTag("Player"))
         {
-            faucetText.text = "";
-
+            activateUI.text = "";
         }
     }
 }
