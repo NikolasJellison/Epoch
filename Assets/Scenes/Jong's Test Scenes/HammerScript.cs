@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HammerScript : MonoBehaviour
 {
+    public Text collectUI;
     // Start is called before the first frame update
     void Start()
     {
-        
+        collectUI.text = "";
     }
 
     // Update is called once per frame
@@ -16,12 +18,31 @@ public class HammerScript : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (!GetComponent<VisionObjectScript>().enabled)
+        if (other.gameObject.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            if (!GetComponent<VisionObjectScript>().enabled)
+            {
+                collectUI.text = "Left click to pick up";
+                if (Input.GetMouseButtonDown(0))
+                {
+                    gameObject.SetActive(false);
+                    collectUI.text = "";
+                }
+            }
+            else
+            {
+                collectUI.text = "";
+            }
         }
-            
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            collectUI.text = "";
+        }
     }
 }
