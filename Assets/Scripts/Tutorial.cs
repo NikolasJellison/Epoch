@@ -38,40 +38,6 @@ public class Tutorial : MonoBehaviour
                 walked = true;
             }
         }
-
-        else if (!jumped)
-        {
-            tutorialText.text = "Press <sprite=\"Space01\" index=\"0\"> to jump";
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                jumped = true;
-            }
-
-        }
-        else if (!crouched)
-        {
-            tutorialText.text = "Press \"C\" to Crouch";
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                crouched = true;
-            }
-        }
-        else if (!crawled)
-        {
-            tutorialText.text = "Press <sprite=\"W\" index=\"0\"> <sprite=\"A\" index=\"0\"> <sprite=\"S\" index=\"0\"> <sprite=\"D\" index=\"0\"> while crouching to crawl";
-            if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0)
-            {
-                crawled = true;
-            }
-        }
-        else if (!standUp)
-        {
-            tutorialText.text = "Press \"C\" to Stand";
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                standUp = true;
-            }
-        }
         else if (!newView)
         {
             vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
