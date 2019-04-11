@@ -15,7 +15,7 @@ public class KillswitchScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            AkSoundEngine.StopAll();
+            //AkSoundEngine.StopAll();
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         }
     }

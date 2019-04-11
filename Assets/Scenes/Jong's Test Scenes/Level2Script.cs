@@ -34,7 +34,7 @@ public class Level2Script : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 subPage();
-                AkSoundEngine.PostEvent("Acquisition", gameObject);
+                //AkSoundEngine.PostEvent("Acquisition", gameObject);
                 pageUI.sprite = pageImages[pagesFound];
                 print(pageImages[pagesFound].name);
                 other.gameObject.SetActive(false);

@@ -7,7 +7,7 @@ public class MenuMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AkSoundEngine.PostEvent("MenuMusic", gameObject);
+        //AkSoundEngine.PostEvent("MenuMusic", gameObject);
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class MenuMusic : MonoBehaviour
     private void OnDestroy()
     {
 
-        AkSoundEngine.StopAll();
+        //AkSoundEngine.StopAll();
     }
 
 }

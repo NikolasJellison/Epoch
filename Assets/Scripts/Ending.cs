@@ -7,7 +7,7 @@ public class Ending : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AkSoundEngine.StopAll();
+        //AkSoundEngine.StopAll();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

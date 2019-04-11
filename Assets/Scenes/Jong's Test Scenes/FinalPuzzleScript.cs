@@ -29,7 +29,7 @@ public class FinalPuzzleScript : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             playerUI.SetActive(false);
-            AkSoundEngine.PostEvent("StopAdultMusic", radio);
+            //AkSoundEngine.PostEvent("StopAdultMusic", radio);
             Instantiate(Resources.Load("Canvas-Shuffle"));
         }
         

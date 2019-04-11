@@ -15,16 +15,16 @@ public class RadioScript : MonoBehaviour
         }
         if (level == 1)
         {
-            AkSoundEngine.PostEvent("PlayChildhoodMusic", speaker);
+            //AkSoundEngine.PostEvent("PlayChildhoodMusic", speaker);
 
         }
         else if (level == 2)
         {
-            AkSoundEngine.PostEvent("PlayTeenageMusic", speaker);
+            //AkSoundEngine.PostEvent("PlayTeenageMusic", speaker);
         }
         else
         {
-            AkSoundEngine.PostEvent("PlayAdultMusic", speaker);
+            //AkSoundEngine.PostEvent("PlayAdultMusic", speaker);
         }
         
     }

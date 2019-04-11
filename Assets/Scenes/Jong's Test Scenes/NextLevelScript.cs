@@ -24,10 +24,10 @@ public class NextLevelScript : MonoBehaviour
         {
             if(currentLevel == 2)
             {
-                AkSoundEngine.PostEvent("StopTeenageMusic", radio);
+                //AkSoundEngine.PostEvent("StopTeenageMusic", radio);
             } else if(currentLevel == 3)
             {
-                AkSoundEngine.PostEvent("StopAdultMusic", radio);
+                //AkSoundEngine.PostEvent("StopAdultMusic", radio);
             }
             
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex+1);

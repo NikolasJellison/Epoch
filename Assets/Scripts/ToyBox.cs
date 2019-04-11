@@ -97,8 +97,8 @@ public class ToyBox : MonoBehaviour
     {
         if (other.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
         {
-            AkSoundEngine.PostEvent("StopChildhoodMusic", floor);
-            AkSoundEngine.PostEvent("GrowthStinger", floor);
+            //AkSoundEngine.PostEvent("StopChildhoodMusic", floor);
+            //AkSoundEngine.PostEvent("GrowthStinger", floor);
             cutScene();
         }
     }

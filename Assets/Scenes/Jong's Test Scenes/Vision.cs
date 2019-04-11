@@ -66,7 +66,7 @@ public class Vision : MonoBehaviour
                             hit.transform.gameObject.GetComponent<PerspectiveScript>().enabled = false;
                             // Activate any components necessary for special effects
                             //*/
-                            AkSoundEngine.PostEvent("RevealStinger", gameObject);
+                            //AkSoundEngine.PostEvent("RevealStinger", gameObject);
                             pScript.enabled = false;
                         }
                         /*

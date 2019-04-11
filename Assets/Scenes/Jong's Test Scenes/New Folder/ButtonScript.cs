@@ -19,7 +19,7 @@ public class ButtonScript : MonoBehaviour
     public void boop()
     {
         print("boop");
-        AkSoundEngine.PostEvent("MenuClick", gameObject);
-        AkSoundEngine.PostEvent("GrowthStinger", gameObject);
+        //AkSoundEngine.PostEvent("MenuClick", gameObject);
+        //AkSoundEngine.PostEvent("GrowthStinger", gameObject);
     }
 }

@@ -36,7 +36,7 @@ public class VantagePointScript : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(0))
                     {
-                        AkSoundEngine.PostEvent("RevealStinger", gameObject);
+                        //AkSoundEngine.PostEvent("RevealStinger", gameObject);
                         vOScript.enabled = false;
                     }
                 }
