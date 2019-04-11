@@ -30,7 +30,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1105402013174028476}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.85}
   m_AnchorMax: {x: 0.7, y: 0.95}
@@ -193,6 +193,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1105402014103470523}
+  - {fileID: 3941970693893274614}
   - {fileID: 1105402013077878378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -275,25 +276,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   memories:
-  - {fileID: 21300000, guid: 34706eb2d6df2a347bf2b99be2ffeda4, type: 3}
-  - {fileID: 21300000, guid: ab7173273169a1d47825a15fc35ec70a, type: 3}
-  - {fileID: 21300000, guid: a6d8f0aeaa4e0984fb0c0f2cc8ae0294, type: 3}
-  - {fileID: 21300000, guid: 0c1eb2044688ba7439e14ddc969b9f4f, type: 3}
-  - {fileID: 21300000, guid: 076a990355c42784d8df8098a7969712, type: 3}
-  - {fileID: 21300000, guid: a4bbd5c14cf18ca41bdf7c939443688c, type: 3}
-  - {fileID: 21300000, guid: b76dc9a9e89e06946b4846f71c65d19f, type: 3}
-  - {fileID: 21300000, guid: 97e6c917d0a35894dbaa1e7b3498c7a6, type: 3}
   - {fileID: 21300000, guid: 87d12efa53d4a1345bb9a7fb4045e9f7, type: 3}
-  - {fileID: 21300000, guid: 56150c02039c9da42b55d5bc4ad75606, type: 3}
-  - {fileID: 21300000, guid: 87d12efa53d4a1345bb9a7fb4045e9f7, type: 3}
-  - {fileID: 21300000, guid: 87d12efa53d4a1345bb9a7fb4045e9f7, type: 3}
-  - {fileID: 21300000, guid: 0f58065c37d400f44a756060c573ff7d, type: 3}
   - {fileID: 21300000, guid: 87d12efa53d4a1345bb9a7fb4045e9f7, type: 3}
   - {fileID: 21300000, guid: 87d12efa53d4a1345bb9a7fb4045e9f7, type: 3}
   - {fileID: 21300000, guid: 87d12efa53d4a1345bb9a7fb4045e9f7, type: 3}
   hLimits: {x: 0.2, y: 0.8}
   vLimits: {x: 0.2, y: 0.8}
   fadeColor: {r: 1, g: 1, b: 1, a: 0}
+  empty: {fileID: 3396937994059665986}
 --- !u!1 &1105402014103470500
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,3 +421,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shuffleMiniGame: {fileID: 1105402013174028467}
+--- !u!1 &3396937994059665986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3941970693893274614}
+  m_Layer: 5
+  m_Name: Empty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3941970693893274614
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396937994059665986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1105402013174028476}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}

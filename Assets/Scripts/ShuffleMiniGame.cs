@@ -18,7 +18,7 @@ public class ShuffleMiniGame : MonoBehaviour
     private List<GameObject> memoriesGO = new List<GameObject>();
     private bool fadeOut;
     private TextMeshProUGUI text;
-
+    public GameObject empty;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +55,7 @@ public class ShuffleMiniGame : MonoBehaviour
             memoriesGO.Add(memory);
             memory.name = "memory";
             //Set it as a child of the Canvas(which this script is attached to)
-            memory.transform.parent = transform;
+            memory.transform.parent = empty.transform;
             //Make image component
             Image memoryImage = memory.AddComponent<Image>();
             //Put sprite into image
