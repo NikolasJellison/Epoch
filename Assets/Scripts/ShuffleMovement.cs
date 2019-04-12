@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler
+public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
     private Vector3 originalPosition;
     private bool locked;
     private bool moving;
+    private Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,12 @@ public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData pointerEventData)
     {
         //Shader stuff goes here i suppose
+        offset = transform.position - Input.mousePosition;
+
+        Debug.Log("MOuse pos: " + Input.mousePosition);
+        Debug.Log("Transform pos: " + transform.position);
+        Debug.Log("Offset: " + offset);
+
     }
 
     public void OnDrag(PointerEventData data)
@@ -26,7 +33,7 @@ public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler
         if (!locked)
         {
             moving = true;
-            transform.position = Input.mousePosition;
+            transform.position = Input.mousePosition + offset;
         }
     }
 
