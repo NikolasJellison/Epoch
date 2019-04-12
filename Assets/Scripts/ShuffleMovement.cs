@@ -21,11 +21,9 @@ public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     {
         //Shader stuff goes here i suppose
         offset = transform.position - Input.mousePosition;
-
-        Debug.Log("MOuse pos: " + Input.mousePosition);
-        Debug.Log("Transform pos: " + transform.position);
-        Debug.Log("Offset: " + offset);
-
+        //Debug.Log("MOuse pos: " + Input.mousePosition);
+        //Debug.Log("Transform pos: " + transform.position);
+        //Debug.Log("Offset: " + offset);
     }
 
     public void OnDrag(PointerEventData data)
