@@ -20,13 +20,17 @@ public class PlayerController : MonoBehaviour
     //private bool manipulating;
     private bool crouched;
     //Quick Journal Stuff
-    //need to make this public to for Worlsd space text (temp fix)
+    //need to make this public to for Worlds space text (temp fix)
     public bool lock_movement;
     public bool manipulating;
     public GameObject journalUI;
     public GameObject optionsPanel;
     public GameObject[] cursorImages;
     //private Transform my_Camera;
+    // Updated object pushing
+    public List<GameObject> moveableCandidates;
+    public GameObject heldObject;
+    public GameObject crawlerCandidate;
 
     private void Start()
     {
@@ -43,13 +47,59 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (crawlerCandidate != null && !crouched && !manipulating)
+        {
+            //UI
+            if (Input.GetKeyDown(KeyCode.E) && IsGrounded())
+            {
+                transform.position = crawlerCandidate.transform.position;
+                transform.rotation = crawlerCandidate.transform.rotation;
+                destination = crawlerCandidate.transform.GetChild(0).transform.position;
+                col.enabled = false;
+                box_col.enabled = true;
+                crouched = true;
+                anim.SetBool("Crouched", true);
+            }
+        }
+        // || manipulating JUST in case we leave a held object's collider   
+        else if (moveableCandidates.Count > 0 || manipulating) 
+        {
+            if (manipulating) // you're holding an object
+            {
+                //UI
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    heldObject.transform.parent = null;
+                    heldObject = null;
+                    speed = input_speed;
+                    manipulating = false;
+                    anim.SetBool("Manipulating", false);
+                }
+            }
+            else
+            {
+                //UI
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    // Choose what moveableCandidate to choose.
+                    // For now, just choose the first one 
+
+                    heldObject = moveableCandidates[0];
+                    heldObject.transform.parent = transform;
+                    speed = manip_speed;
+                    manipulating = true;
+                    anim.SetBool("Manipulating", true);
+                }
+            }
+        }
+
 
         //Quick journal implementation
-        if(Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
         {
             JournalInteract();
         }
-
+        
         if (!lock_movement)
         {
             //print("Not Locked");
@@ -62,11 +112,59 @@ public class PlayerController : MonoBehaviour
             lock_movement &= !Input.GetKeyDown(KeyCode.E);
         }
     }
+    /*
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Crawler"))
+        {
+            crawlerCandidate = other.gameObject;
+        }
 
+        if (other.CompareTag("Move_Able"))
+        {
+            GameObject moveable = other.gameObject;
+            if (!moveableCandidates.Contains(moveable))
+            {
+                moveableCandidates.Add(moveable);
+            }
+        }
+    }
+    //*/
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Crawler"))
+        {
+            crawlerCandidate = null;
+        }
+
+        if (other.CompareTag("Move_Able"))
+        {
+            GameObject moveable = other.gameObject;
+            if (moveableCandidates.Contains(moveable))
+            {
+                moveableCandidates.Remove(moveable);
+            }
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
+        // This shouldn't need t be here, but eh
+        if (other.CompareTag("Crawler") && crawlerCandidate == null)
+        {
+            crawlerCandidate = other.gameObject;
+        }
+
+        if (other.CompareTag("Move_Able"))
+        {
+            GameObject moveable = other.gameObject;
+            if (!moveableCandidates.Contains(moveable))
+            {
+                moveableCandidates.Add(moveable);
+            }
+        }
+        /*
         if(other.CompareTag("Crawler") && IsGrounded())
         {
             print("Inside crawler");
@@ -81,8 +179,8 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Crouched", true);
             }
         }
-
-        //Changed COmpare tag to tag Contains for temp Climb script
+        
+        
         if (other.tag.Contains("Move_Able") && !manipulating)
         {
 
@@ -94,6 +192,8 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("Manipulating", true);
             }
         }
+        //*/
+        /*
         else if (other.tag.Contains("Move_Able") && manipulating)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -106,6 +206,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        //*/
     }
 
 
@@ -134,6 +235,7 @@ public class PlayerController : MonoBehaviour
         {
             if(Mathf.Abs(transform.position.x - destination.x) < 1f && Mathf.Abs(transform.position.z - destination.z) < 1f)
             {
+                crawlerCandidate = null;
                 crouched = false;
                 anim.SetBool("Crouched", false);
                 col.enabled = true;

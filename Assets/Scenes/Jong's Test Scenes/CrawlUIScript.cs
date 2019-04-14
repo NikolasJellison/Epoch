@@ -23,7 +23,7 @@ public class CrawlUIScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            crawlUI.text = "'C' to crawl";
+            crawlUI.text = "'E' to crawl";
         }
         if (!vantageMgr.playerActive)
         {
@@ -35,7 +35,7 @@ public class CrawlUIScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            crawlUI.text = "'C' to crawl";
+            crawlUI.text = "'E' to crawl";
         }
         if (!vantageMgr.playerActive)
         {
