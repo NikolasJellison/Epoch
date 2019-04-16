@@ -784,7 +784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5177892735972442201
 Transform:
   m_ObjectHideFlags: 0
@@ -1008,7 +1008,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 536df579aee3d7a4db1e5445f94bd9e2, type: 2}
+  - {fileID: 2100000, guid: 1296b8575990924409263c39c17bb3b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1114,6 +1114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3943042219725923409}
+  - component: {fileID: 1599026997}
   m_Layer: 0
   m_Name: BookshelfExp01
   m_TagString: Untagged
@@ -1128,9 +1129,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3866917211435506800}
-  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.7071078}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.70710677}
   m_LocalPosition: {x: -3.7796588, y: 0, z: 21.760206}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3124511, y: 1.29262, z: 1.3124511}
   m_Children:
   - {fileID: 951638850017675430}
   - {fileID: 1773151989450603803}
@@ -1168,6 +1169,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
+--- !u!65 &1599026997
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3866917211435506800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8430489, y: 2.665871, z: 2.6618173}
+  m_Center: {x: -0.07847543, y: 1.3634806, z: 0.17106993}
 --- !u!1 &3969886044460635191
 GameObject:
   m_ObjectHideFlags: 0
