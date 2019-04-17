@@ -27,7 +27,7 @@ public class CutScene1 : MonoBehaviour
     public Transform landing;
     public Transform windowLook;
     public float fallSpeed = 3;
-
+    public AudioSource radio;
     private bool dissolveLR;
 
     private void Start()
@@ -174,6 +174,7 @@ public class CutScene1 : MonoBehaviour
         cutSceneCam.enabled = false;
         //dissolve = true;
         computerScreenCanvas.SetActive(false);
+        radio.Play();
         player.GetComponent<Animator>().SetTrigger("StartCry");
         cameraController.canMove = false;
         //Good view for cry

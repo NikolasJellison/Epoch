@@ -26,8 +26,14 @@ public class TriggerJigsaw : MonoBehaviour
         if(inPuzzle && puzzle == null)
         {
             inPuzzle = false;
+
             if (door != null)
+            {
                 door.GetComponent<Animator>().SetTrigger("DoorOpenIn");
+                door.GetComponent<AudioSource>().Play();
+                GetComponent<AudioSource>().Play();
+            }
+                
         }
     }
 

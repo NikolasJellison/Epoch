@@ -20,8 +20,12 @@ public class NotebookScript : MonoBehaviour
     private void OnDisable()
     {
         //Open Door
-        if(door!= null)
+        if (door != null)
+        {
             door.GetComponent<Animator>().SetTrigger("DoorOpenIn");
+            door.GetComponent<AudioSource>().Play();
+        }
+
         //Activate any UI
     }
 }

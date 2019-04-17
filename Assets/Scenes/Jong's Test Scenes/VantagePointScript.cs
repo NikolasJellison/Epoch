@@ -5,6 +5,7 @@ using UnityEngine;
 public class VantagePointScript : MonoBehaviour
 {
     Camera cam;
+    public AudioSource revealSpeaker;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,7 @@ public class VantagePointScript : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(0))
                     {
+                        revealSpeaker.Play();
                         //AkSoundEngine.PostEvent("RevealStinger", gameObject);
                         vOScript.enabled = false;
                     }

@@ -21,6 +21,7 @@ public class KnobScript : MonoBehaviour
         {
             knob.parent = door.transform;
             door.GetComponent<Animator>().SetTrigger("DoorOpenOut");
+            door.GetComponent<AudioSource>().Play();
         }
     }
 }

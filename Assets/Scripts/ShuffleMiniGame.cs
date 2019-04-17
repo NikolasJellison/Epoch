@@ -108,7 +108,7 @@ public class ShuffleMiniGame : MonoBehaviour
         }
 
         fadeWhite.SetActive(true);
-        text.text = "Yay. :D";
+        text.text = "Return to the real world";
         //Let the player see the last memory
         StartCoroutine(WaitABit());
     }

@@ -23,6 +23,7 @@ public class TempOpenScript : MonoBehaviour
         {
             open = true;
             gameObject.GetComponent<Animator>().SetTrigger("OpenOut");
+            gameObject.GetComponent<AudioSource>().Play();
         }
     }
 }

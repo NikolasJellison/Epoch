@@ -23,7 +23,11 @@ public class NoteScriptL3 : MonoBehaviour
     {
         //Open Door
         if (door != null)
+        {
             door.GetComponent<Animator>().SetTrigger("OpenIn");
+            door.GetComponent<AudioSource>().Play();
+        }
+            
         //Activate any UI
     }
 }

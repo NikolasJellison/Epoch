@@ -31,6 +31,7 @@ public class PlayerRoomOneDetection : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Destroy(other.gameObject);
+                GetComponent<AudioSource>().Play();
                 //AkSoundEngine.PostEvent("Acquisition", gameObject);
                 blocksFound++;
                 //This wont stay on screen and won't disapear until you go to the box but sure

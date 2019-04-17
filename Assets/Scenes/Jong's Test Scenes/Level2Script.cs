@@ -34,6 +34,7 @@ public class Level2Script : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 subPage();
+                GetComponent<AudioSource>().Play();
                 //AkSoundEngine.PostEvent("Acquisition", gameObject);
                 pageUI.sprite = pageImages[pagesFound];
                 print(pageImages[pagesFound].name);

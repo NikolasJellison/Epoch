@@ -33,6 +33,7 @@ public class ToyBox : MonoBehaviour
     public GameObject playerUI;
     public PerspectiveSwap perspectiveSwap;
     public GameObject[] cutsceneBlocks;
+    public AudioSource victorySound;
 
     private void Start()
     {
@@ -157,8 +158,7 @@ public class ToyBox : MonoBehaviour
     private IEnumerator waitForRead()
     {
         yield return new WaitForSeconds(3);
-        DOOR.GetComponent<Animator>().SetTrigger("OpenIn");
-        DOOR.GetComponent<AudioSource>().Play();
+        
         //cutScene();
         yield return null;
     }
@@ -176,9 +176,14 @@ public class ToyBox : MonoBehaviour
     private IEnumerator EndCutMiniGame()
     {
         //Get rid of Minigame Canvas
+        DOOR.GetComponent<Animator>().SetTrigger("OpenIn");
+        DOOR.GetComponent<AudioSource>().Play();
+        victorySound.Play();
         BlockMiniGameCanvas.SetActive(false);
         //Particles
+
         MGFinish.Play();
+        
         yield return new WaitForSeconds(3);
         //>
         //Perspective swap stuff
@@ -190,7 +195,9 @@ public class ToyBox : MonoBehaviour
         cutScenePlaying = false;
         playerCamera.SetActive(true);
         cutSceneCamera.SetActive(false);
-        playerUI    .SetActive(true);
+        playerUI.SetActive(true);
+        
+        
         yield return null;
     }
 
