@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     //public float sensitivity = 1f;
     //private CinemachineComposer composer;
     public float rotation_speed;
-    public float slide_speed;
+    //public float slide_speed;
     public GameObject player;
     public Transform target;
     private PlayerController player_controller;
@@ -23,15 +23,15 @@ public class CameraController : MonoBehaviour
         crouching = false;
         Cursor.lockState = CursorLockMode.Locked;
         player_controller = player.GetComponent<PlayerController>();
-        start_postion = transform.position;
-        //composer = GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>();
+        //start_postion = transform.position;
+        //composer = GetComponent<CinemachineVirtualCamera>().;
     }
 
     //private void Update()
     //{
-    //    float vertical = Input.GetAxis("Mouse Y") * sensitivity;
-    //    composer.m_TrackedObjectOffset.y += vertical;
-    //    composer.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y, 0, 4);
+    //    float vertical = Input.GetAxis("Mouse Y") * rotation_speed;
+    //    //composer.m_TrackedObjectOffset.y += vertical;
+    //    //.m_TrackedObjectOffset.y = Mathf.Clamp(composer.m_TrackedObjectOffset.y, 0, 4);
     //}
 
     // Update is called once per frame
@@ -63,21 +63,29 @@ public class CameraController : MonoBehaviour
         //}
         if (!player_controller.IsCrouched())
         {
-            if (!player_controller.lock_movement)
-            {
 
-                mouseX += Input.GetAxis("Mouse X") * rotation_speed;
-                mouseY -= Input.GetAxis("Mouse Y") * rotation_speed;
-                mouseY = Mathf.Clamp(mouseY, -35, 60);
 
-                transform.LookAt(target);
+            //mouseX += Input.GetAxis("Mouse X") * rotation_speed;
+            //print(mouseX);
+            //mouseY -= Input.GetAxis("Mouse Y") * rotation_speed;
 
-                target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-                if (!player_controller.IsManip())
-                {
-                    player.transform.rotation = Quaternion.Euler(0, mouseX, 0);
-                }
-            }
+
+
+            //mouseX += Input.GetAxis("Mouse X") * rotation_speed;
+            //print(mouseX);
+            //mouseY -= Input.GetAxis("Mouse Y") * rotation_speed
+            player.transform.forward = new Vector3(transform.forward.x, 0f, transform.forward.z);
+                //player.transform.forward.Set(transform.forward.y, transform.forward.y,transform.forward.z);
+               // mouseY = Mathf.Clamp(mouseY, -35, 60);
+
+               // transform.LookAt(target);
+
+               //target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+                //if (!player_controller.IsManip())
+                //{
+                //    player.transform.rotation = Quaternion.Euler(0, mouseX, 0);
+                //}
+            
         }
 
 
