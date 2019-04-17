@@ -40,7 +40,8 @@ public class ChangeColormodeScript : MonoBehaviour
     void Start()
     {
         //text[0].col
-        currentMode = 0;
+        //currentMode = 0;
+        currentMode = DataScript.colorblindMode;
         dirty = false;
         sceneMRs = new List<MeshRenderer>(GameObject.FindObjectsOfType<MeshRenderer>());
         sceneSMRs = new List<SkinnedMeshRenderer>(GameObject.FindObjectsOfType<SkinnedMeshRenderer>());
@@ -106,6 +107,7 @@ public class ChangeColormodeScript : MonoBehaviour
             }
             
         }
+        ChangeMode();
     }
 
     // Update is called once per frame
@@ -114,90 +116,100 @@ public class ChangeColormodeScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentMode = 0.0f;
+            DataScript.colorblindMode = currentMode;
             dirty = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentMode = 1.0f;
+            DataScript.colorblindMode = currentMode;
             dirty = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             currentMode = 2.0f;
+            DataScript.colorblindMode = currentMode;
             dirty = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             currentMode = 3.0f;
+            DataScript.colorblindMode = currentMode;
             dirty = true;
         }
 
         if (dirty)
         {
-            foreach (Material mat in sceneMats)
-            {
-                mat.SetFloat("_colorblind", currentMode);
-            }
-            int index = (int)currentMode;
-            visionMat.SetColor("_color", visionColors[index]);
-
-            foreach (Material mat in objectiveMats)
-            {
-                mat.SetColor("_Glow", objectiveColors[index]);
-            }
-            
-            foreach(Text t in text)
-            {
-                t.color = textColors[index];
-            }
-            if (tutorialText != null)
-            {
-                tutorialText.color = textColors[index];
-            }
-
-            if (particles.Length > 0)
-            {
-                foreach(GameObject pSystem in particles)
-                {
-                    pSystem.SetActive(false);
-                }
-                particles[index].SetActive(true);
-            }
-            
-            //objectiveMat.
-            if(hallwayLights.Count > 0)
-            {
-                foreach(Material light in hallwayLights)
-                {
-                    if(light != null)
-                    {
-                        light.SetColor("_EmissionColor", hallwayLightColors[index]);
-                    }
-                    
-                }
-            }
-            if (lights.Count > 0)
-            {
-                foreach(Light light in lights)
-                {
-                    if (light != null)
-                    {
-                        light.color = hallwayLightColors[index];
-                    }
-                }
-            }
-            if(objectiveLight != null)
-            {
-                objectiveLight.color = objectiveColors[index];
-            }
-            if(stopper != null)
-            {
-                stopper.SetColor("_color", visionColors[index]);
-            }
-            //foreach()
+            ChangeMode();
             dirty = false;
         }
 
 
+    }
+
+    private void ChangeMode()
+    {
+        foreach (Material mat in sceneMats)
+        {
+            mat.SetFloat("_colorblind", currentMode);
+        }
+        int index = (int)currentMode;
+        visionMat.SetColor("_color", visionColors[index]);
+
+        foreach (Material mat in objectiveMats)
+        {
+            mat.SetColor("_Glow", objectiveColors[index]);
+        }
+
+        foreach (Text t in text)
+        {
+            t.color = textColors[index];
+        }
+        if (tutorialText != null)
+        {
+            tutorialText.color = textColors[index];
+        }
+
+        if (particles.Length > 0)
+        {
+            foreach (GameObject pSystem in particles)
+            {
+                pSystem.SetActive(false);
+            }
+            particles[index].SetActive(true);
+        }
+
+        //objectiveMat.
+        if (hallwayLights.Count > 0)
+        {
+            foreach (Material light in hallwayLights)
+            {
+                if (light != null)
+                {
+                    light.SetColor("_EmissionColor", hallwayLightColors[index]);
+                }
+
+            }
+        }
+        if (lights.Count > 0)
+        {
+            foreach (Light light in lights)
+            {
+                if (light != null)
+                {
+                    light.color = hallwayLightColors[index];
+                }
+            }
+        }
+        if (objectiveLight != null)
+        {
+            objectiveLight.color = objectiveColors[index];
+        }
+        if (stopper != null)
+        {
+            stopper.SetColor("_color", visionColors[index]);
+        }
+        //foreach()
+        
     }
 }
