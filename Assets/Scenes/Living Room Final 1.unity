@@ -7211,7 +7211,7 @@ GameObject:
   - component: {fileID: 212447551}
   - component: {fileID: 212447550}
   m_Layer: 5
-  m_Name: MoveUI
+  m_Name: actUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8865,7 +8865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &352848490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34950,7 +34950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1898548599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45630,6 +45630,8 @@ MonoBehaviour:
   moveableCandidates: []
   heldObject: {fileID: 0}
   crawlerCandidate: {fileID: 0}
+  bestAngle: 0
+  actionUI: {fileID: 212447550}
 --- !u!1 &6162167629458176383
 GameObject:
   m_ObjectHideFlags: 0

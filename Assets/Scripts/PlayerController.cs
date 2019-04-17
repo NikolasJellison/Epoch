@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> moveableCandidates;
     public GameObject heldObject;
     public GameObject crawlerCandidate;
+    public float bestAngle;
+    public Text actionUI;
 
     private void Start()
     {
@@ -42,13 +45,15 @@ public class PlayerController : MonoBehaviour
         //my_Camera = transform.GetChild(13).GetChild(0);
 
         speed = input_speed;
+        actionUI.text = "";
         crouched = false;
     }
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(transform.position, transform.forward, Color.blue);
         // This is to 100% make sure we hold objects we are in contact with
-        if(moveableCandidates.Count > 0)
+        if (moveableCandidates.Count > 0)
         {
             List<GameObject> removeList = new List<GameObject>();
 
@@ -90,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (crawlerCandidate != null && !crouched && !manipulating)
         {
-            //UI
+            actionUI.text = "'E' to crawl";
             if (Input.GetKeyDown(KeyCode.E) && IsGrounded())
             {
                 transform.position = crawlerCandidate.transform.position;
@@ -109,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
             if (manipulating) // you're holding an object
             {
-                //UI
+                actionUI.text = "'E' to let go";
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     heldObject.transform.parent = null;
@@ -121,22 +126,58 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //UI
-                if (Input.GetKeyDown(KeyCode.E))
+                Vector3 forwardVec = transform.forward;
+                forwardVec.y = 0.0f;
+
+                GameObject bestObject = moveableCandidates[0];
+                Transform objBase = bestObject.transform.GetChild(bestObject.transform.childCount - 1);
+
+                Vector3 playerObjRay = objBase.position - transform.position;
+                playerObjRay.y = 0.0f;
+
+
+                bestAngle = Vector3.Angle(playerObjRay, transform.forward);
+                for (int i = 1; i < moveableCandidates.Count; ++i)
+                {
+                    objBase = moveableCandidates[i].transform.GetChild(moveableCandidates[i].transform.childCount - 1);
+                    playerObjRay = objBase.position - transform.position;
+                    playerObjRay.y = 0.0f;
+                    float angle = Vector3.Angle(playerObjRay, transform.forward);
+                    if(angle < bestAngle)
+                    {
+                        bestObject = moveableCandidates[i];
+                        bestAngle = angle;
+                    }
+                }
+                objBase = bestObject.transform.GetChild(bestObject.transform.childCount - 1);
+                playerObjRay = objBase.position - transform.position;
+
+                Debug.DrawRay(transform.position, playerObjRay, Color.green);
+                Vector3.Angle(playerObjRay, transform.forward);
+                if(bestAngle > 45.0f)
+                {
+                    bestObject = null;
+                    actionUI.text = "";
+                } else
+                {
+                    actionUI.text = "'E' to move";
+                }
+
+                if (bestObject != null && Input.GetKeyDown(KeyCode.E))
                 {
                     // Choose what moveableCandidate to choose.
                     // For now, just choose the first one 
-
-                    heldObject = moveableCandidates[0];
-
-
-
+                    heldObject = bestObject;
+                    // heldObject = moveableCandidates[0];
                     heldObject.transform.parent = transform;
                     speed = manip_speed;
                     manipulating = true;
                     anim.SetBool("Manipulating", true);
                 }
             }
+        } else
+        {
+            actionUI.text = "";
         }
 
 

@@ -4721,7 +4721,7 @@ GameObject:
   - component: {fileID: 466745113}
   - component: {fileID: 466745112}
   m_Layer: 5
-  m_Name: MoveUI
+  m_Name: actUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5423,7 +5423,7 @@ Transform:
   m_LocalScale: {x: 29.382812, y: 12.58241, z: 14.599948}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &580101086
 PrefabInstance:
@@ -7104,7 +7104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &757662701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7573,7 +7573,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 19.592001, y: 180.00002, z: 0}
 --- !u!1 &890390280 stripped
 GameObject:
@@ -15325,7 +15325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5d37c014ff802b04aa6a212567280bc2, type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5d37c014ff802b04aa6a212567280bc2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18336,6 +18336,8 @@ MonoBehaviour:
   moveableCandidates: []
   heldObject: {fileID: 0}
   crawlerCandidate: {fileID: 0}
+  bestAngle: 0
+  actionUI: {fileID: 466745112}
 --- !u!1 &1218052880973146733
 GameObject:
   m_ObjectHideFlags: 0
