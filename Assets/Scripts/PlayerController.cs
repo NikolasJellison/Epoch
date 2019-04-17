@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // This is to 100% make sure we hold objects we are in contact with
         if(moveableCandidates.Count > 0)
         {
             List<GameObject> removeList = new List<GameObject>();
@@ -128,6 +128,9 @@ public class PlayerController : MonoBehaviour
                     // For now, just choose the first one 
 
                     heldObject = moveableCandidates[0];
+
+
+
                     heldObject.transform.parent = transform;
                     speed = manip_speed;
                     manipulating = true;

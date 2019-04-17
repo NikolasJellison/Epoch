@@ -50,7 +50,7 @@ public class Tutorial : MonoBehaviour
         else if (chair.GetComponent<VisionObjectScript>().enabled)
         {
             vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = false;
-            tutorialText.text = "Click on the bright green object to activate it for little Emsy";
+            tutorialText.text = "Click on the pulsating object to activate it for little Emsy";
         }
         else if (!changedView)
         {
@@ -109,7 +109,7 @@ public class Tutorial : MonoBehaviour
         //Getting rid of the jorunal until we add it into the player controller
         else if (!openedJournal)
         {
-            tutorialText.text = "Press <sprite=\"Tab 1\" index=\"0\"> to open journal";
+            tutorialText.text = "Press <sprite=\"Tab 1\" index=\"0\"> to open the menu";
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 openedJournal = true;
