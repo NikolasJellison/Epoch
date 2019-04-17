@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -27320,15 +27320,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 985870050, guid: de2716469d5c244fba088f7b7cdc6828, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12982614
+      value: 0.12982617
       objectReference: {fileID: 0}
     - target: {fileID: 985870050, guid: de2716469d5c244fba088f7b7cdc6828, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.040157553
+      value: -0.040157463
       objectReference: {fileID: 0}
     - target: {fileID: 985870050, guid: de2716469d5c244fba088f7b7cdc6828, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.005262233
+      value: 0.0052622105
       objectReference: {fileID: 0}
     - target: {fileID: 985870050, guid: de2716469d5c244fba088f7b7cdc6828, type: 3}
       propertyPath: m_LocalPosition.x
@@ -40301,7 +40301,11 @@ MonoBehaviour:
   sceneMRs: []
   sceneSMRs: []
   sceneMats: []
-  particles: []
+  particles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   particleColors: []
   objectiveColors:
   - {r: 0.98875433, g: 1, b: 0.089005224, a: 0}
@@ -40313,7 +40317,7 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 0.00040936467, a: 0.35686275}
   - {r: 0, g: 0.301291, b: 1, a: 0.35686275}
   - {r: 0.09534168, g: 0, b: 1, a: 0.35686275}
-  - {r: 0, g: 0.39888763, b: 1, a: 0.35686275}
+  - {r: 1, g: 1, b: 1, a: 0.35686275}
   hallwayLights: {fileID: 0}
   hallwayLightColors:
   - {r: 0, g: 0, b: 0, a: 0}
