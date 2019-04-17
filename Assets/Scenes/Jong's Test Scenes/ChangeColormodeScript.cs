@@ -8,6 +8,8 @@ public class ChangeColormodeScript : MonoBehaviour
     public List<MeshRenderer> sceneMRs;
     public List<SkinnedMeshRenderer> sceneSMRs;
     public List<Material> sceneMats;
+    public GameObject[] particles;
+    public Color[] particleColors;
     private List<Material> objectiveMats = new List<Material>();
     // Color: 0 = Reguar, 1 = Deuteranopia, 2 = Protanopia, 3 = Tritanopia
     public Color[] objectiveColors = new Color[4];
@@ -139,6 +141,15 @@ public class ChangeColormodeScript : MonoBehaviour
             {
                 t.color = textColors[index];
             }
+            if(particles.Length > 0)
+            {
+                foreach(GameObject pSystem in particles)
+                {
+                    pSystem.SetActive(false);
+                }
+                particles[index].SetActive(true);
+            }
+            
             //objectiveMat.
             dirty = false;
         }

@@ -47,6 +47,47 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if(moveableCandidates.Count > 0)
+        {
+            List<GameObject> removeList = new List<GameObject>();
+
+            foreach (GameObject moveable in moveableCandidates)
+            {
+                BoxCollider[] colliders = moveable.GetComponents<BoxCollider>();
+                bool inContact = false;
+                foreach (BoxCollider collider in colliders)
+                {
+                    
+                    if (collider.isTrigger)
+                    {
+                        if (gameObject.GetComponent<CapsuleCollider>().bounds.Intersects(collider.bounds))
+                        {
+                            
+                            inContact = true;
+                            break;
+                        }
+                    }
+
+                }
+                if (!inContact)
+                {
+                    removeList.Add(moveable);
+                }
+                
+            }
+
+            foreach (GameObject lost in removeList)
+            {
+                if (moveableCandidates.Contains(lost))
+                {
+                    moveableCandidates.Remove(lost);
+                }
+            }
+        }
+        //*/
+        
+
         if (crawlerCandidate != null && !crouched && !manipulating)
         {
             //UI
@@ -64,6 +105,8 @@ public class PlayerController : MonoBehaviour
         // || manipulating JUST in case we leave a held object's collider   
         else if (moveableCandidates.Count > 0 || manipulating) 
         {
+            
+
             if (manipulating) // you're holding an object
             {
                 //UI
