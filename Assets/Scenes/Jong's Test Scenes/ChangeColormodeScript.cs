@@ -36,6 +36,16 @@ public class ChangeColormodeScript : MonoBehaviour
     public bool dirty;
     public float currentMode;
 
+    //Other shaders
+    [Header("Shader Names (exclude ShaderGraphs part)")]
+    [SerializeField]
+    public string[] shaderNames = new string[] 
+    {"Breakable_new","Cutscene1Fall","Dissolve Test1_new","GlowTest_new",
+        "Hallway Walls_New","Lamp_New","ToyBox","TransparentBlocks","Void"
+    };
+    public List<Renderer> shaderRend = new List<Renderer>();
+    public List<Material> shaderMaterials = new List<Material>();
+
     
     void Start()
     {
@@ -46,6 +56,26 @@ public class ChangeColormodeScript : MonoBehaviour
         sceneMRs = new List<MeshRenderer>(GameObject.FindObjectsOfType<MeshRenderer>());
         sceneSMRs = new List<SkinnedMeshRenderer>(GameObject.FindObjectsOfType<SkinnedMeshRenderer>());
         text = new List<Text>(GameObject.FindObjectsOfType<Text>());
+
+        //Other shaders --
+        shaderRend = new List<Renderer>(GameObject.FindObjectsOfType<Renderer>());
+        foreach(Renderer r in shaderRend)
+        {
+            foreach(string s in shaderNames)
+            {
+                //Some gameobjects have multiple materials on 1 renderer, so we check those
+                foreach(Material m in r.materials)
+                {
+                    if (m.shader.name == "Shader Graphs/" + s)
+                    {
+                        Debug.Log("Added: '" + r.gameObject.name + "' to shaderMaterials list because its shader was: " + s + ". Its material is: " + m.name);
+                        shaderMaterials.Add(m);
+                    }
+                }
+            }
+        }
+        // -- Other Shaders
+
         foreach (SkinnedMeshRenderer rend in sceneSMRs)
         {
             foreach (Material mat in rend.materials)
@@ -149,6 +179,12 @@ public class ChangeColormodeScript : MonoBehaviour
 
     private void ChangeMode()
     {
+        //Other shaders --
+        foreach (Material m in shaderMaterials)
+        {
+                m.SetFloat("_colorblind", currentMode);
+        }
+        // -- Other shaders
         foreach (Material mat in sceneMats)
         {
             mat.SetFloat("_colorblind", currentMode);
