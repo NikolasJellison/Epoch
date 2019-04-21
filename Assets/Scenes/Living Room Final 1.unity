@@ -7278,6 +7278,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212447548}
   m_CullTransparentMesh: 0
+--- !u!23 &220993627 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3996247264383237390, guid: adc4e15da1854b24e801455e07aeae18,
+    type: 3}
+  m_PrefabInstance: {fileID: 365340563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &225931293
 GameObject:
   m_ObjectHideFlags: 0
@@ -7650,6 +7656,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1f672cf249ebbc94084c1fc9e693b3be, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60b94f904ddf3d848b267b8b36f5c88c, type: 3}
+--- !u!23 &242249618 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3996247264383237390, guid: adc4e15da1854b24e801455e07aeae18,
+    type: 3}
+  m_PrefabInstance: {fileID: 632721094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &248134885 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3721022428117636414, guid: 8a764935044a82a42b29f97d7f80a7ad,
@@ -9339,6 +9351,12 @@ Transform:
   m_Father: {fileID: 6162167629458203997}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &415326630 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3996247264383237390, guid: adc4e15da1854b24e801455e07aeae18,
+    type: 3}
+  m_PrefabInstance: {fileID: 1252999932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &447826671
 GameObject:
   m_ObjectHideFlags: 0
@@ -11115,6 +11133,12 @@ MonoBehaviour:
   sceneSMRs: []
   sceneMats: []
   particleColors: []
+  objectives:
+  - {fileID: 415326630}
+  - {fileID: 936398553}
+  - {fileID: 242249618}
+  - {fileID: 1769298640}
+  - {fileID: 220993627}
   objectiveColors:
   - {r: 0.98875433, g: 1, b: 0.089005224, a: 0}
   - {r: 0.9942055, g: 1, b: 0.5518868, a: 1}
@@ -11126,14 +11150,14 @@ MonoBehaviour:
   - {r: 0, g: 0.301291, b: 1, a: 0.35686275}
   - {r: 0.09534168, g: 0, b: 1, a: 0.35686275}
   - {r: 1, g: 1, b: 1, a: 0.35686275}
+  chair: {fileID: 0}
   tutorialText: {fileID: 1064952985}
   particles:
   - {fileID: 565960189}
   - {fileID: 1606096755}
   - {fileID: 1984863197}
   - {fileID: 174860314}
-  hallwayLights:
-  - {fileID: 0}
+  hallwayLights: []
   hallwayLightColors: []
   lights: []
   text: []
@@ -14854,6 +14878,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc59ddfbc37fa52459e7e73155c71a34, type: 3}
+--- !u!23 &936398553 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3996247264383237390, guid: adc4e15da1854b24e801455e07aeae18,
+    type: 3}
+  m_PrefabInstance: {fileID: 172999049}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &938946075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9184315423625822728, guid: a3c363a4d4de5794eae87b75f26d1242,
@@ -15718,7 +15748,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 38.85
+  m_fontSize: 40.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -26010,26 +26040,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4716740034986252170, guid: 8a764935044a82a42b29f97d7f80a7ad,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4716740034986252170, guid: 8a764935044a82a42b29f97d7f80a7ad,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.993973
-      objectReference: {fileID: 0}
-    - target: {fileID: 7055913888471341385, guid: 8a764935044a82a42b29f97d7f80a7ad,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7055913888471341385, guid: 8a764935044a82a42b29f97d7f80a7ad,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.993973
-      objectReference: {fileID: 0}
     - target: {fileID: 3721022428117636414, guid: 8a764935044a82a42b29f97d7f80a7ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26182,6 +26192,26 @@ PrefabInstance:
     - target: {fileID: 919685683, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716740034986252170, guid: 8a764935044a82a42b29f97d7f80a7ad,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716740034986252170, guid: 8a764935044a82a42b29f97d7f80a7ad,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.993973
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055913888471341385, guid: 8a764935044a82a42b29f97d7f80a7ad,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055913888471341385, guid: 8a764935044a82a42b29f97d7f80a7ad,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.993973
       objectReference: {fileID: 0}
     - target: {fileID: 1149677110, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -33390,6 +33420,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763909580}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1769298640 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3996247264383237390, guid: adc4e15da1854b24e801455e07aeae18,
+    type: 3}
+  m_PrefabInstance: {fileID: 352529527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1771745772
 GameObject:
   m_ObjectHideFlags: 0
@@ -43795,7 +43831,17 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Vision
       objectReference: {fileID: 0}
+    - target: {fileID: 6909910471496657335, guid: 47a9826c2009d82449c047cdd474ee5f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Vision
+      objectReference: {fileID: 0}
     - target: {fileID: 3340729064207636552, guid: 47a9826c2009d82449c047cdd474ee5f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Vision
+      objectReference: {fileID: 0}
+    - target: {fileID: 7662609687851479146, guid: 47a9826c2009d82449c047cdd474ee5f,
         type: 3}
       propertyPath: m_TagString
       value: Vision
@@ -43869,16 +43915,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.4566
-      objectReference: {fileID: 0}
-    - target: {fileID: 6909910471496657335, guid: 47a9826c2009d82449c047cdd474ee5f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Vision
-      objectReference: {fileID: 0}
-    - target: {fileID: 7662609687851479146, guid: 47a9826c2009d82449c047cdd474ee5f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Vision
       objectReference: {fileID: 0}
     - target: {fileID: 5180769062368496446, guid: 47a9826c2009d82449c047cdd474ee5f,
         type: 3}

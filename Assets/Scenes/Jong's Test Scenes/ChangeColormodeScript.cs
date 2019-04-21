@@ -11,7 +11,8 @@ public class ChangeColormodeScript : MonoBehaviour
     public List<Material> sceneMats;
     
     public Color[] particleColors;
-    private List<Material> objectiveMats = new List<Material>();
+    public List<MeshRenderer> objectives = new List<MeshRenderer>();
+    //private List<Material> objectiveMats = new List<Material>();
     // Color: 0 = Reguar, 1 = Deuteranopia, 2 = Protanopia, 3 = Tritanopia
     public Color[] objectiveColors = new Color[4];
     public Material visionMat;
@@ -108,10 +109,12 @@ public class ChangeColormodeScript : MonoBehaviour
         {
             foreach(Material mat in rend.materials)
             {
+                /*
                 if (mat.shader.name == "Shader Graphs/Objectives")
                 {
                     objectiveMats.Add(mat);
                 }
+                //*/
                 if (mat.name == "Hallway Light (Instance)" || mat.name == "Hallway Light")
                 {
                     hallwayLights.Add(mat);
@@ -194,10 +197,23 @@ public class ChangeColormodeScript : MonoBehaviour
         int index = (int)currentMode;
         visionMat.SetColor("_color", visionColors[index]);
 
+        foreach(MeshRenderer objMesh in objectives)
+        {
+            foreach(Material mat in objMesh.materials)
+            {
+                print(mat.name);
+                if (mat.name.Contains("Objectives"))
+                {
+                    mat.SetColor("_Glow", objectiveColors[index]);
+                }
+            }
+        }
+        /*
         foreach (Material mat in objectiveMats)
         {
             mat.SetColor("_Glow", objectiveColors[index]);
         }
+        //*/
 
         foreach (Text t in text)
         {
