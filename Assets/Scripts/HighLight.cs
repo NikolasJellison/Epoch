@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class HighLight : MonoBehaviour
 {
     public GUISkin skin;
+    [ColorUsage(true,true)]
     public Color highlightColor = Color.cyan;
     private Color originalColor;
+    //Lists to store originalColors
+    private List<Material> storeMats = new List<Material>();
+    private List<Color> storeColors = new List<Color>();
+    //For raycasts
+    RaycastHit hit;
+    RaycastHit storeHit;
 
     private void OnGUI()
     {
@@ -21,5 +29,55 @@ public class HighLight : MonoBehaviour
     private void OnMouseExit()
     {
         GetComponent<Renderer>().material.color = originalColor;
+    }
+
+    private void Update()
+    {
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            if(Physics.Raycast(ray, out hit))
+            {
+                Debug.Log(hit.collider.name);
+                if (storeMats.Count > 0 && hit.transform.root != storeHit.collider.transform.root)
+                {
+                    Debug.Log("UnGLow");
+                    UnGlow();
+                }
+                else if (storeMats.Count > 0)
+                {
+                    return;
+                }
+                storeHit = hit;
+                Glow(hit);
+            }
+            else
+            {
+                UnGlow();
+            }
+        }
+    }
+
+    private void Glow(RaycastHit hit)
+    {
+        foreach (Renderer r in hit.transform.root.GetComponentsInChildren<Renderer>())
+        {
+            //Store list
+            storeMats.Add(r.material);
+            storeColors.Add(r.material.color);
+            originalColor = r.material.color;
+            r.material.color = highlightColor;
+        }
+    }
+
+    private void UnGlow()
+    {
+        for(int i = 0; i < storeMats.Count; i++)
+        {
+            storeMats[i].color = storeColors[i];
+        }
+
+        storeMats.Clear();
+        storeColors.Clear();
     }
 }

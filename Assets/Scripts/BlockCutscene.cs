@@ -29,6 +29,12 @@ public class BlockCutscene : MonoBehaviour
         //goal.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        //So the blocks start moving at the beginning
+        isMoving = false;
+    }
+
     private void Update()
     {
         timeA += Time.deltaTime;
