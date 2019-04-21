@@ -16,6 +16,8 @@ public class ChangeColormodeScript : MonoBehaviour
     public Color[] objectiveColors = new Color[4];
     public Material visionMat;
     public Color[] visionColors = new Color[4];
+    // Cutscenes
+    public GameObject chair;
     // level 1
     public TextMeshProUGUI tutorialText;
     public GameObject[] particles;
@@ -245,7 +247,14 @@ public class ChangeColormodeScript : MonoBehaviour
         {
             stopper.SetColor("_color", visionColors[index]);
         }
-        //foreach()
+        if(chair != null)
+        {
+            foreach (MeshRenderer mesh in chair.GetComponentsInChildren<MeshRenderer>())
+            {
+                mesh.material.SetColor("_color", visionColors[index]);
+            }
+        }
+        
         
     }
 }

@@ -45,7 +45,11 @@ public class PlayerController : MonoBehaviour
         //my_Camera = transform.GetChild(13).GetChild(0);
 
         speed = input_speed;
-        actionUI.text = "";
+        if(actionUI != null)
+        {
+            actionUI.text = "";
+        }
+        
         crouched = false;
     }
     // Update is called once per frame
@@ -177,7 +181,11 @@ public class PlayerController : MonoBehaviour
             }
         } else
         {
-            actionUI.text = "";
+            if(actionUI != null)
+            {
+                actionUI.text = "";
+            }
+            
         }
 
 

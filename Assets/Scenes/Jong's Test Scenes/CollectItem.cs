@@ -22,7 +22,7 @@ public class CollectItem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            collectUI.text = "Right Click to pick up";
+            collectUI.text = "Left Click to pick up";
             if (Input.GetMouseButtonDown(0))
             {
                 collectUI.text = "";
