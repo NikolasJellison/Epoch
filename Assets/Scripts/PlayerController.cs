@@ -161,10 +161,18 @@ public class PlayerController : MonoBehaviour
                 if(bestAngle > 45.0f)
                 {
                     bestObject = null;
-                    actionUI.text = "";
+                    if(actionUI != null)
+                    {
+                        actionUI.text = "";
+                    }
+                    
                 } else
                 {
-                    actionUI.text = "'E' to move";
+                    if(actionUI != null)
+                    {
+                        actionUI.text = "'E' to move";
+                    }
+                    
                 }
 
                 if (bestObject != null && Input.GetKeyDown(KeyCode.E))
