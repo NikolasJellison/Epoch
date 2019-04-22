@@ -156,19 +156,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 744219366}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &242603214
-BoxCollider:
+--- !u!114 &242603214
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242603213}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 5.0855236, y: 1.9644542, z: 6.2328315}
-  m_Center: {x: -0.3117036, y: 0.482228, z: -0.10995361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fb7c3581450a841bcff26ab39a502c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 11400000, guid: 3add6ec5c2aea0f4b89a1d990c2fe028, type: 2}
+  flavorText: couch
+  showFlavorText: 0
 --- !u!1 &265097374 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4154372749860970713, guid: 71357b0ccf5511f4da0387a4dfa01358,
@@ -295,6 +297,7 @@ GameObject:
   - component: {fileID: 664818833}
   - component: {fileID: 664818832}
   - component: {fileID: 664818831}
+  - component: {fileID: 664818830}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -302,6 +305,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &664818830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664818829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fb7c3581450a841bcff26ab39a502c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 11400000, guid: 3add6ec5c2aea0f4b89a1d990c2fe028, type: 2}
+  flavorText: This object means nothing to me.
+  showFlavorText: 0
 --- !u!65 &664818831
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -950,6 +968,7 @@ GameObject:
   - component: {fileID: 1090160265}
   - component: {fileID: 1090160264}
   - component: {fileID: 1090160263}
+  - component: {fileID: 1090160267}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1030,6 +1049,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1090160267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090160262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fb7c3581450a841bcff26ab39a502c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 11400000, guid: 3add6ec5c2aea0f4b89a1d990c2fe028, type: 2}
+  flavorText: '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+  showFlavorText: 0
 --- !u!1 &1223241153 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4103365754890725970, guid: 71357b0ccf5511f4da0387a4dfa01358,

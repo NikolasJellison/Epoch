@@ -38,14 +38,16 @@ public class HighLight : MonoBehaviour
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.collider.name);
+                //Debug.Log(hit.collider.name);
                 if (storeMats.Count > 0 && hit.transform.root != storeHit.collider.transform.root)
                 {
+                    storeHit.transform.root.GetComponent<HighLightInfo>().showFlavorText = false;
                     Debug.Log("UnGLow");
                     UnGlow();
                 }
                 else if (storeMats.Count > 0)
                 {
+                    hit.transform.root.GetComponent<HighLightInfo>().showFlavorText = true;
                     return;
                 }
                 storeHit = hit;
@@ -53,6 +55,7 @@ public class HighLight : MonoBehaviour
             }
             else
             {
+                storeHit.transform.root.GetComponent<HighLightInfo>().showFlavorText = false;
                 UnGlow();
             }
         }

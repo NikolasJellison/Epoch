@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
+public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Vector3 originalPosition;
     private bool locked;
     private bool moving;
     private Vector3 offset;
-
+    private Color outlineColor;
+    private Outline outline;
     // Start is called before the first frame update
     void Start()
     {
         originalPosition = transform.position;
+        //Get Original Outline color
+        outline = GetComponent<Outline>();
+        outlineColor = outline.effectColor;
     }
 
     //Copy paste of code from JigsawPuzzle.cs
@@ -24,6 +29,19 @@ public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         //Debug.Log("MOuse pos: " + Input.mousePosition);
         //Debug.Log("Transform pos: " + transform.position);
         //Debug.Log("Offset: " + offset);
+
+        //Set to top
+        transform.SetAsLastSibling();
+    }
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        if (!locked)
+        {
+            var tempColor = outline.effectColor;
+            tempColor.a = 66;
+            outline.effectColor = tempColor;
+        }
     }
 
     public void OnDrag(PointerEventData data)
@@ -46,7 +64,16 @@ public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         {
             transform.position = originalPosition;
         }
-
         moving = false;
+    }
+
+    public void OnPointerExit(PointerEventData pointerEventData)
+    {
+        if (!locked)
+        {
+            var tempColor = outline.effectColor;
+            tempColor.a = 0;
+            outline.effectColor = tempColor;
+        }
     }
 }

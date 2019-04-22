@@ -19,6 +19,8 @@ public class ShuffleMiniGame : MonoBehaviour
     private bool fadeOut;
     private TextMeshProUGUI text;
     public GameObject empty;
+    [Header("Outline Stuff")]
+    public Color outlineColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,6 @@ public class ShuffleMiniGame : MonoBehaviour
                 EndScene();
             }
             fadeWhiteImage.color= temp;
-            
         }
     }
 
@@ -78,6 +79,10 @@ public class ShuffleMiniGame : MonoBehaviour
             memory.GetComponent<RectTransform>().position = new Vector2(x, y);
             //For some reason my test images were coming in at a different scale
             memory.GetComponent<RectTransform>().localScale = Vector3.one;
+
+            //Add outlines
+            memory.AddComponent<Outline>().effectColor = outlineColor;
+            memory.GetComponent<Outline>().effectDistance = new Vector2(-3, 3);
         }
         //Make the White Screen here
         fadeWhite = new GameObject();
