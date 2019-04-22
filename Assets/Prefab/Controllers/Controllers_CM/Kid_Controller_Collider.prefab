@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 3169455812784546000}
   - component: {fileID: 9113105913950021803}
   m_Layer: 8
-  m_Name: Kid_Controller (1)
+  m_Name: Kid_Controller_Collider
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1503,6 +1503,8 @@ MonoBehaviour:
   moveableCandidates: []
   heldObject: {fileID: 0}
   crawlerCandidate: {fileID: 0}
+  bestAngle: 0
+  actionUI: {fileID: 0}
 --- !u!114 &9113105913950021803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3598,8 +3600,8 @@ MonoBehaviour:
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 2.5, z: -3}
   m_XDamping: 0
-  m_YDamping: 0.5
-  m_ZDamping: 0.5
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -3889,8 +3891,8 @@ MonoBehaviour:
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 2.5, z: -3}
   m_XDamping: 0
-  m_YDamping: 0.5
-  m_ZDamping: 0.5
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -4090,8 +4092,8 @@ MonoBehaviour:
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 2.5, z: -3}
   m_XDamping: 0
-  m_YDamping: 0.5
-  m_ZDamping: 0.5
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
