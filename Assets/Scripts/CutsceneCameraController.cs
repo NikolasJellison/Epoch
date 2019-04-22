@@ -51,15 +51,17 @@ public class CutsceneCameraController : MonoBehaviour
         if (canMove)
         {
             mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
-            mouseY += Input.GetAxis("Mouse Y") * rotationSpeed;
+            mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
             mouseX = Mathf.Clamp(mouseX, -90, 90);
             mouseY = Mathf.Clamp(mouseY, -35, 60);
             parentTarget.rotation = Quaternion.Euler(mouseY, mouseX, 0);
             if(Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15 && screenOn)
             {
-                notificationText.text = "Press <sprite=\"EKey02\" index=\"0\"> to inspect";
+                //notificationText.text = "Press <sprite=\"EKey02\" index=\"0\"> to inspect";
+                notificationText.text = "Left click to inspect";
                 //I feel like 2 nested If statements is bad...
-                if (Input.GetKeyDown(KeyCode.E))
+                //if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetMouseButtonDown(0))
                 {
                     //canMove gets disabled in Cutscene1.cs after the dissolve takes place
                     

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CutScene1 : MonoBehaviour
 {
@@ -29,9 +30,12 @@ public class CutScene1 : MonoBehaviour
     public float fallSpeed = 3;
     public AudioSource radio;
     private bool dissolveLR;
+    public TextMeshProUGUI sadText;
+    
 
     private void Start()
     {
+        sadText.text = "";
         playerCam.enabled = true;
         cutSceneCam.enabled = false;
         cameraController = player.GetComponentInChildren<CutsceneCameraController>();
@@ -66,6 +70,7 @@ public class CutScene1 : MonoBehaviour
         //There is a better way but idk how to make the fill continuous
         if (dissolve)
         {
+            sadText.text = "";
             //Reset Camera
             playerCam.gameObject.transform.parent.rotation = targetOGRotation;
 
@@ -168,10 +173,13 @@ public class CutScene1 : MonoBehaviour
 
     public void ExitDesktop()
     {
+        sadText.gameObject.transform.parent.gameObject.SetActive(true);
+        sadText.text = "It's always been like this...";
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         playerCam.enabled = true;
         cutSceneCam.enabled = false;
+
         //dissolve = true;
         computerScreenCanvas.SetActive(false);
         radio.Play();
