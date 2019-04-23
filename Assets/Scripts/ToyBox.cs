@@ -19,7 +19,7 @@ public class ToyBox : MonoBehaviour
     public GameObject DOOR;
     public GameObject floor;
     private bool stopCallingMyCoroutine;
-    public GameObject materialObject;
+    public GameObject[] materialObjects;
     public GameObject player;
     //All extra stuff for cutscene
     [Header("Extra Cutscene Stuff")]
@@ -34,6 +34,8 @@ public class ToyBox : MonoBehaviour
     public PerspectiveSwap perspectiveSwap;
     public GameObject[] cutsceneBlocks;
     public AudioSource victorySound;
+    public AudioSource argument;
+    public bool decreaseAudio;
 
     private void Start()
     {
@@ -46,11 +48,25 @@ public class ToyBox : MonoBehaviour
 
     private void Update()
     {
-        
-        if(materialObject.GetComponent<MeshRenderer>().material.GetFloat("_ToyBoxGlow") == 0 && player.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
+        if (decreaseAudio && argument.volume > 0.0f)
         {
-            materialObject.GetComponent<MeshRenderer>().material.SetFloat("_ToyBoxGlow", 1);
+            print(argument.volume);
+            float volume = argument.volume;
+            volume -= 0.15f * Time.deltaTime;
+            argument.volume = Mathf.Max(0.0f, volume);
         }
+        //
+        if(player.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
+        {
+            foreach(GameObject materialObject in materialObjects)
+            {
+                if (materialObject.GetComponent<MeshRenderer>().material.GetFloat("_ToyBoxGlow") == 0)
+                {
+                    materialObject.GetComponent<MeshRenderer>().material.SetFloat("_ToyBoxGlow", 1);
+                }
+            }
+        }
+        
         //Debug cutscene
         
         if (Input.GetKeyDown(KeyCode.Semicolon))
@@ -179,6 +195,8 @@ public class ToyBox : MonoBehaviour
         DOOR.GetComponent<Animator>().SetTrigger("OpenIn");
         DOOR.GetComponent<AudioSource>().Play();
         victorySound.Play();
+        //argument.Stop();
+        decreaseAudio = true;
         BlockMiniGameCanvas.SetActive(false);
         //Particles
 
@@ -200,6 +218,5 @@ public class ToyBox : MonoBehaviour
         
         yield return null;
     }
-
     
 }
