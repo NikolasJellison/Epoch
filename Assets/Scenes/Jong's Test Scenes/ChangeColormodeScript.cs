@@ -71,7 +71,7 @@ public class ChangeColormodeScript : MonoBehaviour
                 {
                     if (m.shader.name == "Shader Graphs/" + s)
                     {
-                        Debug.Log("Added: '" + r.gameObject.name + "' to shaderMaterials list because its shader was: " + s + ". Its material is: " + m.name);
+                        //Debug.Log("Added: '" + r.gameObject.name + "' to shaderMaterials list because its shader was: " + s + ". Its material is: " + m.name);
                         shaderMaterials.Add(m);
                     }
                 }
@@ -132,7 +132,7 @@ public class ChangeColormodeScript : MonoBehaviour
                         {
                             message = rend.transform.parent.name + "/" + message;
                         }
-                        print(message);
+                        //Sprint(message);
                         
 
                     }
@@ -201,7 +201,7 @@ public class ChangeColormodeScript : MonoBehaviour
         {
             foreach(Material mat in objMesh.materials)
             {
-                print(mat.name);
+                //sprint(mat.name);
                 if (mat.name.Contains("Objectives"))
                 {
                     mat.SetColor("_Glow", objectiveColors[index]);

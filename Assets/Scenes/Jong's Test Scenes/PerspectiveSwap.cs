@@ -96,7 +96,7 @@ public class PerspectiveSwap : MonoBehaviour
                 playerCam.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-
+                // ----
                 int currentPoint = bestRoom.GetComponent<RoomScript>().currentView;
                 if (newViewEnabled && Input.GetKeyDown(KeyCode.D))
                 {
@@ -150,6 +150,74 @@ public class PerspectiveSwap : MonoBehaviour
             vantagePoint.SetActive(false);
         }
     }
+
+    public void nextRoom()
+    {
+        RoomSelectorScript selector = player.GetComponent<RoomSelectorScript>();
+        GameObject bestRoom = selector.rooms[0];
+        for (int i = 1; i < selector.rooms.Count; ++i)
+        {
+            if (bestRoom.GetComponent<RoomScript>().roomId < selector.rooms[i].GetComponent<RoomScript>().roomId)
+            {
+                bestRoom = selector.rooms[i];
+            }
+        }
+
+        GameObject[] vantagePoints = bestRoom.GetComponent<RoomScript>().vantagePoints;
+
+        if (vantagePoints.Length > 0)
+        {
+            int currentPoint = bestRoom.GetComponent<RoomScript>().currentView;
+
+            --currentPoint;
+            if (currentPoint < 0)
+            {
+                currentPoint += vantagePoints.Length;
+            }
+
+            bestRoom.GetComponent<RoomScript>().currentView = currentPoint;
+
+            if (!vantagePoints[currentPoint].activeSelf)
+            {
+                disableVantagePoints();
+                vantagePoints[currentPoint].SetActive(true);
+            }
+
+            ViewUI.text = "Window " + (currentPoint + 1) + "/" + vantagePoints.Length;
+        }
+    }
+
+    public void prevRoom()
+    {
+        RoomSelectorScript selector = player.GetComponent<RoomSelectorScript>();
+        GameObject bestRoom = selector.rooms[0];
+        for (int i = 1; i < selector.rooms.Count; ++i)
+        {
+            if (bestRoom.GetComponent<RoomScript>().roomId < selector.rooms[i].GetComponent<RoomScript>().roomId)
+            {
+                bestRoom = selector.rooms[i];
+            }
+        }
+
+        GameObject[] vantagePoints = bestRoom.GetComponent<RoomScript>().vantagePoints;
+        if (vantagePoints.Length > 0)
+        {
+            int currentPoint = bestRoom.GetComponent<RoomScript>().currentView;
+
+            currentPoint = (currentPoint + 1) % vantagePoints.Length;
+
+            bestRoom.GetComponent<RoomScript>().currentView = currentPoint;
+
+            if (!vantagePoints[currentPoint].activeSelf)
+            {
+                disableVantagePoints();
+                vantagePoints[currentPoint].SetActive(true);
+            }
+
+            ViewUI.text = "Window " + (currentPoint + 1) + "/" + vantagePoints.Length;
+        }
+    }
+
     /*
     void setPlayerState(bool state)
     {

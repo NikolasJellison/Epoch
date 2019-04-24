@@ -6,31 +6,57 @@ using TMPro;
 
 public class Tutorial : MonoBehaviour
 {
-    //public Text tutorialText;
+    //public Text tutorialText
     public TextMeshProUGUI tutorialText;
+    public TextMeshProUGUI extraText;
     //Tracking steps in tutorial?
     public GameObject vantageManager;
     private bool walked;
-    private bool jumped;
-    private bool crouched;
-    private bool crawled;
-    private bool standUp;
+
+    public float freeTimeSpeed;
+    public float delay;
+    private bool walkedNearChair;
+    public SphereCollider trigger;
+
+    public float camRotationSpeed;
+    public float camMoveSpeed;
+    public Transform cutsceneTarget;
+    public Transform cutscenePosition;
+    public PlayerController controller;
+
+    private bool sawScene1;
+    private bool cam1Start;
+    public GameObject scene1Cam;
+    public Vector3 originalCam1Pos;
+
+    private bool sawScene2;
+    private bool cam2Start;
+    public GameObject scene2Cam;
+    public Vector3 originalCam2Pos;
+    public Vector3 originalCam2Rot;
+    public Transform blockTarget;
+
     private bool newView;
-    private bool activateObject;
     public GameObject chair;
     private bool changedView;
     private bool returnToEmsy;
     private bool openedJournal;
+    public RoomScript room;
+    public UISwapScript uiScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        tutorialText.text = "Hello, please press <sprite=\"W 1\" index=\"0\"> <sprite=\"A 1\" index=\"0\"> <sprite=\"S 1\" index=\"0\"> <sprite=\"D 1\" index=\"0\"> to move!";
+        tutorialText.text = "Press <sprite=\"W 1\" index=\"0\"> <sprite=\"A 1\" index=\"0\"> <sprite=\"S 1\" index=\"0\"> <sprite=\"D 1\" index=\"0\"> to move";
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (trigger.bounds.Intersects(controller.gameObject.GetComponent<CapsuleCollider>().bounds)){
+            walkedNearChair = true;
+        }
+
         if (!walked)
         {
             if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0)
@@ -38,28 +64,115 @@ public class Tutorial : MonoBehaviour
                 walked = true;
             }
         }
+        else if(delay > 0.0f && !walkedNearChair)
+        {
+            delay -= freeTimeSpeed * Time.deltaTime;
+        }
+        else if (!sawScene1)
+        {
+            if (!cam1Start)
+            {
+                vantageManager.GetComponent<PerspectiveSwap>().enabled = false;
+                cam1Start = true;
+                originalCam1Pos = scene1Cam.transform.position; 
+            }
+            controller.lock_movement = true;
+            scene1Cam.GetComponent<OldCameraController>().enabled = false;
+            tutorialText.text = "These pulsating objects cannot be interacted with at first \n";
+
+            Vector3 originalPosition = scene1Cam.transform.position;
+            scene1Cam.transform.position = Vector3.MoveTowards(scene1Cam.transform.position, cutscenePosition.position, camMoveSpeed * Time.deltaTime);
+
+            Vector3 lookDir = cutsceneTarget.position - scene1Cam.transform.position;
+            Quaternion rot = Quaternion.LookRotation(lookDir, new Vector3(0,1,0));
+            scene1Cam.transform.rotation = Quaternion.Lerp(scene1Cam.transform.rotation, rot, camRotationSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(originalPosition, scene1Cam.transform.position) == 0)
+            {
+                tutorialText.text = "These pulsating objects cannot be interacted with at first \nPress Space to continue";
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    scene1Cam.transform.position = originalCam1Pos;
+                    scene1Cam.GetComponent<OldCameraController>().enabled = true;
+                    vantageManager.GetComponent<PerspectiveSwap>().enabled = true;
+                    controller.lock_movement = false;
+                    sawScene1 = true;
+                }
+            }
+        }
         else if (!newView)
         {
             vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
-            tutorialText.text = "Press Shift to get a new perspective on the environment";
+            tutorialText.text = "Press Shift to get a new Perspective on the environment";
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
                 newView = true;
             }
         }
+        
         else if (chair.GetComponent<VisionObjectScript>().enabled)
         {
-            vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = false;
-            tutorialText.text = "Click on the pulsating object to activate it for little Emsy";
+            if (vantageManager.GetComponent<PerspectiveSwap>().playerActive)
+            {
+                tutorialText.text = "Press Shift to return to the Perspective view";
+            } else
+            {
+                tutorialText.text = "Click on the pulsating object to activate it for little Emsy";
+            }
+        }
+        // scene 2
+        else if (!sawScene2)
+        {
+            if (!cam2Start)
+            {
+                vantageManager.GetComponent<PerspectiveSwap>().enabled = false;
+                cam2Start = true;
+                originalCam2Pos = scene2Cam.transform.position;
+                originalCam2Rot = scene2Cam.transform.forward;
+            }
+            tutorialText.text = "This object can now be used by little Emsy \n";
+
+            Vector3 originalPosition = scene2Cam.transform.position;
+            scene2Cam.transform.position = Vector3.MoveTowards(scene2Cam.transform.position, cutscenePosition.position, 2f * camMoveSpeed * Time.deltaTime);
+
+
+            Vector3 lookDir = cutsceneTarget.position - scene2Cam.transform.position;
+
+
+            Quaternion rot = Quaternion.LookRotation(lookDir, new Vector3(0, 1, 0));
+            scene2Cam.transform.rotation = Quaternion.Lerp(scene2Cam.transform.rotation, rot, 1.5f*camRotationSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(originalPosition, scene2Cam.transform.position) == 0)
+            {
+                tutorialText.text = "This object can now be used by little Emsy \n Press Space to continue";
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    scene2Cam.transform.position = originalCam2Pos;
+                    scene2Cam.transform.forward = originalCam2Rot;
+                    vantageManager.GetComponent<PerspectiveSwap>().enabled = true;
+                    sawScene2 = true;
+                }
+            }
         }
         else if (!changedView)
         {
-            vantageManager.GetComponent<PerspectiveSwap>().newViewEnabled = true;
-            tutorialText.text = "Press  <sprite=\"A 1\" index=\"0\"> and <sprite=\"D 1\" index=\"0\"> to swap between views of the room";
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            uiScript.hideArrows = false;
+            if (vantageManager.GetComponent<PerspectiveSwap>().playerActive)
             {
-                changedView = true;
+                tutorialText.text = "Press Shift to return to the Perspective view";
+            } else
+            {
+                vantageManager.GetComponent<PerspectiveSwap>().newViewEnabled = true;
+                tutorialText.text = "Press  <sprite=\"A 1\" index=\"0\"> and <sprite=\"D 1\" index=\"0\">" 
+                    + "or the arrows on the left and right to swap between views of the room";
+                
+                if(room.currentView != 0)
+                {
+                    changedView = true;
+                }
+                //*/
             }
+            
         }
         else if(!returnToEmsy)
         {
@@ -70,42 +183,6 @@ public class Tutorial : MonoBehaviour
                 returnToEmsy = true;
             }
         }
-
-        //*/
-        /*
-        else if(!activatedObject)
-        {
-            tutorialText.text = "Some objects are intangible. To activate them, align your crosshair with the corresponding symbol";
-
-            // cutscene showing a camera moving around the chair
-            if(cutsceneTime < 3.76f)
-            {
-                playerCamera.SetActive(false);
-                cutSceneCamera.SetActive(true);
-                if (originalPlayer == null)
-                {
-                    originalPlayer = visionObject.GetComponent<PerspectiveScript>().player;
-                }
-                visionObject.GetComponent<PerspectiveScript>().player = cutSceneCamera.transform;
-                
-                cutSceneCamera.transform.forward = center.position - cutSceneCamera.transform.position;
-                cutSceneCamera.transform.RotateAround(center.position, Vector3.up, 50 * Time.deltaTime);
-                cutsceneTime += Time.deltaTime;
-            }
-            else
-            {
-                tutorialText.text = "Some objects are intangible. To activate them, align your crosshair with the corresponding symbol (Press <sprite=\"Space01\" index=\"0\"> to continue)";
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    visionObject.GetComponent<PerspectiveScript>().player = originalPlayer;
-                    playerCamera.SetActive(true);
-                    cutSceneCamera.SetActive(false);
-                    activatedObject = true;
-                }
-            }
-            // make player invisible(ish) & disable the player controller
-        }
-        //*/
         //Getting rid of the jorunal until we add it into the player controller
         else if (!openedJournal)
         {
@@ -118,7 +195,7 @@ public class Tutorial : MonoBehaviour
         else
         {
             tutorialText.text = "You've completed this tutorial";
-            Destroy(gameObject, 6);
+            Destroy(gameObject, 2.5f);
         }
     }
 }
