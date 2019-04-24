@@ -6,6 +6,7 @@ public class UISwapScript : MonoBehaviour
 {
     public PerspectiveSwap vantageManager;
     public GameObject[] roomArrows;
+    public GameObject[] UI;
     public bool hideArrows;
     // Start is called before the first frame update
     void Start()
@@ -22,9 +23,21 @@ public class UISwapScript : MonoBehaviour
             {
                 arrow.SetActive(false);
             }
+            foreach(GameObject ui in UI)
+            {
+                if(ui != null)
+                {
+                    ui.SetActive(true);
+                }
+                
+            }
         }
         else
         {
+            foreach (GameObject ui in UI)
+            {
+                ui.SetActive(false);
+            }
             RoomSelectorScript selector = vantageManager.player.GetComponent<RoomSelectorScript>();
             GameObject bestRoom = selector.rooms[0];
             for (int i = 1; i < selector.rooms.Count; ++i)
