@@ -25,7 +25,17 @@ public class UISwapScript : MonoBehaviour
         }
         else
         {
-            if (!hideArrows)
+            RoomSelectorScript selector = vantageManager.player.GetComponent<RoomSelectorScript>();
+            GameObject bestRoom = selector.rooms[0];
+            for (int i = 1; i < selector.rooms.Count; ++i)
+            {
+                if (bestRoom.GetComponent<RoomScript>().roomId < selector.rooms[i].GetComponent<RoomScript>().roomId)
+                {
+                    bestRoom = selector.rooms[i];
+                }
+            }
+
+            if (!hideArrows && bestRoom.GetComponent<RoomScript>().vantagePoints.Length > 1)
             {
                 foreach (GameObject arrow in roomArrows)
                 {

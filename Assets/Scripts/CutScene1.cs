@@ -24,7 +24,7 @@ public class CutScene1 : MonoBehaviour
     private bool isWalking;
     private GameObject camera1A;
     private Quaternion targetOGRotation;
-
+    public AudioSource ambiance;
     public Transform landing;
     public Transform windowLook;
     public float fallSpeed = 3;
@@ -183,6 +183,7 @@ public class CutScene1 : MonoBehaviour
         //dissolve = true;
         computerScreenCanvas.SetActive(false);
         radio.Play();
+        ambiance.Stop();
         player.GetComponent<Animator>().SetTrigger("StartCry");
         cameraController.canMove = false;
         //Good view for cry

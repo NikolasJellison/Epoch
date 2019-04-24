@@ -534,7 +534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &26936342
 AudioListener:
   m_ObjectHideFlags: 0
@@ -12713,6 +12713,8 @@ MonoBehaviour:
   - {fileID: 26936341}
   - {fileID: 234412604}
   currentVantage: {fileID: 0}
+  degree: 0.5
+  yOffset: 1.3
 --- !u!212 &766420124
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16338,7 +16340,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 29.45
+  m_fontSize: 32.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -45783,6 +45785,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 2135664769, guid: 5e2ab2893a1986a4baba37da0f07aa98, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 13aa55764d9014345b9dcba359e99dd3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e2ab2893a1986a4baba37da0f07aa98, type: 3}
 --- !u!1001 &2455233246445057591

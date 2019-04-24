@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FinalPuzzleScript : MonoBehaviour
 {
-    public GameObject radio;
     public GameObject player;
     public GameObject playerUI;
     public PerspectiveSwap vantageMgr;

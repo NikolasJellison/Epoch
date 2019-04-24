@@ -18,6 +18,7 @@ public class CutsceneCameraController : MonoBehaviour
     private float tempMouseX;
     [HideInInspector]public bool screenOn;
     [HideInInspector]public bool canMove;
+    public bool enteredDesktop;
     public bool isFalling;
     public TextMeshProUGUI notificationText;
     private CutScene1 cutsceneOne;
@@ -55,7 +56,7 @@ public class CutsceneCameraController : MonoBehaviour
             mouseX = Mathf.Clamp(mouseX, -90, 90);
             mouseY = Mathf.Clamp(mouseY, -35, 60);
             parentTarget.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-            if(Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15 && screenOn)
+            if(Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15 && screenOn && !enteredDesktop)
             {
                 //notificationText.text = "Press <sprite=\"EKey02\" index=\"0\"> to inspect";
                 notificationText.text = "Left click to inspect";
@@ -64,7 +65,7 @@ public class CutsceneCameraController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     //canMove gets disabled in Cutscene1.cs after the dissolve takes place
-                    
+                    enteredDesktop = true;
                     if (cutsceneType == CutsceneType.One)
                     {
                         cutsceneOne.EnterDesktop();

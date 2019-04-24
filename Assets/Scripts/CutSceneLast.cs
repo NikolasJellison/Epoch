@@ -12,6 +12,8 @@ public class CutSceneLast : MonoBehaviour
     private CutsceneCameraController cameraController;
     public Camera playerCam;
     public Camera cutSceneCam;
+    public AudioSource radio;
+    public AudioSource ambiance;
     public GameObject computerScreenCanvas;
     public GameObject cutsceneUI;
     private Quaternion targetOGRotation;
@@ -37,6 +39,8 @@ public class CutSceneLast : MonoBehaviour
 
     public void EndGame()
     {
+        ambiance.Stop();
+        radio.Play();
         cutsceneUI.SetActive(true);
         cutsceneUI.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
         StartCoroutine(WaitABit());

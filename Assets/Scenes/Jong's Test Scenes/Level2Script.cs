@@ -19,10 +19,11 @@ public class Level2Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        pageUI.sprite = pageImages[pagesFound];
     }
     public void subPage()
     {
+        print("Got a page");
         ++pagesFound;
     }
 
@@ -36,7 +37,6 @@ public class Level2Script : MonoBehaviour
                 subPage();
                 GetComponent<AudioSource>().Play();
                 //AkSoundEngine.PostEvent("Acquisition", gameObject);
-                pageUI.sprite = pageImages[pagesFound];
                 print(pageImages[pagesFound].name);
                 other.gameObject.SetActive(false);
                 collectUI.text = "";

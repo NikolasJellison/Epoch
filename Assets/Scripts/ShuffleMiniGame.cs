@@ -112,6 +112,7 @@ public class ShuffleMiniGame : MonoBehaviour
             obj.SetActive(false);
         }
 
+        GetComponent<AudioSource>().Play();
         fadeWhite.SetActive(true);
         text.text = "Return to the real world";
         //Let the player see the last memory
