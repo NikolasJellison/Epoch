@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ExtensionCordPlacement : MonoBehaviour
 {
     public VisionObjectScript fanVO;
+    public PlayerController controller;
     public Transform holderBase;
     public Transform objBase;
     public GameObject extensionShelf;
@@ -32,7 +33,7 @@ public class ExtensionCordPlacement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (fanVO.enabled)
+            if (fanVO.enabled || controller.manipulating)
             {
                 UI.text = "";
             }

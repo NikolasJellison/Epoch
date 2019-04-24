@@ -7,6 +7,7 @@ public class FinalPuzzleScript : MonoBehaviour
     public GameObject player;
     public GameObject playerUI;
     public PerspectiveSwap vantageMgr;
+    private bool started;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +24,18 @@ public class FinalPuzzleScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            vantageMgr.cutSceneActive = true;
-            player.GetComponent<PlayerController>().lock_movement = true;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            playerUI.SetActive(false);
-            //AkSoundEngine.PostEvent("StopAdultMusic", radio);
-            Instantiate(Resources.Load("Canvas-Shuffle"));
+            if (!started)
+            {
+                started = true;
+                vantageMgr.enabled = false;
+                player.GetComponent<PlayerController>().lock_movement = true;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                playerUI.SetActive(false);
+                //AkSoundEngine.PostEvent("StopAdultMusic", radio);
+                Instantiate(Resources.Load("Canvas-Shuffle"));
+            }
+            
         }
         
     }
