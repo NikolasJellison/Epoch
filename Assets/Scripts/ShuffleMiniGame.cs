@@ -78,7 +78,7 @@ public class ShuffleMiniGame : MonoBehaviour
 
             memory.GetComponent<RectTransform>().position = new Vector2(x, y);
             //For some reason my test images were coming in at a different scale
-            memory.GetComponent<RectTransform>().localScale = Vector3.one;
+            memory.GetComponent<RectTransform>().localScale = 2.0f*Vector3.one;
 
             //Add outlines
             memory.AddComponent<Outline>().effectColor = outlineColor;
