@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8410,7 +8410,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318600938}
-  m_LocalRotation: {x: 0.014602589, y: -0.71329206, z: 0.014868039, w: 0.70055705}
+  m_LocalRotation: {x: 0.014602579, y: -0.7132921, z: 0.014868032, w: 0.70055705}
   m_LocalPosition: {x: -36.356277, y: 3.8232746, z: 0.33153248}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -61600,6 +61600,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1961866308, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7055913888471341385, guid: 8a764935044a82a42b29f97d7f80a7ad,
         type: 3}
       propertyPath: m_Color.r
@@ -61967,6 +61971,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5445518685014382797, guid: 8a764935044a82a42b29f97d7f80a7ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6595695800913717749, guid: 8a764935044a82a42b29f97d7f80a7ad,
         type: 3}
       propertyPath: m_Text
@@ -61992,6 +62001,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 348990143, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 348990143, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 396567092, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
@@ -62118,6 +62131,14 @@ PrefabInstance:
     - target: {fileID: 1767913169, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183591819, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
+      propertyPath: m_Text
+      value: A page from my journal is gone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589234765, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
+      propertyPath: m_Text
+      value: I Need to find the pieces
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
