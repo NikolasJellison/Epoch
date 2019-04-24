@@ -27,6 +27,7 @@ public class Tutorial : MonoBehaviour
     private bool sawScene1;
     private bool cam1Start;
     public GameObject scene1Cam;
+    public GameObject collisionDetector;
     public Vector3 originalCam1Pos;
 
     private bool sawScene2;
@@ -77,6 +78,11 @@ public class Tutorial : MonoBehaviour
                 originalCam1Pos = scene1Cam.transform.position; 
             }
             controller.lock_movement = true;
+            if(collisionDetector != null)
+            {
+                collisionDetector.GetComponent<TempCam>().enabled = false;
+            }
+            
             scene1Cam.GetComponent<OldCameraController>().enabled = false;
             tutorialText.text = "These pulsating objects cannot be interacted with at first \n";
 
@@ -92,11 +98,15 @@ public class Tutorial : MonoBehaviour
                 tutorialText.text = "These pulsating objects cannot be interacted with at first \nPress Space to continue";
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    sawScene1 = true;
                     scene1Cam.transform.position = originalCam1Pos;
                     scene1Cam.GetComponent<OldCameraController>().enabled = true;
                     vantageManager.GetComponent<PerspectiveSwap>().enabled = true;
                     controller.lock_movement = false;
-                    sawScene1 = true;
+                    if (collisionDetector != null)
+                    {
+                        collisionDetector.GetComponent<TempCam>().enabled = true;
+                    }
                 }
             }
         }
@@ -125,8 +135,8 @@ public class Tutorial : MonoBehaviour
         {
             if (!cam2Start)
             {
-                vantageManager.GetComponent<PerspectiveSwap>().enabled = false;
                 cam2Start = true;
+                vantageManager.GetComponent<PerspectiveSwap>().enabled = false;
                 originalCam2Pos = scene2Cam.transform.position;
                 originalCam2Rot = scene2Cam.transform.forward;
             }
@@ -147,10 +157,10 @@ public class Tutorial : MonoBehaviour
                 tutorialText.text = "This object can now be used by little Emsy \n Press Space to continue";
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    sawScene2 = true;
                     scene2Cam.transform.position = originalCam2Pos;
                     scene2Cam.transform.forward = originalCam2Rot;
                     vantageManager.GetComponent<PerspectiveSwap>().enabled = true;
-                    sawScene2 = true;
                 }
             }
         }
