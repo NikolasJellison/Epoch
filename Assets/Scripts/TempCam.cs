@@ -6,6 +6,7 @@ public class TempCam : MonoBehaviour
 {
     public Transform playerCam;
     public float defaultDistance;
+    public float minDistance = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class TempCam : MonoBehaviour
             Vector3 moveVec = defaultDistance * transform.forward;
             if(hit.distance < defaultDistance)
             {
-                float newCoeff = Mathf.Max(0.00001f, (hit.distance - 0.05f));
+                float newCoeff = Mathf.Max(minDistance, (hit.distance - 0.05f));
                 
                 moveVec = newCoeff * transform.forward;
             }
