@@ -22,7 +22,7 @@ public class NotebookScript : MonoBehaviour
         //Open Door
         if (door != null)
         {
-            door.GetComponent<Animator>().SetTrigger("DoorOpenIn");
+            door.GetComponent<Animator>().SetTrigger("DoorOpenOut");
             door.GetComponent<AudioSource>().Play();
         }
 

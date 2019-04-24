@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TriggerJigsaw : MonoBehaviour
 {
     public Text openUI;
-    private GameObject player;
+    public GameObject player;
     public bool inPuzzle;
     public PerspectiveSwap vantageMgr;
     private GameObject puzzle;
@@ -16,13 +16,14 @@ public class TriggerJigsaw : MonoBehaviour
     void Start()
     {
         openUI.text = "";
-        player = GameObject.FindGameObjectWithTag("Player");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         GameObject puzzle = GameObject.Find("Canvas-Jigsaw(Clone)");
+        
         if(inPuzzle && puzzle == null)
         {
             inPuzzle = false;
@@ -35,6 +36,7 @@ public class TriggerJigsaw : MonoBehaviour
             }
                 
         }
+        //*/
     }
 
     private void OnTriggerStay(Collider other)
@@ -55,8 +57,9 @@ public class TriggerJigsaw : MonoBehaviour
 
                     player.GetComponent<Level2Script>().subPage();
                     puzzleTriggeredOnce = true;
-                    inPuzzle = true;
+                    
                     Instantiate(Resources.Load("Canvas-Jigsaw"));
+                    inPuzzle = true;
                 }
             }
             else

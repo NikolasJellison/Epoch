@@ -20,7 +20,10 @@ public class Level2CutSceneWait : MonoBehaviour
         playerC.gameObject.transform.position = teenModelCutscene.transform.position;
         //hard code because this is taking too long
         Debug.Log(playerC.gameObject.transform.eulerAngles);
-        playerC.gameObject.transform.eulerAngles =  new Vector3(0f, 90f, 0f);
+        //playerC.gameObject.transform.eulerAngles =  new Vector3(0f, 90f, 0f);
+        Vector3 position = playerC.gameObject.transform.position;
+        position.y = 0.0f;
+        playerC.gameObject.transform.position = position;
         Debug.Log(playerC.gameObject.transform.eulerAngles);
         pointLight3.SetActive(true);
     }
