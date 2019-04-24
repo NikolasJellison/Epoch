@@ -7,12 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Adult_UV
-  m_Shader: {fileID: 4800000, guid: 647e46e825c0c8d4087636bdf304661e, type: 3}
+  m_Name: lambert3
+  m_Shader: {fileID: 4800000, guid: 45f90ee6d5fb60e4ab1391ac6ac5fce7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -20,15 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_2B451970:
-        m_Texture: {fileID: 2800000, guid: 7792b16118136be4b95b8758f55cc180, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_9313FDDC:
-        m_Texture: {fileID: 2800000, guid: 7792b16118136be4b95b8758f55cc180, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_FA970CF:
-        m_Texture: {fileID: 2800000, guid: 7792b16118136be4b95b8758f55cc180, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -40,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7792b16118136be4b95b8758f55cc180, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -51,10 +43,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_187D163D_Texture:
-        m_Texture: {fileID: 2800000, guid: 05b7603fa6d905b46b66079e4d9eb405, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_A99A0AB2_Texture:
         m_Texture: {fileID: 2800000, guid: 05b7603fa6d905b46b66079e4d9eb405, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -63,22 +51,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_254CD113_Out:
-        m_Texture: {fileID: 2800000, guid: 67aaf2a8d0cdcda41ac0004ef5c8c854, type: 3}
+    - _Texture2DAsset_D7DF7907_Out:
+        m_Texture: {fileID: 2800000, guid: eb8ea797b63bea54aaf0259edab06f23, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_6A4ED94D_Out:
-        m_Texture: {fileID: 2800000, guid: be0f5051298227a48bee88cb1c3fb109, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_C69B7B8B_Out:
-        m_Texture: {fileID: 2800000, guid: 7792b16118136be4b95b8758f55cc180, type: 3}
+    - _Texture2DAsset_EF242962_Out:
+        m_Texture: {fileID: 2800000, guid: b3f55ba3c7e00e7469db5b96bb07781b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Boolean_A4910224: 0
-    - Boolean_CFAD7973: 0
-    - Boolean_DEB1B22A: 0
     - Vector1_3F868F50: 1
     - Vector1_77230CD7: 1
     - _AlphaClip: 0
@@ -86,6 +67,7 @@ Material:
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DissolveAmount: 0
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
@@ -99,16 +81,12 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _alpha: 1
     - _colorblind: 0
     m_Colors:
-    - Color_6BB66EBF: {r: 1, g: 1, b: 1, a: 0}
-    - Color_C03E0BC: {r: 1, g: 1, b: 1, a: 1}
-    - Color_D5420ADE: {r: 1, g: 1, b: 1, a: 1}
+    - Color_634A74F1: {r: 4, g: 0, b: 0, a: 0}
+    - Color_85B0D5B9: {r: 0.0627451, g: 0, b: 4, a: 0}
     - Vector2_D5FA0495: {r: 1, g: 1, b: 0, a: 0}
     - Vector4_9BB674DB: {r: 1, g: 0, b: 0, a: 0}
-    - Vector4_BC762C8F: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.1098, g: 0.1092, b: 0.13, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _SetLightDirection: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

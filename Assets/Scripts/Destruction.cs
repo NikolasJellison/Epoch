@@ -51,7 +51,10 @@ public class Destruction : MonoBehaviour
             foreach(Rigidbody rb in rb)
             {
                 //Debug.Log("Dissolving");
-                rb.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_DissolveAmount", dissolveCounter);
+                foreach(Material m in rb.gameObject.GetComponent<MeshRenderer>().materials)
+                {
+                    m.SetFloat("_DissolveAmount", dissolveCounter);
+                }
             }
         }
     }
