@@ -36,7 +36,7 @@ public class HighLight : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray, out hit))
+            if(Physics.Raycast(ray, out hit) && hit.transform.root.GetComponent<HighLightInfo>() != null)
             {
                 //Debug.Log(hit.collider.name);
                 if (storeMats.Count > 0 && hit.transform.root != storeHit.collider.transform.root)
@@ -69,6 +69,7 @@ public class HighLight : MonoBehaviour
             storeMats.Add(r.material);
             storeColors.Add(r.material.color);
             originalColor = r.material.color;
+            //material.color is just setting the varible in the shader called "_Color". so if a shader doesn't have a base color by that name, this won't work
             r.material.color = highlightColor;
         }
     }
