@@ -9,6 +9,7 @@ public class Destruction : MonoBehaviour
     public bool dissolve;
     private float dissolveCounter;
     public float dissolveWaitTime = 4;
+    public float dissolveTime;
     [Header("Empty game object where you want to destruction to go to")]
     public Transform target;
     private Vector3 forceVector;
@@ -36,9 +37,9 @@ public class Destruction : MonoBehaviour
 
         if (dissolve)
         {
-            dissolveCounter += (Time.deltaTime / 3);
+            dissolveCounter += Time.deltaTime;
 
-            if (dissolveCounter >= 1)
+            if (dissolveCounter >= dissolveTime)
             {
                 dissolve = false;
                 dissolveCounter = 1;
@@ -53,7 +54,7 @@ public class Destruction : MonoBehaviour
                 //Debug.Log("Dissolving");
                 foreach(Material m in rb.gameObject.GetComponent<MeshRenderer>().materials)
                 {
-                    m.SetFloat("_DissolveAmount", dissolveCounter);
+                    m.SetFloat("_DissolveAmount", dissolveCounter/dissolveTime);
                 }
             }
         }
