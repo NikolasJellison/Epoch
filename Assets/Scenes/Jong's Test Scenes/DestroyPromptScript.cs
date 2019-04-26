@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DestroyPromptScript : MonoBehaviour
 {
     public Text promptUI;
-    public GameObject sentinel;
+    public bool hit;
     public PerspectiveSwap vantageMgr;
     public GameObject hammer;
 
@@ -26,11 +26,12 @@ public class DestroyPromptScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (sentinel == null || !vantageMgr.playerActive)
+            if (hit || !vantageMgr.playerActive)
             {
                 promptUI.text =      "";
                 return;
             }
+
             if(hammer != null && !hammer.activeSelf)
             {
                 // if the hammer is active, set the text to say that you need something to break it
@@ -39,6 +40,7 @@ public class DestroyPromptScript : MonoBehaviour
                 //Debug.Log("manny false");
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    hit = true;
                     GetComponent<Destruction>().EnableDestruction();
                 }
             } else
