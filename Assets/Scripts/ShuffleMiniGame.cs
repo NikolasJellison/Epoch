@@ -12,6 +12,7 @@ public class ShuffleMiniGame : MonoBehaviour
     [Header("In percentage. EX: min is 20% away so put .2. (0-1)")]
     public Vector2 hLimits = new Vector2(.2f, .8f);
     public Vector2 vLimits = new Vector2(.2f, .8f);
+    public float scaleFloat = 2.0f;
     private GameObject fadeWhite;
     public Color fadeColor = Color.white;
     private Image fadeWhiteImage;
@@ -20,6 +21,7 @@ public class ShuffleMiniGame : MonoBehaviour
     private TextMeshProUGUI text;
     public GameObject empty;
     [Header("Outline Stuff")]
+    public Image goalImage;
     public Color outlineColor;
     // Start is called before the first frame update
     void Start()
@@ -78,7 +80,7 @@ public class ShuffleMiniGame : MonoBehaviour
 
             memory.GetComponent<RectTransform>().position = new Vector2(x, y);
             //For some reason my test images were coming in at a different scale
-            memory.GetComponent<RectTransform>().localScale = 2.0f*Vector3.one;
+            memory.GetComponent<RectTransform>().localScale = scaleFloat*Vector3.one;
 
             //Add outlines
             memory.AddComponent<Outline>().effectColor = outlineColor;
@@ -111,7 +113,7 @@ public class ShuffleMiniGame : MonoBehaviour
         {
             obj.SetActive(false);
         }
-
+        goalImage.color = Color.white;
         GetComponent<AudioSource>().Play();
         fadeWhite.SetActive(true);
         text.text = "Return to the real world";

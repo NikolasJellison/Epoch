@@ -56,6 +56,7 @@ public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     public void OnPointerUp(PointerEventData pointerEventData)
     {
         //Incase the puzzle piece is off the screen and left there
+        /*
         if (transform.position.x < 0 || transform.position.x > Screen.width)
         {
             transform.position = originalPosition;
@@ -64,6 +65,7 @@ public class ShuffleMovement : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         {
             transform.position = originalPosition;
         }
+        //*/
         moving = false;
     }
 
