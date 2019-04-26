@@ -213,6 +213,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             lock_movement &= !Input.GetKeyDown(KeyCode.E);
+            anim.SetFloat("Velocity_X", 0);
+            anim.SetFloat("Velocity_Y", 0);
         }
     }
     /*
