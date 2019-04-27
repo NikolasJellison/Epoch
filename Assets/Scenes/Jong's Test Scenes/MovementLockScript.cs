@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementLockScript : MonoBehaviour
 {
     public GameObject player;
-    public GameObject[] locks;
+    public List<GameObject> locks;
     // Start is called before the first frame update
     void Start()
     {

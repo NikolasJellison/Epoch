@@ -70,7 +70,7 @@ public class OldCameraController : MonoBehaviour
 
                 mouseX += Input.GetAxis("Mouse X") * rotation_speed;
                 mouseY -= Input.GetAxis("Mouse Y") * rotation_speed;
-                print(mouseX + ", " + mouseY);
+                //print(mouseX + ", " + mouseY);
                 mouseY = Mathf.Clamp(mouseY, -35, 60);
 
                 transform.LookAt(target);
