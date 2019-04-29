@@ -109,6 +109,10 @@ public class ChangeColormodeScript : MonoBehaviour
         {
             foreach(Material mat in rend.materials)
             {
+                if (mat == null)
+                {
+                    continue;
+                }
                 /*
                 if (mat.shader.name == "Shader Graphs/Objectives")
                 {
@@ -119,6 +123,7 @@ public class ChangeColormodeScript : MonoBehaviour
                 {
                     hallwayLights.Add(mat);
                 }
+
                 if (!sceneMats.Contains(mat))
                 {   
                     if (mat.shader.name == "Shader Graphs/ColorBlindTest")
@@ -187,11 +192,19 @@ public class ChangeColormodeScript : MonoBehaviour
         //Other shaders --
         foreach (Material m in shaderMaterials)
         {
-                m.SetFloat("_colorblind", currentMode);
+            if(m == null)
+            {
+                continue;
+            }
+            m.SetFloat("_colorblind", currentMode);
         }
         // -- Other shaders
         foreach (Material mat in sceneMats)
         {
+            if (mat == null)
+            {
+                continue;
+            }
             mat.SetFloat("_colorblind", currentMode);
         }
         int index = (int)currentMode;
@@ -201,6 +214,10 @@ public class ChangeColormodeScript : MonoBehaviour
         {
             foreach(Material mat in objMesh.materials)
             {
+                if(mat == null)
+                {
+                    continue;
+                }
                 //sprint(mat.name);
                 if (mat.name.Contains("Objectives"))
                 {
@@ -232,8 +249,7 @@ public class ChangeColormodeScript : MonoBehaviour
             }
             particles[index].SetActive(true);
         }
-
-        //objectiveMat.
+        
         if (hallwayLights.Count > 0)
         {
             foreach (Material light in hallwayLights)
@@ -245,6 +261,7 @@ public class ChangeColormodeScript : MonoBehaviour
 
             }
         }
+
         if (lights.Count > 0)
         {
             foreach (Light light in lights)
@@ -255,14 +272,17 @@ public class ChangeColormodeScript : MonoBehaviour
                 }
             }
         }
+
         if (objectiveLight != null)
         {
             objectiveLight.color = objectiveColors[index];
         }
+
         if (stopper != null)
         {
             stopper.SetColor("_color", visionColors[index]);
         }
+
         if(chair != null)
         {
             foreach (MeshRenderer mesh in chair.GetComponentsInChildren<MeshRenderer>())
