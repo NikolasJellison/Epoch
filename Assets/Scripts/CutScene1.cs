@@ -58,6 +58,15 @@ public class CutScene1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (cutSceneCam.isActiveAndEnabled)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        } else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         //Debug.Log(Time.deltaTime);
         //Debug
         if (Input.GetKeyDown(KeyCode.Semicolon))
@@ -70,6 +79,10 @@ public class CutScene1 : MonoBehaviour
         //There is a better way but idk how to make the fill continuous
         if (dissolve)
         {
+            foreach (GameObject obj in delete)
+            {
+                obj.SetActive(false);
+            }
             sadText.text = "";
             //Reset Camera
             playerCam.gameObject.transform.parent.rotation = targetOGRotation;
@@ -81,10 +94,7 @@ public class CutScene1 : MonoBehaviour
                 dissolve = false;
                 dissolveCounter = 1;
 
-                foreach(GameObject obj in delete)
-                {
-                    Destroy(obj);
-                }
+                
 
                 //Start Fall
                 cameraController.canMove = false;
@@ -164,8 +174,6 @@ public class CutScene1 : MonoBehaviour
 
     public void EnterDesktop()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         player.GetComponent<PlayerController>().enabled = false;
         playerCam.enabled = false;
         cutSceneCam.enabled = true;
@@ -175,11 +183,8 @@ public class CutScene1 : MonoBehaviour
     {
         sadText.gameObject.transform.parent.gameObject.SetActive(true);
         sadText.text = "It's always been like this...";
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         playerCam.enabled = true;
         cutSceneCam.enabled = false;
-
         //dissolve = true;
         computerScreenCanvas.SetActive(false);
         radio.Play();

@@ -29,8 +29,6 @@ public class CutsceneCameraController : MonoBehaviour
     {
         anim = transform.parent.parent.GetComponent<Animator>();
         parentTarget = transform.parent;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         if(cutsceneType == CutsceneType.One)
         {
             cutsceneOne = GameObject.Find("CutScene Manager").GetComponent<CutScene1>();
@@ -45,18 +43,15 @@ public class CutsceneCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Cursor.visible = false;
-        //Cursor.lockState = CursorLockMode.Locked;
-
         //This bool - 'canMove' gets triggered from an event on the "crying" animation
         if (canMove)
         {
             mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
             mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-            mouseX = Mathf.Clamp(mouseX, -45, 45);
-            mouseY = Mathf.Clamp(mouseY, -35, 60);
+            mouseX = Mathf.Clamp(mouseX, -35, 35);
+            mouseY = Mathf.Clamp(mouseY, -45, 45);
             parentTarget.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-            if(Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15 && screenOn && !enteredDesktop)
+            if (Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15 && screenOn && !enteredDesktop)
             {
                 //notificationText.text = "Press <sprite=\"EKey02\" index=\"0\"> to inspect";
                 notificationText.text = "Left click to inspect";
