@@ -97,112 +97,7 @@ public class PlayerController : MonoBehaviour
         //*/
         
 
-        if (crawlerCandidate != null && !crouched && !manipulating)
-        {
-            if(actionUI != null)
-            {
-                actionUI.text = "'E' to crawl";
-            }
-            
-            if (Input.GetKeyDown(KeyCode.E) && IsGrounded())
-            {
-                transform.position = crawlerCandidate.transform.position;
-                transform.rotation = crawlerCandidate.transform.rotation;
-                destination = crawlerCandidate.transform.GetChild(0).transform.position;
-                col.enabled = false;
-                box_col.enabled = true;
-                crouched = true;
-                anim.SetBool("Crouched", true);
-            }
-        }
-        // || manipulating JUST in case we leave a held object's collider   
-        else if (moveableCandidates.Count > 0 || manipulating) 
-        {
-            
-
-            if (manipulating) // you're holding an object
-            {
-                if(actionUI != null)
-                {
-                    actionUI.text = "'E' to let go";
-                }
-                
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    heldObject.transform.parent = null;
-                    heldObject = null;
-                    speed = input_speed;
-                    manipulating = false;
-                    anim.SetBool("Manipulating", false);
-                }
-            }
-            else
-            {
-                Vector3 forwardVec = transform.forward;
-                forwardVec.y = 0.0f;
-
-                GameObject bestObject = moveableCandidates[0];
-                Transform objBase = bestObject.transform.GetChild(bestObject.transform.childCount - 1);
-
-                Vector3 playerObjRay = objBase.position - transform.position;
-                playerObjRay.y = 0.0f;
-
-
-                bestAngle = Vector3.Angle(playerObjRay, transform.forward);
-                for (int i = 1; i < moveableCandidates.Count; ++i)
-                {
-                    objBase = moveableCandidates[i].transform.GetChild(moveableCandidates[i].transform.childCount - 1);
-                    playerObjRay = objBase.position - transform.position;
-                    playerObjRay.y = 0.0f;
-                    float angle = Vector3.Angle(playerObjRay, transform.forward);
-                    if(angle < bestAngle)
-                    {
-                        bestObject = moveableCandidates[i];
-                        bestAngle = angle;
-                    }
-                }
-                objBase = bestObject.transform.GetChild(bestObject.transform.childCount - 1);
-                playerObjRay = objBase.position - transform.position;
-
-                Debug.DrawRay(transform.position, playerObjRay, Color.green);
-                Vector3.Angle(playerObjRay, transform.forward);
-                if(bestAngle > 45.0f)
-                {
-                    bestObject = null;
-                    if(actionUI != null)
-                    {
-                        actionUI.text = "";
-                    }
-                    
-                } else
-                {
-                    if(actionUI != null)
-                    {
-                        actionUI.text = "'E' to move";
-                    }
-                    
-                }
-
-                if (bestObject != null && Input.GetKeyDown(KeyCode.E))
-                {
-                    // Choose what moveableCandidate to choose.
-                    // For now, just choose the first one 
-                    heldObject = bestObject;
-                    // heldObject = moveableCandidates[0];
-                    heldObject.transform.parent = transform;
-                    speed = manip_speed;
-                    manipulating = true;
-                    anim.SetBool("Manipulating", true);
-                }
-            }
-        } else
-        {
-            if(actionUI != null)
-            {
-                actionUI.text = "";
-            }
-            
-        }
+        
 
 
         //Quick journal implementation
@@ -214,12 +109,123 @@ public class PlayerController : MonoBehaviour
         if (!lock_movement)
         {
             //print("Not Locked");
+            if (crawlerCandidate != null && !crouched && !manipulating)
+            {
+                if (actionUI != null)
+                {
+                    actionUI.text = "'E' to crawl";
+                }
 
-                PlayerMovement();
+                if (Input.GetKeyDown(KeyCode.E) && IsGrounded())
+                {
+                    transform.position = crawlerCandidate.transform.position;
+                    transform.rotation = crawlerCandidate.transform.rotation;
+                    destination = crawlerCandidate.transform.GetChild(0).transform.position;
+                    col.enabled = false;
+                    box_col.enabled = true;
+                    crouched = true;
+                    anim.SetBool("Crouched", true);
+                }
+            }
+            // || manipulating JUST in case we leave a held object's collider   
+            else if (moveableCandidates.Count > 0 || manipulating)
+            {
+
+
+                if (manipulating) // you're holding an object
+                {
+                    if (actionUI != null)
+                    {
+                        actionUI.text = "'E' to let go";
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        heldObject.transform.parent = null;
+                        heldObject = null;
+                        speed = input_speed;
+                        manipulating = false;
+                        anim.SetBool("Manipulating", false);
+                    }
+                }
+                else
+                {
+                    Vector3 forwardVec = transform.forward;
+                    forwardVec.y = 0.0f;
+
+                    GameObject bestObject = moveableCandidates[0];
+                    Transform objBase = bestObject.transform.GetChild(bestObject.transform.childCount - 1);
+
+                    Vector3 playerObjRay = objBase.position - transform.position;
+                    playerObjRay.y = 0.0f;
+
+
+                    bestAngle = Vector3.Angle(playerObjRay, transform.forward);
+                    for (int i = 1; i < moveableCandidates.Count; ++i)
+                    {
+                        objBase = moveableCandidates[i].transform.GetChild(moveableCandidates[i].transform.childCount - 1);
+                        playerObjRay = objBase.position - transform.position;
+                        playerObjRay.y = 0.0f;
+                        float angle = Vector3.Angle(playerObjRay, transform.forward);
+                        if (angle < bestAngle)
+                        {
+                            bestObject = moveableCandidates[i];
+                            bestAngle = angle;
+                        }
+                    }
+                    objBase = bestObject.transform.GetChild(bestObject.transform.childCount - 1);
+                    playerObjRay = objBase.position - transform.position;
+
+                    Debug.DrawRay(transform.position, playerObjRay, Color.green);
+                    Vector3.Angle(playerObjRay, transform.forward);
+                    if (bestAngle > 45.0f)
+                    {
+                        bestObject = null;
+                        if (actionUI != null)
+                        {
+                            actionUI.text = "";
+                        }
+
+                    }
+                    else
+                    {
+                        if (actionUI != null)
+                        {
+                            actionUI.text = "'E' to move";
+                        }
+
+                    }
+
+                    if (bestObject != null && Input.GetKeyDown(KeyCode.E))
+                    {
+                        // Choose what moveableCandidate to choose.
+                        // For now, just choose the first one 
+                        heldObject = bestObject;
+                        // heldObject = moveableCandidates[0];
+                        heldObject.transform.parent = transform;
+                        speed = manip_speed;
+                        manipulating = true;
+                        anim.SetBool("Manipulating", true);
+                    }
+                }
+            }
+            else
+            {
+                if (actionUI != null)
+                {
+                    actionUI.text = "";
+                }
+
+            }
+            PlayerMovement();
 
         }
         else
         {
+            if(actionUI != null)
+            {
+                actionUI.text = "";
+            }
             lock_movement &= !Input.GetKeyDown(KeyCode.E);
             anim.SetFloat("Velocity_X", 0);
             anim.SetFloat("Velocity_Y", 0);
