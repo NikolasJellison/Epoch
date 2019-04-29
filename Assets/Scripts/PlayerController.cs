@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
         
         crouched = false;
     }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -95,10 +97,10 @@ public class PlayerController : MonoBehaviour
             }
         }
         //*/
-        
 
-        
-
+        // if(Input.GetKeyDown(KeyCode.Q)){
+        // 	Smash();
+        // }
 
         //Quick journal implementation
         if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
@@ -363,12 +365,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //COMMENTING OUT JUMP -nik (sorry)
-        //if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !crouched)
-        //{
-        //    anim.SetTrigger("Jump");
-        //    rb.AddForce(Vector3.up * Jump_Force, ForceMode.Impulse);
-        //}
+        
 
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
@@ -408,6 +405,10 @@ public class PlayerController : MonoBehaviour
     public bool IsManip()
     {
         return manipulating;
+    }
+
+    private void Smash(){
+    	anim.SetTrigger("Smash");
     }
 
     public void JournalInteract()
