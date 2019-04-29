@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CutsceneController : MonoBehaviour
+public class CutsceneController1 : MonoBehaviour
 {
     public PerspectiveSwap vantageManager;
+    public Vector3 skipPos;
     public bool playCutscene;
     public GameObject controller;
     public GameObject playerCam;
@@ -14,7 +15,6 @@ public class CutsceneController : MonoBehaviour
     public float pivotDegrees;
     public Transform[] cutsceneCamLocs;
     public float delay;
-    public Vector3 skipPos;
     public float prevModelDist;
     public float currModelDist1;
     public float currModelDist2;
@@ -31,6 +31,7 @@ public class CutsceneController : MonoBehaviour
     public GameObject mist;
     public float rotationLeft;
     public GameObject door;
+    public GameObject finalDoor;
     bool doorOpened;
     public int stage = 0;
     public float camMoveSpeed;
@@ -110,11 +111,26 @@ public class CutsceneController : MonoBehaviour
                 if (!doorOpened && doorDist <= 0)
                 {
                     doorOpened = true;
-                    door.GetComponent<Animator>().SetTrigger("DoorOpenOut");
+                    door.GetComponent<Animator>().SetTrigger("OpenIn");
                     door.GetComponent<AudioSource>().Play();
                 }
                 
             }
+            /*
+            else if(currModelDist2 > 0)
+            {
+                // rotate to face
+                // LEt's just see how it goes.
+                Vector3 playerMov = currModelDir2 * speed * Time.deltaTime;
+                Animator anim = controller.GetComponent<Animator>();
+
+                anim.SetFloat("Velocity_X", currModelDir2.x);
+                anim.SetFloat("Velocity_Y", currModelDir2.z);
+
+                controller.transform.Translate(playerMov, Space.Self);
+                currModelDist2 -= Vector3.Magnitude(playerMov);
+            }
+            //*/
             
             stage = 3;
             CamPosition(currModelTarg, false);
@@ -138,7 +154,7 @@ public class CutsceneController : MonoBehaviour
             Quaternion rot = Quaternion.LookRotation(lookDir, new Vector3(0, 1, 0));
             cutsceneCam.transform.rotation = Quaternion.Lerp(cutsceneCam.transform.rotation, rot, 1.5f * camRotationSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(originalPosition, cutsceneCam.transform.position) < 0.00001)
+            if (Vector3.Distance(originalPosition, cutsceneCam.transform.position) == 0)
             {
                 stage = 5;
             }
@@ -164,11 +180,8 @@ public class CutsceneController : MonoBehaviour
 
         if(stage >= 4)
         {
-            if(pivotDegrees > 0)
-            {
-                pivotDegrees -= 40f*Time.deltaTime;
-                pivot.Rotate(0, 40f*Time.deltaTime, 0);
-            }
+            door.SetActive(false);
+            finalDoor.SetActive(true);
         }
         
         if(stage == 5)
