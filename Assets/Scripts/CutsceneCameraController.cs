@@ -53,7 +53,7 @@ public class CutsceneCameraController : MonoBehaviour
         {
             mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
             mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-            mouseX = Mathf.Clamp(mouseX, -90, 90);
+            mouseX = Mathf.Clamp(mouseX, -45, 45);
             mouseY = Mathf.Clamp(mouseY, -35, 60);
             parentTarget.rotation = Quaternion.Euler(mouseY, mouseX, 0);
             if(Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15 && screenOn && !enteredDesktop)
