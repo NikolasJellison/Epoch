@@ -99,7 +99,11 @@ public class PlayerController : MonoBehaviour
 
         if (crawlerCandidate != null && !crouched && !manipulating)
         {
-            actionUI.text = "'E' to crawl";
+            if(actionUI != null)
+            {
+                actionUI.text = "'E' to crawl";
+            }
+            
             if (Input.GetKeyDown(KeyCode.E) && IsGrounded())
             {
                 transform.position = crawlerCandidate.transform.position;
@@ -118,7 +122,11 @@ public class PlayerController : MonoBehaviour
 
             if (manipulating) // you're holding an object
             {
-                actionUI.text = "'E' to let go";
+                if(actionUI != null)
+                {
+                    actionUI.text = "'E' to let go";
+                }
+                
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     heldObject.transform.parent = null;
