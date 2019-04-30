@@ -35,6 +35,10 @@ public class PlayerController : MonoBehaviour
     public float bestAngle;
     public Text actionUI;
 
+    //public Camera cam;
+    //public float objectScale = 1.0f;
+    //private Vector3 initialScale;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -51,6 +55,13 @@ public class PlayerController : MonoBehaviour
         }
         
         crouched = false;
+
+        //initialScale = transform.localScale;
+
+        //if(cam == null)
+        //{
+        //    cam = Camera.main;
+        //}
     }
 
 
@@ -232,6 +243,11 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("Velocity_X", 0);
             anim.SetFloat("Velocity_Y", 0);
         }
+
+        //Plane plane = new Plane(cam.transform.forward, cam.transform.position);
+        //float dist = plane.GetDistanceToPoint(transform.position);
+        //transform.localScale = initialScale * dist * objectScale;
+
     }
     /*
     private void OnTriggerEnter(Collider other)
