@@ -12,9 +12,14 @@ public class TVMountScript : MonoBehaviour
     public float rotateLimit;
     public Text moveUI;
     public bool start;
+    public GameObject tvStatic;
+    public GameObject cryingEmsy;
+    public float timeLeft;
+    public float threshold = 0.8f;
     // Start is called before the first frame update
     void Start()
     {
+        cryingEmsy.SetActive(false);
         moveUI.text = "";
         rotate = 0;
     }
@@ -22,12 +27,32 @@ public class TVMountScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(start && rotate < rotateLimit)
+
+        if (start)
         {
-            pivot.Rotate(0, 0, -speed*Time.deltaTime);
-            rotate += speed*Time.deltaTime;
+            cryingEmsy.SetActive(false);
+            if (rotate < rotateLimit)
+            {
+                pivot.Rotate(0, 0, -speed * Time.deltaTime);
+                rotate += speed * Time.deltaTime;
+            }
         }
-        
+        else
+        {
+            if(timeLeft > 0)
+            {
+                cryingEmsy.SetActive(true);
+                timeLeft -= Time.deltaTime;
+            }
+            else
+            {
+                cryingEmsy.SetActive(false);
+                if(Random.value*100 > threshold)
+                {
+                    timeLeft = Random.value;
+                }
+            }
+        }
         transform.position = tvPos.position;
     }
 
@@ -42,6 +67,7 @@ public class TVMountScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             start = true;
+            tvStatic.SetActive(false);
         }
     }
 
