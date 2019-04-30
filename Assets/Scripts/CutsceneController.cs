@@ -164,11 +164,7 @@ public class CutsceneController : MonoBehaviour
 
         if(stage >= 4)
         {
-            if(pivotDegrees > 0)
-            {
-                pivotDegrees -= 40f*Time.deltaTime;
-                pivot.Rotate(0, 40f*Time.deltaTime, 0);
-            }
+            door.GetComponent<Animator>().SetTrigger("DoorOutClose");
         }
         
         if(stage == 5)
