@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public float rotation_speed;
     //public float slide_speed;
     public GameObject player;
-    public Transform target;
+    private Transform target;
     private PlayerController player_controller;
     private bool crouching;
     private bool standing;
