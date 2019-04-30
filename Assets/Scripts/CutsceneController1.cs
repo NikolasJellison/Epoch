@@ -49,7 +49,8 @@ public class CutsceneController1 : MonoBehaviour
             controller.GetComponent<PlayerController>().enabled = false;
             playerCam.SetActive(false);
             UI.SetActive(false);
-        } else
+        }
+        else
         {
             cutsceneCam.SetActive(false);
             // move player to right spot
@@ -148,13 +149,14 @@ public class CutsceneController1 : MonoBehaviour
         {
             Vector3 originalPosition = cutsceneCam.transform.position;
             cutsceneCam.transform.position = Vector3.MoveTowards(cutsceneCam.transform.position, playerCam.transform.position, camMoveSpeed * Time.deltaTime);
-
-            Vector3 lookDir = currModelTarg.position - cutsceneCam.transform.position;
+            //Vector3 currDir = cutsceneCam.transform.forward;
+            Vector3 lookDir = playerCam.transform.forward;
 
             Quaternion rot = Quaternion.LookRotation(lookDir, new Vector3(0, 1, 0));
             cutsceneCam.transform.rotation = Quaternion.Lerp(cutsceneCam.transform.rotation, rot, 1.5f * camRotationSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(originalPosition, cutsceneCam.transform.position) == 0)
+            print("distance1: " + Vector3.Distance(originalPosition, cutsceneCam.transform.position));
+            print("distance2: " + Vector3.Distance(lookDir, playerCam.transform.forward));
+            if (Vector3.Distance(originalPosition, cutsceneCam.transform.position) < 0.05 && Vector3.Distance(cutsceneCam.transform.forward, lookDir) < 0.05)
             {
                 stage = 5;
             }

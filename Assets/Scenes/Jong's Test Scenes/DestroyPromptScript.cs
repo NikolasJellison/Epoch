@@ -16,18 +16,20 @@ public class DestroyPromptScript : MonoBehaviour
     public float hammerTime;
     public float delay;
     public bool triggeredDestruction;
+    public bool finished;
 
     // Start is called before the first frame update
     void Start()
     {
-        hammerTimeLeft = 0;
+        playerHammer.SetActive(false);
         promptUI.text = "";
     }
     private void Update()
     {
-        if(playerHammer.activeSelf && hammerTimeLeft <= 0)
+        if(hit && playerHammer.activeSelf && hammerTimeLeft <= 0 && !finished)
         {
             playerHammer.SetActive(false);
+            finished = true;
         }
         
         if (hit)

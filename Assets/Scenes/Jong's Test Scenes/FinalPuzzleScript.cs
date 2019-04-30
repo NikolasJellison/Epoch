@@ -7,7 +7,7 @@ public class FinalPuzzleScript : MonoBehaviour
     public GameObject player;
     public GameObject playerUI;
     public PerspectiveSwap vantageMgr;
-    public CameraController cam;
+    //public OldCameraController cam;
     private bool started;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class FinalPuzzleScript : MonoBehaviour
             {
                 
                 started = true;
-                cam.enabled = false;
+                //cam.enabled = false;
                 vantageMgr.enabled = false;
                 player.GetComponent<PlayerController>().lock_movement = true;
                 Cursor.lockState = CursorLockMode.None;
