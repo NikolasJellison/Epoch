@@ -109,10 +109,6 @@ public class PlayerController : MonoBehaviour
         }
         //*/
 
-        // if(Input.GetKeyDown(KeyCode.Q)){
-        // 	Smash();
-        // }
-
         //Quick journal implementation
         if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
         {
@@ -239,7 +235,7 @@ public class PlayerController : MonoBehaviour
             {
                 actionUI.text = "";
             }
-            lock_movement &= !Input.GetKeyDown(KeyCode.E);
+            //lock_movement &= !Input.GetKeyDown(KeyCode.E);
             anim.SetFloat("Velocity_X", 0);
             anim.SetFloat("Velocity_Y", 0);
         }
@@ -423,7 +419,7 @@ public class PlayerController : MonoBehaviour
         return manipulating;
     }
 
-    private void Smash(){
+    public void Smash(){
     	anim.SetTrigger("Smash");
     }
 

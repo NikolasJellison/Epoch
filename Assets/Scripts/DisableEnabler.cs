@@ -30,6 +30,10 @@ public class DisableEnabler : MonoBehaviour
 
         foreach (GameObject obj in add)
         {
+            if(obj == null)
+            {
+                continue;
+            }
             obj.SetActive(true);
         }
     }
