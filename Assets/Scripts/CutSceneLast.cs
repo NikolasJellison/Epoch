@@ -19,6 +19,7 @@ public class CutSceneLast : MonoBehaviour
     private Quaternion targetOGRotation;
     private bool startFade;
     public Image fadeImage;
+    bool cursorOn;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +29,23 @@ public class CutSceneLast : MonoBehaviour
         //cameraController.canMove = true;
     }
 
+    private void Update()
+    {
+        if (cursorOn)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
     public void EnterDesktop()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        cursorOn = true;
         player.GetComponent<PlayerController>().enabled = false;
         playerCam.enabled = false;
         cutSceneCam.enabled = true;
