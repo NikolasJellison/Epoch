@@ -38,6 +38,7 @@ public class DestroyPromptScript : MonoBehaviour
             delay -= Time.deltaTime;
             if(delay <= 0 && !triggeredDestruction)
             {
+                GetComponent<AudioSource>().Play();
                 triggeredDestruction = true;
                 GetComponent<Destruction>().EnableDestruction();
             }
@@ -64,6 +65,7 @@ public class DestroyPromptScript : MonoBehaviour
                 //Debug.Log("manny false");
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    
                     hammerTimeLeft = hammerTime;
                     controller.Smash();
                     playerHammer.SetActive(true);

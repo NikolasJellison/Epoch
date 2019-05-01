@@ -24,6 +24,7 @@ public class HammerScript : MonoBehaviour
         {
             if (!GetComponent<VisionObjectScript>().enabled)
             {
+                GetComponent<AudioSource>().Play();
                 collectUI.text = "Left click to pick up";
                 if (Input.GetMouseButtonDown(0))
                 {
