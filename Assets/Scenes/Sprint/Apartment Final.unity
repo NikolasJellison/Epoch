@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2012,11 +2012,6 @@ PrefabInstance:
       propertyPath: m_Text
       value: I need to remember why I started writing
       objectReference: {fileID: 0}
-    - target: {fileID: 5998377892317201165, guid: 8a764935044a82a42b29f97d7f80a7ad,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 879619572, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2.7000427
@@ -2024,6 +2019,11 @@ PrefabInstance:
     - target: {fileID: 1535617796, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -5.9999847
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998377892317201165, guid: 8a764935044a82a42b29f97d7f80a7ad,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a764935044a82a42b29f97d7f80a7ad, type: 3}
@@ -16676,6 +16676,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 585560008, guid: 308237897e99d514085517c57c288773, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.59
+      objectReference: {fileID: 0}
     - target: {fileID: 9062608839136263880, guid: 308237897e99d514085517c57c288773,
         type: 3}
       propertyPath: dissolveWaitTime
@@ -16690,10 +16694,6 @@ PrefabInstance:
         type: 3}
       propertyPath: force
       value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 585560008, guid: 308237897e99d514085517c57c288773, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.59
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 308237897e99d514085517c57c288773, type: 3}
@@ -22411,6 +22411,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.88
       objectReference: {fileID: 0}
+    - target: {fileID: 585560008, guid: 308237897e99d514085517c57c288773, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.49
+      objectReference: {fileID: 0}
     - target: {fileID: 9062608839136263880, guid: 308237897e99d514085517c57c288773,
         type: 3}
       propertyPath: dissolveWaitTime
@@ -22420,10 +22424,6 @@ PrefabInstance:
         type: 3}
       propertyPath: dissolveTime
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 585560008, guid: 308237897e99d514085517c57c288773, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -7.49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 308237897e99d514085517c57c288773, type: 3}
@@ -28336,7 +28336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vantageManager: {fileID: 1234589475}
   skipPos: {x: -3.7, y: 0.45, z: -9.3}
-  playCutscene: 0
+  playCutscene: 1
   controller: {fileID: 1218052881223083094}
   playerCam: {fileID: 5967541484601216647}
   cutsceneCam: {fileID: 1411005859}
@@ -29598,6 +29598,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BookshelfExp01
       objectReference: {fileID: 0}
+    - target: {fileID: 6609373795976557820, guid: ba4c536cc61c7fb4884ef240f7ae4a63,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 577831458419043966, guid: ba4c536cc61c7fb4884ef240f7ae4a63,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3943042219725923409, guid: ba4c536cc61c7fb4884ef240f7ae4a63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29667,16 +29677,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.663014
-      objectReference: {fileID: 0}
-    - target: {fileID: 6609373795976557820, guid: ba4c536cc61c7fb4884ef240f7ae4a63,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 577831458419043966, guid: ba4c536cc61c7fb4884ef240f7ae4a63,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba4c536cc61c7fb4884ef240f7ae4a63, type: 3}
@@ -34306,12 +34306,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Vision
       objectReference: {fileID: 0}
-    - target: {fileID: 3340729064207636552, guid: 47a9826c2009d82449c047cdd474ee5f,
+    - target: {fileID: 6909910471496657335, guid: 47a9826c2009d82449c047cdd474ee5f,
         type: 3}
       propertyPath: m_TagString
       value: Vision
       objectReference: {fileID: 0}
-    - target: {fileID: 6909910471496657335, guid: 47a9826c2009d82449c047cdd474ee5f,
+    - target: {fileID: 3340729064207636552, guid: 47a9826c2009d82449c047cdd474ee5f,
         type: 3}
       propertyPath: m_TagString
       value: Vision
@@ -34320,11 +34320,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Vision
-      objectReference: {fileID: 0}
-    - target: {fileID: 2323613971513950232, guid: 47a9826c2009d82449c047cdd474ee5f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 156652447018693056, guid: 47a9826c2009d82449c047cdd474ee5f,
         type: 3}
@@ -34426,6 +34421,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1218052881223083094}
+    - target: {fileID: 2323613971513950232, guid: 47a9826c2009d82449c047cdd474ee5f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47a9826c2009d82449c047cdd474ee5f, type: 3}
 --- !u!4 &2125579955 stripped
