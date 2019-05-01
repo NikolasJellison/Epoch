@@ -9,7 +9,7 @@ public class CabinetScript : MonoBehaviour
     public GameObject key;
     public BoxCollider note;
     public GameObject glow;
-    public GameObject pivot;
+    public GameObject[] pivots;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class CabinetScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!pivot.activeSelf)
+            if (!pivots[0].activeSelf)
             {
                 if (key != null)
                 {
@@ -38,7 +38,10 @@ public class CabinetScript : MonoBehaviour
                         {
                             glow.SetActive(false);
                             note.enabled = true;
-                            pivot.SetActive(true);
+                            foreach(GameObject pivot in pivots)
+                            {
+                                pivot.SetActive(true);
+                            }
                         }
                     }
                     else

@@ -15,6 +15,7 @@ public class ExtensionCordPlacement : MonoBehaviour
     public Text UI;
     public GameObject spinner;
     public NoteScriptL3 note;
+    public bool done;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,11 @@ public class ExtensionCordPlacement : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (done)
+        {
+            UI.text = "";
+            return;
+        }
         if (other.gameObject.CompareTag("Player"))
         {
             if (fanVO.enabled || controller.manipulating)
@@ -54,6 +60,7 @@ public class ExtensionCordPlacement : MonoBehaviour
                     extensionPlaced.SetActive(true);
                     spinner.SetActive(true);
                     note.enabled = true;
+                    done = true;
                 }
             }
             //UI.text = "Left Click to pick up";
