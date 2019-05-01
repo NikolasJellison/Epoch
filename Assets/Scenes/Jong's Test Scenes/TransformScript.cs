@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TransformScript : MonoBehaviour
+{
+    public Transform obj;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+
+    }
+    private void OnEnable()
+    {
+        obj.localPosition = transform.position;
+        obj.localRotation = transform.rotation;
+    }
+}

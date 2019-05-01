@@ -212,6 +212,10 @@ public class ChangeColormodeScript : MonoBehaviour
 
         foreach(MeshRenderer objMesh in objectives)
         {
+            if(objMesh == null)
+            {
+                continue;
+            }
             foreach(Material mat in objMesh.materials)
             {
                 if(mat == null)

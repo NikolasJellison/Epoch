@@ -8,6 +8,7 @@ public class ToyBox : MonoBehaviour
     //This is becoming the gameManager for room 1
     public GameObject cutSceneCamera;
     public GameObject playerCamera;
+    public PlayerController controller;
     public Text notificationText;
     public float speed = 2;
     private float step;
@@ -162,6 +163,7 @@ public class ToyBox : MonoBehaviour
             }
             //>
             playerCamera.SetActive(false);
+            controller.lock_movement = true;
             cutSceneCamera.SetActive(true);
             //This is a last minute fix, sometimes you could touch the box during the cutscene and it would change back
             //to the cut scene camera, and we dont want that
@@ -210,6 +212,7 @@ public class ToyBox : MonoBehaviour
             perspectiveSwap.cutSceneActive = false;
         }
         //>
+        controller.lock_movement = false;
         cutScenePlaying = false;
         playerCamera.SetActive(true);
         cutSceneCamera.SetActive(false);

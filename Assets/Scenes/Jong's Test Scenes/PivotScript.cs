@@ -8,6 +8,7 @@ public class PivotScript : MonoBehaviour
     public bool y;
     public bool z;
     public Transform[] pivotingObjs;
+    public float angle = 90;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,21 +19,26 @@ public class PivotScript : MonoBehaviour
     {
         foreach(Transform obj in pivotingObjs)
         {
+            if (x)
+            {
+                obj.RotateAround(transform.position, Vector3.right, angle);
+            }
+            else if (y)
+            {
+                obj.RotateAround(transform.position, Vector3.up, angle);
+            }
+            else if (z)
+            {
+                obj.RotateAround(transform.position, Vector3.forward, angle);
+            }
+        }
+        /*
+        foreach(Transform obj in pivotingObjs)
+        {
             obj.parent = transform;
         }
-
-        if (x)
-        {
-            transform.Rotate(90, 0, 0);
-        }
-        else if(y)
-        {
-            transform.Rotate(0, 90, 0);
-        }
-        else if (z)
-        {
-            transform.Rotate(0, 0, 90);
-        }
+        //*/
+        
         
 
     }
