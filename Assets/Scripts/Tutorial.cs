@@ -80,7 +80,7 @@ public class Tutorial : MonoBehaviour
             controller.lock_movement = true;
             if(collisionDetector != null)
             {
-                collisionDetector.GetComponent<TempCam>().enabled = false;
+                collisionDetector.GetComponent<CamCollision>().enabled = false;
             }
             
             scene1Cam.GetComponent<OldCameraController>().enabled = false;
@@ -105,7 +105,7 @@ public class Tutorial : MonoBehaviour
                     controller.lock_movement = false;
                     if (collisionDetector != null)
                     {
-                        collisionDetector.GetComponent<TempCam>().enabled = true;
+                        collisionDetector.GetComponent<CamCollision>().enabled = true;
                     }
                 }
             }
