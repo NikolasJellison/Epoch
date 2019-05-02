@@ -13,14 +13,14 @@ public class SpinScript : MonoBehaviour
     }
     private void Awake()
     {
-        foreach(Transform child in children)
-        {
-            child.parent = transform;
-        }
+    
     }
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(transform.forward, angle);
+        foreach(Transform child in children)
+        {
+            child.RotateAround(transform.position, transform.forward, angle);
+        }
     }
 }
