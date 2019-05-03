@@ -19,9 +19,16 @@ public class ChangeColormodeScript : MonoBehaviour
     public Color[] visionColors = new Color[4];
     // Cutscenes
     public GameObject chair;
+    [Header("Level 1")]
     // level 1
     public TextMeshProUGUI tutorialText;
+    public TextMeshProUGUI blockPuzzleText;
     public GameObject[] particles;
+    public Light ominousLight;
+    public Color[] omLightColors = new Color[4];
+    public MeshRenderer[] lamps;
+    public Color[] lampColors = new Color[4];
+    [Header("Level 2")]
     // Level 2
     public List<Material> hallwayLights = new List<Material>();
     public Color[] hallwayLightColors = new Color[4];
@@ -30,6 +37,7 @@ public class ChangeColormodeScript : MonoBehaviour
     public List<Text> text;
     public Color[] textColors = new Color[4];
     public Light objectiveLight;
+    [Header("Level 3")]
     // Level 3
     public List<MeshRenderer> waterMats;
     public Color[] waterColors = new Color[4];
@@ -218,15 +226,12 @@ public class ChangeColormodeScript : MonoBehaviour
             }
             foreach(Material mat in objMesh.materials)
             {
-                if(mat == null)
-                {
-                    continue;
-                }
-                //sprint(mat.name);
-                if (mat.name.Contains("Objectives"))
-                {
-                    mat.SetColor("_Glow", objectiveColors[index]);
-                }
+            if(mat == null)
+            {
+                continue;
+            }
+            //sprint(mat.name);
+            mat.SetColor("_Glow", objectiveColors[index]);
             }
         }
         /*
@@ -243,6 +248,10 @@ public class ChangeColormodeScript : MonoBehaviour
         if (tutorialText != null)
         {
             tutorialText.color = textColors[index];
+        }
+        if(blockPuzzleText != null)
+        {
+            blockPuzzleText.color = textColors[index];
         }
 
         if (particles.Length > 0)
@@ -294,7 +303,68 @@ public class ChangeColormodeScript : MonoBehaviour
                 mesh.material.SetColor("_color", visionColors[index]);
             }
         }
-        
-        
+
+        if(ominousLight != null)
+        {
+            ominousLight.color = omLightColors[index];
+        }
+
+        if(lamps.Length > 0)
+        {
+            foreach (MeshRenderer mesh in lamps)
+            {
+                mesh.material.SetColor("_glow", lampColors[index]);
+            }
+        }
+        /*
+        foreach (MeshRenderer objMesh in toyboxParts)
+        {
+            if (objMesh == null)
+            {
+                continue;
+            }
+            foreach (Material mat in objMesh.materials)
+            {
+                if (mat == null)
+                {
+                    continue;
+                }
+                //sprint(mat.name);
+                if (mat.name.Contains("Objectives"))
+                {
+                    mat.SetColor("_Glow", objectiveColors[index]);
+                }
+            }
+        }
+        //*/
     }
+    public void defaultMode()
+    {
+        currentMode = 0.0f;
+        DataScript.colorblindMode = currentMode;
+        dirty = true;
+    }
+
+    public void deteuranopiaMode()
+    {
+        currentMode = 1.0f;
+        DataScript.colorblindMode = currentMode;
+        dirty = true;
+    }
+
+    public void protanopiaMode()
+    {
+        currentMode = 2.0f;
+        DataScript.colorblindMode = currentMode;
+        dirty = true;
+    }
+
+    public void tritanopiaMode()
+    {
+        currentMode = 3.0f;
+        DataScript.colorblindMode = currentMode;
+        dirty = true;
+    }
+
+
 }
