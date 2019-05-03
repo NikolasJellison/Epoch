@@ -25,13 +25,14 @@ public class PlayerRoomOneDetection : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (GetComponent<PlayerController>().lock_movement)
-        {
-            collectUI.text = "";
-            return;
-        }
+        
         if (other.CompareTag("Block"))
         {
+            if (GetComponent<PlayerController>().lock_movement)
+            {
+                collectUI.text = "";
+                return;
+            }
             collectUI.text = "Left click to collect";
             if (Input.GetMouseButtonDown(0))
             {

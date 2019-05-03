@@ -15742,7 +15742,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1561377218}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1702591952}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -18358,6 +18358,12 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!1 &1082047435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4128494260833562209, guid: 2eed95e4c20d368409db6b64c16b66eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1561377218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1084955918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18656,7 +18662,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1561377218}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1082047435}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -35796,6 +35802,12 @@ Transform:
   m_Father: {fileID: 153816068}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1702591952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2817077251720351759, guid: 2eed95e4c20d368409db6b64c16b66eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1561377218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &1713163702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47389,6 +47401,10 @@ MonoBehaviour:
   - {fileID: 1164955287}
   - {fileID: 1420757832}
   hideArrows: 1
+  options: {fileID: 370938407}
+  goalUI:
+  - {fileID: 1082047435}
+  - {fileID: 1702591952}
 --- !u!4 &2101234347
 Transform:
   m_ObjectHideFlags: 0

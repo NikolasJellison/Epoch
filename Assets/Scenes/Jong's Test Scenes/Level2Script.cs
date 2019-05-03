@@ -29,13 +29,14 @@ public class Level2Script : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (GetComponent<PlayerController>().lock_movement)
-        {
-            collectUI.text = "";
-            return;
-        }
+        
         if (other.CompareTag("Pages"))
         {
+            if (GetComponent<PlayerController>().lock_movement)
+            {
+                collectUI.text = "";
+                return;
+            }
             collectUI.text = "Left click to collect";
             if (Input.GetMouseButtonDown(0))
             {

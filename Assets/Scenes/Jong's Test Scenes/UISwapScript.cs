@@ -8,6 +8,8 @@ public class UISwapScript : MonoBehaviour
     public GameObject[] roomArrows;
     public GameObject[] UI;
     public bool hideArrows;
+    public GameObject options;
+    public GameObject[] goalUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +64,10 @@ public class UISwapScript : MonoBehaviour
                     arrow.SetActive(false);
                 }
             }
+        }
+        foreach (GameObject ui in goalUI)
+        {
+            ui.SetActive(!options.activeSelf);
         }
     }
 }
