@@ -1950,7 +1950,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bb36dc2b16ad1c49b522395c07b7b4b, type: 2}
+  - {fileID: 2100000, guid: 9e812c7523b7bc4428a72a69cf6ee0f9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9113,10 +9113,25 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.7828104
       objectReference: {fileID: 0}
+    - target: {fileID: 5781048538457588580, guid: e187f729d76fc8349866e0b054796c12,
+        type: 3}
+      propertyPath: TrailModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5781048538457588577, guid: e187f729d76fc8349866e0b054796c12,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781048538457588579, guid: e187f729d76fc8349866e0b054796c12,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e812c7523b7bc4428a72a69cf6ee0f9, type: 2}
+    - target: {fileID: 5781048538457588579, guid: e187f729d76fc8349866e0b054796c12,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e187f729d76fc8349866e0b054796c12, type: 3}
@@ -17900,7 +17915,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 34.45
+  m_fontSize: 42.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -28846,7 +28861,7 @@ PrefabInstance:
     - target: {fileID: 9002720768983819178, guid: 2eed95e4c20d368409db6b64c16b66eb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -6
+      value: -6.0000305
       objectReference: {fileID: 0}
     - target: {fileID: 9167236884729474634, guid: 2eed95e4c20d368409db6b64c16b66eb,
         type: 3}
@@ -29649,7 +29664,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bb36dc2b16ad1c49b522395c07b7b4b, type: 2}
+  - {fileID: 2100000, guid: 9e812c7523b7bc4428a72a69cf6ee0f9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -41076,7 +41091,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bb36dc2b16ad1c49b522395c07b7b4b, type: 2}
+  - {fileID: 2100000, guid: 9e812c7523b7bc4428a72a69cf6ee0f9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
