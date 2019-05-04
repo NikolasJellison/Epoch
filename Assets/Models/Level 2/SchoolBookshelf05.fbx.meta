@@ -19,7 +19,17 @@ ModelImporter:
     3300002: SchoolBookShelf
     4300000: SchoolBookShelf
     4300002: books4
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert79
+    second: {fileID: 2100000, guid: 564c37e8b1169154f9e26a590e0f73a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong3
+    second: {fileID: 2100000, guid: 0f03399170475794288064c5fedabc63, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -47,11 +57,11 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
