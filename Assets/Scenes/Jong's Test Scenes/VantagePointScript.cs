@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VantagePointScript : MonoBehaviour
 {
+    public Texture2D defaultCursor;
+    public Texture2D hoverCursor;
     Camera cam;
     public AudioSource revealSpeaker;
     // Start is called before the first frame update
@@ -22,6 +24,11 @@ public class VantagePointScript : MonoBehaviour
         mask = ~mask;
         //print("doot?");
         //set cursor to default
+        if(defaultCursor != null)
+        {
+            Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
+        }
+        
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
         {
             Debug.DrawRay(ray.origin, ray.direction*hit.distance, Color.yellow);
@@ -34,7 +41,11 @@ public class VantagePointScript : MonoBehaviour
                 {
                     //print("OH BOY");
                     // Change Cursor
-
+                    if(hoverCursor != null)
+                    {
+                        Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.Auto);
+                    }
+                    
                     if (Input.GetMouseButtonDown(0))
                     {
                         revealSpeaker.Play();
