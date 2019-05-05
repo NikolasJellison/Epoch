@@ -37,6 +37,7 @@ public class ToyBox : MonoBehaviour
     public AudioSource victorySound;
     public AudioSource argument;
     public bool decreaseAudio;
+    public bool ended;
 
     private void Start()
     {
@@ -67,7 +68,18 @@ public class ToyBox : MonoBehaviour
                 }
             }
         }
-        
+
+        if (ended)
+        {
+            foreach (GameObject materialObject in materialObjects)
+            {
+                if (materialObject.GetComponent<MeshRenderer>().material.GetFloat("_ToyBoxGlow") == 1)
+                {
+                    materialObject.GetComponent<MeshRenderer>().material.SetFloat("_ToyBoxGlow", 0);
+                }
+            }
+        }
+
         //Debug cutscene
         
         if (Input.GetKeyDown(KeyCode.Semicolon))
@@ -217,7 +229,7 @@ public class ToyBox : MonoBehaviour
         playerCamera.SetActive(true);
         cutSceneCamera.SetActive(false);
         playerUI.SetActive(true);
-        
+        ended = true;
         
         yield return null;
     }

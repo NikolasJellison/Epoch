@@ -56,5 +56,13 @@ public class SceneLoadManager : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
+    public void LoadCutSceneLast()
+    {
+        SceneManager.LoadScene("Cutscene Last");
+    }
 
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
