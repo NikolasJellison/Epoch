@@ -19,7 +19,6 @@ public class CutScene1 : MonoBehaviour
     public MeshRenderer[] objectsToDisolve;
     public MeshRenderer[] objectsToDissolveLR;
     private float dissolveCounter;
-    public GameObject floor;
     [HideInInspector]public bool dissolve;
     private bool falling;
     private bool isWalking;
@@ -84,7 +83,6 @@ public class CutScene1 : MonoBehaviour
             {
                 obj.SetActive(false);
             }
-            
             sadText.text = "";
             //Reset Camera
             playerCam.gameObject.transform.parent.rotation = targetOGRotation;
@@ -96,8 +94,8 @@ public class CutScene1 : MonoBehaviour
                 dissolve = false;
                 dissolveCounter = 1;
 
+                
 
-                floor.SetActive(false);
                 //Start Fall
                 cameraController.canMove = false;
                 cameraController.StartFall();
