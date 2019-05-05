@@ -24,7 +24,6 @@ public class ShuffleMiniGame : MonoBehaviour
     public Image goalImage;
     public Color[] goalColors = new Color[4];
     public Color[] textColors = new Color[4];
-    public Color[] tint = new Color[4];
     public Color outlineColor;
     public bool done;
     // Start is called before the first frame update
@@ -47,16 +46,6 @@ public class ShuffleMiniGame : MonoBehaviour
         {
             goalImage.color = goalColors[index];
         }
-
-        Image[] memories = empty.GetComponentsInChildren<Image>();
-        if(memories != null && memories.Length > 0)
-        {
-            foreach (Image mem in memories)
-            {
-                mem.color = tint[index];
-            }
-        }
-        
         
         text.color = textColors[index];
 

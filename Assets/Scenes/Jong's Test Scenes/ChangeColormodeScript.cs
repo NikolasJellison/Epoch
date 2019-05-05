@@ -53,8 +53,6 @@ public class ChangeColormodeScript : MonoBehaviour
     public MeshRenderer spiralVoid;
     public Color[] voidColors = new Color[4];
     public List<Button> arrows = new List<Button>();
-    public List<Image> images = new List<Image>();
-    public Color[] imageColors = new Color[4];
     public bool dirty;
     public float currentMode;
 
@@ -434,14 +432,6 @@ public class ChangeColormodeScript : MonoBehaviour
                 }
             }
         }
-        if(images.Count > 0)
-        {
-            foreach (Image im in images)
-            {
-                im.color = imageColors[index];
-            }
-        }
-        
     }
 
     public void defaultMode()
