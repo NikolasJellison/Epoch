@@ -13,6 +13,7 @@ public class TriggerJigsaw : MonoBehaviour
     public bool puzzleTriggeredOnce;
     public GameObject door;
     public AudioSource whispering;
+    public GameObject objectiveLight;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class TriggerJigsaw : MonoBehaviour
                 door.GetComponent<AudioSource>().Play();
                 GetComponent<AudioSource>().Play();
                 whispering.Stop();
+                objectiveLight.SetActive(false);
             }
                 
         }
@@ -77,4 +79,5 @@ public class TriggerJigsaw : MonoBehaviour
             openUI.text = "";
         }
     }
+
 }

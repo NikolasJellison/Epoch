@@ -33,17 +33,26 @@ public class ChangeColormodeScript : MonoBehaviour
     public List<Material> hallwayLights = new List<Material>();
     public Color[] hallwayLightColors = new Color[4];
     public List<Light> lights = new List<Light>();
-    //public Color[] lightColors = new Color[4];
     public List<Text> text;
     public Color[] textColors = new Color[4];
     public Light objectiveLight;
+    public MeshRenderer[] posters;
+    public Color[] posterColors = new Color[4];
     [Header("Level 3")]
     // Level 3
-    public List<MeshRenderer> waterMats;
+    public MeshRenderer[] water;
     public Color[] waterColors = new Color[4];
     public Material stopper;
-
-    // 
+    public GameObject key;
+    public MeshRenderer firstAidKit;
+    public MeshRenderer handle;
+    public Texture[] firstAidTextures = new Texture[4];
+    public Color[] handleColors = new Color[4];
+    public MeshRenderer flowers;
+    public Color[] flowerColors = new Color[4];
+    [Header("Other")]
+    public MeshRenderer spiralVoid;
+    public Color[] voidColors = new Color[4];
     public bool dirty;
     public float currentMode;
 
@@ -52,7 +61,7 @@ public class ChangeColormodeScript : MonoBehaviour
     [SerializeField]
     public string[] shaderNames = new string[] 
     {"Breakable_new","Cutscene1Fall","Dissolve Test1_new","GlowTest_new",
-        "Hallway Walls_New","Lamp_New","ToyBox","TransparentBlocks","Void"
+        "Hallway Walls_New","Lamp_New","ToyBox","TransparentBlocks"
     };
     public List<Renderer> shaderRend = new List<Renderer>();
     public List<Material> shaderMaterials = new List<Material>();
@@ -192,7 +201,7 @@ public class ChangeColormodeScript : MonoBehaviour
             dirty = false;
         }
 
-
+        
     }
 
     private void ChangeMode()
@@ -226,12 +235,12 @@ public class ChangeColormodeScript : MonoBehaviour
             }
             foreach(Material mat in objMesh.materials)
             {
-            if(mat == null)
-            {
-                continue;
-            }
-            //sprint(mat.name);
-            mat.SetColor("_Glow", objectiveColors[index]);
+                if(mat == null)
+                {
+                    continue;
+                }
+                //sprint(mat.name);
+                mat.SetColor("_Glow", objectiveColors[index]);
             }
         }
         /*
@@ -316,6 +325,12 @@ public class ChangeColormodeScript : MonoBehaviour
                 mesh.material.SetColor("_glow", lampColors[index]);
             }
         }
+
+        if(firstAidKit != null && handle != null)
+        {
+            firstAidKit.material.mainTexture = firstAidTextures[index];
+            handle.material.color = handleColors[index];
+        }
         /*
         foreach (MeshRenderer objMesh in toyboxParts)
         {
@@ -337,7 +352,48 @@ public class ChangeColormodeScript : MonoBehaviour
             }
         }
         //*/
+        if(water.Length > 0)
+        {
+            foreach(MeshRenderer w in water)
+            {
+                Color wColor = w.material.color;
+                wColor.r = waterColors[index].r;
+                wColor.g = waterColors[index].g;
+                wColor.b = waterColors[index].b;
+                wColor.a = w.material.color.a;
+                w.material.color = wColor;
+            }
+        }
+
+        if(key != null)
+        {
+            foreach(MeshRenderer mesh in key.GetComponentsInChildren<MeshRenderer>())
+            {
+                mesh.material.color = objectiveColors[index];
+                mesh.material.SetColor("_Glow", objectiveColors[index]);
+            }
+            
+        }
+
+        if(flowers != null)
+        {
+            flowers.material.color = flowerColors[index];
+        }
+
+        if(spiralVoid != null)
+        {
+            spiralVoid.material.SetColor("_color", voidColors[index]);
+        }
+
+        if (posters.Length > 0)
+        {
+            foreach (MeshRenderer poster in posters)
+            {
+                poster.material.color = posterColors[index];
+            }
+        }
     }
+
     public void defaultMode()
     {
         currentMode = 0.0f;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class JigSawManager : MonoBehaviour
 {
@@ -9,12 +10,20 @@ public class JigSawManager : MonoBehaviour
     public GameObject exitButton;
     //public Image completedVersion;
     public GameObject panel;
+    public TextMeshProUGUI text;
+    public Color[] textColors = new Color[4];
 
     private void Start()
     {
         exitButton.SetActive(false);
+        
     }
 
+    public void Update()
+    {
+        float index = DataScript.colorblindMode;
+        text.color = textColors[(int)index];
+    }
 
     public void CorrectPlacement()
     {
