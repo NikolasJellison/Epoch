@@ -22,7 +22,10 @@ public class ShuffleMiniGame : MonoBehaviour
     public GameObject empty;
     [Header("Outline Stuff")]
     public Image goalImage;
+    public Color[] goalColors = new Color[4];
+    public Color[] textColors = new Color[4];
     public Color outlineColor;
+    public bool done;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,18 @@ public class ShuffleMiniGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int index = (int)DataScript.colorblindMode;
+        if (done)
+        {
+            goalImage.color = Color.white;
+        }
+        else
+        {
+            goalImage.color = goalColors[index];
+        }
+        
+        text.color = textColors[index];
+
         if (fadeOut)
         {
             var temp = fadeWhiteImage.color;
@@ -107,6 +122,7 @@ public class ShuffleMiniGame : MonoBehaviour
 
     public void EndMiniGame()
     {
+        done = true;
         //Stuff to end game
         //Get rid of all memories once the correct memory is selected
         foreach(GameObject obj in memoriesGO)

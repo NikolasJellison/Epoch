@@ -225,7 +225,11 @@ public class ChangeColormodeScript : MonoBehaviour
             mat.SetFloat("_colorblind", currentMode);
         }
         int index = (int)currentMode;
-        visionMat.SetColor("_color", visionColors[index]);
+        if(visionMat != null)
+        {
+            visionMat.SetColor("_color", visionColors[index]);
+        }
+        
 
         foreach(MeshRenderer objMesh in objectives)
         {
