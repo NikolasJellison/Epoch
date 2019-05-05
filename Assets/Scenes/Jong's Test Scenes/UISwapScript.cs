@@ -50,7 +50,7 @@ public class UISwapScript : MonoBehaviour
                 }
             }
 
-            if (!hideArrows && bestRoom.GetComponent<RoomScript>().vantagePoints.Length > 1)
+            if (!hideArrows && !options.activeSelf && bestRoom.GetComponent<RoomScript>().vantagePoints.Length > 1)
             {
                 foreach (GameObject arrow in roomArrows)
                 {
@@ -68,6 +68,9 @@ public class UISwapScript : MonoBehaviour
         foreach (GameObject ui in goalUI)
         {
             ui.SetActive(!options.activeSelf);
+            
         }
+
+
     }
 }

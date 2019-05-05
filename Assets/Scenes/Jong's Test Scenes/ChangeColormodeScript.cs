@@ -8,11 +8,8 @@ public class ChangeColormodeScript : MonoBehaviour
 {
     public List<MeshRenderer> sceneMRs;
     public List<SkinnedMeshRenderer> sceneSMRs;
-    public List<Material> sceneMats;
-    
-    public Color[] particleColors;
+    public List<Material> sceneMats = new List<Material>();
     public List<MeshRenderer> objectives = new List<MeshRenderer>();
-    //private List<Material> objectiveMats = new List<Material>();
     // Color: 0 = Reguar, 1 = Deuteranopia, 2 = Protanopia, 3 = Tritanopia
     public Color[] objectiveColors = new Color[4];
     public Material visionMat;
@@ -23,11 +20,12 @@ public class ChangeColormodeScript : MonoBehaviour
     // level 1
     public TextMeshProUGUI tutorialText;
     public TextMeshProUGUI blockPuzzleText;
-    public GameObject[] particles;
+    public List<GameObject> particles = new List<GameObject>();
     public Light ominousLight;
     public Color[] omLightColors = new Color[4];
-    public MeshRenderer[] lamps;
+    public List<MeshRenderer> lamps = new List<MeshRenderer>();
     public Color[] lampColors = new Color[4];
+    public List<MeshRenderer> toyboxParts = new List<MeshRenderer>();
     [Header("Level 2")]
     // Level 2
     public List<Material> hallwayLights = new List<Material>();
@@ -36,7 +34,7 @@ public class ChangeColormodeScript : MonoBehaviour
     public List<Text> text;
     public Color[] textColors = new Color[4];
     public Light objectiveLight;
-    public MeshRenderer[] posters;
+    public List<MeshRenderer> posters = new List<MeshRenderer>();
     public Color[] posterColors = new Color[4];
     [Header("Level 3")]
     // Level 3
@@ -50,9 +48,11 @@ public class ChangeColormodeScript : MonoBehaviour
     public Color[] handleColors = new Color[4];
     public MeshRenderer flowers;
     public Color[] flowerColors = new Color[4];
+    public List<GameObject> destroyables = new List<GameObject>();
     [Header("Other")]
     public MeshRenderer spiralVoid;
     public Color[] voidColors = new Color[4];
+    public List<Button> arrows = new List<Button>();
     public bool dirty;
     public float currentMode;
 
@@ -60,8 +60,8 @@ public class ChangeColormodeScript : MonoBehaviour
     [Header("Shader Names (exclude ShaderGraphs part)")]
     [SerializeField]
     public string[] shaderNames = new string[] 
-    {"Breakable_new","Cutscene1Fall","Dissolve Test1_new","GlowTest_new",
-        "Hallway Walls_New","Lamp_New","ToyBox","TransparentBlocks"
+    {"Cutscene1Fall","Dissolve Test1_new","GlowTest_new",
+        "Hallway Walls_New","Lamp_New","TransparentBlocks"
     };
     public List<Renderer> shaderRend = new List<Renderer>();
     public List<Material> shaderMaterials = new List<Material>();
@@ -263,7 +263,7 @@ public class ChangeColormodeScript : MonoBehaviour
             blockPuzzleText.color = textColors[index];
         }
 
-        if (particles.Length > 0)
+        if (particles.Count > 0)
         {
             foreach (GameObject pSystem in particles)
             {
@@ -318,7 +318,7 @@ public class ChangeColormodeScript : MonoBehaviour
             ominousLight.color = omLightColors[index];
         }
 
-        if(lamps.Length > 0)
+        if(lamps.Count > 0)
         {
             foreach (MeshRenderer mesh in lamps)
             {
@@ -330,6 +330,14 @@ public class ChangeColormodeScript : MonoBehaviour
         {
             firstAidKit.material.mainTexture = firstAidTextures[index];
             handle.material.color = handleColors[index];
+        }
+
+        if(toyboxParts.Count > 0)
+        {
+            foreach(MeshRenderer mesh in toyboxParts)
+            {
+                mesh.material.SetColor("_Glow", objectiveColors[index]);
+            }
         }
         /*
         foreach (MeshRenderer objMesh in toyboxParts)
@@ -385,11 +393,39 @@ public class ChangeColormodeScript : MonoBehaviour
             spiralVoid.material.SetColor("_color", voidColors[index]);
         }
 
-        if (posters.Length > 0)
+        if (posters.Count > 0)
         {
             foreach (MeshRenderer poster in posters)
             {
                 poster.material.color = posterColors[index];
+            }
+        }
+
+        if(arrows.Count > 0)
+        {
+            ColorBlock cBlock = new ColorBlock();
+            cBlock.colorMultiplier = 1.0f;
+            cBlock.normalColor = textColors[index];
+            cBlock.highlightedColor = Color.white;
+            cBlock.pressedColor = textColors[index];
+            foreach (Button b in arrows)
+            {
+                b.colors = cBlock;
+                //b.colors.normalColor = textColors[index];
+            }
+        }
+
+        if(destroyables.Count > 0)
+        {
+            foreach (GameObject wall in destroyables)
+            {
+                foreach (MeshRenderer mesh in wall.GetComponentsInChildren<MeshRenderer>())
+                {
+                    foreach (Material mat in mesh.materials)
+                    {
+                        mat.SetFloat("_colorblind", currentMode);
+                    }
+                }
             }
         }
     }
