@@ -462,5 +462,35 @@ public class ChangeColormodeScript : MonoBehaviour
         dirty = true;
     }
 
+    //Dropdown needs to send in INT values, so i'm combining all these into a single function
+
+    public void SetColorBlindModeUI(int mode)
+    {
+        if(mode == 0)
+        {
+            currentMode = 0.0f;
+            DataScript.colorblindMode = currentMode;
+            dirty = true;
+        }
+        else if(mode == 1)
+        {
+            currentMode = 1.0f;
+            DataScript.colorblindMode = currentMode;
+            dirty = true;
+        }
+        else if(mode == 2)
+        {
+            currentMode = 2.0f;
+            DataScript.colorblindMode = currentMode;
+            dirty = true;
+        }
+        else if(mode == 4)
+        {
+            currentMode = 3.0f;
+            DataScript.colorblindMode = currentMode;
+            dirty = true;
+        }
+    }
+
 
 }
