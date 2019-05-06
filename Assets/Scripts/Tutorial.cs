@@ -48,7 +48,8 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tutorialText.text = "Press <sprite=\"W 1\" index=\"0\"> <sprite=\"A 1\" index=\"0\"> <sprite=\"S 1\" index=\"0\"> <sprite=\"D 1\" index=\"0\"> to move";
+        //tutorialText.text = "Press <sprite=\"W 1\" index=\"0\"> <sprite=\"A 1\" index=\"0\"> <sprite=\"S 1\" index=\"0\"> <sprite=\"D 1\" index=\"0\"> to move";
+        tutorialText.text = "Press 'W' 'A' 'S' 'D' to move";
     }
 
     // Update is called once per frame
@@ -95,7 +96,8 @@ public class Tutorial : MonoBehaviour
 
             if (Vector3.Distance(originalPosition, scene1Cam.transform.position) == 0)
             {
-                tutorialText.text = "These pulsating objects cannot be interacted with at first \nPress <sprite=\"Space01\" index=\"0\"> to continue";
+                //tutorialText.text = "These pulsating objects cannot be interacted with at first \nPress <sprite=\"Space01\" index=\"0\"> to continue";
+                tutorialText.text = "These pulsating objects cannot be interacted with at first \nPress 'Space' to continue";
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     sawScene1 = true;
@@ -113,7 +115,8 @@ public class Tutorial : MonoBehaviour
         else if (!newView)
         {
             vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
-            tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to get a new Perspective on the environment";
+            //tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to get a new Perspective on the environment";
+            tutorialText.text = "Press 'Shift' to get a new Perspective on the environment";
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
                 newView = true;
@@ -124,7 +127,8 @@ public class Tutorial : MonoBehaviour
         {
             if (vantageManager.GetComponent<PerspectiveSwap>().playerActive)
             {
-                tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to return to the Perspective view";
+                //tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to return to the Perspective view";
+                tutorialText.text = "Press 'Shift' to return to the Perspective view";
             } else
             {
                 tutorialText.text = "Click on the pulsating object to activate it for little Emsy";
@@ -154,7 +158,8 @@ public class Tutorial : MonoBehaviour
 
             if (Vector3.Distance(originalPosition, scene2Cam.transform.position) == 0)
             {
-                tutorialText.text = "This object can now be used by little Emsy \n Press <sprite=\"Space01\" index=\"0\"> to continue";
+                //tutorialText.text = "This object can now be used by little Emsy \n Press <sprite=\"Space01\" index=\"0\"> to continue";
+                tutorialText.text = "This object can now be used by little Emsy \n Press 'Space' to continue";
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     sawScene2 = true;
@@ -169,14 +174,17 @@ public class Tutorial : MonoBehaviour
             uiScript.hideArrows = false;
             if (vantageManager.GetComponent<PerspectiveSwap>().playerActive)
             {
-                tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to return to the Perspective view";
-            } else
+                //tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to return to the Perspective view";
+                tutorialText.text = "Press 'Shift' to return to the Perspective view";
+            }
+            else
             {
                 vantageManager.GetComponent<PerspectiveSwap>().newViewEnabled = true;
-                tutorialText.text = "Press  <sprite=\"A\" index=\"0\"> and <sprite=\"D\" index=\"0\">" 
+                /*tutorialText.text = "Press  <sprite=\"A\" index=\"0\"> and <sprite=\"D\" index=\"0\">" 
                     + " or the arrows on the left and right to swap between views of the room";
-                
-                if(room.currentView != 0)
+                //*/
+                tutorialText.text = "Press 'A' and 'D' or the arrows on the left and right to swap between views of the room";
+                if (room.currentView != 0)
                 {
                     changedView = true;
                 }
@@ -187,7 +195,8 @@ public class Tutorial : MonoBehaviour
         else if(!returnToEmsy)
         {
             vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
-            tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to return to the level";
+            //tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to return to the level";
+            tutorialText.text = "Press 'Shift' to return to the level";
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
                 returnToEmsy = true;
@@ -196,7 +205,8 @@ public class Tutorial : MonoBehaviour
         //Getting rid of the jorunal until we add it into the player controller
         else if (!openedJournal)
         {
-            tutorialText.text = "Press <sprite=\"Tab 1\" index=\"0\"> or <sprite=\"ESC\" index=\"0\"> to open the menu";
+            //tutorialText.text = "Press <sprite=\"Tab 1\" index=\"0\"> or <sprite=\"ESC\" index=\"0\"> to open the menu";
+            tutorialText.text = "Press 'Tab' or 'Escape' to open the menu";
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 openedJournal = true;
@@ -204,7 +214,8 @@ public class Tutorial : MonoBehaviour
         }
         else
         {
-            tutorialText.text = "You've completed this tutorial";
+            //tutorialText.text = "You've completed this tutorial";
+            tutorialText.text = "";
             Destroy(gameObject, 2.5f);
         }
     }

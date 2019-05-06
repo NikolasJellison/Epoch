@@ -14,6 +14,8 @@ public class TriggerJigsaw : MonoBehaviour
     public GameObject door;
     public AudioSource whispering;
     public GameObject objectiveLight;
+    public GameObject blocker;
+    public GameObject pivot;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,6 @@ public class TriggerJigsaw : MonoBehaviour
                 door.GetComponent<AudioSource>().Play();
                 GetComponent<AudioSource>().Play();
                 whispering.Stop();
-                objectiveLight.SetActive(false);
             }
                 
         }
@@ -55,12 +56,14 @@ public class TriggerJigsaw : MonoBehaviour
 
             if (vantageMgr.playerActive)
             {
-                openUI.text = "'E' to Open.";
+                openUI.text = "'E' to open";
                 if (Input.GetKeyDown(KeyCode.E) && !inPuzzle)
                 {
                     player.GetComponent<Level2Script>().pagesFound += 1;
                     puzzleTriggeredOnce = true;
-                    
+                    pivot.SetActive(true);
+                    objectiveLight.SetActive(false);
+                    blocker.SetActive(false);
                     Instantiate(Resources.Load("Canvas-Jigsaw"));
                     inPuzzle = true;
                 }

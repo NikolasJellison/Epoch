@@ -48,13 +48,13 @@ public class CutsceneCameraController : MonoBehaviour
         {
             mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
             mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-            mouseX = Mathf.Clamp(mouseX, -35, 35);
+            mouseX = Mathf.Clamp(mouseX, -25, 25);
             mouseY = Mathf.Clamp(mouseY, -45, 45);
             parentTarget.rotation = Quaternion.Euler(mouseY, mouseX, 0);
             if (Mathf.Abs(mouseX) < 15 && Mathf.Abs(mouseY) < 15 && screenOn && !enteredDesktop)
             {
                 //notificationText.text = "Press <sprite=\"EKey02\" index=\"0\"> to inspect";
-                notificationText.text = "Left click to inspect";
+                notificationText.text = "Left Click to inspect";
                 //I feel like 2 nested If statements is bad...
                 //if (Input.GetKeyDown(KeyCode.E))
                 if (Input.GetMouseButtonDown(0))

@@ -37,6 +37,7 @@ public class ToyBox : MonoBehaviour
     public AudioSource victorySound;
     public AudioSource argument;
     public bool decreaseAudio;
+    public bool ended;
 
     private void Start()
     {
@@ -64,6 +65,17 @@ public class ToyBox : MonoBehaviour
                 if (materialObject.GetComponent<MeshRenderer>().material.GetFloat("_ToyBoxGlow") == 0)
                 {
                     materialObject.GetComponent<MeshRenderer>().material.SetFloat("_ToyBoxGlow", 1);
+                }
+            }
+        }
+
+        if (ended)
+        {
+            foreach (GameObject materialObject in materialObjects)
+            {
+                if (materialObject.GetComponent<MeshRenderer>().material.GetFloat("_ToyBoxGlow") == 1)
+                {
+                    materialObject.GetComponent<MeshRenderer>().material.SetFloat("_ToyBoxGlow", 0);
                 }
             }
         }
@@ -197,6 +209,7 @@ public class ToyBox : MonoBehaviour
         DOOR.GetComponent<Animator>().SetTrigger("OpenIn");
         DOOR.GetComponent<AudioSource>().Play();
         victorySound.Play();
+        ended = true;
         //argument.Stop();
         decreaseAudio = true;
         BlockMiniGameCanvas.SetActive(false);

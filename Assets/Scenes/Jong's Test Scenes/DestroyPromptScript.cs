@@ -74,7 +74,7 @@ public class DestroyPromptScript : MonoBehaviour
                 }
             } else
             {
-                promptUI.text = "You need something to break this.";
+                promptUI.text = "I need something to break this";
             }
             
         }

@@ -65,6 +65,8 @@ public class CutsceneController : MonoBehaviour
         {
             return;
         }
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         print(stage);
         if (delay >= 0)
         {

@@ -37,7 +37,7 @@ public class Level2Script : MonoBehaviour
                 collectUI.text = "";
                 return;
             }
-            collectUI.text = "Left click to collect";
+            collectUI.text = "Left Click to collect";
             if (Input.GetMouseButtonDown(0))
             {
                 subPage();

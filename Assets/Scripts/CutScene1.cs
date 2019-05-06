@@ -31,7 +31,7 @@ public class CutScene1 : MonoBehaviour
     public AudioSource radio;
     private bool dissolveLR;
     public TextMeshProUGUI sadText;
-    
+    public List<GameObject> deskitems = new List<GameObject>();
 
     private void Start()
     {
@@ -79,10 +79,6 @@ public class CutScene1 : MonoBehaviour
         //There is a better way but idk how to make the fill continuous
         if (dissolve)
         {
-            foreach (GameObject obj in delete)
-            {
-                obj.SetActive(false);
-            }
             sadText.text = "";
             //Reset Camera
             playerCam.gameObject.transform.parent.rotation = targetOGRotation;
@@ -93,15 +89,23 @@ public class CutScene1 : MonoBehaviour
             {
                 dissolve = false;
                 dissolveCounter = 1;
-
                 
-
                 //Start Fall
                 cameraController.canMove = false;
                 cameraController.StartFall();
                 falling = true;
             }
-
+            foreach(GameObject item in deskitems)
+            {
+                if(item != null)
+                {
+                    MeshRenderer[] meshes = item.GetComponentsInChildren<MeshRenderer>();
+                    foreach(MeshRenderer mr in meshes)
+                    {
+                        mr.material.SetFloat("_DissolveValue", dissolveCounter);
+                    }
+                }
+            }
             foreach (MeshRenderer obj in objectsToDisolve)
             {
                 obj.material.SetFloat("_DissolveValue", dissolveCounter);
@@ -114,6 +118,10 @@ public class CutScene1 : MonoBehaviour
         }
 
         if(falling){
+            foreach (GameObject obj in delete)
+            {
+                obj.SetActive(false);
+            }
             player.transform.position = Vector3.MoveTowards(player.transform.position, landing.position, fallSpeed * Time.deltaTime);
             if (Vector3.Distance(player.transform.position, landing.position) < .01)
             {
