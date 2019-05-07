@@ -65,9 +65,11 @@ public class PerspectiveSwap : MonoBehaviour
         }
         else if (puzzleLocker != null && puzzleLocker.GetComponent<TriggerJigsaw>().inPuzzle)
         {
+            /*
             player.GetComponent<PlayerController>().lock_movement = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            //*/
             RoomUI.text = "";
             ViewUI.text = "";
         }

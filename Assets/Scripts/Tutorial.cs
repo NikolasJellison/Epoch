@@ -207,7 +207,7 @@ public class Tutorial : MonoBehaviour
         {
             //tutorialText.text = "Press <sprite=\"Tab 1\" index=\"0\"> or <sprite=\"ESC\" index=\"0\"> to open the menu";
             tutorialText.text = "Press 'Tab' or 'Escape' to open the menu";
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
             {
                 openedJournal = true;
             }

@@ -176,6 +176,7 @@ public class ToyBox : MonoBehaviour
             //>
             playerCamera.SetActive(false);
             controller.lock_movement = true;
+            controller.journalInput = false;
             cutSceneCamera.SetActive(true);
             //This is a last minute fix, sometimes you could touch the box during the cutscene and it would change back
             //to the cut scene camera, and we dont want that
@@ -226,6 +227,7 @@ public class ToyBox : MonoBehaviour
         }
         //>
         controller.lock_movement = false;
+        controller.journalInput = true;
         cutScenePlaying = false;
         playerCamera.SetActive(true);
         cutSceneCamera.SetActive(false);

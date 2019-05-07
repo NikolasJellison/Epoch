@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public float input_speed;
+    public bool journalInput = true;
 	
     public float manip_speed;
     private float speed;
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour
         //*/
 
         //Quick journal implementation
-        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
+        if (journalInput && (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape)))
         {
             JournalInteract();
         }
@@ -139,8 +140,6 @@ public class PlayerController : MonoBehaviour
             // || manipulating JUST in case we leave a held object's collider   
             else if (moveableCandidates.Count > 0 || manipulating)
             {
-
-
                 if (manipulating) // you're holding an object
                 {
                     if (actionUI != null)
@@ -425,7 +424,7 @@ public class PlayerController : MonoBehaviour
 
     public void JournalInteract()
     {
-        if(optionsPanel.activeSelf == false)
+        if(!optionsPanel.activeSelf)
         {
             lock_movement = true;
             Cursor.lockState = CursorLockMode.None;

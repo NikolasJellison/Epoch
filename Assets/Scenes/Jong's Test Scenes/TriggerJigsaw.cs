@@ -16,6 +16,7 @@ public class TriggerJigsaw : MonoBehaviour
     public GameObject objectiveLight;
     public GameObject blocker;
     public GameObject pivot;
+    public GameObject UI;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +28,21 @@ public class TriggerJigsaw : MonoBehaviour
     void Update()
     {
         GameObject puzzle = GameObject.Find("Canvas-Jigsaw(Clone)");
-        
+        if(puzzle != null)
+        {
+            UI.SetActive(false);
+        }
         if(inPuzzle && puzzle == null)
         {
             inPuzzle = false;
 
             if (door != null)
             {
+                player.GetComponent<PlayerController>().journalInput = true;
+                player.GetComponent<PlayerController>().lock_movement = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                UI.SetActive(true);
                 door.GetComponent<Animator>().SetTrigger("DoorOpenIn");
                 door.GetComponent<AudioSource>().Play();
                 GetComponent<AudioSource>().Play();
@@ -59,6 +68,10 @@ public class TriggerJigsaw : MonoBehaviour
                 openUI.text = "'E' to open";
                 if (Input.GetKeyDown(KeyCode.E) && !inPuzzle)
                 {
+                    player.GetComponent<PlayerController>().journalInput = false;
+                    player.GetComponent<PlayerController>().lock_movement = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                     player.GetComponent<Level2Script>().pagesFound += 1;
                     puzzleTriggeredOnce = true;
                     pivot.SetActive(true);

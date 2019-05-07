@@ -32,6 +32,7 @@ public class FinalPuzzleScript : MonoBehaviour
                 //cam.enabled = false;
                 vantageMgr.enabled = false;
                 player.GetComponent<PlayerController>().lock_movement = true;
+                player.GetComponent<PlayerController>().journalInput = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 playerUI.SetActive(false);
