@@ -31,6 +31,11 @@ public class PerspectiveSwap : MonoBehaviour
         if (!options.activeSelf && swapEnabled && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
         {
             playerActive = !playerActive;
+            AudioSource swapSound = GetComponent<AudioSource>();
+            if (swapSound != null)
+            {
+                //swapSound.Play();
+            }
         }
 
         RoomSelectorScript selector = player.GetComponent<RoomSelectorScript>();
