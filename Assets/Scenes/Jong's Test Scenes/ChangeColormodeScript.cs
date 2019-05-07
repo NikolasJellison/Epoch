@@ -50,9 +50,14 @@ public class ChangeColormodeScript : MonoBehaviour
     public Color[] flowerColors = new Color[4];
     public List<GameObject> destroyables = new List<GameObject>();
     [Header("Other")]
+    public List<TextMeshProUGUI> textMeshes = new List<TextMeshProUGUI>();
     public MeshRenderer spiralVoid;
     public Color[] voidColors = new Color[4];
     public List<Button> arrows = new List<Button>();
+    public List<Button> uiButtons = new List<Button>();
+    public ColorBlock[] cBlocks = new ColorBlock[2];
+    public List<TextMeshProUGUI> menuTextMeshes = new List<TextMeshProUGUI>();
+    public Color[] menuTextColors = new Color[2];
     public bool dirty;
     public float currentMode;
 
@@ -253,11 +258,21 @@ public class ChangeColormodeScript : MonoBehaviour
             mat.SetColor("_Glow", objectiveColors[index]);
         }
         //*/
-
-        foreach (Text t in text)
+        if(text.Count > 0)
         {
-            t.color = textColors[index];
+            foreach(Text t in text)
+            {
+                t.color = textColors[index];
+            }
         }
+        if(textMeshes.Count > 0)
+        {
+            foreach (TextMeshProUGUI t in textMeshes)
+            {
+                t.color = textColors[index];
+            }
+        }
+        
         if (tutorialText != null)
         {
             tutorialText.color = textColors[index];
@@ -419,7 +434,41 @@ public class ChangeColormodeScript : MonoBehaviour
             }
         }
 
-        if(destroyables.Count > 0)
+        if (uiButtons.Count > 0)
+        {
+            foreach (Button b in uiButtons)
+            {
+                if(index > 0)
+                {
+                    b.colors = cBlocks[1];
+                } else
+                {
+                    b.colors = cBlocks[0];
+                }
+                
+                //b.colors.normalColor = textColors[index];
+            }
+            //*/
+        }
+        /*
+         * public List<TextMeshProUGUI> menuTextMeshes = new List<TextMeshProUGUI>();
+         * public Color[] menuTextColors = new Color[2]; 
+       //*/
+        if (menuTextMeshes.Count > 0)
+        {
+            foreach(TextMeshProUGUI t in menuTextMeshes)
+            {
+                if(index > 0)
+                {
+                    t.color = menuTextColors[1];
+                } else
+                {
+                    t.color = menuTextColors[0];
+                }
+            }
+        }
+
+        if (destroyables.Count > 0)
         {
             foreach (GameObject wall in destroyables)
             {

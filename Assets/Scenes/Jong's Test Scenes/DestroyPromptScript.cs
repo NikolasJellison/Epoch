@@ -61,7 +61,7 @@ public class DestroyPromptScript : MonoBehaviour
             {
                 // if the hammer is active, set the text to say that you need something to break it
                 // otherwise, E to destroy and accept E as an input
-                promptUI.text = "'E' to destroy.";
+                promptUI.text = "'E' to destroy";
                 //Debug.Log("manny false");
                 if (Input.GetKeyDown(KeyCode.E))
                 {

@@ -9,7 +9,6 @@ public class PerspectiveSwap : MonoBehaviour
     public GameObject player;
     public GameObject playerCam;
     public GameObject toybox;
-    public GameObject journal;
     public bool swapEnabled;
     public bool newViewEnabled;
     public GameObject options;
@@ -53,7 +52,7 @@ public class PerspectiveSwap : MonoBehaviour
             ViewUI.text = "";
             disableVantagePoints();
         }
-        else if((journal != null && journal.activeSelf) || (options != null && options.activeSelf))
+        else if(options != null && options.activeSelf)
         {
             // Essentially, allow the playerController script to handle setting the movement and cursor
             /*

@@ -24,11 +24,14 @@ public class ShuffleMiniGame : MonoBehaviour
     public Image goalImage;
     public Color[] goalColors = new Color[4];
     public Color[] textColors = new Color[4];
+    public Color[] imageColors = new Color[4];
     public Color outlineColor;
     public bool done;
     // Start is called before the first frame update
     void Start()
     {
+        int index = (int)DataScript.colorblindMode;
+        outlineColor = goalColors[index];
         GenerateMemories();
         fadeColor.a = 0f;
         text = GetComponentInChildren<TextMeshProUGUI>();
@@ -46,7 +49,11 @@ public class ShuffleMiniGame : MonoBehaviour
         {
             goalImage.color = goalColors[index];
         }
-        
+        outlineColor = goalColors[index];
+        foreach(GameObject memory in memoriesGO)
+        {
+            memory.GetComponent<Image>().color = imageColors[index];
+        }
         text.color = textColors[index];
 
         if (fadeOut)

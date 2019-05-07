@@ -40,6 +40,7 @@ public class CutsceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playCutscene = DataScript.cutscene1;
         if (playCutscene)
         {
             currModel.SetActive(false);
@@ -177,6 +178,7 @@ public class CutsceneController : MonoBehaviour
             playerCam.SetActive(true);
             UI.SetActive(true);
             lightRoom.SetActive(false);
+            DataScript.cutscene1 = false;
             this.enabled = false;
         }
     }

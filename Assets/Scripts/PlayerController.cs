@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     //need to make this public to for Worlds space text (temp fix)
     public bool lock_movement;
     public bool manipulating;
-    public GameObject journalUI;
+    //public GameObject journalUI;
     public GameObject optionsPanel;
     public GameObject[] cursorImages;
     //private Transform my_Camera;
@@ -446,6 +446,6 @@ public class PlayerController : MonoBehaviour
             }
         }
         optionsPanel.SetActive(!optionsPanel.activeSelf);
-        journalUI.SetActive(!journalUI.activeSelf);
+        //journalUI.SetActive(!journalUI.activeSelf);
     }
 }
