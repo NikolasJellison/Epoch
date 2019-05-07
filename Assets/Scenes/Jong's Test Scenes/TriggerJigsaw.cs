@@ -47,6 +47,7 @@ public class TriggerJigsaw : MonoBehaviour
                 door.GetComponent<AudioSource>().Play();
                 GetComponent<AudioSource>().Play();
                 whispering.Stop();
+                vantageMgr.swapEnabled = true;
             }
                 
         }
@@ -68,6 +69,7 @@ public class TriggerJigsaw : MonoBehaviour
                 openUI.text = "'E' to open";
                 if (Input.GetKeyDown(KeyCode.E) && !inPuzzle)
                 {
+                    vantageMgr.swapEnabled = false;
                     player.GetComponent<PlayerController>().journalInput = false;
                     player.GetComponent<PlayerController>().lock_movement = true;
                     Cursor.lockState = CursorLockMode.None;

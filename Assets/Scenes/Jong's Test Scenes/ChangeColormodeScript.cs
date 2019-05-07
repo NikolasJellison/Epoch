@@ -533,7 +533,7 @@ public class ChangeColormodeScript : MonoBehaviour
             DataScript.colorblindMode = currentMode;
             dirty = true;
         }
-        else if(mode == 4)
+        else if(mode == 3)
         {
             currentMode = 3.0f;
             DataScript.colorblindMode = currentMode;

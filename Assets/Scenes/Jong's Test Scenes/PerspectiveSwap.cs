@@ -28,7 +28,7 @@ public class PerspectiveSwap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (swapEnabled && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
+        if (!options.activeSelf && swapEnabled && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
         {
             playerActive = !playerActive;
         }
