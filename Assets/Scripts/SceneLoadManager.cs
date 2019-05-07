@@ -34,6 +34,8 @@ public class SceneLoadManager : MonoBehaviour
 
     public void LoadCutScene1()
     {
+        DataScript.cutscene1 = true;
+        DataScript.cutscene2 = true;
         SceneManager.LoadScene("Cutscene 1");
     }
 
