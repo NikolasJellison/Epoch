@@ -81,11 +81,12 @@ public class ToyBox : MonoBehaviour
         }
         
         //Debug cutscene
-        
+        /*
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
             cutScene();
         }
+        //*/
         
         
         step = speed * Time.deltaTime;

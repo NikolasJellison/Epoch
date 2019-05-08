@@ -24,6 +24,7 @@ public class Destruction : MonoBehaviour
     void Update()
     {
         //Debug
+        /*
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
             EnableDestruction();
@@ -34,6 +35,7 @@ public class Destruction : MonoBehaviour
             //}
             //StartCoroutine(WaitTime());
         }
+        //*/
 
         if (dissolve)
         {

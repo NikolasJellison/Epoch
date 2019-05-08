@@ -69,12 +69,14 @@ public class CutScene1 : MonoBehaviour
         }
         //Debug.Log(Time.deltaTime);
         //Debug
+        /*
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
             EnterDesktop();
             //So if you bypass the beginning animation with the 'debug' key, you will still be able to click on the exit button on the computer screen
             cameraController.notificationText.gameObject.transform.parent.gameObject.SetActive(false);
         }
+        //*/
 
         //There is a better way but idk how to make the fill continuous
         if (dissolve)

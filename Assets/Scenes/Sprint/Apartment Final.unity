@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1590,6 +1590,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player-UI-Lvl3
       objectReference: {fileID: 0}
+    - target: {fileID: 4612399652526098777, guid: 9ee9399744ecd9d4799e79fe6cb013ae,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 105033944, guid: 9ee9399744ecd9d4799e79fe6cb013ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2906,7 +2911,7 @@ PrefabInstance:
     - target: {fileID: 7637146973055855280, guid: 9ee9399744ecd9d4799e79fe6cb013ae,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0000076293945
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7637146973055855280, guid: 9ee9399744ecd9d4799e79fe6cb013ae,
         type: 3}
@@ -3309,11 +3314,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1780907580927779662, guid: 9ee9399744ecd9d4799e79fe6cb013ae,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4612399652526098777, guid: 9ee9399744ecd9d4799e79fe6cb013ae,
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -27578,7 +27578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1664212873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28672,6 +28672,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.663014
       objectReference: {fileID: 0}
+    - target: {fileID: 29673750470463671, guid: ba4c536cc61c7fb4884ef240f7ae4a63,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9cc179d702ce21944ac290fe9c7fd062, type: 2}
     - target: {fileID: 8012867406987646330, guid: ba4c536cc61c7fb4884ef240f7ae4a63,
         type: 3}
       propertyPath: m_IsActive
@@ -28752,11 +28757,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 66c5c8255c47f9045bdfd7c681da35db, type: 2}
-    - target: {fileID: 29673750470463671, guid: ba4c536cc61c7fb4884ef240f7ae4a63,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9cc179d702ce21944ac290fe9c7fd062, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba4c536cc61c7fb4884ef240f7ae4a63, type: 3}
 --- !u!1001 &1751513755
