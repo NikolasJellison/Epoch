@@ -24,14 +24,17 @@ public class FaucetScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!water.startClear)
+            if (!water.startClear && !other.gameObject.GetComponent<PlayerController>().lock_movement)
             {
                 // UI
                 faucetText.text = "'E' to turn on the water";
                 if (Input.GetKey(KeyCode.E))
                 {
                     water.startClear = true;
+                    print("BEGIN: " + Time.fixedTime);
                     water.waterFlow.SetActive(true);
+                    faucetText.text = "";
+                    GetComponent<AudioSource>().Play(); 
                 }
             }
             else

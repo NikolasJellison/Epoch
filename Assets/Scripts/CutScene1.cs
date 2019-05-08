@@ -32,6 +32,7 @@ public class CutScene1 : MonoBehaviour
     private bool dissolveLR;
     public TextMeshProUGUI sadText;
     public List<GameObject> deskitems = new List<GameObject>();
+    public bool decreaseAudio;
 
     private void Start()
     {
@@ -66,6 +67,14 @@ public class CutScene1 : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        if (decreaseAudio && ambiance.volume > 0.0f)
+        {
+            print(ambiance.volume);
+            float volume = ambiance.volume;
+            volume -= 0.15f * Time.deltaTime;
+            ambiance.volume = Mathf.Max(0.0f, volume);
         }
         //Debug.Log(Time.deltaTime);
         //Debug
@@ -198,7 +207,8 @@ public class CutScene1 : MonoBehaviour
         //dissolve = true;
         computerScreenCanvas.SetActive(false);
         radio.Play();
-        ambiance.Stop();
+        //ambiance.Stop();
+        decreaseAudio = true;
         player.GetComponent<Animator>().SetTrigger("StartCry");
         cameraController.canMove = false;
         //Good view for cry

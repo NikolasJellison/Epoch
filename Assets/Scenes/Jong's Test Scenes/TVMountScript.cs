@@ -58,7 +58,7 @@ public class TVMountScript : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (start)
+        if (start || other.gameObject.GetComponent<PlayerController>().lock_movement)
         {
             moveUI.text = "";
             return;

@@ -36,8 +36,15 @@ public class ToyBox : MonoBehaviour
     public GameObject[] cutsceneBlocks;
     public AudioSource victorySound;
     public AudioSource argument;
+    public AudioSource radio;
+    public Transform argumentLoc;
     public bool decreaseAudio;
+    public GameObject ominousLight;
     public bool ended;
+    public float maxVolume;
+    public float minVolume;
+    public float maxDist;
+    public GameObject shadow;
 
     private void Start()
     {
@@ -50,15 +57,33 @@ public class ToyBox : MonoBehaviour
 
     private void Update()
     {
+        /*
+        if (!cutScenePlaying && !ended)
+        {
+            float distance = Vector3.Distance(controller.transform.position, argumentLoc.position);
+            
+            //print(distance);
+            float volume = maxVolume * ((maxDist - distance) / maxDist);
+            argument.volume = volume;
+        }
+        //*/
+        
         if (decreaseAudio && argument.volume > 0.0f)
         {
-            print(argument.volume);
             float volume = argument.volume;
             volume -= 0.15f * Time.deltaTime;
             argument.volume = Mathf.Max(0.0f, volume);
         }
+        //*/
+
+        if (decreaseAudio && radio.volume > 0.0f)
+        {
+            float volume = radio.volume;
+            volume -= 0.45f * Time.deltaTime;
+            radio.volume = Mathf.Max(0.0f, volume);
+        }
         //
-        if(player.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
+        if (player.GetComponent<PlayerRoomOneDetection>().blocksFound == 5)
         {
             foreach(GameObject materialObject in materialObjects)
             {
@@ -229,12 +254,13 @@ public class ToyBox : MonoBehaviour
         //>
         controller.lock_movement = false;
         controller.journalInput = true;
-        cutScenePlaying = false;
+        ominousLight.SetActive(false);
+        shadow.SetActive(true);
         playerCamera.SetActive(true);
         cutSceneCamera.SetActive(false);
         playerUI.SetActive(true);
-        
-        
+        cutScenePlaying = false;
+
         yield return null;
     }
     

@@ -7,8 +7,10 @@ public class FinalPuzzleScript : MonoBehaviour
     public GameObject player;
     public GameObject playerUI;
     public PerspectiveSwap vantageMgr;
+    public AudioSource radio;
     //public OldCameraController cam;
     private bool started;
+    private bool appeared;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,12 @@ public class FinalPuzzleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(started && radio.volume > 0)
+        {
+            float volume = radio.volume;
+            volume -= .8f * Time.deltaTime;
+            radio.volume = Mathf.Max(0.0f, volume);
+        }
     }
 
     private void OnTriggerEnter(Collider collision)

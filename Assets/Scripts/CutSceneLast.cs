@@ -20,6 +20,7 @@ public class CutSceneLast : MonoBehaviour
     private bool startFade;
     public Image fadeImage;
     bool cursorOn;
+    bool decreaseAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,12 @@ public class CutSceneLast : MonoBehaviour
 
     private void Update()
     {
+        if (decreaseAudio && ambiance.volume > 0)
+        {
+            float volume = ambiance.volume;
+            volume -= 0.3f * Time.deltaTime;
+            ambiance.volume = Mathf.Max(0.0f, volume);
+        }
         if (cursorOn)
         {
             Cursor.visible = true;
@@ -53,7 +60,8 @@ public class CutSceneLast : MonoBehaviour
 
     public void EndGame()
     {
-        ambiance.Stop();
+        //ambiance.Stop();
+        decreaseAudio = true;
         radio.Play();
         cutsceneUI.SetActive(true);
         cutsceneUI.GetComponentInChildren<TextMeshProUGUI>().enabled = false;

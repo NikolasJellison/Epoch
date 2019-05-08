@@ -7,6 +7,7 @@ public class FanScript : MonoBehaviour
 {
     public NoteScriptL3 note;
     public Text activateUI;
+    public Transform player;
     // Start is called before the first frame update
     void Start()
     {

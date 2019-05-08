@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HammerScript : MonoBehaviour
 {
     public Text collectUI;
+    public GameObject speaker;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +23,18 @@ public class HammerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!GetComponent<VisionObjectScript>().enabled)
+            if ((GetComponent<VisionObjectScript>() == null || !GetComponent<VisionObjectScript>().enabled) &&
+                !other.gameObject.GetComponent<PlayerController>().lock_movement)
             {
-                GetComponent<AudioSource>().Play();
                 collectUI.text = "Left Click to pick up";
                 if (Input.GetMouseButtonDown(0))
                 {
-                    gameObject.SetActive(false);
                     collectUI.text = "";
+                    if (speaker != null && speaker.GetComponent<AudioSource>() != null)
+                    {
+                        speaker.GetComponent<AudioSource>().Play();
+                    }
+                    gameObject.SetActive(false);
                 }
             }
             else

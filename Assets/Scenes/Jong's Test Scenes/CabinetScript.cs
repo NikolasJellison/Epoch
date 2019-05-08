@@ -27,7 +27,7 @@ public class CabinetScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!pivots[0].activeSelf)
+            if (!pivots[0].activeSelf && !other.gameObject.GetComponent<PlayerController>().lock_movement)
             {
                 if (key != null)
                 {

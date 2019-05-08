@@ -39,7 +39,7 @@ public class ExtensionCordPlacement : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            if (fanVO.enabled || controller.manipulating)
+            if (fanVO.enabled || controller.manipulating || controller.lock_movement)
             {
                 UI.text = "";
             }
@@ -56,6 +56,7 @@ public class ExtensionCordPlacement : MonoBehaviour
                 UI.text = "Left Click to plug in the fan";
                 if (Input.GetMouseButtonDown(0))
                 {
+                    GetComponent<AudioSource>().Play();
                     UI.text = "";
                     extensionPlaced.SetActive(true);
                     spinner.SetActive(true);

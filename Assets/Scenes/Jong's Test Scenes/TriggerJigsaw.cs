@@ -17,6 +17,9 @@ public class TriggerJigsaw : MonoBehaviour
     public GameObject blocker;
     public GameObject pivot;
     public GameObject UI;
+    public AudioSource radio;
+    public bool decreaseAudio;
+    bool finished;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,12 @@ public class TriggerJigsaw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(decreaseAudio && radio.volume > 0)
+        {
+            float volume = radio.volume;
+            volume -= 0.9f * Time.deltaTime;
+            radio.volume = Mathf.Max(0.0f, volume);
+        }
         GameObject puzzle = GameObject.Find("Canvas-Jigsaw(Clone)");
         if(puzzle != null)
         {
@@ -36,8 +45,9 @@ public class TriggerJigsaw : MonoBehaviour
         {
             inPuzzle = false;
 
-            if (door != null)
+            if (door != null && !finished)
             {
+                finished = true;
                 player.GetComponent<PlayerController>().journalInput = true;
                 player.GetComponent<PlayerController>().lock_movement = false;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -46,7 +56,8 @@ public class TriggerJigsaw : MonoBehaviour
                 door.GetComponent<Animator>().SetTrigger("DoorOpenIn");
                 door.GetComponent<AudioSource>().Play();
                 GetComponent<AudioSource>().Play();
-                whispering.Stop();
+                //whispering.Stop();
+                decreaseAudio = true;
                 vantageMgr.swapEnabled = true;
             }
                 
@@ -58,7 +69,7 @@ public class TriggerJigsaw : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (puzzleTriggeredOnce)
+            if (puzzleTriggeredOnce || player.GetComponent<PlayerController>().lock_movement)
             {
                 openUI.text = "";
                 return;

@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -856,7 +856,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09e8e54cf521a7a4a898f0ed74885e9b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.55
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5546,6 +5546,7 @@ MonoBehaviour:
   - {fileID: 383958792}
   - {fileID: 112046019}
   - {fileID: 1799197078}
+  decreaseAudio: 0
 --- !u!4 &403076050
 Transform:
   m_ObjectHideFlags: 0
@@ -19325,8 +19326,8 @@ MonoBehaviour:
   text: []
   textColors:
   - {r: 0.98875433, g: 1, b: 0.089005224, a: 1}
-  - {r: 0.9942055, g: 1, b: 0.5518868, a: 1}
-  - {r: 0.9942055, g: 1, b: 0.5518868, a: 1}
+  - {r: 0.24056602, g: 0.3379295, b: 1, a: 1}
+  - {r: 0.24056602, g: 0.3379295, b: 1, a: 1}
   - {r: 1, g: 0.17647058, b: 0.31861237, a: 1}
   objectiveLight: {fileID: 0}
   posters: []

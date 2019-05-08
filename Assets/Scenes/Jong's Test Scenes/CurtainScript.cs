@@ -23,7 +23,7 @@ public class CurtainScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!start)
+            if (!start && !other.gameObject.GetComponent<PlayerController>().lock_movement)
             {
                 moveText.text = "'E' to move aside";
                 if (Input.GetKeyDown(KeyCode.E))

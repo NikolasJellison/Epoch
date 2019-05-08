@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CollectItem : MonoBehaviour
 {
     public Text collectUI;
+    public GameObject speaker;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +23,23 @@ public class CollectItem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            collectUI.text = "Left Click to pick up";
-            if (Input.GetMouseButtonDown(0))
+            if(!other.gameObject.GetComponent<PlayerController>().lock_movement)
+            {
+                collectUI.text = "Left Click to pick up";
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (speaker != null && speaker.GetComponent<AudioSource>() != null)
+                    {
+                        speaker.GetComponent<AudioSource>().Play();
+                    }
+                    collectUI.text = "";
+                    gameObject.SetActive(false);
+                }
+            } else
             {
                 collectUI.text = "";
-                gameObject.SetActive(false);
             }
+            
         }
     }
     //*/

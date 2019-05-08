@@ -82,8 +82,8 @@ public class CutsceneController1 : MonoBehaviour
             Vector3 playerMov = prevModelDir * speed * Time.deltaTime;
             Animator anim = prevModel.GetComponent<Animator>();
 
-            anim.SetFloat("Velocity_X", prevModelDir.x);
-            anim.SetFloat("Velocity_Y", prevModelDir.z);
+            anim.SetFloat("Velocity_X", 0.98f*prevModelDir.x);
+            anim.SetFloat("Velocity_Y", 0.98f*prevModelDir.z);
 
             prevModel.transform.Translate(playerMov, Space.Self);
             prevModelDist -= Vector3.Magnitude(playerMov);
@@ -106,8 +106,8 @@ public class CutsceneController1 : MonoBehaviour
                 Vector3 playerMov = currModelDir1 * speed * Time.deltaTime;
                 Animator anim = controller.GetComponent<Animator>();
 
-                anim.SetFloat("Velocity_X", currModelDir1.x);
-                anim.SetFloat("Velocity_Y", currModelDir1.z);
+                anim.SetFloat("Velocity_X", 0.96f * currModelDir1.x);
+                anim.SetFloat("Velocity_Y", 0.96f * currModelDir1.z);
                 print(playerMov);
                 controller.transform.Translate(playerMov, Space.Self);
                 currModelDist1 -= Vector3.Magnitude(playerMov);

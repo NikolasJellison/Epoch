@@ -14,6 +14,7 @@ public class WaterScript : MonoBehaviour
     public BoxCollider key;
     public GameObject stopper;
     bool keyActivated;
+    bool played;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,11 @@ public class WaterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!played && stopper != null && !stopper.GetComponent<VisionObjectScript>().enabled)
+        {
+            played = true;
+            GetComponent<AudioSource>().Play();
+        }
         MeshRenderer mesh = GetComponent<MeshRenderer>();
         Color color = mesh.material.color;
         if(startClear & color.a > albedoLimit)
@@ -39,6 +45,7 @@ public class WaterScript : MonoBehaviour
 
         if(waterFlow.activeSelf && color.a <= albedoLimit)
         {
+            print("END: " + Time.fixedTime);
             waterFlow.SetActive(false);
         }
         if(stopper != null && !stopper.GetComponent<VisionObjectScript>().enabled && translation < tLimit)
