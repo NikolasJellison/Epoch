@@ -175,6 +175,7 @@ public class ChangeColormodeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentMode = 0.0f;
@@ -199,14 +200,12 @@ public class ChangeColormodeScript : MonoBehaviour
             DataScript.colorblindMode = currentMode;
             dirty = true;
         }
-
+        //*/
         if (dirty)
         {
             ChangeMode();
             dirty = false;
         }
-
-        
     }
 
     private void ChangeMode()
