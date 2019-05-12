@@ -116,7 +116,7 @@ public class Tutorial : MonoBehaviour
         {
             vantageManager.GetComponent<PerspectiveSwap>().swapEnabled = true;
             //tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to get a new Perspective on the environment";
-            tutorialText.text = "Press 'Shift' to get a new Perspective on the environment";
+            tutorialText.text = "Press 'Shift' to peer through windows into the past";
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
                 newView = true;
@@ -128,7 +128,7 @@ public class Tutorial : MonoBehaviour
             if (vantageManager.GetComponent<PerspectiveSwap>().playerActive)
             {
                 //tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to return to the Perspective view";
-                tutorialText.text = "Press 'Shift' to return to the Perspective view";
+                tutorialText.text = "Press 'Shift' to return to the Window view";
             } else
             {
                 tutorialText.text = "Click on the pulsating object to activate it for little Emsy";
@@ -175,7 +175,7 @@ public class Tutorial : MonoBehaviour
             if (vantageManager.GetComponent<PerspectiveSwap>().playerActive)
             {
                 //tutorialText.text = "Press <sprite=\"Shift\" index=\"0\"> to return to the Perspective view";
-                tutorialText.text = "Press 'Shift' to return to the Perspective view";
+                tutorialText.text = "Press 'Shift' to return to the Window view";
             }
             else
             {
