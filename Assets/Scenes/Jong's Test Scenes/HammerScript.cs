@@ -23,8 +23,16 @@ public class HammerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Transform objBase = transform.GetChild(transform.childCount - 1);
+            Vector3 playerObjRay = objBase.position - other.transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, other.transform.forward);
+            bool facing = angle < 75f;
+
             if ((GetComponent<VisionObjectScript>() == null || !GetComponent<VisionObjectScript>().enabled) &&
-                !other.gameObject.GetComponent<PlayerController>().lock_movement)
+                !other.gameObject.GetComponent<PlayerController>().lock_movement &&
+                !other.gameObject.GetComponent<PlayerController>().manipulating &&
+                facing)
             {
                 collectUI.text = "Left Click to pick up";
                 if (Input.GetMouseButtonDown(0))

@@ -69,7 +69,14 @@ public class TriggerJigsaw : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (puzzleTriggeredOnce || player.GetComponent<PlayerController>().lock_movement)
+            Transform objBase = transform.GetChild(transform.childCount - 1);
+            Vector3 playerObjRay = objBase.position - other.transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, other.transform.forward);
+            bool facing = angle < 60f;
+
+            if (puzzleTriggeredOnce || player.GetComponent<PlayerController>().lock_movement 
+                || player.GetComponent<PlayerController>().manipulating || !facing)
             {
                 openUI.text = "";
                 return;

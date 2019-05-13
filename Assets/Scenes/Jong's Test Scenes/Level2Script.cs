@@ -10,6 +10,7 @@ public class Level2Script : MonoBehaviour
     public Text collectUI;
     [Header("0 blocks first, then go up to max")]
     public Sprite[] pageImages;
+    public List<GameObject> itemsInReach = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,13 @@ public class Level2Script : MonoBehaviour
     void Update()
     {
         pageUI.sprite = pageImages[pagesFound];
+        if(itemsInReach.Count > 0)
+        {
+            collectUI.text = "Left Click to collect";
+        } else
+        {
+            collectUI.text = "";
+        }
     }
     public void subPage()
     {
@@ -29,28 +37,49 @@ public class Level2Script : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        
+
         if (other.CompareTag("Pages"))
         {
-            if (GetComponent<PlayerController>().lock_movement)
+            Transform objBase = other.transform.GetChild(other.transform.childCount - 1);
+            Vector3 playerObjRay = objBase.position - transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, transform.forward);
+            bool facing = angle < 75f;
+            if (GetComponent<PlayerController>().lock_movement || GetComponent<PlayerController>().manipulating || !facing)
             {
-                collectUI.text = "";
+                //collectUI.text = "";
+                if (itemsInReach.Contains(other.gameObject))
+                {
+                    itemsInReach.Remove(other.gameObject);
+                }
                 return;
             }
-            collectUI.text = "Left Click to collect";
+
+            if (!itemsInReach.Contains(other.gameObject))
+            {
+                itemsInReach.Add(other.gameObject);
+            }
+            //collectUI.text = "Left Click to collect";
             if (Input.GetMouseButtonDown(0))
             {
                 subPage();
                 GetComponent<AudioSource>().Play();
-                //AkSoundEngine.PostEvent("Acquisition", gameObject);
                 print(pageImages[pagesFound].name);
                 other.gameObject.SetActive(false);
-                collectUI.text = "";
+                //collectUI.text = "";
+                if (itemsInReach.Contains(other.gameObject))
+                {
+                    itemsInReach.Remove(other.gameObject);
+                }
             } 
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        collectUI.text = "";
+        //collectUI.text = "";
+        if (itemsInReach.Contains(other.gameObject))
+        {
+            itemsInReach.Remove(other.gameObject);
+        }
     }
 }

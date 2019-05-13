@@ -51,7 +51,13 @@ public class DestroyPromptScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (hit || controller.lock_movement)
+            Transform objBase = transform.GetChild(transform.childCount - 1);
+            Vector3 playerObjRay = objBase.position - other.transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, other.transform.forward);
+            bool facing = angle < 48f;
+
+            if (hit || controller.lock_movement || controller.manipulating || !facing)
             {
                 promptUI.text =      "";
                 return;

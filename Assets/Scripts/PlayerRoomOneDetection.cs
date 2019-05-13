@@ -14,6 +14,7 @@ public class PlayerRoomOneDetection : MonoBehaviour
     //Animation stuff i guess
     private Animator anim;
     private Rigidbody rb;
+    public List<GameObject> itemsInReach = new List<GameObject>();
 
     private void Start()
     {
@@ -23,34 +24,68 @@ public class PlayerRoomOneDetection : MonoBehaviour
         blockUI.sprite = blockImages[0];
     }
 
+    private void Update()
+    {
+        if (itemsInReach.Count > 0)
+        {
+            collectUI.text = "Left Click to collect";
+        }
+        else
+        {
+            collectUI.text = "";
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         
         if (other.CompareTag("Block"))
         {
-            if (GetComponent<PlayerController>().lock_movement)
+            Transform objBase = other.transform.GetChild(other.transform.childCount - 1);
+            Vector3 playerObjRay = objBase.position - transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, transform.forward);
+            bool facing = angle < 75f;
+
+            if (GetComponent<PlayerController>().lock_movement || GetComponent<PlayerController>().manipulating || !facing)
             {
-                collectUI.text = "";
+                //collectUI.text = "";
+                if (itemsInReach.Contains(other.gameObject))
+                {
+                    itemsInReach.Remove(other.gameObject);
+                }
                 return;
             }
-            collectUI.text = "Left Click to collect";
+
+            //collectUI.text = "Left Click to collect";
+            if (!itemsInReach.Contains(other.gameObject))
+            {
+                itemsInReach.Add(other.gameObject);
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 Destroy(other.gameObject);
                 GetComponent<AudioSource>().Play();
-                //AkSoundEngine.PostEvent("Acquisition", gameObject);
                 blocksFound++;
                 //This wont stay on screen and won't disapear until you go to the box but sure
                 notifcationText.text = "You have found Block Number: " + blocksFound;
                 blockUI.sprite = blockImages[blocksFound];
-                collectUI.text = "";
+                //collectUI.text = "";
+                if (itemsInReach.Contains(other.gameObject))
+                {
+                    itemsInReach.Remove(other.gameObject);
+                }
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        collectUI.text = "";
+        //collectUI.text = "";
+        if (itemsInReach.Contains(other.gameObject))
+        {
+            itemsInReach.Remove(other.gameObject);
+        }
     }
 
 }

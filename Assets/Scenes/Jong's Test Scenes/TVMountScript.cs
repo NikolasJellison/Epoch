@@ -58,7 +58,13 @@ public class TVMountScript : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (start || other.gameObject.GetComponent<PlayerController>().lock_movement)
+        Transform objBase = transform;
+        Vector3 playerObjRay = objBase.position - other.transform.position;
+        playerObjRay.y = 0.0f;
+        float angle = Vector3.Angle(playerObjRay, other.transform.forward);
+        bool facing = angle < 75f;
+
+        if (start || other.gameObject.GetComponent<PlayerController>().lock_movement || !facing)
         {
             moveUI.text = "";
             return;

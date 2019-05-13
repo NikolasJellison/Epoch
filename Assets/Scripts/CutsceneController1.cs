@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutsceneController1 : MonoBehaviour
 {
@@ -38,12 +39,15 @@ public class CutsceneController1 : MonoBehaviour
     public float camRotationSpeed;
     public Transform target;
     public GameObject lightRoom;
+    public Text textUI1, textUI2;
     // Start is called before the first frame update
     void Start()
     {
         playCutscene = DataScript.cutscene2;
         if (playCutscene)
         {
+            textUI1.text = "";
+            textUI2.text = "";
             currModel.SetActive(false);
             prevModelDir = Vector3.Normalize(prevModelDir);
             vantageManager.enabled = false;

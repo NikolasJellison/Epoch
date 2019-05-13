@@ -13,6 +13,7 @@ public class ExtensionCordPlacement : MonoBehaviour
     public GameObject extensionPlaced;
     public float distanceThresh = 2f;
     public Text UI;
+    public Text actUI;
     public GameObject spinner;
     public NoteScriptL3 note;
     public bool done;
@@ -39,7 +40,13 @@ public class ExtensionCordPlacement : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            if (fanVO.enabled || controller.manipulating || controller.lock_movement)
+            Transform triggerBase = transform.GetChild(transform.childCount - 1);
+            Vector3 playerObjRay = triggerBase.position - other.transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, other.transform.forward);
+            bool facing = angle < 60f;
+
+            if (fanVO.enabled || controller.manipulating || controller.lock_movement || !facing)
             {
                 UI.text = "";
             }
@@ -56,8 +63,14 @@ public class ExtensionCordPlacement : MonoBehaviour
                 UI.text = "Left Click to plug in the fan";
                 if (Input.GetMouseButtonDown(0))
                 {
+                    holderBase.transform.parent.gameObject.tag = "Untagged";
+                    if (other.GetComponent<PlayerController>().moveableCandidates.Contains(holderBase.transform.parent.gameObject))
+                    {
+                        other.GetComponent<PlayerController>().moveableCandidates.Remove(holderBase.transform.parent.gameObject);
+                    }
                     GetComponent<AudioSource>().Play();
                     UI.text = "";
+                    actUI.text = "";
                     extensionPlaced.SetActive(true);
                     spinner.SetActive(true);
                     note.enabled = true;

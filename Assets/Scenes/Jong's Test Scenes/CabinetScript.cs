@@ -27,7 +27,15 @@ public class CabinetScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!pivots[0].activeSelf && !other.gameObject.GetComponent<PlayerController>().lock_movement)
+            Transform objBase = transform;
+            Vector3 playerObjRay = objBase.position - other.transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, other.transform.forward);
+            bool facing = angle < 45f;
+
+            if (!pivots[0].activeSelf && !other.gameObject.GetComponent<PlayerController>().lock_movement &&
+                !other.gameObject.GetComponent<PlayerController>().manipulating &&
+                facing)
             {
                 if (key != null)
                 {

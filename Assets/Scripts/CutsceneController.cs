@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutsceneController : MonoBehaviour
 {
@@ -37,12 +38,15 @@ public class CutsceneController : MonoBehaviour
     public float camRotationSpeed;
     public Transform target;
     public GameObject lightRoom;
+    public Text roomText, viewText;
     // Start is called before the first frame update
     void Start()
     {
         playCutscene = DataScript.cutscene1;
         if (playCutscene)
         {
+            roomText.text = "";
+            viewText.text = "";
             currModel.SetActive(false);
             prevModelDir = Vector3.Normalize(prevModelDir);
             vantageManager.enabled = false;
@@ -104,8 +108,8 @@ public class CutsceneController : MonoBehaviour
                 Vector3 playerMov = currModelDir1 * speed * Time.deltaTime;
                 Animator anim = controller.GetComponent<Animator>();
 
-                anim.SetFloat("Velocity_X", 0.96f*currModelDir1.x);
-                anim.SetFloat("Velocity_Y", 0.96f *currModelDir1.z);
+                anim.SetFloat("Velocity_X", 0.966f*currModelDir1.x);
+                anim.SetFloat("Velocity_Y", 0.966f *currModelDir1.z);
                 print(playerMov);
                 controller.transform.Translate(playerMov, Space.Self);
                 currModelDist1 -= Vector3.Magnitude(playerMov);

@@ -30,13 +30,20 @@ public class ClimbableScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Transform objBase = transform;
+            Vector3 playerObjRay = objBase.position - other.transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, other.transform.forward);
+            bool facing = angle < 75f;
+
             if ((transform.parent != null && 
                 transform.GetComponentInParent<VisionObjectScript>() != null && 
                 transform.GetComponentInParent<VisionObjectScript>().enabled) ||
                 (other.gameObject.GetComponent<PlayerController>() != null && 
                 (other.gameObject.GetComponent<PlayerController>().manipulating || 
                 other.gameObject.GetComponent<PlayerController>().lock_movement)) ||
-                transform.position.y < other.gameObject.transform.position.y)
+                transform.position.y < other.gameObject.transform.position.y ||
+                !facing)
             {
                 inContact = false;
             }

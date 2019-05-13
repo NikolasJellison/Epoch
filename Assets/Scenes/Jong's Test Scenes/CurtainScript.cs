@@ -23,7 +23,15 @@ public class CurtainScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!start && !other.gameObject.GetComponent<PlayerController>().lock_movement)
+            Transform objBase = transform.GetChild(transform.childCount - 1);
+            Vector3 playerObjRay = objBase.position - other.transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, other.transform.forward);
+            bool facing = angle < 60f;
+            //bool facing = true;
+            if (!start && !other.gameObject.GetComponent<PlayerController>().lock_movement 
+                && !other.gameObject.GetComponent<PlayerController>().manipulating 
+                && facing)
             {
                 moveText.text = "'E' to move aside";
                 if (Input.GetKeyDown(KeyCode.E))

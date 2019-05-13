@@ -24,7 +24,15 @@ public class FaucetScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!water.startClear && !other.gameObject.GetComponent<PlayerController>().lock_movement)
+            Transform objBase = transform;
+            Vector3 playerObjRay = objBase.position - other.transform.position;
+            playerObjRay.y = 0.0f;
+            float angle = Vector3.Angle(playerObjRay, other.transform.forward);
+            bool facing = angle < 45f;
+
+            if (!water.startClear && !other.gameObject.GetComponent<PlayerController>().lock_movement &&
+                !other.gameObject.GetComponent<PlayerController>().manipulating &&
+                facing)
             {
                 // UI
                 faucetText.text = "'E' to turn on the water";
