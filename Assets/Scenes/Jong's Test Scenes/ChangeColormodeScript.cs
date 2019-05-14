@@ -60,6 +60,8 @@ public class ChangeColormodeScript : MonoBehaviour
     public Color[] menuTextColors = new Color[2];
     public bool dirty;
     public float currentMode;
+    public Image[] menuExamples = new Image[3];
+    public Color[] environColors = new Color[4];
 
     //Other shaders
     [Header("Shader Names (exclude ShaderGraphs part)")]
@@ -480,35 +482,15 @@ public class ChangeColormodeScript : MonoBehaviour
                 }
             }
         }
+
+        if(menuExamples[0] != null && menuExamples[1] != null && menuExamples[2] != null)
+        {
+            menuExamples[0].color = visionColors[index];
+            menuExamples[1].color = objectiveColors[index];
+            menuExamples[2].color = environColors[index];
+        }
     }
 
-    public void defaultMode()
-    {
-        currentMode = 0.0f;
-        DataScript.colorblindMode = currentMode;
-        dirty = true;
-    }
-
-    public void deteuranopiaMode()
-    {
-        currentMode = 1.0f;
-        DataScript.colorblindMode = currentMode;
-        dirty = true;
-    }
-
-    public void protanopiaMode()
-    {
-        currentMode = 2.0f;
-        DataScript.colorblindMode = currentMode;
-        dirty = true;
-    }
-
-    public void tritanopiaMode()
-    {
-        currentMode = 3.0f;
-        DataScript.colorblindMode = currentMode;
-        dirty = true;
-    }
 
     //Dropdown needs to send in INT values, so i'm combining all these into a single function
 
