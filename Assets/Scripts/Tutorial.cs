@@ -45,6 +45,9 @@ public class Tutorial : MonoBehaviour
     public RoomScript room;
     public UISwapScript uiScript;
 
+    public GameObject options;
+    public GameObject[] ui = new GameObject[2];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +86,12 @@ public class Tutorial : MonoBehaviour
             {
                 collisionDetector.GetComponent<CamCollision>().enabled = false;
             }
-            
+
+            foreach (GameObject t in ui)
+            {
+                t.SetActive(!options.activeSelf);
+            }
+
             scene1Cam.GetComponent<OldCameraController>().enabled = false;
             tutorialText.text = "These pulsating objects cannot be interacted with at first \n";
 
@@ -148,7 +156,11 @@ public class Tutorial : MonoBehaviour
 
             Vector3 originalPosition = scene2Cam.transform.position;
             scene2Cam.transform.position = Vector3.MoveTowards(scene2Cam.transform.position, cutscenePosition.position, 2f * camMoveSpeed * Time.deltaTime);
-
+            
+            foreach (GameObject t in ui)
+            {
+                t.SetActive(!options.activeSelf);
+            }
 
             Vector3 lookDir = cutsceneTarget.position - scene2Cam.transform.position;
 
