@@ -8,7 +8,7 @@ public class PlayerRoomOneDetection : MonoBehaviour
     public int blocksFound;
     public Text notifcationText;
     public Image blockUI;
-    [Header("0 blocks first, then go up to 5/5")]
+    [Header("Make sure the endings of these images are the same as the endings of the gameobjects")]
     public Sprite[] blockImages;
     public Text collectUI;
     //Animation stuff i guess
@@ -69,7 +69,16 @@ public class PlayerRoomOneDetection : MonoBehaviour
                 blocksFound++;
                 //This wont stay on screen and won't disapear until you go to the box but sure
                 notifcationText.text = "You have found Block Number: " + blocksFound;
-                blockUI.sprite = blockImages[blocksFound];
+                //blockUI.sprite = blockImages[blocksFound];
+                //Dynamic Block Upater thingy
+                //Just don't change the object names or whatever.
+                foreach(Sprite s in blockImages)
+                {
+                    if(other.name.Substring(other.name.Length -2) == s.name.Substring(s.name.Length - 2))
+                    {
+                        blockUI.transform.GetChild(blocksFound - 1).GetComponent<Image>().sprite = s;
+                    }
+                }
                 //collectUI.text = "";
                 if (itemsInReach.Contains(other.gameObject))
                 {
